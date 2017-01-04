@@ -6,7 +6,7 @@ import sys
 
 def main():
     try:
-        dot = dotfiles(sys.argv[1])
+        dot = dotfiles(os.path.expanduser(sys.argv[1]))
         dot.create_symlinks()
     except IndexError:
         print('ERROR: No dotfile folder specified')
@@ -39,16 +39,17 @@ class dotfiles:
             src = os.path.join(self.dotfile_dir_path, link[0])
 
             if os.path.exists(src):
-                if os.path.exists(dst):
+                try:
+                    os.symlink(src, dst)
+                except FileExistsError:
                     if os.path.islink(dst):
                         os.remove(dst)
                     else:
                         print('{0:s} exists. Backing up to {0:s}.bak'.format(dst))
                         os.rename(dst, '{:s}.bak'.format(dst))
-
-                print('Symlinking {0:s} to {1:s}'.format(src, dst))
-                os.symlink(src, dst)
-
+                    os.symlink(src, dst)
+                finally:
+                    print('Symlinking {0:s} to {1:s}'.format(src, dst))
             else:
                 print('Symlink dstination {0:s} does not exist'.format(src))
 
