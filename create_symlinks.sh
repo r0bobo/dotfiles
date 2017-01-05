@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./create_symlinks.py ~/dotfiles
+./create_symlinks.py '~/dotfiles' '~/dotfiles/dotfiles.conf'
 
 
 # Run and update vim-plug
