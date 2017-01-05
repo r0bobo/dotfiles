@@ -1,15 +1,25 @@
 #!/usr/bin/env python3
 
+import logging
 import os
+import re
 import sys
+
+from os.path import expanduser, join
 
 
 def main():
+    logging.basicConfig(
+        format='%(levelname)s: %(message)s',
+        level=logging.INFO
+        )
+
     try:
-        dot = dotfiles(os.path.expanduser(sys.argv[1]))
+        dot = dotfiles(expanduser(sys.argv[1]), expanduser(sys.argv[2]))
+        dot.read_dotfile_cfg()
         dot.create_symlinks()
     except IndexError:
-        print('ERROR: No dotfile folder specified')
+        logging.warning('ERROR: No dotfile folder specified')
 
 
 class dotfiles:
@@ -17,41 +27,45 @@ class dotfiles:
 
     link_list = []
     dotfile_dir_path = []
+    dotfile_cfg_path = []
 
-    def __init__(self, dotfile_dir_path):
+    def __init__(self, dotfile_dir_path, dotfile_cfg_path):
         self.dotfile_dir_path = dotfile_dir_path
-
-    def read_dotfile_cfg(self):
-        pass
+        self.dotfile_cfg_path = dotfile_cfg_path
 
     def create_symlinks(self):
-        link_list = [
-                    ('nvim/init.vim', '~/.config/nvim/init.vim'),
-                    ('nvim/airline.vimrc', '~/.config/nvim/airline.vimrc'),
-                    ('nvim/general.vimrc', '~/.config/nvim/general.vimrc'),
-                    ('nvim/plug.vimrc', '~/.config/nvim/plug.vimrc'),
-                    ('tmux/tmux.conf', '~/.tmux.conf'),
-                    ('tmux/tmuxline.conf', '~/.tmuxline.conf'),
-                    ]
 
-        for link in link_list:
-            dst = os.path.expanduser(link[1])
-            src = os.path.join(self.dotfile_dir_path, link[0])
-
-            if os.path.exists(src):
+        for link in self.link_list:
+            if os.path.exists(link[0]):
                 try:
-                    os.symlink(src, dst)
+                    os.symlink(link[0], link[1])
                 except FileExistsError:
-                    if os.path.islink(dst):
-                        os.remove(dst)
+                    if os.path.islink(link[1]):
+                        os.remove(link[1])
                     else:
-                        print('{0:s} exists. Backing up to {0:s}.bak'.format(dst))
-                        os.rename(dst, '{:s}.bak'.format(dst))
-                    os.symlink(src, dst)
+                        logging.debug('{0:s} exists. Backing up to {0:s}.bak'
+                                      .format(link[1])
+                                      )
+                        os.rename(link[1], '{:s}.bak'.format(link[1]))
+
+                    os.symlink(link[0], link[1])
                 finally:
-                    print('Symlinking {0:s} to {1:s}'.format(src, dst))
+                    logging.debug(
+                        'Symlinking {0:s} to {1:s}'.format(link[0], link[1]))
             else:
-                print('Symlink dstination {0:s} does not exist'.format(src))
+                logging.warning(
+                    'Symlink source {0:s} does not exist'.format(link[0]))
+
+    def read_dotfile_cfg(self):
+        regex = re.compile('(?:\\s|[^#])*\'(.*)\'\\s*\'(.*)\'$')
+
+        with open(self.dotfile_cfg_path, 'r') as fil:
+            for line in fil:
+                match = regex.match(line)
+                if match:
+                    self.link_list.append((
+                        join(self.dotfile_dir_path, expanduser(match.group(1))),
+                        expanduser(match.group(2))))
 
 
 if __name__ == '__main__':
