@@ -4,4 +4,4 @@
 
 
 # Run and update vim-plug
-nvim -c "PlugUpgrade | PlugInstall | PlugUpgrade | q | q"
+nvim -c "PlugUpgrade | PlugInstall | PlugUpdate | PlugClean | q | q"
