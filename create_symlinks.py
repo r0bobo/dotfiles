@@ -19,7 +19,7 @@ def main():
         dot.read_dotfile_cfg()
         dot.create_symlinks()
     except IndexError:
-        logging.warning('ERROR: No dotfile folder specified')
+        logging.error('No dotfile folder specified')
 
 
 class dotfiles:
@@ -53,7 +53,7 @@ class dotfiles:
                     logging.debug(
                         'Symlinking {0:s} to {1:s}'.format(link[0], link[1]))
             else:
-                logging.warning(
+                logging.error(
                     'Symlink source {0:s} does not exist'.format(link[0]))
 
     def read_dotfile_cfg(self):
