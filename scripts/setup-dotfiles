@@ -1,7 +1,24 @@
 #!/bin/bash
 
-./create_symlinks.py '~/dotfiles' '~/dotfiles/dotfiles.conf'
+$DOTFILES_DIR/scripts/create_symlinks.py $DOTFILES_DIR $DOTFILES_DIR/dotfiles.conf
 
+# Set paths 
+sh $DOTFILES_DIR/zsh/paths.zsh
+# export ZPLUG_HOME=~/.zplug
+# export VIMPLUG_HOME=~/.local/share/nvim/site/autoload/plug.vim
+# export ZSH=~/.oh-my-zsh
+
+# Download modules
+if [ -d !$ZPLUG_HOME ]; then
+        git clone https://github.com/zplug/zplug $ZPLUG_HOME
+fi
+if [ -d !$VIMLPUG_HOME ]; then
+        curl -fLo $VIMPLUG_HOME --create-dirs \
+                https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+if [ -d !$ZSH ]; then
+        git clone --depth=1 https://github.com/robbyrussel/oh-my-zsh.git $OH_MY_ZSH
+fi
 
 # Run and update vim-plug
 nvim -c "PlugUpgrade | PlugInstall | PlugUpdate | PlugClean | q | q"
