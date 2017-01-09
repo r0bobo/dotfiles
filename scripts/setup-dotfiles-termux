@@ -1,13 +1,13 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
-cp create_symlinks.sh create_symlinks.sh.bak
+cp setup-dotfiles setup-dotfiles.bak
 cp create_symlinks.py create_symlinks.py.bak
 
-termux-fix-shebang create_symlinks.sh create_symlinks.py
+termux-fix-shebang setup-dotfiles create_symlinks.py
 
-./create_symlinks.sh
+./setup-dotfiles
 
-rm create_symlinks.sh create_symlinks.py
+rm setup-dotfiles create_symlinks.py
 
-mv create_symlinks.sh.bak create_symlinks.sh
+mv setup-dotfiles.bak setup-dotfiles
 mv create_symlinks.py.bak create_symlinks.py
