@@ -7,3 +7,5 @@ set expandtab       " tabs are spaces
 set number          " show line numbers
 
 colorscheme quantum
+
+set clipboard+=unnamedplus
