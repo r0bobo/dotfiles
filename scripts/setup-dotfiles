@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# TODO: Create a better
+
 $DOTFILES_DIR/scripts/create_symlinks.py $DOTFILES_DIR $DOTFILES_DIR/dotfiles.conf
 
-# Set paths 
+# Set paths
 sh $DOTFILES_DIR/zsh/paths.zsh
 # export ZPLUG_HOME=~/.zplug
 # export VIMPLUG_HOME=~/.local/share/nvim/site/autoload/plug.vim
@@ -22,3 +24,5 @@ fi
 
 # Run and update vim-plug
 nvim -c "PlugUpgrade | PlugInstall | PlugUpdate | PlugClean | q | q"
+
+# TODO: add zplug update/install/clean/etc as well

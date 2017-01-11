@@ -57,6 +57,7 @@ class dotfiles:
                     'Symlink source {0:s} does not exist'.format(link[0]))
 
     def read_dotfile_cfg(self):
+        # TODO replace with python "configparser"
         regex = re.compile('(?:\\s|[^#])*\'(.*)\'\\s*\'(.*)\'$')
 
         with open(self.dotfile_cfg_path, 'r') as fil:
