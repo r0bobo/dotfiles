@@ -14,5 +14,6 @@ before_install:
 - export PATH="$LOCAL/bin:$PATH"
 
 script:
+- export DOTFILES_DIR=/home/travis/build/r0bobo/dotfiles
 - zsh -c 'source zsh/init.zsh'
 
