@@ -1,8 +1,8 @@
 language: sh
 addons:
-  sources:
-    - sourceline: 'ppa:neovim-ppa/unstable'
   apt:
+    sources:
+    - sourceline: 'ppa:neovim-ppa/unstable'
     packages:
     - build-essential
     - neovim
