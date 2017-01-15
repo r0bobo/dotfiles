@@ -1,8 +1,12 @@
 language: sh
 addons:
+  sources:
+    - sourceline: 'ppa:neovim-ppa/unstable'
   apt:
     packages:
     - build-essential
+    - neovim
+
 before_install:
 - export LOCAL="$(mktemp --directory --tmpdir=${TMPDIR:/tmp} local.bin.XXXXXX)"
 - curl -L http://downloads.sourceforge.net/zsh/zsh-5.0.7.tar.gz | tar zx
