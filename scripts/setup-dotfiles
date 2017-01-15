@@ -24,3 +24,4 @@ fi
 nvim -c "PlugUpgrade | PlugInstall | PlugUpdate | PlugClean | q | q"
 
 # TODO: add zplug update/install/clean/etc as well
+
