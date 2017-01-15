@@ -1,6 +1,5 @@
 # Zsh init script
 
-export DOTFILES_DIR=~/dotfiles
 export ZSH=~/.oh-my-zsh
 
 # ZSH_THEME="agnoster"
