@@ -2,13 +2,11 @@
 
 # TODO: Create a better
 
-$DOTFILES_DIR/scripts/create_symlinks.py $DOTFILES_DIR $DOTFILES_DIR/dotfiles.conf
-
 # Set paths
-sh $DOTFILES_DIR/zsh/paths.zsh
-# export ZPLUG_HOME=~/.zplug
-# export VIMPLUG_HOME=~/.local/share/nvim/site/autoload/plug.vim
-# export ZSH=~/.oh-my-zsh
+export DOTFILES_DIR=${DOTFILES_DIR-~/dotfiles}
+$DOTFILES_DIR/zsh/paths.sh
+
+$DOTFILES_DIR/scripts/create_symlinks.py $DOTFILES_DIR $DOTFILES_DIR/dotfiles.conf
 
 # Download modules
 if [ -d !$ZPLUG_HOME ]; then

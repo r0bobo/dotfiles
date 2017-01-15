@@ -1,10 +1,10 @@
 # Zsh init script
 
-export ZSH=~/.oh-my-zsh
+# Setup paths
+export DOTFILES_DIR=${DOTFILES_DIR-~/dotfiles}
+$DOTFILES_DIR/zsh/paths.sh
 
-# ZSH_THEME="agnoster"
-
-source $DOTFILES_DIR/zsh/paths.zsh
+# Source config files
 source $DOTFILES_DIR/zsh/general.zsh
 source $DOTFILES_DIR/zsh/aliases.zsh
 source $DOTFILES_DIR/zsh/commands.zsh
