@@ -1,4 +1,6 @@
-language: sh
+language: python
+  python:
+    - "3.5"
 addons:
   apt:
     sources:
@@ -6,7 +8,6 @@ addons:
     packages:
     - build-essential
     - neovim
-    - python3
 
 before_install:
 - export LOCAL="$(mktemp --directory --tmpdir=${TMPDIR:/tmp} local.bin.XXXXXX)"
