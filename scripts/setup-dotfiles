@@ -16,20 +16,20 @@ echo $ZPLUG_HOME
 echo $VIMPLUG_HOME
 
 # Download modules
-if [ -d !$ZPLUG_HOME ]; then
+if [ ! -d "$ZPLUG_HOME" ]; then
         echo "Installing zplug..."
         git clone https://github.com/zplug/zplug $ZPLUG_HOME
 else
         echo "zplug already installed."
 fi
-if [ -d !$VIMLPUG_HOME ]; then
+if [ ! -d "$VIMLPUG_HOME" ]; then
         echo "Installing vim-plug..."
         curl -fLo $VIMPLUG_HOME --create-dirs \
                 https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 else
         echo "vim-plug already installed."
 fi
-if [ -d !$ZSH ]; then
+if [ ! -d "$ZSH" ]; then
         echo "Installing oh-my-zsh..."
         git clone --depth=1 https://github.com/robbyrussel/oh-my-zsh.git $OH_MY_ZSH
 else
