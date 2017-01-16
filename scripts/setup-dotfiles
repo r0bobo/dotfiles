@@ -36,6 +36,8 @@ else
         echo "oh-my-zsh already installed."
 fi
 
+source $DOTFILES_DIR/zsh/init.zsh
+
 # Run and update vim-plug
 nvim -c "PlugUpgrade | PlugInstall | PlugUpdate | PlugClean[!] | q | q"
 
