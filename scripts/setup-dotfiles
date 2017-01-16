@@ -37,6 +37,6 @@ else
 fi
 
 # Run and update vim-plug
-nvim -c "PlugUpgrade | PlugInstall | PlugUpdate | PlugClean | q | q"
+nvim -c "PlugUpgrade | PlugInstall | PlugUpdate | PlugClean[!] | q | q"
 
 # TODO: add zplug update/install/clean/etc as well
