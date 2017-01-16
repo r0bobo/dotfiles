@@ -11,9 +11,9 @@ zplug "zsh-users/zsh-autosuggestions"
 
 # Themes
 
-zplug "agnoster/agnoster-zsh-theme", use:"agnoster.zsh-theme" 
+# zplug "agnoster/agnoster-zsh-theme", use:"agnoster.zsh-theme"
 
-# zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 
 # zplug "mafredri/zsh-async", from:github 
 
