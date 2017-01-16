@@ -13,7 +13,7 @@ addons:
 
 before_install:
 - export LOCAL="$(mktemp --directory --tmpdir=${TMPDIR:/tmp} local.bin.XXXXXX)"
-- pwd
+- echo $PWD
 - git clone https://github.com/zsh-users/zsh.git zsh-code
 - ls -A
 - cd zsh-code
