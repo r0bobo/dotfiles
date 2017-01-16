@@ -24,12 +24,11 @@ before_install:
 
 script:
 - export DOTFILES_DIR=/home/travis/build/r0bobo/dotfiles
+- $DOTFILES_DIR/scripts/setup-dotfiles
 - echo $ZPLUG_HOME
 - echo $VIMLPUG_HOME
 - echo $ZSH
 - git clone https://github.com/zplug/zplug $ZPLUG_HOME
 - git clone --depth=1 https://github.com/robbyrussel/oh-my-zsh.git $OH_MY_ZSH
 - curl -fLo $VIMPLUG_HOME --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-- $DOTFILES_DIR/scripts/setup-dotfiles 
-- ls -A ~
+- ll -A ~
