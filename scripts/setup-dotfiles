@@ -32,12 +32,12 @@ fi
 source $DOTFILES_DIR/zsh/init.zsh
 
 # Run and update zplug
-zplug clean
+#zplug clean
 zplug install
-zplug update
-zplug clear
-zplug load
+#zplug update
+#zplug clear
+#zplug load
 
 # Run and update vim-plug
-nvim -c "PlugUpgrade | PlugInstall | PlugUpdate | PlugClean! | q | q"
+# nvim -c "PlugUpgrade | PlugInstall | PlugUpdate | PlugClean! | q | q"
 
