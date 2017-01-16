@@ -12,11 +12,6 @@ source $DOTFILES_DIR/zsh/paths.sh
 
 $DOTFILES_DIR/scripts/create_symlinks.py $DOTFILES_DIR $DOTFILES_DIR/dotfiles.conf
 
-echo "Env variables:"
-echo $ZSH
-echo $ZPLUG_HOME
-echo $VIMPLUG_HOME
-
 # Download modules
 if [ ! -d "$ZPLUG_HOME" ]; then
         echo "Installing zplug..."
