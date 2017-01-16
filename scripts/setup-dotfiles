@@ -4,14 +4,11 @@
 
 # Set paths
 export DOTFILES_DIR=${DOTFILES_DIR-~/dotfiles}
-$DOTFILES_DIR/zsh/paths.sh
+export ZSH=${ZSH-~/.oh-my-zsh}
+export ZPLUG_HOME=${ZPLUG_HOME-~/.zplug}
+export VIMPLUG_HOME=${VIMPLUG_HOME-~/.local/share/nvim/site/autoload/plug.vim}
 
 $DOTFILES_DIR/scripts/create_symlinks.py $DOTFILES_DIR $DOTFILES_DIR/dotfiles.conf
-
-echo "Test"
-echo $ZPLUG_HOME
-echo $VIMLPUG_HOME
-echo $ZSH
 
 # Download modules
 if [ -d !$ZPLUG_HOME ]; then
@@ -29,4 +26,3 @@ fi
 # nvim -c "PlugUpgrade | PlugInstall | PlugUpdate | PlugClean | q | q"
 
 # TODO: add zplug update/install/clean/etc as well
-
