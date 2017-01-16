@@ -6,10 +6,10 @@ addons:
     sources:
     - sourceline: 'ppa:neovim-ppa/unstable'
     packages:
-    - build-essential
+    # - build-essential
     - neovim
-    - git
-    - curl
+    # - git
+    # - curl
 
 before_install:
 - export LOCAL="$(mktemp --directory --tmpdir=${TMPDIR:/tmp} local.bin.XXXXXX)"
