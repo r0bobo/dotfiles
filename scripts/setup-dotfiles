@@ -32,8 +32,8 @@ fi
 source $DOTFILES_DIR/zsh/init.zsh
 
 # Run and update zplug
-#zplug clean
 zplug install
+zplug clean
 #zplug update
 #zplug clear
 #zplug load
