@@ -24,5 +24,8 @@ before_install:
 
 script:
 - export DOTFILES_DIR=/home/travis/build/r0bobo/dotfiles
+- export ZSH=/home/travis/build/r0bobo/.oh-my-zsh
+- export ZPLUG_HOME=/home/travis/build/r0bobo/.zplug
+- export VIMPLUG_HOME=/home/travis/build/r0bobo/.local/share/nvim/site/autoload/plug.vim
 - $DOTFILES_DIR/scripts/setup-dotfiles
 - ls -A ~
