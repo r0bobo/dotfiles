@@ -34,7 +34,7 @@ class dotfiles:
         self.dotfile_cfg_path = dotfile_cfg_path
 
     def create_symlinks(self):
-
+        # TODO: create full directory path to symlink if missing
         for link in self.link_list:
             if os.path.exists(link[0]):
                 try:
