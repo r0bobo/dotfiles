@@ -25,6 +25,7 @@ before_install:
 script:
 - export DOTFILES_DIR=/home/travis/build/r0bobo/dotfiles
 - $DOTFILES_DIR/scripts/setup-dotfiles
+- ls $DOTFILES_DIR/zsh
 - echo $ZPLUG_HOME
 - echo $VIMLPUG_HOME
 - echo $ZSH
