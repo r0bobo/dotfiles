@@ -31,7 +31,7 @@ else
 fi
 if [ ! -d "$ZSH" ]; then
         echo "Installing oh-my-zsh..."
-        git clone https://github.com/robbyrussell/oh-my-zsh $OH_MY_ZSH
+        git clone https://github.com/robbyrussell/oh-my-zsh $ZSH
 else
         echo "oh-my-zsh already installed."
 fi
