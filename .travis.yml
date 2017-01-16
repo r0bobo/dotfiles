@@ -28,4 +28,4 @@ script:
 - export ZPLUG_HOME=/home/travis/build/r0bobo/.zplug
 - export VIMPLUG_HOME=/home/travis/.local/share/nvim/site/autoload/plug.vim
 - $DOTFILES_DIR/scripts/setup-dotfiles
-- zsh -c "zplug install"
+
