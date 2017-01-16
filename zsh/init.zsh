@@ -2,7 +2,7 @@
 
 # Setup paths
 export DOTFILES_DIR=${DOTFILES_DIR-~/dotfiles}
-$DOTFILES_DIR/zsh/paths.sh
+source $DOTFILES_DIR/zsh/paths.sh
 
 # Source config files
 source $DOTFILES_DIR/zsh/general.zsh
