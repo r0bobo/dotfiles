@@ -8,6 +8,7 @@ zsh -c "source $DOTFILES_DIR/zsh/paths.sh"
 
 $DOTFILES_DIR/scripts/create_symlinks.py $DOTFILES_DIR $DOTFILES_DIR/dotfiles.conf
 
+echo "Test"
 echo $ZPLUG_HOME
 echo $VIMLPUG_HOME
 echo $ZSH
