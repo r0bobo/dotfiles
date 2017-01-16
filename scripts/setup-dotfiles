@@ -1,15 +1,10 @@
 #!/usr/bin/env zsh
 
-# TODO: Create a better
-
 # Set paths
 : ${DOTFILES_DIR:=~/dotfiles}
-# : ${ZSH:=~/.oh-my-zsh}
-# : ${ZPLUG_HOME:=~/.zplug}
-# : ${VIMPLUG_HOME:=~/.local/share/nvim/site/autoload/plug.vim}
-
 source $DOTFILES_DIR/zsh/paths.sh
 
+# Run python script to setup symlinks
 $DOTFILES_DIR/scripts/create_symlinks.py $DOTFILES_DIR $DOTFILES_DIR/dotfiles.conf
 
 # Download modules
@@ -34,7 +29,6 @@ else
 fi
 
 # Source zsh-config
-echo "ZSH init"
 source $DOTFILES_DIR/zsh/init.zsh
 
 # Run and update vim-plug
