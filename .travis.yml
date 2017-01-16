@@ -23,4 +23,4 @@ before_install:
 script:
 - export DOTFILES_DIR=/home/travis/build/r0bobo/dotfiles
 - $DOTFILES_DIR/scripts/setup-dotfiles 
-
+- ls -A ~
