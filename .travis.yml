@@ -6,6 +6,7 @@ addons:
     packages:
     - build-essential
     - neovim
+    - python3
 
 before_install:
 - export LOCAL="$(mktemp --directory --tmpdir=${TMPDIR:/tmp} local.bin.XXXXXX)"
