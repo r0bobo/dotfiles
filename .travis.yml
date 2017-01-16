@@ -17,7 +17,7 @@ before_install:
 - make install
 - cd -
 - export PATH="$LOCAL/bin:$PATH"
-- mkdir ~/.config/nvim
+- mkdir -p ~/.config/nvim
 
 script:
 - export DOTFILES_DIR=/home/travis/build/r0bobo/dotfiles
