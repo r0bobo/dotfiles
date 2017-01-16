@@ -31,12 +31,13 @@ fi
 # Source zsh-config
 source $DOTFILES_DIR/zsh/init.zsh
 
-# Run and update vim-plug
-nvim -c "PlugUpgrade | PlugInstall | PlugUpdate | PlugClean! | q | q"
-
-# Run and update zsh plugins
+# Run and update zplug
 zplug clean
 zplug install
 zplug update
 zplug clear
 zplug load
+
+# Run and update vim-plug
+nvim -c "PlugUpgrade | PlugInstall | PlugUpdate | PlugClean! | q | q"
+
