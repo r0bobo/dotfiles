@@ -38,6 +38,8 @@ class dotfiles:
         for link in self.link_list:
             if os.path.exists(link[0]):
                 try:
+                    print(link[0])
+                    print(link[1])
                     os.symlink(link[0], link[1])
                 except FileExistsError:
                     if os.path.islink(link[1]):
