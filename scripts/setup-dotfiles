@@ -4,7 +4,7 @@
 
 # Set paths
 export DOTFILES_DIR=${DOTFILES_DIR-~/dotfiles}
-zsh -c "source $DOTFILES_DIR/zsh/paths.sh"
+sh $DOTFILES_DIR/zsh/paths.sh
 
 $DOTFILES_DIR/scripts/create_symlinks.py $DOTFILES_DIR $DOTFILES_DIR/dotfiles.conf
 
