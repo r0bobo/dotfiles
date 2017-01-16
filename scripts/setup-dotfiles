@@ -4,9 +4,11 @@
 
 # Set paths
 : ${DOTFILES_DIR:=~/dotfiles}
-: ${ZSH:=~/.oh-my-zsh}
-: ${ZPLUG_HOME:=~/.zplug}
-: ${VIMPLUG_HOME:=~/.local/share/nvim/site/autoload/plug.vim}
+# : ${ZSH:=~/.oh-my-zsh}
+# : ${ZPLUG_HOME:=~/.zplug}
+# : ${VIMPLUG_HOME:=~/.local/share/nvim/site/autoload/plug.vim}
+
+source $DOTFILES_DIR/zsh/paths.sh
 
 $DOTFILES_DIR/scripts/create_symlinks.py $DOTFILES_DIR $DOTFILES_DIR/dotfiles.conf
 
