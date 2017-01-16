@@ -13,10 +13,10 @@ addons:
 
 before_install:
 - export LOCAL="$(mktemp --directory --tmpdir=${TMPDIR:/tmp} local.bin.XXXXXX)"
-# - git clone git://git.code.sf.net/p/zsh/code zsh_source
-# - cd zsh_source
-- curl -L http://downloads.sourceforge.net/zsh/zsh-5.0.7.tar.gz | tar zx
-- cd zsh-5.0.7
+- git clone https://github.com/zsh-users/zsh.git
+- cd zsh-master
+# - curl -L http://downloads.sourceforge.net/zsh/zsh-5.0.7.tar.gz | tar zx
+# - cd zsh-5.0.7
 - ./configure --prefix=$LOCAL
 - make
 - make install
