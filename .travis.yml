@@ -28,3 +28,9 @@ script:
 - export ZPLUG_HOME=/home/travis/build/r0bobo/.zplug
 - export VIMPLUG_HOME=/home/travis/build/r0bobo/.local/share/nvim/site/autoload/plug.vim
 - $DOTFILES_DIR/scripts/setup-dotfiles
+
+- echo ~
+- ls -A ~
+- echo $PWD
+- ls -A
+
