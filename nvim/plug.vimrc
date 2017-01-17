@@ -3,6 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-commentary'
 Plug 'raimondi/delimitmate'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'majutsushi/tagbar'
 
 " Airline
 Plug 'vim-airline/vim-airline'
