@@ -22,6 +22,9 @@ Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'altercation/vim-colors-solarized'
 
+" Denite
+Plug 'Shougo/denite.nvim'
+
 " Deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neco-vim'
