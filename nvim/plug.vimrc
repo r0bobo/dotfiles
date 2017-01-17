@@ -18,6 +18,6 @@ Plug 'edkolev/tmuxline.vim'
 
 Plug 'tyrannicaltoucan/vim-quantum'
 
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
 
 call plug#end()
