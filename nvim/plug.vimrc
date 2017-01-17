@@ -28,6 +28,9 @@ Plug 'wellle/tmux-complete.vim'
 Plug 'Shougo/echodoc'
 Plug 'Konfekt/FastFold'
 
+" Lint
+Plug 'benekastah/neomake'
+
 " Syntaxes
 Plug 'nginx.vim'
 
