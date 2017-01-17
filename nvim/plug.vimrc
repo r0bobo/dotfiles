@@ -12,6 +12,7 @@ Plug 'edkolev/tmuxline.vim'
 " Colorschemes
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'tyrannicaltoucan/vim-deep-space'
+Plug 'altercation/vim-colors-solarized'
 
 " Deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
