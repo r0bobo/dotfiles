@@ -1,5 +1,10 @@
 #!/usr/bin/env zsh
 
+case $- in
+  *i*) echo "This shell is interactive";;
+  *) echo "This is a script";;
+esac
+
 # Set paths
 : ${DOTFILES_DIR:=~/dotfiles}
 source $DOTFILES_DIR/zsh/paths.sh
