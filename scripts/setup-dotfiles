@@ -35,9 +35,9 @@ source $DOTFILES_DIR/zsh/init.zsh
 # TODO: Use zplug check and zplug status to only install/update if necessary
 
 zplug clear
-# zplug clean --force
 zplug list
 zplug check || zplug install
+zplug clean --force
 zplug load --verbose
 
 # zplug clean --force
