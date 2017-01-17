@@ -11,4 +11,4 @@ source $DOTFILES_DIR/zsh/commands.zsh
 source $DOTFILES_DIR/zsh/zplug.zsh
 source $DOTFILES_DIR/zsh/prompt.zsh
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
