@@ -33,6 +33,3 @@ script:
 
 # Try starting nvim
 - nvim -c "q"
-
-# List zplug plugins
-- zsh -c "zplug list"
