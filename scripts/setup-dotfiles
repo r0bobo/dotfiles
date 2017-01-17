@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-echo -e "\033[1mtest\033[0m"
-
 # Set paths
 : ${DOTFILES_DIR:=~/dotfiles}
 source $DOTFILES_DIR/zsh/paths.sh
