@@ -17,7 +17,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'tyrannicaltoucan/vim-quantum'
 
 " Deoplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neco-vim'
 Plug 'zchee/deoplete-jedi'
 Plug 'wellle/tmux-complete.vim'
