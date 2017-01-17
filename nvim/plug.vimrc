@@ -1,7 +1,5 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Plug 'valloric/youcompleteme', { 'for' : 'python' }
-
 " Plug 'tpope/vim-commentary'
 
 Plug 'raimondi/delimitmate'
@@ -18,6 +16,12 @@ Plug 'edkolev/tmuxline.vim'
 
 Plug 'tyrannicaltoucan/vim-quantum'
 
+" Deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'}
+Plug 'Shougo/neco-vim'
+Plug 'zchee/deoplete-jedi'
+Plug 'wellle/tmux-complete.vim'
+Plug 'Shougo/echodoc'
+Plug 'Konfekt/FastFold'
 
 call plug#end()
