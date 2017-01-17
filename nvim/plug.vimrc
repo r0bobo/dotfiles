@@ -9,6 +9,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'haya14busa/incsearch.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
+Plug 'tpope/vim-fugitive'
 
 " Airline
 Plug 'vim-airline/vim-airline'
