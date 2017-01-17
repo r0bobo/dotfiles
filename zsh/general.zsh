@@ -15,3 +15,5 @@ setopt append_history share_history histignorealldups
 
 zstyle ':completion:*' menu select
 zstyle ':completion:*:default'         list-colors ${(s.:.)LS_COLORS}
+
+ZLE_RPROMPT_INDENT=0
