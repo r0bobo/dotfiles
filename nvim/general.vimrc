@@ -9,3 +9,5 @@ set number          " show line numbers
 :silent! colorscheme quantum
 
 set clipboard+=unnamedplus
+
+call deoplete#enable()
