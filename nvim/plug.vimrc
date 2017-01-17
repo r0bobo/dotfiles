@@ -7,6 +7,7 @@ Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'airblade/vim-gitgutter'
 Plug 'haya14busa/incsearch.vim'
 Plug 'itchyny/vim-cursorword'
+Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 
 " Airline
 Plug 'vim-airline/vim-airline'
