@@ -9,6 +9,7 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
+Plug 'edkolev/promptline.vim'
 
 " Colorschemes
 Plug 'tyrannicaltoucan/vim-quantum'
