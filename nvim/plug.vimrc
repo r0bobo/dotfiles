@@ -1,3 +1,5 @@
+" TODO: Implement auto-installation of vim plug from \"https://github.com/junegunn/vim-plug/wiki/faq\"
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'tpope/vim-commentary'
