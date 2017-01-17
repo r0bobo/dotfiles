@@ -3,7 +3,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-commentary'
 Plug 'raimondi/delimitmate'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -19,7 +19,7 @@ Plug 'altercation/vim-colors-solarized'
 " Deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neco-vim'
-Plug 'zchee/deoplete-jedi'
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'wellle/tmux-complete.vim'
 Plug 'Shougo/echodoc'
 Plug 'Konfekt/FastFold'
