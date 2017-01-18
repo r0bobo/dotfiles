@@ -23,8 +23,8 @@ prompt_colors_orange=209 # '#da8c68'
 prompt_colors_navy=61    # '#6272cb'
 
 ## context
-POWERLEVEL9K_CONTEXT_BACKGROUND=$prompt_colors_gray5
-POWERLEVEL9K_CONTEXT_FOREGROUND=$prompt_colors_gray1
+POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND=$prompt_colors_gray5
+POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND=$prompt_colors_gray1
 
 ## dir
 POWERLEVEL9K_DIR_HOME_BACKGROUND=$prompt_colors_blue
