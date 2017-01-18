@@ -8,19 +8,19 @@ export POWERLEVEL9K_SHORTEN_DELIMITER=""
 
 # Colors
 ## Colors from vim-quantum
-export prompt_colors_gray1   = 236  # '#263238'
-export prompt_colors_gray2   = 238  # '#2c3e44'
-export prompt_colors_gray3   = 240  # '#415a63'
-export prompt_colors_gray4   = 244  # '#608592'
-export prompt_colors_gray5   = 250  # '#aabbc3'
-export prompt_colors_red     = 204  # '#dd6880'
-export prompt_colors_green   = 114  # '#83b879'
-export prompt_colors_yellow  = 221  # '#ddb76f'
-export prompt_colors_blue    = 75   # '#7aa5e6'
-export prompt_colors_purple  = 141  # '#ad88e2'
-export prompt_colors_cyan    = 44   # '#63c9d6'
-export prompt_colors_orange  = 209  # '#da8c68'
-export prompt_colors_navy    = 61   # '#6272cb'
+export prompt_colors_gray1=236  # '#263238'
+export prompt_colors_gray2=238  # '#2c3e44'
+export prompt_colors_gray3=240  # '#415a63'
+export prompt_colors_gray4=244  # '#608592'
+export prompt_colors_gray5=250  # '#aabbc3'
+export prompt_colors_red=204    # '#dd6880'
+export prompt_colors_green=114  # '#83b879'
+export prompt_colors_yellow=221 # '#ddb76f'
+export prompt_colors_blue=75    # '#7aa5e6'
+export prompt_colors_purple=141 # '#ad88e2'
+export prompt_colors_cyan=44    # '#63c9d6'
+export prompt_colors_orange=209 # '#da8c68'
+export prompt_colors_navy=61    # '#6272cb'
 
 ## dir
 export POWELEVEL9K_DIR_HOME_BACKGROUND=$prompt_colors_blue
