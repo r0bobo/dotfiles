@@ -1,7 +1,7 @@
 # Zsh aliases
 
 alias zshreload="source ~/.zshrc"
-alias promptreload="source $DOTFILES_DIR/zsh/prompt.zs"
+alias promptreload="source $DOTFILES_DIR/zsh/prompt.zsh"
 
 # Directory
 alias ll='ls -lh'
