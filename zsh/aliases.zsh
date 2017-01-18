@@ -3,9 +3,9 @@
 alias zshreload="source ~/.zshrc"
 alias promptreload="source $DOTFILES_DIR/zsh/prompt.zs"
 
-alias ll="ls -l"
-alias la="ls -a"
-alias lla="ls -la"
+# Directory
+alias ll='ls -lh'
+alias la='ls -lAh'
 
 if hash termux-fix-shebang 2>/dev/null;then
     alias upgrade_dotfiles="sh $DOTFILES_DIR/scripts/setup-dotfiles-termux" 
