@@ -22,10 +22,14 @@ export prompt_colors_cyan=44    # '#63c9d6'
 export prompt_colors_orange=209 # '#da8c68'
 export prompt_colors_navy=61    # '#6272cb'
 
+## context
+export POWERLEVEL9K_CONTEXT_BACKGROUND=$prompt_colors_gray5
+export POWERLEVEL9K_CONTEXT_FOREGROUND=$prompt_colors_gray1
+
 ## dir
 export POWERLEVEL9K_DIR_HOME_BACKGROUND=$prompt_colors_blue
 export POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=$prompt_colors_blue
-export POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=$prompt_colors_gray5
+export POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=$prompt_colors_orange
 export POWERLEVEL9K_DIR_HOME_FOREGROUND=$prompt_colors_gray1
 export POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND=$prompt_colors_gray1
 export POWERLEVEL9K_DIR_DEFAULT_FOREGROUND=$prompt_colors_gray1
@@ -35,9 +39,9 @@ export POWERLEVEL9K_STATUS_ERROR_BACKGROUND=$prompt_colors_red
 export POWERLEVEL9K_STATUS_ERROR_BACKGROUND=$prompt_colors_gray1
 
 ## vcs
-export POWERLEVEL9K_VCS_CLEAN_BACKGROUND=$prompt_colors_green
-export POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=$prompt_colors_yellow
-export POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=$prompt_colors_yellow
-export POWERLEVEL9K_VCS_CLEAN_FOREGROUND=$prompt_colors_gray1
-export POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=$prompt_colors_gray1
-export POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=$prompt_colors_gray1
+export POWERLEVEL9K_VCS_CLEAN_BACKGROUND=$prompt_colors_gray3
+export POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=$prompt_colors_gray3
+export POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=$prompt_colors_gray3
+export POWERLEVEL9K_VCS_CLEAN_FOREGROUND=$prompt_colors_gray5
+export POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=$prompt_colors_yellow
+export POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=$prompt_colors_yellow
