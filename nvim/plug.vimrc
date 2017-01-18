@@ -1,11 +1,3 @@
-" TODO: Implement auto-installation of vim plug from \"https://github.com/junegunn/vim-plug/wiki/faq\"
-if empty(glob('$VIMPLUG_HOME'))
-  silent !curl -fLo $VIMPLUG_HOME --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
-
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'tpope/vim-commentary'
