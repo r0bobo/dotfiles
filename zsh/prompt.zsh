@@ -23,12 +23,12 @@ export prompt_colors_orange=209 # '#da8c68'
 export prompt_colors_navy=61    # '#6272cb'
 
 ## dir
-export POWELEVEL9K_DIR_HOME_BACKGROUND=$prompt_colors_blue
-export POWELEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=$prompt_colors_blue
-export POWELEVEL9K_DIR_DEFAULT_BACKGROUND=$prompt_colors_gray5
-export POWELEVEL9K_DIR_HOME_FOREGROUND=$prompt_colors_gray1
-export POWELEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND=$prompt_colors_gray1
-export POWELEVEL9K_DIR_DEFAULT_FOREGROUND=$prompt_colors_gray1
+export POWERLEVEL9K_DIR_HOME_BACKGROUND=$prompt_colors_blue
+export POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND=$prompt_colors_blue
+export POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=$prompt_colors_gray5
+export POWERLEVEL9K_DIR_HOME_FOREGROUND=$prompt_colors_gray1
+export POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND=$prompt_colors_gray1
+export POWERLEVEL9K_DIR_DEFAULT_FOREGROUND=$prompt_colors_gray1
 
 ## status
 export POWERLEVEL9K_STATUS_ERROR_BACKGROUND=$prompt_colors_red
