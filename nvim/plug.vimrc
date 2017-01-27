@@ -8,6 +8,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'tpope/vim-fugitive'
+Plug 'tmux-plugins/vim-tmux'
 
 " Airline
 Plug 'vim-airline/vim-airline'
