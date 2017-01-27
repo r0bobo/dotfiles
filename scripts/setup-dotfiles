@@ -21,12 +21,6 @@ if [ ! -d "$VIMLPUG_HOME" ]; then
 else
         echo "vim-plug already installed."
 fi
-if [ ! -d "$ZSH" ]; then
-        echo "Installing oh-my-zsh..."
-        git clone https://github.com/robbyrussell/oh-my-zsh $ZSH
-else
-        echo "oh-my-zsh already installed."
-fi
 
 # Source zsh-config
 source $DOTFILES_DIR/zsh/init.zsh
