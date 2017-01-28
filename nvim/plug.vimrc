@@ -20,6 +20,7 @@ Plug 'edkolev/promptline.vim'
 Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'altercation/vim-colors-solarized'
+Plug 'mhartington/oceanic-next'
 
 " Denite
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
