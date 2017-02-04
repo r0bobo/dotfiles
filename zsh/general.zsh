@@ -2,7 +2,6 @@
 
 export EDITOR='nvim'
 export DEFAULT_USER=`whoami`
-export USER=`whoami`
 
 
 # History
