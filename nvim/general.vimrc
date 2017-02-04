@@ -11,5 +11,6 @@ set expandtab
 
 set clipboard+=unnamedplus
 
-:silent! colorscheme quantum
+set background=dark
+:silent! colorscheme gruvbox
 :silent! call deoplete#enable()
