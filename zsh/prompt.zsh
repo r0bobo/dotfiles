@@ -36,6 +36,7 @@ prompt_gray=245
 prompt_gray_bg3=241
 prompt_gray_bg4=243
 prompt_black_bg=235
+prompt_black_bg1=237
 prompt_black_bg2=239
 
 ## context
@@ -60,9 +61,9 @@ POWERLEVEL9K_TIME_FOREGROUND=$prompt_black_bg
 
 ## vcs
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND=$prompt_black_bg2
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=$prompt_black_bg2
+POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND=$prompt_black_bgs2
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=$prompt_black_bg2
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND=$prompt_white_fg1
+POWERLEVEL9K_VCS_CLEAN_FOREGROUND=$prompt_gray
 POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND=$prompt_light_yellow
 POWERLEVEL9K_VCS_MODIFIED_FOREGROUND=$prompt_light_yellow
 
