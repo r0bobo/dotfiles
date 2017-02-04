@@ -1,0 +1,24 @@
+rofi.font: "DejaVuSansMonoForPowerline Nerd Font 13
+
+rofi.separator-style: "solid"
+rofi.hide-scrollbar: true
+
+rofi.terminal: "termite"
+
+
+
+! Enable the extended coloring options
+rofi.color-enabled: true
+
+!                  bg       border   separator
+rofi.color-window: #32302f, #a89984, #a89984
+! rofi.color-window: #32302f, #d65d0e, #a89984
+
+!                  bg       fg       bg-alt   hl-bg    hl-fg
+! rofi.color-normal: #32302f, #ebdbb2, #3c3836, #665c54, #fbf1c7
+! rofi.color-active: #d79921, #32302f, #d79921, #fabd2f, #32302f
+rofi.color-normal: #32302f, #ebdbb2, #3c3836, #665c54, #fabd2f
+rofi.color-active: #d79921, #32302f, #d79921, #fabd2f, #32302f
+rofi.color-urgent: #cc241d, #32302f, #cc241d, #fb4934, #32302f
+
+
