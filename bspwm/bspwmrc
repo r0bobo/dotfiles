@@ -13,7 +13,7 @@ bspc config gapless_monocle      true
 bspc config paddingless_moncocle true
 bspc config click_to_focus       true
 
-bspc rule -a Firefox Developer desktop='^2'
+bspc rule -a firefox-developer desktop='^2'
 bspc rule -a Atom desktop='^3'
 # bspc rule -a Gimp desktop='^8' state=floating follow=on
 # bspc rule -a Chromium desktop='^2'
