@@ -9,6 +9,7 @@ Plug 'itchyny/vim-cursorword'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'tpope/vim-fugitive'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'mhinz/vim-startify'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -21,6 +22,7 @@ Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'tyrannicaltoucan/vim-deep-space'
 Plug 'altercation/vim-colors-solarized'
 Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
 
 " Denite
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -38,5 +40,8 @@ Plug 'benekastah/neomake'
 
 " Syntaxes
 Plug 'nginx.vim'
+Plug 'PotatoesMaster/i3-vim-syntax'
+
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
