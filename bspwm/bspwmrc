@@ -26,3 +26,5 @@ $HOME/.config/polybar/launch.sh
 
 # Set wallpaper
 nitrogen --restore
+
+xsetroot -cursor_name left_ptr
