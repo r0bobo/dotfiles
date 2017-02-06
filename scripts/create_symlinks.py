@@ -11,7 +11,7 @@ from os.path import expanduser, join
 def main():
     logging.basicConfig(
         format='%(levelname)s: %(message)s',
-        level=logging.INFO
+        level=logging.DEBUG
         )
 
     try:
@@ -57,13 +57,16 @@ class dotfiles:
                     'Symlink source {0:s} does not exist'.format(link[0]))
 
     def read_dotfile_cfg(self):
+
         # TODO replace with python "configparser"
         regex = re.compile('(?:\\s|[^#])*\'(.*)\'\\s*\'(.*)\'$')
 
         with open(self.dotfile_cfg_path, 'r') as fil:
             for line in fil:
+                logging.debug('Reading line: \"{}\"'.format(line))
                 match = regex.match(line)
                 if match:
+                    logging.debug('Parsed {} : {} from config'.format(match.group(1), match.group(2)))
                     self.link_list.append((
                         join(self.dotfile_dir_path, expanduser(match.group(1))),
                         expanduser(match.group(2))))

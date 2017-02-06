@@ -11,6 +11,7 @@
 ;Gruvbox colors
 color_fg = #ebdbb2
 color_bg = #282828
+color_bg1 = #3c3836
 color_bg2 = #504945
 color_bg3 = #665c54
 color_bg4 = #7c6f64
@@ -34,11 +35,10 @@ color_orange_bright = #fe8119
 
 ;Set colors
 background = ${self.color_bg}
-background-alt = ${self.color_bg2} 
 foreground = ${self.color_fg} 
-foreground-alt = ${self.color_bg2}
 
 background-right = ${self.color_bg2}
+background-right-ext = ${self.color_bg1}
 foreground-right = ${self.color_fg}
 foreground-right-inactive = ${self.color_gray}
 
@@ -82,7 +82,7 @@ font-4 = DejaVuSansMonoForPowerline\ Nerd\ Font:fontformat=truetype:size=22;4
 
 modules-left = bspwm
 modules-center = xwindow
-modules-right = volume xbacklight wlan battery date powermenu
+modules-right = powerline-glyph2 powerline-glyph pkgupdate volume xbacklight wlan battery date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -126,13 +126,28 @@ label-urgent-padding = 2
 
 label-empty = 
 
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = #f90000
-label =  cpu %percentage%%
+[module/powerline-glyph]
+type = custom/text
+content = 
+content-background = ${colors.background-right-ext}
+content-foreground = ${colors.background-right}
+
+[module/powerline-glyph2]
+type = custom/text
+content = 
+content-foreground = ${colors.background-right-ext}
+
+
+[module/pkgupdate]
+type = custom/script
+interval = 1200
+format = <label>
+format-background = ${colors.background-right}
+format-padding = 2
+label = %output%
+exec = ~/.config/polybar/pkgupdate.sh
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+click-left = exec termite -e "pacaur -Syu"
 
 [module/volume]
 type = internal/volume
