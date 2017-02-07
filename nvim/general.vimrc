@@ -14,3 +14,6 @@ set clipboard+=unnamedplus
 set background=dark
 :silent! colorscheme gruvbox
 :silent! call deoplete#enable()
+
+set modeline
+set modelines=2
