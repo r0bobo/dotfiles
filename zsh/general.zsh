@@ -2,6 +2,7 @@
 
 export EDITOR='nvim'
 export DEFAULT_USER=`whoami`
+export USER=`whoami`
 
 
 # History
@@ -35,7 +36,7 @@ promptinit
 
 
 setopt correct
-setopt correctall
+# setopt correctall
 setopt auto_cd
 setopt auto_pushd
 
