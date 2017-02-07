@@ -14,3 +14,10 @@ else
     alias upgrade_dotfiles="zsh $DOTFILES_DIR/scripts/setup-dotfiles" 
 fi
 
+alias diff='diff --color=auto'  # Color diff
+
+alias grep='grep --color=auto'  # Color grep
+
+# Color manpages
+export MANPAGER='lynx -force_html'
+alias man='man -Thtml'
