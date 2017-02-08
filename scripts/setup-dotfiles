@@ -28,8 +28,8 @@ source $DOTFILES_DIR/zsh/init.zsh
 # Run and update zplug
 zplug clear
 zplug list
-zplug check || zplug install
-zplug clean --force
+# zplug check || zplug install
+# zplug clean --force
 # zplug load --verbose
 
 # Run and update vim-plug
