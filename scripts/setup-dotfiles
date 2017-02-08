@@ -33,7 +33,7 @@ zplug clean --force
 zplug load --verbose
 
 # Run and update vim-plug
-nvim -V15 ~/nvim.log -c "PlugStatus | qa"
+nvim -V15 ~/nvim.log -c "PlugStatus | qa!"
 cat ~/nvim.log
 # nvim -c "PlugUpgrade | PlugInstall | PlugUpdate | PlugClean! | q | q"
 
