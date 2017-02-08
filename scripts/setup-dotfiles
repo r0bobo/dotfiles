@@ -33,6 +33,6 @@ zplug clean --force
 zplug load --verbose
 
 # Run and update vim-plug
-nvim -c "PlugUpgrade"
+nvim -c "PlugUpdate"
 # nvim -c "PlugUpgrade | PlugInstall | PlugUpdate | PlugClean! | q | q"
 
