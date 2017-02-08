@@ -23,7 +23,7 @@ color_red_bright = #fb4934
 color_green_dark = #98971a
 color_green_bright = #b8bb26
 color_yellow_dark = #d79921
-color_yello_bright = #fabd2f
+color_yellow_bright = #fabd2f
 color_blue_dark = #458588
 color_blue_bright = #83a598
 color_purple_dark = #b16286
@@ -78,6 +78,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = DejaVuSansMonoForPowerline\ Nerd\ Font:fontformat=truetype:size=18;4 
 font-3 = Material\ Design\ Icons:fontformat=truetype:size=12;2
 font-4 = DejaVuSansMonoForPowerline\ Nerd\ Font:fontformat=truetype:size=22;4 
+font-5 = Material\ Design\ Icons:fontformat=truetype:size=16;2
 
 
 modules-left = bspwm
@@ -272,8 +273,9 @@ label-foreground = ${colors.foreground-right}
 type = custom/menu
 
 format-spacing = 0
-label-open = %{T4}%{T-}
-label-open-foreground = ${colors.foreground-right}
+label-open = 
+label-open-font = 6
+label-open-foreground = ${colors.color_yellow_dark}
 label-open-background = ${colors.background-right}
 label-open-padding = 2
 
