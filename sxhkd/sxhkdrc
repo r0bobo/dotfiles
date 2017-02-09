@@ -1,3 +1,4 @@
+# vim: set ft=sh
 #
 # wm independent hotkeys
 #
@@ -54,6 +55,10 @@ super + ctrl + {x,y,z}
 #
 # focus/swap
 #
+
+# swap this window with the largest one in the layout
+super + shift
+    bspc window -s biggest
 
 # focus the node in the given direction
 super + {_,shift + }{Left,Down,Up,Right}
