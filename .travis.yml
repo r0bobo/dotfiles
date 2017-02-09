@@ -35,5 +35,5 @@ script:
 - $DOTFILES_DIR/scripts/setup-dotfiles
 
 # Try starting nvim
-- nvim -c "q"
+- nvim -c "<CR> | q"
 - cat nvimlog
