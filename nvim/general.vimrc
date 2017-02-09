@@ -30,6 +30,6 @@ set background=dark
 :silent! call deoplete#enable()
 
 set modeline
-set modelines=2
+set modelines=5
 
 autocmd BufEnter * silent! lcd %:p:h "change dir with file

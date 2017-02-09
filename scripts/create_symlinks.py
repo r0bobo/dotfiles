@@ -11,7 +11,7 @@ from os.path import expanduser, join
 def main():
     logging.basicConfig(
         format='%(levelname)s: %(message)s',
-        level=logging.DEBUG
+        level=logging.INFO
         )
 
     try:
