@@ -32,4 +32,4 @@ script:
 - $DOTFILES_DIR/scripts/setup-dotfiles
 
 # Try starting nvim
-- nvim -c "q"
+- nvim -V9 test.log -c "q"
