@@ -32,5 +32,5 @@ script:
 - $DOTFILES_DIR/scripts/setup-dotfiles
 
 # Try starting nvim
-- timeout 60s nvim -V9nvimlog
+- nvim -V9nvimlog -c "q"
 - cat nvimlog
