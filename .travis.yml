@@ -1,4 +1,4 @@
-notifcations:
+notifications:
   email: false
 
 language: python
