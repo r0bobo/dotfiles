@@ -17,3 +17,5 @@ set background=dark
 
 set modeline
 set modelines=2
+
+set shortmess=at
