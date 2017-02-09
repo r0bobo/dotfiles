@@ -26,11 +26,8 @@ bspc rule -a Atom desktop='^3'
 
 bspc desktop web --layout monocle # Set firefox window to monocle by default
 
-
-# Launch Polybar
-$HOME/.config/polybar/launch.sh
-
-# Set wallpaper
-nitrogen --restore
-
-xsetroot -cursor_name left_ptr
+# Autostart
+$HOME/.config/polybar/launch.sh  # launch polybar
+nitrogen --restore  # set wallpaper
+xsetroot -cursor_name left_ptr  # set mouse pointer
+compton $HOME/.config/compton/compton.conf -b
