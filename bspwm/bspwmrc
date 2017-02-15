@@ -30,4 +30,4 @@ bspc desktop web --layout monocle # Set firefox window to monocle by default
 $HOME/.config/polybar/launch.sh  # launch polybar
 nitrogen --restore  # set wallpaper
 xsetroot -cursor_name left_ptr  # set mouse pointer
-compton $HOME/.config/compton/compton.conf -b
+compton -b --config $HOME/.config/compton/compton.conf # start compton
