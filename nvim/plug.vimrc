@@ -10,6 +10,7 @@ Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'tpope/vim-fugitive'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'mhinz/vim-startify'
+Plug 'ntpeters/vim-better-whitespace'
 
 " Airline
 Plug 'vim-airline/vim-airline'
