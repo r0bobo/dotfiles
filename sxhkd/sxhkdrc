@@ -1,4 +1,4 @@
-# vim: set ft=sh
+# vim: set ft=sh:
 #
 # wm independent hotkeys
 #
@@ -11,6 +11,10 @@ super + Return
 # program launcher
 ctrl + space
     rofi -show drun
+
+# program launcher
+super + x
+    rofi -show window
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -27,6 +31,8 @@ super + alt + Escape
 # close and kill
 super + {_,shift + }w
 	bspc node -{c,k}
+# super + shift + w
+#     bpsc node -c
 
 # alternate between the tiled and monocle layout
 super + m
