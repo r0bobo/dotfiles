@@ -1,5 +1,5 @@
 [options]
-font = DejaVuSansMonoForPowerline Nerd Font 9
+font = DejaVuSansMonoForPowerline Nerd Font 12
 # font = SauceCodePro Nerd Font 9
 
 mouse_autohide = true
