@@ -31,5 +31,3 @@ set background=dark
 
 set modeline
 set modelines=5
-
-autocmd BufEnter * silent! lcd %:p:h "change dir with file
