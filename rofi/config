@@ -1,11 +1,11 @@
 ! vim: set ft=xdefaults:
 
-rofi.font: "DejaVuSansMonoForPowerline\ Nerd\ Font 13
+rofi.font: "DejaVuSansMonoForPowerline\ Nerd\ Font 16
 
 rofi.separator-style: "solid"
 rofi.hide-scrollbar: true
 
-rofi.terminal: termite 
+rofi.terminal: termite
 
 rofi.padding: 5
 
