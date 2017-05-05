@@ -13,6 +13,8 @@ set expandtab
 set autoindent
 set copyindent
 
+set mouse=a
+
 set showmatch
 
 set ignorecase
