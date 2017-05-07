@@ -62,6 +62,8 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
+separator = "    "
+
 line-size = 3
 line-color = #f00
 
@@ -84,7 +86,7 @@ font-5 = Material\ Icons:fontformat=truetype:size=12;2
 
 
 [module/base]
-format-padding = 2
+; format-padding = 2
 date = %a, %d %b
 time = %H:%M
 interval = 5
@@ -102,5 +104,7 @@ margin-top = 0
 margin-bottom = 0
 
 include-file = /home/dean/dotfiles/polybar/bar_top
+include-file = /home/dean/dotfiles/polybar/bar_bottom
+; include-file = /home/dean/dotfiles/polybar/bar_top
 
 ; vim:ft=dosini

@@ -7,94 +7,19 @@
 ;
 ;=====================================================
 
-[colors]
-;Gruvbox colors
-color_fg = #ebdbb2
-color_bg = #282828
-color_bg1 = #3c3836
-color_bg2 = #504945
-color_bg3 = #665c54
-color_bg4 = #7c6f64
-color_gray = #928374
-color_red_dark = #cc241d
-color_red_bright = #fb4934
-color_green_dark = #98971a
-color_green_bright = #b8bb26
-color_yellow_dark = #d79921
-color_yellow_bright = #fabd2f
-color_blue_dark = #458588
-color_blue_bright = #83a598
-color_purple_dark = #b16286
-color_purple_bright = #d3869b
-color_aqua_dark = #689d6a
-color_aqua_bright = #8ec07c
-color_orange_dark = #d65d0e
-color_orange_bright = #fe8119
-
-;Set colors
-background = ${self.color_bg}
-foreground = ${self.color_fg}
-
-background-right = ${self.color_bg}
-; background-right = ${self.color_bg2}
-background-right-ext = ${self.color_bg}
-background-right-ext2 = ${self.color_yellow_bright}
-foreground-right = ${self.color_fg}
-foreground-right-inactive = ${self.color_gray}
-
-battery_charging = ${self.color_aqua_dark}
-battery_low = ${self.color_red_dark}
-
-workspace_occupied = ${self.color_yellow_bright}
-
-secondary = #e60053
-alert = #bd2c40
+[bar/bottom]
+inherit = bar/base
 
 
-[bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
-width = 100%
-height = 21
-offset-x = 0%
-offset-y = 0%
-radius = 0
-fixed-center = true
+modules-left = i3
+; modules-center = xwindow
+; modules-right = pkgupdate volume xbacklight wlan battery date clock
 
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-line-color = #f00
-
-border-size = 0
-border-color = #00000000
-
-padding-left = 0
-padding-right = 0
-
-module-margin-left = 0
-module-margin-right = 0
-
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = DejaVuSansMonoForPowerline\ Nerd\ Font:fontformat=truetype:size=12;4
-font-3 = Material\ Design\ Icons:fontformat=truetype:size=12;2
-font-4 = DejaVuSansMonoForPowerline\ Nerd\ Font:fontformat=truetype:size=12;4
-font-5 = Material\ Design\ Icons:fontformat=truetype:size=12;3
-
-
-; modules-left = i3
-modules-center = xwindow
-modules-right = powerline-glyph2 powerline-glyph ssh_raspberry pkgupdate volume xbacklight wlan battery date
-; modules-right = powerline-glyph2 powerline-glyph pkgupdate volume xbacklight wlan battery date powerline-glyph3 powermenu
 
 tray-position = right
 tray-padding = 2
 tray-transparent = false
 ;tray-background = #0063ff
-
-wm-restack = i3
-;wm-restack = i3
 
 ;override-redirect = true
 
@@ -104,11 +29,10 @@ wm-restack = i3
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
 
-[module/xwindow]
-type = internal/xwindow
-label = %title:0:30:...%
+bottom = true
 
 [module/i3]
+inherit = module/base
 type = internal/i3
 
 ; ws-icon-0 = term;
@@ -132,208 +56,129 @@ label-urgent-padding = 1
 label-empty = %index%
 label-empty-padding = 1
 
-[module/powerline-glyph]
-type = custom/text
-content = 
-content-background = ${colors.background-right-ext}
-content-foreground = ${colors.background-right}
+; [module/pkgupdate]
+; inherit = module/base
+; type = custom/script
+; interval = 1200
+; format = <label>
+; format-padding = 2
+; label = %output%
+; exec = ~/.config/polybar/pkgupdate.sh
+; exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+; click-left = exec termite -e "pacaur -Syu" &
 
-[module/powerline-glyph2]
-type = custom/text
-content = 
-content-foreground = ${colors.background-right-ext}
+; [module/volume]
+; inherit = module/base
+; type = internal/volume
 
-[module/pkgupdate]
-type = custom/script
-interval = 1200
-format = <label>
-format-padding = 2
-label = %output%
-exec = ~/.config/polybar/pkgupdate.sh
-exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
-click-left = exec termite -e "pacaur -Syu" &
+; format-volume = <ramp-volume> <label-volume>
+; format-volume-background = ${colors.background-right}
+; format-volume-padding = 2
 
-[module/volume]
-type = internal/volume
+; format-muted = <label-muted>
+; format-muted-padding = 2
 
-format-volume = <ramp-volume> <label-volume>
-format-volume-background = ${colors.background-right}
-format-volume-padding = 2
+; label-volume = %percentage%%
+; label-volume-foreground = ${colors.foreground-right}
 
-format-muted = <label-muted>
-; format-muted-background = ${colors.background-right}
-format-muted-padding = 2
+; label-muted = 
+; label-muted-font = 4
+; format-muted-foreground = ${colors.foreground-right-inactive}
 
-label-volume = %percentage%%
-label-volume-foreground = ${colors.foreground-right}
+; ramp-volume-0 = 
+; ramp-volume-1 = 
+; ramp-volume-2 = 
+; ramp-foreground = ${colors.foreground-right}
 
-label-muted = 
-label-muted-font = 4
-format-muted-foreground = ${colors.foreground-right-inactive}
+; [module/xbacklight]
+; inherit = module/base
+; type = internal/xbacklight
 
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-ramp-foreground = ${colors.foreground-right}
+; format = <label>
+; format-background = ${colors.background-right}
+; format-padding = 2
 
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
+; label = %{T4} %{T-} %percentage%%
+; label-foreground = ${colors.foreground-right}
 
-[module/xbacklight]
-type = internal/xbacklight
 
-format = <label>
-format-background = ${colors.background-right}
-format-padding = 2
+; [module/wlan]
+; inherit = module/base
+; type = internal/network
+; interface = wlp1s0
+; interval = 3.0
 
-label = %{T4} %{T-} %percentage%%
-label-foreground = ${colors.foreground-right}
+; format-connected = <label-connected>
+; format-connected-background = ${colors.background-right}
+; format-connected-padding = 2
 
-[module/wlan]
-type = internal/network
-interface = wlp1s0
-interval = 3.0
+; label-connected =  %essid%
+; label-connected-foreground = ${colors.foreground-right}
 
-format-connected = <ramp-signal> <label-connected>
-format-connected-background = ${colors.background-right}
-format-connected-padding = 2
+; format-disconnected = <label-disconnected>
+; format-disconnected-background = ${colors.background-right}
+; format-disconnected-padding = 2
 
-label-connected = %essid%
-label-connected-foreground = ${colors.foreground-right}
+; label-disconnected = %{T4}%{T-}
+; label-disconnected-foreground = ${colors.foreground-right-inactive}
 
-format-disconnected = <label-disconnected>
-format-disconnected-background = ${colors.background-right}
-format-disconnected-padding = 2
+; [module/battery]
+; inherit = module/base
+; type = internal/battery
+; battery = BAT0
+; adapter = AC0
+; full-at = 95
 
-label-disconnected = %{T4}%{T-} disconnected
-label-disconnected-foreground = ${colors.foreground-right-inactive}
+; format-charging = <label-charging>
+; format-charging-background = ${colors.background-right}
+; format-charging-padding = 2
 
-ramp-signal-0 = %{T4}%{T-}
-ramp-signal-1 = %{T4}%{T-}
-ramp-signal-2 = %{T4}%{T-}
-ramp-signal-foreground = ${colors.foreground-right}
+; format-discharging = <ramp-capacity> <label-discharging>
+; format-discharging-background = ${colors.background-right}
+; format-discharging-padding = 2
 
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC0
-full-at = 95
+; format-full = <label-full>
+; format-full-background = ${colors.background-right}
+; format-full-padding = 2
 
-format-charging = <animation-charging>  <label-charging>
-format-charging-background = ${colors.background-right}
-format-charging-padding = 2
+; label-charging =  %percentage%%
+; label-charging-foreground = ${colors.foreground-right}
 
-format-discharging = <ramp-capacity>  <label-discharging>
-format-discharging-background = ${colors.background-right}
-format-discharging-padding = 2
+; label-discharging = %percentage%%
+; label-discharging-foreground = ${colors.foreground-right}
 
-format-full = <label-full>
-format-full-background = ${colors.background-right}
-format-full-padding = 2
+; label-full =  full
+; label-full-foreground = ${colors.foreground-right}
 
-label-charging = %percentage%%
-label-charging-foreground = ${colors.foreground-right}
+; ramp-capacity-0 = 
+; ramp-capacity-0-foreground = ${colors.battery_low}
+; ramp-capacity-1 = 
+; ramp-capacity-2 = 
+; ramp-capacity-3 = 
+; ramp-capacity-4 = 
+; ramp-capacity-font = 5
+; ramp-capacity-foreground = ${colors.foreground-right}
 
-label-discharging = %percentage%%
-label-discharging-foreground = ${colors.foreground-right}
+; animation-charging-0 = 
+; animation-charging-font = 5
+; animation-charging-foreground = ${colors.battery_charging}
+; animation-charging-framerate = 750
 
-label-full = 
-label-full-foreground = ${colors.foreground-right}
 
-ramp-capacity-0 = 
-ramp-capacity-0-foreground = ${colors.battery_low}
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-ramp-capacity-font = 5
-ramp-capacity-foreground = ${colors.foreground-right}
+; [module/date]
+; inherit = module/base
+; type = internal/date
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-font = 5
-animation-charging-foreground = ${colors.battery_charging}
-animation-charging-framerate = 750
+; label = %{T4}%{T-} %date%
 
-[module/date]
-type = internal/date
-interval = 5
 
-date = %a, %d %b
-time = %H:%M
+; [module/clock]
+; inherit = module/base
 
-format-padding = 2
-format-background = ${colors.background-right}
+; type = internal/date
 
-label = %{T4}%{T-} %date%    %{T4} %{T-} %time%
-label-foreground = ${colors.foreground-right}
+; label = %{T4} %{T-} %time%
 
-[module/powerline-glyph3]
-type = custom/text
-content = 
-content-background = ${colors.background-right}
-content-foreground = ${colors.background-right-ext2}
 
-[module/powermenu]
-type = custom/menu
-
-format-spacing = 0
-label-open = 
-label-open-font = 6
-label-open-foreground = ${colors.background}
-label-open-background = ${colors.background-right-ext2}
-label-open-padding-right = 1
-
-label-close = cancel
-label-close-foreground = ${colors.background}
-label-close-background = ${colors.background-right-ext2}
-label-close-padding = 2
-
-menu-0-0 = reboot
-menu-0-0-foreground = ${colors.background}
-menu-0-0-background = ${colors.background-right-ext2}
-menu-0-0-exec = menu-open-1
-menu-0-0-padding = 2
-menu-0-1 = power off
-menu-0-1-foreground = ${colors.background}
-menu-0-1-background = ${colors.background-right-ext2}
-menu-0-1-exec = menu-open-2
-menu-0-1-padding = 2
-
-menu-1-0 = cancel
-menu-1-0-foreground = ${colors.background}
-menu-1-0-background = ${colors.background-right-ext2}
-menu-1-0-exec = menu-open-0
-menu-1-0-padding = 2
-menu-1-1 = reboot
-menu-1-1-foreground = ${colors.background}
-menu-1-1-background = ${colors.background-right-ext2}
-menu-1-1-padding = 2
-menu-1-1-exec = reboot
-
-menu-2-0 = power off
-menu-2-0-foreground = ${colors.background}
-menu-2-0-background = ${colors.background-right-ext2}
-menu-2-0-exec = shutdown --poweroff now
-menu-2-0-padding = 2
-menu-2-1 = cancel
-menu-2-1-foreground = ${colors.background}
-menu-2-1-background = ${colors.background-right-ext2}
-menu-2-1-padding = 2
-menu-2-1-exec = menu-open-0
-
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-
-[global/wm]
-margin-top = 0
-margin-bottom = 0
 
 ; vim:ft=dosini
