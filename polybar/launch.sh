@@ -8,6 +8,6 @@ while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # Launch example
 polybar top --reload &
-# polybar bottom &
+polybar bottom --reload &
 
 echo "Polybar started..."

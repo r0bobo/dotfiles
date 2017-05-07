@@ -62,7 +62,7 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-separator = "    "
+separator = "   "
 
 line-size = 3
 line-color = #f00
@@ -73,12 +73,11 @@ border-color = #00000000
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = fixed:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = DejaVuSansMonoForPowerline\ Nerd\ Font:fontformat=truetype:size=12;4
-font-3 = Material\ Design\ Icons:fontformat=truetype:size=12;2
-font-4 = DejaVuSansMonoForPowerline\ Nerd\ Font:fontformat=truetype:size=12;4
-font-5 = Material\ Icons:fontformat=truetype:size=12;2
+padding = 1
+
+font-0 = unifont:fontformat=truetype:size=12:antialias=false;0
+font-1 = DejaVuSansMonoForPowerline\ Nerd\ Font:fontformat=truetype:size=12;2
+font-2 = Material\ Icons:fontformat=truetype:size=12;2
 
 ; wm-restack = i3
 
@@ -86,7 +85,6 @@ font-5 = Material\ Icons:fontformat=truetype:size=12;2
 
 
 [module/base]
-; format-padding = 2
 date = %a, %d %b
 time = %H:%M
 interval = 5
@@ -105,6 +103,6 @@ margin-bottom = 0
 
 include-file = /home/dean/dotfiles/polybar/bar_top
 include-file = /home/dean/dotfiles/polybar/bar_bottom
-; include-file = /home/dean/dotfiles/polybar/bar_top
+
 
 ; vim:ft=dosini

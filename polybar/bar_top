@@ -48,12 +48,12 @@ label-volume = %percentage%%
 
 format-muted = <label-muted>
 format-muted-foreground = ${colors.foreground-right-inactive}
-label-muted = 
-label-muted-font = 4
+label-muted = 
+; label-muted-font = 4
 
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
 ramp-foreground = ${colors.foreground-right}
 
 
@@ -62,7 +62,7 @@ inherit = module/base
 type = internal/xbacklight
 
 format = <label>
-label = %{T4} %{T-} %percentage%%
+label = %{T4}%{T-} %percentage%%
 
 
 [module/wlan]
@@ -103,7 +103,7 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-font = 5
+; ramp-capacity-font = 5
 ramp-capacity-foreground = ${colors.foreground-right}
 
 
@@ -111,14 +111,14 @@ ramp-capacity-foreground = ${colors.foreground-right}
 inherit = module/base
 type = internal/date
 
-label = %{T4}%{T-} %date%
+label = %{T4}%{T-} %date%
 
 
 [module/clock]
 inherit = module/base
 type = internal/date
 
-label = %{T4} %{T-} %time%
+label = %{T4}%{T-} %time%
 
 
 ; vim:ft=dosini
