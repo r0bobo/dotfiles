@@ -11,6 +11,7 @@
 ;Set colors
 background = ${xrdb:background:#282828}
 foreground = ${xrdb:foreground:#ebdbb2}
+foreground-inactive = ${xrdb:color8:#928374}
 
 battery_charging = ${xrdb:color6:#689d6a}
 battery_low = ${xrdb:color1:#cc241d}

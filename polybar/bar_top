@@ -47,14 +47,14 @@ format-volume = <ramp-volume> <label-volume>
 label-volume = %percentage%%
 
 format-muted = <label-muted>
-format-muted-foreground = ${colors.foreground-right-inactive}
+format-muted-foreground = ${colors.foreground-inactive}
 label-muted = 
 ; label-muted-font = 4
 
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
-ramp-foreground = ${colors.foreground-right}
+ramp-foreground = ${colors.foreground}
 
 
 [module/xbacklight]
@@ -104,7 +104,7 @@ ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
 ; ramp-capacity-font = 5
-ramp-capacity-foreground = ${colors.foreground-right}
+ramp-capacity-foreground = ${colors.foreground}
 
 
 [module/date]
