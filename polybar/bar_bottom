@@ -12,7 +12,7 @@ inherit = bar/base
 
 
 modules-left = i3
-; modules-center = xwindow
+; modules-center = i3_mode
 modules-right = network_speed diskspace memory cpu
 
 
@@ -48,7 +48,7 @@ label-unfocused = %name%
 label-unfocused-padding = 1
 
 label-visible = %name%
-label-visible-background = ${colors.alert}
+label-visible-background = ${colors.workspace_alert}
 label-visible-padding = 1
 
 label-urgent = %name%
@@ -95,5 +95,17 @@ mount-0 = /
 format-mounted = <label-mounted>
 
 label-mounted = %used% / %total%
+
+
+[module/i3_mode]
+inherit = module/base
+type = internal/i3
+
+; strip-wsnumbers = true
+
+format = <label-mode>
+label-mode = %mode%
+
+
 
 ; vim:ft=dosini
