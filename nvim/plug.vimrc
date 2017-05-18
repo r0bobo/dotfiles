@@ -11,6 +11,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'mhinz/vim-startify'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'lifepillar/vim-cheat40'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -40,7 +41,7 @@ Plug 'Konfekt/FastFold'
 Plug 'benekastah/neomake'
 
 " Syntaxes
-Plug 'nginx.vim'
+" Plug 'nginx.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 
 Plug 'ryanoasis/vim-devicons'
