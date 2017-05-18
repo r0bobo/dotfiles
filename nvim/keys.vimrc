@@ -2,10 +2,11 @@
 
 map <F12> :NERDTreeToggle <CR>
 map <C-g> :bnext <CR>
+let mapleader = '-'
 
 " Denite mappings
-map <C-P> :Denite file_rec <CR> 
-map <C-B> :Denite buffer <CR> 
+map <C-P> :Denite file_rec <CR>
+map <C-B> :Denite buffer <CR>
 
 call denite#custom#map(
         \ 'insert',
