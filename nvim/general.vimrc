@@ -28,6 +28,7 @@ set backspace=indent,eol,start
 set clipboard+=unnamedplus
 
 set background=dark
+:silent! let g:gruvbox_contrast_dark="soft"
 :silent! colorscheme gruvbox
 :silent! call deoplete#enable()
 

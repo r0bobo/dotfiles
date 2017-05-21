@@ -12,12 +12,14 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'mhinz/vim-startify'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'lifepillar/vim-cheat40'
+Plug 'chr4/nginx.vim'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
-Plug 'edkolev/promptline.vim'
+" Plug 'edkolev/promptline.vim'
 
 " Colorschemes
 Plug 'tyrannicaltoucan/vim-quantum'

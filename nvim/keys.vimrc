@@ -4,6 +4,15 @@ map <F12> :NERDTreeToggle <CR>
 map <C-g> :bnext <CR>
 let mapleader = '-'
 
+" Tmux Navigator
+let g:tmux_navigator_no_mappings = 1
+
+" TmuxNavigor Keymaps
+nnoremap <silent> <C-Left> :TmuxNavigateLeft<CR>
+nnoremap <silent> <C-Down> :TmuxNavigateDown<CR>
+nnoremap <silent> <C-Up> :TmuxNavigateUp<CR>
+nnoremap <silent> <C-Right> :TmuxNavigateRight<CR>
+
 " Denite mappings
 map <C-P> :Denite file_rec <CR>
 map <C-B> :Denite buffer <CR>
