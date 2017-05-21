@@ -1,7 +1,8 @@
 " NeoVim key mapping
 
 map <F12> :NERDTreeToggle <CR>
-map <C-g> :bnext <CR>
+map <C-Pageup> :bprevious <CR>
+map <C-Pagedown> :bnext <CR>
 let mapleader = '-'
 
 " Tmux Navigator
