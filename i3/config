@@ -184,20 +184,26 @@ bindsym $mod+Ctrl+Up resize grow height 1 px or 1 ppt
 bindsym $mod+Ctrl+Down resize shrink width 1 px or 1 ppt
 bindsym $mod+Ctrl+Left resize grow height 1 px or 1 ppt
 
+set_from_resource $background i3wm.background #282828
+set_from_resource $light_grey i3wm.color7 #a89984
+set_from_resource $white i3wm.color15 #ebdbb2
+set_from_resource $dark_cyan color6 #689d6a
+set_from_resource $cyan color14 #8ec07c
+set_from_resource $black color0 #282828
+set_from_resource $dark_grey color8 #928374
 
-
-set_from_resource $black i3wm.color0
-set_from_resource $dark_grey i3wm.color8
-set_from_resource $dark_cyan i3wm.color6
-set_from_resource $dark_yellow i3wm.color3
-set_from_resource $faded_aqua i3wm.color14
-set_from_resource $light_grey i3wm.color7
-set_from_resource $white i3wm.color15
+# set_from_resource $black i3wm.color0
+# set_from_resource $dark_grey i3wm.color8
+# set_from_resource $dark_cyan i3wm.color6
+# set_from_resource $dark_yellow i3wm.color3
+# set_from_resource $faded_aqua i3wm.color14
+# set_from_resource $light_grey i3wm.color7
+# set_from_resource $white i3wm.color15
 
 
 # class                 border          backgr.         text        indicator child_border
-# client.focused          $dark_yellow    $dark_yellow    $black      $black    $black
-# client.unfocused        $black          $light_grey     $black      $black    $black
+#client.focused          $dark_yellow    $dark_yellow    $black      $black    $black
+#client.unfocused        $black          $light_grey     $black      $black    $black
 
 # client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
 # client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
@@ -221,9 +227,9 @@ smart_borders no_gaps
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-}
+# bar {
+#         status_command i3status
+# }
 
 
 # Set programs to specific workspaces
