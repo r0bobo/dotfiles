@@ -13,8 +13,9 @@ addons:
 
 before_install:
 - export LOCAL="$(mktemp --directory --tmpdir=${TMPDIR:/tmp} local.bin.XXXXXX)"
-- curl -L http://downloads.sourceforge.net/zsh/zsh-5.0.7.tar.gz | tar zx
-- cd zsh-5.0.7
+# - curl -L http://downloads.sourceforge.net/zsh/zsh-5.0.7.tar.gz | tar zx
+- curl -L http://downloads.sourceforge.net/zsh/zsh-5.3.1.tar.gz | tar zx
+- cd zsh-5.3.1
 - ./configure --prefix=$LOCAL
 - make
 - make install
