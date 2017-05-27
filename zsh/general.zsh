@@ -43,3 +43,6 @@ setopt auto_pushd
 
 # Fix right prompt offset
 ZLE_RPROMPT_INDENT=0
+
+
+export KEYTIMEOUT=1
