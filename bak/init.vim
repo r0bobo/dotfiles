@@ -1,0 +1,1 @@
+/home/dean/.dotfiles/nvim/init.vim
