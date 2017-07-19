@@ -1,31 +1,31 @@
 language: python
 python:
-  - "3.5"
+    - "3.5"
 addons:
   apt:
     sources:
-    - sourceline: 'ppa:neovim-ppa/unstable'
+        - sourceline: 'ppa:neovim-ppa/unstable'
     packages:
-    # - build-essential
-    - neovim
-    # - git
-    # - curl
+        # - build-essential
+        - neovim
+        # - git
+        # - curl
 
 before_install:
-- export LOCAL="$(mktemp --directory --tmpdir=${TMPDIR:/tmp} local.bin.XXXXXX)"
-# - curl -L http://downloads.sourceforge.net/zsh/zsh-5.0.7.tar.gz | tar zx
-- curl -L http://downloads.sourceforge.net/zsh/zsh-5.3.1.tar.gz | tar zx
-- cd zsh-5.3.1
-- ./configure --prefix=$LOCAL
-- make
-- make install
-- cd -
-- export PATH="$LOCAL/bin:$PATH"
-- mkdir -p ~/.config/nvim
+    - export LOCAL="$(mktemp --directory --tmpdir=${TMPDIR:/tmp} local.bin.XXXXXX)"
+    # - curl -L http://downloads.sourceforge.net/zsh/zsh-5.0.7.tar.gz | tar zx
+    - curl -L http://downloads.sourceforge.net/zsh/zsh-5.3.1.tar.gz | tar zx
+    - cd zsh-5.3.1
+    - ./configure --prefix=$LOCAL
+    - make
+    - make install
+    - cd -
+    - export PATH="$LOCAL/bin:$PATH"
+    - mkdir -p ~/.config/nvim
 
 script:
-cd /home/travis/build/r0bobo/dotfiles
-make
+    - cd /home/travis/build/r0bobo/dotfiles
+    - make
 
 # Try starting nvim
-- nvim -c "q"
+# - nvim -c "q"
