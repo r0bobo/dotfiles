@@ -1,7 +1,8 @@
 [options]
 # font = DejaVuSansMonoForPowerline Nerd Font 13
-font = DroidSansMonoForPowerline Nerd Font 12
+# font = DroidSansMonoForPowerline Nerd Font 12
 # font = SauceCodePro Nerd Font 9
+font Fira\ Mono 12
 
 mouse_autohide = true
 

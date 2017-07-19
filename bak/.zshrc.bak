@@ -1,1 +1,0 @@
-/home/dean/.dotfiles/zsh/zshrc

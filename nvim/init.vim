@@ -63,7 +63,7 @@ call plug#end()
 syntax on
 set number          " show line numbers
 
-set hidden  " allow buffers open in background without needing to save
+" set hidden  " allow buffers open in background without needing to save
 
 " Setup tab length
 filetype plugin indent on
@@ -96,6 +96,9 @@ set background=dark
 
 set modeline
 set modelines=5
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+
+
 
 " NeoVim key mapping
 
@@ -117,6 +120,7 @@ noremap <silent> <C-Right> :TmuxNavigateRight<CR>
 " Denite mappings
 map <silent> <C-P> :Denite file_old <CR>
 map <silent> <C-B> :Denite buffer <CR>
+map <silent> <Ä> :DeniteCursorWord line <CR>
 
 :silent! call denite#custom#map(
         \ 'insert',
@@ -156,18 +160,18 @@ let g:tagbar_type_make = {
 " Add custom menus
 let s:menus = {}
 
-let s:menus.dotfiles = {
-	\ 'description': 'Edit dotfiles'
-	\ }
-let s:menus.dotfiles.file_candidates = [
-	\ ['init.vim', '~/.dotfiles/nvim/init.vim'],
-	\ ['tmux.conf', '~/.dotfiles/tmux/tmux.conf'],
-	\ ['zshrc', '~/.dotfiles/zsh/zshrc'],
-	\ ]
+" let s:menus.dotfiles = {
+" 	\ 'description': 'Edit dotfiles'
+" 	\ }
+" let s:menus.dotfiles.file_candidates = [
+" 	\ ['init.vim', '~/.dotfiles/nvim/init.vim'],
+" 	\ ['tmux.conf', '~/.dotfiles/tmux/tmux.conf'],
+" 	\ ['zshrc', '~/.dotfiles/zsh/zshrc'],
+" 	\ ]
 
-let s:menus.my_commands = {
-	\ 'description': 'Example commands'
-	\ }
+ let s:menus.my_commands = {
+ 	\ 'description': 'Example commands'
+ 	\ }
 let s:menus.my_commands.command_candidates = [
 	\ ['Split the window', 'vnew'],
 	\ ['Open zsh menu', 'Denite menu:zsh'],
