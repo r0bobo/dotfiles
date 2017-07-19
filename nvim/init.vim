@@ -2,13 +2,13 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 " Plug 'raimondi/delimitmate'
 " Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'airblade/vim-gitgutter'
 " Plug 'haya14busa/incsearch.vim'
 " Plug 'itchyny/vim-cursorword'
-" Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
+Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 " Plug 'tpope/vim-fugitive'
 " Plug 'tmux-plugins/vim-tmux'
 " Plug 'mhinz/vim-startify'
@@ -18,6 +18,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 
 " Airline
@@ -30,28 +31,25 @@ Plug 'edkolev/tmuxline.vim'
 " Plug 'tyrannicaltoucan/vim-quantum'
 " Plug 'tyrannicaltoucan/vim-deep-space'
 " Plug 'altercation/vim-colors-solarized'
-" Plug 'mhartington/oceanic-next'
+Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
 
 " Denite
-" Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Deoplete
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'Shougo/neco-vim'
-" Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-" Plug 'wellle/tmux-complete.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neco-syntax'
+Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+Plug 'wellle/tmux-complete.vim'
 " Plug 'Shougo/echodoc'
 " Plug 'Konfekt/FastFold'
-
-" Lint
-" Plug 'benekastah/neomake'
 
 " Syntaxes
 " Plug 'nginx.vim'
 " Plug 'PotatoesMaster/i3-vim-syntax'
 
-" Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -82,6 +80,8 @@ set showmatch
 set ignorecase
 set smartcase
 
+set wrap!
+
 set hlsearch
 set incsearch
 
@@ -96,25 +96,26 @@ set background=dark
 
 set modeline
 set modelines=5
+
 " NeoVim key mapping
 
+map <F5> :make <CR>
 map <F8> :TagbarToggle <CR>
-map <F12> :NERDTreeToggle <CR>
-nnoremap <C-PageUp> :bprevious <CR>
-nnoremap <C-PageDown> :bnext <CR>
+noremap <C-PageUp> :bprevious <CR>
+noremap <C-PageDown> :bnext <CR>
 let mapleader = '-'
 
 " Tmux Navigator
-let g:tmux_navigator_no_mappings = 1
+" let g:tmux_navigator_no_mappings = 1
 
 " TmuxNavigor Keymaps
-nnoremap <silent> <C-Left> :TmuxNavigateLeft<CR>
-nnoremap <silent> <C-Down> :TmuxNavigateDown<CR>
-nnoremap <silent> <C-Up> :TmuxNavigateUp<CR>
-nnoremap <silent> <C-Right> :TmuxNavigateRight<CR>
+noremap <silent> <C-Left> :TmuxNavigateLeft<CR>
+noremap <silent> <C-Down> :TmuxNavigateDown<CR>
+noremap <silent> <C-Up> :TmuxNavigateUp<CR>
+noremap <silent> <C-Right> :TmuxNavigateRight<CR>
 
 " Denite mappings
-map <silent> <C-P> :Denite file_rec <CR>
+map <silent> <C-P> :Denite file_old <CR>
 map <silent> <C-B> :Denite buffer <CR>
 
 :silent! call denite#custom#map(
@@ -130,13 +131,46 @@ map <silent> <C-B> :Denite buffer <CR>
         \ '<denite:move_to_next_line>',
         \ 'noremap'
         \)
+
 " Airline config
 
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
+" if !exists('g:airline_symbols')
+" 	let g:airline_symbols = {}
+" endif
+" 
+let g:airline_powerline_fonts = 0
+" let g:airline_symbols.space = "\ua0"
 
-let g:airline_powerline_fonts = 1
-let g:airline_symbols.space = "\ua0"
+let g:tmuxline_powerline_separators = 0
 
+" 
 let g:airline#extensions#tabline#enabled = 1
+
+let g:tagbar_type_make = {
+            \ 'kinds':[
+                \ 'm:macros',
+                \ 't:targets'
+            \ ]
+\}
+
+" Add custom menus
+let s:menus = {}
+
+let s:menus.dotfiles = {
+	\ 'description': 'Edit dotfiles'
+	\ }
+let s:menus.dotfiles.file_candidates = [
+	\ ['init.vim', '~/.dotfiles/nvim/init.vim'],
+	\ ['tmux.conf', '~/.dotfiles/tmux/tmux.conf'],
+	\ ['zshrc', '~/.dotfiles/zsh/zshrc'],
+	\ ]
+
+let s:menus.my_commands = {
+	\ 'description': 'Example commands'
+	\ }
+let s:menus.my_commands.command_candidates = [
+	\ ['Split the window', 'vnew'],
+	\ ['Open zsh menu', 'Denite menu:zsh'],
+	\ ]
+
+call denite#custom#var('menu', 'menus', s:menus)

@@ -5,10 +5,10 @@ export DOTFILES=${DOTFILES-~/.dotfiles}
 export ZPLUG_HOME=${ZPLUG_HOME-~/.zplug}
 export VIMPLUG_HOME=${VIMPLUG_HOME-~/.local/share/nvim/site/autoload/plug.vim}
 
-# # Start tmux
-# if command -v tmux>/dev/null; then
-#   [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
-# fi
+# Start tmux
+if command -v tmux>/dev/null; then
+  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+fi
 
 # General zsh settings
 
@@ -47,7 +47,7 @@ compinit
 promptinit
 
 
-setopt correct
+# setopt correct
 # setopt correctall
 setopt auto_cd
 setopt auto_pushd
@@ -80,9 +80,9 @@ alias grep='grep --color=auto'  # Color grep
 source $ZPLUG_HOME/init.zsh
 
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-# zplug "changyuheng/zsh-interactive-cd"
-
+zplug "zdharma/fast-syntax-highlighting"
+zplug "jreese/zsh-titles"
+zplug "srijanshetty/zsh-suffix-alias"
 
 # Themes
 
@@ -92,3 +92,5 @@ zplug "mafredri/zsh-async", from:github
 zplug "dfurnes/purer"
 
 zplug load
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
