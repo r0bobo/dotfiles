@@ -1,12 +1,3 @@
-
-" ============================================================================
-" subcat                                                             COUNTENTS
-
-    * VIM_PLUG
-    *
-
-
-
 " ============================================================================
 " subcat                                                              VIM_PLUG
 
@@ -133,27 +124,26 @@ let mapleader = ' '
 set timeoutlen=20
 set ttimeoutlen=0
 
+
 let g:lmap = {}
-let g:lmap.l = { 'name' : 'Line Search' }
-let g:lmap.l.l = [ ':Denite line', 'Search lines in file']
+let g:lmap.d = {
+    \   'name' : 'Denite',
+    \   'f' : [ 'Denite file_rec', 'Recursive File'],
+    \   'b' : [ 'Denite buffer', 'Open Buffers'],
+    \   'o' : [ 'Denite file_old', 'Old File'],
+    \   't' : [ 'Denite outline', 'Code Tags'],
+    \   'l' : [ 'Denite line', 'Line' ],
+    \   '*' : [ 'DeniteCursorWord line', 'Line, highligted word' ],
+    \   'g' : [ 'Denite grep', 'Grep' ],
+    \}
+let g:lmap.e = {
+    \   'name' : 'Extra',
+    \   'r' : [ 'so $MYVIMRC', 'Reload Neovim Config' ],
+    \}
 
 call leaderGuide#register_prefix_descriptions(' ', "g:lmap")
-
 nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
-
-
-nmap <leader>b :Denite buffer<CR>
-nmap <leader>f :Denite file<CR>
-nmap <leader>ll :Denite line<CR>
-nmap <leader>lc :DeniteCursorWord line<CR>
-nmap <leader>o :Denite file_old<CR>
-nmap <leader>t :Denite outline<CR>
-
-" map <silent> <C-P> :Denite file_old <CR>
-" map <silent> <C-B> :Denite buffer <CR>
-" map <silent> <Ä> :DeniteCursorWord line <CR>
-
 
 " ============================================================================
 " subcat                                                         DENITE-CONFIG
@@ -171,6 +161,9 @@ nmap <leader>t :Denite outline<CR>
         \ '<denite:move_to_next_line>',
         \ 'noremap'
         \)
+
+call denite#custom#var('file_rec', 'command',
+	\ ['rg', '--files', '--glob', '!.git', ''])
 
 
 " ============================================================================
