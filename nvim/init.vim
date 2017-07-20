@@ -1,4 +1,14 @@
-" ## Vim-plug ##
+
+" ============================================================================
+" subcat                                                             COUNTENTS
+
+    * VIM_PLUG
+    *
+
+
+
+" ============================================================================
+" subcat                                                              VIM_PLUG
 
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -19,6 +29,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'hecal3/vim-leader-guide'
 
 
 " Airline
@@ -36,6 +47,7 @@ Plug 'morhetz/gruvbox'
 
 " Denite
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'chemzqm/denite-extra'
 
 " Deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -54,18 +66,13 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 
-" ***************
-" *** GENERAL ***
-" ***************
-
-"general neovim settings
+" ============================================================================
+" subcat                                                      GENERAL-SETTINGS
 
 syntax on
 set number          " show line numbers
+set hidden          " allow buffers open in background without needing to save
 
-" set hidden  " allow buffers open in background without needing to save
-
-" Setup tab length
 filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
@@ -92,35 +99,64 @@ set clipboard+=unnamedplus
 set background=dark
 :silent! let g:gruvbox_contrast_dark="soft"
 :silent! colorscheme gruvbox
+
 :silent! call deoplete#enable()
 
 set modeline
 set modelines=5
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
 
 
+" ============================================================================
+" subcat                                                          AUTOCOMMANDS
 
-" NeoVim key mapping
+autocmd Filetype html setlocal ts=2 sts=2 sw=2  "Tab length = 2 in html
+
+
+" ============================================================================
+" subcat                                                          KEYMAP-SETUP
 
 map <F5> :make <CR>
 map <F8> :TagbarToggle <CR>
 noremap <C-PageUp> :bprevious <CR>
 noremap <C-PageDown> :bnext <CR>
-let mapleader = '-'
 
-" Tmux Navigator
-" let g:tmux_navigator_no_mappings = 1
-
-" TmuxNavigor Keymaps
 noremap <silent> <C-Left> :TmuxNavigateLeft<CR>
 noremap <silent> <C-Down> :TmuxNavigateDown<CR>
 noremap <silent> <C-Up> :TmuxNavigateUp<CR>
 noremap <silent> <C-Right> :TmuxNavigateRight<CR>
 
-" Denite mappings
-map <silent> <C-P> :Denite file_old <CR>
-map <silent> <C-B> :Denite buffer <CR>
-map <silent> <Ä> :DeniteCursorWord line <CR>
+
+" ============================================================================
+" subcat                                                      LEADER-KEY-SETUP
+
+let mapleader = ' '
+set timeoutlen=20
+set ttimeoutlen=0
+
+let g:lmap = {}
+let g:lmap.l = { 'name' : 'Line Search' }
+let g:lmap.l.l = [ ':Denite line', 'Search lines in file']
+
+call leaderGuide#register_prefix_descriptions(' ', "g:lmap")
+
+nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
+
+
+nmap <leader>b :Denite buffer<CR>
+nmap <leader>f :Denite file<CR>
+nmap <leader>ll :Denite line<CR>
+nmap <leader>lc :DeniteCursorWord line<CR>
+nmap <leader>o :Denite file_old<CR>
+nmap <leader>t :Denite outline<CR>
+
+" map <silent> <C-P> :Denite file_old <CR>
+" map <silent> <C-B> :Denite buffer <CR>
+" map <silent> <Ä> :DeniteCursorWord line <CR>
+
+
+" ============================================================================
+" subcat                                                         DENITE-CONFIG
 
 :silent! call denite#custom#map(
         \ 'insert',
@@ -136,7 +172,9 @@ map <silent> <Ä> :DeniteCursorWord line <CR>
         \ 'noremap'
         \)
 
-" Airline config
+
+" ============================================================================
+" subcat                                                        AIRLINE-CONFIG
 
 " if !exists('g:airline_symbols')
 " 	let g:airline_symbols = {}
@@ -150,6 +188,10 @@ let g:tmuxline_powerline_separators = 0
 " 
 let g:airline#extensions#tabline#enabled = 1
 
+
+" ============================================================================
+" subcat                                                         TAGBAR-CONFIG
+
 let g:tagbar_type_make = {
             \ 'kinds':[
                 \ 'm:macros',
@@ -157,24 +199,4 @@ let g:tagbar_type_make = {
             \ ]
 \}
 
-" Add custom menus
-let s:menus = {}
 
-" let s:menus.dotfiles = {
-" 	\ 'description': 'Edit dotfiles'
-" 	\ }
-" let s:menus.dotfiles.file_candidates = [
-" 	\ ['init.vim', '~/.dotfiles/nvim/init.vim'],
-" 	\ ['tmux.conf', '~/.dotfiles/tmux/tmux.conf'],
-" 	\ ['zshrc', '~/.dotfiles/zsh/zshrc'],
-" 	\ ]
-
- let s:menus.my_commands = {
- 	\ 'description': 'Example commands'
- 	\ }
-let s:menus.my_commands.command_candidates = [
-	\ ['Split the window', 'vnew'],
-	\ ['Open zsh menu', 'Denite menu:zsh'],
-	\ ]
-
-call denite#custom#var('menu', 'menus', s:menus)
