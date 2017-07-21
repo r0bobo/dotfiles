@@ -1,9 +1,8 @@
 " ============================================================================
 " subcat                                                              VIM_PLUG
-
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdcommenter'
 Plug 'raimondi/delimitmate'
 " Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'mhinz/vim-signify'
@@ -11,11 +10,8 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'tpope/vim-fugitive'
-" Plug 'tmux-plugins/vim-tmux'
 " Plug 'mhinz/vim-startify'
 " Plug 'ntpeters/vim-better-whitespace'
-" Plug 'lifepillar/vim-cheat40'
-" Plug 'chr4/nginx.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
@@ -25,6 +21,9 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'alvan/vim-closetag'
 Plug 'sheerun/vim-polyglot'
 Plug 'dbakker/vim-projectroot'
+Plug 'junegunn/gv.vim'
+" Plug 'easymotion/vim-easymotion'
+" Plug 'tpope/vim-eunuch'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -100,7 +99,7 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
+let g:deoplete#auto_complete_delay=1
 
 function! <SID>AutoProjectRootCD()
   try
@@ -114,6 +113,11 @@ endfunction
 
 autocmd BufEnter * call <SID>AutoProjectRootCD()
 
+let g:signify_vcs_list = [ 'git', 'hg' ]
+
+let g:NERDSpaceDelims = 1
+
+
 " ============================================================================
 " subcat                                                          KEYMAP-SETUP
 
@@ -126,6 +130,7 @@ noremap <silent> <C-Left> :TmuxNavigateLeft<CR>
 noremap <silent> <C-Down> :TmuxNavigateDown<CR>
 noremap <silent> <C-Up> :TmuxNavigateUp<CR>
 noremap <silent> <C-Right> :TmuxNavigateRight<CR>
+
 
 
 " ============================================================================
@@ -145,10 +150,10 @@ let g:lmap.d = {
     \   't' : [ 'Denite outline -cursor-wrap -auto-highlight -split=vertical -winwidth=60', 'Code Tags'],
     \   'l' : [ 'Denite line -cursor-wrap -auto-highlight', 'Line'],
     \   'L' : [ 'DeniteCursorWord line -cursor-wrap -auto-highlight',
-            \   'Line, highligted word' ],
+            \   'Line Selected Word' ],
     \   'g' : [ 'Denite grep -cursor-wrap', 'Grep' ],
     \   'G' : [ 'DeniteCursorWord grep -cursor-wrap', 'Grep Selected Word' ],
-    \   'h' : [ 'Denite help -cursor-wrap -default-action=vert', 'Grep Selected Word' ],
+    \   'h' : [ 'Denite help -cursor-wrap -default-action=vert', 'Help' ],
     \}
 
 let g:lmap.e = {
@@ -156,8 +161,28 @@ let g:lmap.e = {
     \   'r' : [ 'so $MYVIMRC', 'Reload Neovim Config' ],
     \   'n' : [ 'Denite line -cursor-wrap -auto-highlight -input=subcat',
     \           'Navigate dotfiles' ],
-    \   'i' : [ 'so $MYVIMRC | PlugInstall', 'Install Plugins' ],
-    \   'u' : [ 'PlugUpgrade | PlugUpdate', 'Update Plugins' ],
+    \}
+
+let g:lmap.p = {
+    \   'name' : 'Plugins',
+    \   'i' : [ 'so $MYVIMRC | PlugInstall', 'Install' ],
+    \   'u' : [ 'PlugUpgrade | PlugUpdate', 'Update' ],
+    \   'c' : [ 'so $MYVIMRC | PlugClean ', 'Clean' ],
+    \}
+
+let g:lmap.g = {
+    \   'name' : 'Git',
+    \   'd' : [ 'Gdiff', 'Git Diff' ],
+    \   'c' : [ 'GV', 'Commit History' ],
+    \   'C' : [ 'GV!', 'File Commit History' ],
+    \   'n' : [ 'call feedkeys("\<Plug>(signify-next-hunk)")', 'Show Next Diff'],
+    \   'p' : [ 'call feedkeys("\<Plug>(signify-prev-hunk)")', 'Show Prev Diff'],
+    \   'a' : [ 'Gwrite', 'Add File'],
+    \   's' : [ 'Gstatus', 'Status'],
+    \}
+
+let g:lmap.c = {
+    \   'name' : 'Comment',
     \}
 
 call leaderGuide#register_prefix_descriptions(' ', "g:lmap")
