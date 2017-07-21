@@ -4,7 +4,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'tpope/vim-commentary'
-" Plug 'raimondi/delimitmate'
+Plug 'raimondi/delimitmate'
 " Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'airblade/vim-gitgutter'
 " Plug 'haya14busa/incsearch.vim'
@@ -21,18 +21,14 @@ Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'hecal3/vim-leader-guide'
-
+Plug 'ryanoasis/vim-devicons'
 
 " Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
-" Plug 'edkolev/promptline.vim'
 
 " Colorschemes
-" Plug 'tyrannicaltoucan/vim-quantum'
-" Plug 'tyrannicaltoucan/vim-deep-space'
-" Plug 'altercation/vim-colors-solarized'
 Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
 
@@ -47,12 +43,6 @@ Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'wellle/tmux-complete.vim'
 " Plug 'Shougo/echodoc'
 " Plug 'Konfekt/FastFold'
-
-" Syntaxes
-" Plug 'nginx.vim'
-" Plug 'PotatoesMaster/i3-vim-syntax'
-
-Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -128,17 +118,24 @@ set ttimeoutlen=0
 let g:lmap = {}
 let g:lmap.d = {
     \   'name' : 'Denite',
-    \   'f' : [ 'Denite file_rec', 'Recursive File'],
-    \   'b' : [ 'Denite buffer', 'Open Buffers'],
-    \   'o' : [ 'Denite file_old', 'Old File'],
-    \   't' : [ 'Denite outline', 'Code Tags'],
-    \   'l' : [ 'Denite line', 'Line' ],
-    \   '*' : [ 'DeniteCursorWord line', 'Line, highligted word' ],
-    \   'g' : [ 'Denite grep', 'Grep' ],
+    \   'f' : [ 'Denite file_rec -cursor-wrap', 'Recursive File'],
+    \   'b' : [ 'Denite buffer -cursor-wrap', 'Open Buffers'],
+    \   'o' : [ 'Denite file_old -cursor-wrap', 'Old File'],
+    \   't' : [ 'Denite outline -cursor-wrap -auto-highlight', 'Code Tags'],
+    \   'l' : [ 'Denite line -cursor-wrap -auto-highlight', 'Line'],
+    \   'L' : [ 'DeniteCursorWord line -cursor-wrap -auto-highlight',
+            \   'Line, highligted word' ],
+    \   'g' : [ 'Denite grep -cursor-wrap', 'Grep' ],
+    \   'G' : [ 'DeniteCursorWord grep -cursor-wrap', 'Grep Selected Word' ],
     \}
+
 let g:lmap.e = {
     \   'name' : 'Extra',
     \   'r' : [ 'so $MYVIMRC', 'Reload Neovim Config' ],
+    \   'n' : [ 'Denite line -cursor-wrap -auto-highlight -input=subcat',
+    \           'Navigate dotfiles' ],
+    \   'i' : [ 'so $MYVIMRC | PlugInstall', 'Install Plugins' ],
+    \   'u' : [ 'PlugUpgrade | PlugUpdate', 'Update Plugins' ],
     \}
 
 call leaderGuide#register_prefix_descriptions(' ', "g:lmap")
@@ -165,6 +162,19 @@ vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
 call denite#custom#var('file_rec', 'command',
 	\ ['rg', '--files', '--glob', '!.git', ''])
 
+call denite#custom#var('file_rec', 'command',
+            \ ['rg', '--files', '--glob', '!.git', ''])
+
+" Ripgrep command on grep source
+call denite#custom#var('grep', 'command', ['rg'])
+call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
+
+" Change default prompt
+call denite#custom#option('default', 'prompt', '>>')
 
 " ============================================================================
 " subcat                                                        AIRLINE-CONFIG
