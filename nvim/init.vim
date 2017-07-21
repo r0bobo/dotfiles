@@ -6,11 +6,11 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-commentary'
 Plug 'raimondi/delimitmate'
 " Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-" Plug 'airblade/vim-gitgutter'
-" Plug 'haya14busa/incsearch.vim'
-" Plug 'itchyny/vim-cursorword'
+Plug 'mhinz/vim-signify'
+Plug 'haya14busa/incsearch.vim'
+Plug 'itchyny/vim-cursorword'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
-" Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " Plug 'tmux-plugins/vim-tmux'
 " Plug 'mhinz/vim-startify'
 " Plug 'ntpeters/vim-better-whitespace'
@@ -22,6 +22,9 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'hecal3/vim-leader-guide'
 Plug 'ryanoasis/vim-devicons'
+Plug 'alvan/vim-closetag'
+Plug 'sheerun/vim-polyglot'
+Plug 'dbakker/vim-projectroot'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -86,12 +89,30 @@ set background=dark
 set modeline
 set modelines=5
 
-
-" ============================================================================
-" subcat                                                          AUTOCOMMANDS
-
 autocmd Filetype html setlocal ts=2 sts=2 sw=2  "Tab length = 2 in html
 
+
+" ============================================================================
+" subcat                                                       PLUGIN-SETTINGS 
+
+" filenames like *.xml, *.html, *.xhtml, ...
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+
+function! <SID>AutoProjectRootCD()
+  try
+    if &ft != 'help'
+      ProjectRootCD
+    endif
+  catch
+    " Silently ignore invalid buffers
+  endtry
+endfunction
+
+autocmd BufEnter * call <SID>AutoProjectRootCD()
 
 " ============================================================================
 " subcat                                                          KEYMAP-SETUP
@@ -118,15 +139,16 @@ set ttimeoutlen=0
 let g:lmap = {}
 let g:lmap.d = {
     \   'name' : 'Denite',
-    \   'f' : [ 'Denite file_rec -cursor-wrap', 'Recursive File'],
+    \   'p' : [ 'DeniteProjectDir file_rec -cursor-wrap', 'Project Files'],
     \   'b' : [ 'Denite buffer -cursor-wrap', 'Open Buffers'],
     \   'o' : [ 'Denite file_old -cursor-wrap', 'Old File'],
-    \   't' : [ 'Denite outline -cursor-wrap -auto-highlight', 'Code Tags'],
+    \   't' : [ 'Denite outline -cursor-wrap -auto-highlight -split=vertical -winwidth=60', 'Code Tags'],
     \   'l' : [ 'Denite line -cursor-wrap -auto-highlight', 'Line'],
     \   'L' : [ 'DeniteCursorWord line -cursor-wrap -auto-highlight',
             \   'Line, highligted word' ],
     \   'g' : [ 'Denite grep -cursor-wrap', 'Grep' ],
     \   'G' : [ 'DeniteCursorWord grep -cursor-wrap', 'Grep Selected Word' ],
+    \   'h' : [ 'Denite help -cursor-wrap -default-action=vert', 'Grep Selected Word' ],
     \}
 
 let g:lmap.e = {
@@ -159,6 +181,20 @@ vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
         \ 'noremap'
         \)
 
+:silent! call denite#custom#map(
+        \ 'normal',
+        \ '<Up>',
+        \ '<denite:move_to_previous_line>',
+        \ 'noremap'
+        \)
+
+:silent! call denite#custom#map(
+        \ 'normal',
+        \ '<Down>',
+        \ '<denite:move_to_next_line>',
+        \ 'noremap'
+        \)
+
 call denite#custom#var('file_rec', 'command',
 	\ ['rg', '--files', '--glob', '!.git', ''])
 
@@ -175,6 +211,7 @@ call denite#custom#var('grep', 'final_opts', [])
 
 " Change default prompt
 call denite#custom#option('default', 'prompt', '>>')
+
 
 " ============================================================================
 " subcat                                                        AIRLINE-CONFIG
