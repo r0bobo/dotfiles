@@ -10,6 +10,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'hynek/vim-python-pep8-indent', { 'for': 'python' }
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 " Plug 'mhinz/vim-startify'
 " Plug 'ntpeters/vim-better-whitespace'
 Plug 'christoomey/vim-tmux-navigator'
@@ -173,13 +174,16 @@ let g:lmap.p = {
 let g:lmap.g = {
     \   'name' : 'Git',
     \   'd' : [ 'Gdiff', 'Git Diff' ],
-    \   'c' : [ 'GV', 'Commit History' ],
-    \   'C' : [ 'GV!', 'File Commit History' ],
-    \   'n' : [ 'call feedkeys("\<Plug>(signify-next-hunk)")', 'Show Next Diff'],
-    \   'p' : [ 'call feedkeys("\<Plug>(signify-prev-hunk)")', 'Show Prev Diff'],
+    \   'h' : [ 'GV', 'Commit History' ],
+    \   'H' : [ 'GV!', 'File Commit History' ],
     \   'a' : [ 'Gwrite', 'Add File'],
     \   's' : [ 'Gstatus', 'Status'],
+    \   'c' : [ 'Gcommit', 'Commit'],
+    \   'p' : [ 'Gpush --all origin', 'Push all'],
     \}
+
+    " \   'n' : [ 'call feedkeys("\<Plug>(signify-next-hunk)")', 'Show Next Diff'],
+    " \   'p' : [ 'call feedkeys("\<Plug>(signify-prev-hunk)")', 'Show Prev Diff'],
 
 let g:lmap.c = {
     \   'name' : 'Comment',
