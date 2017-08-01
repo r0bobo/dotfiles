@@ -25,6 +25,8 @@ Plug 'dbakker/vim-projectroot'
 Plug 'junegunn/gv.vim'
 " Plug 'easymotion/vim-easymotion'
 " Plug 'tpope/vim-eunuch'
+Plug 'Valloric/MatchTagAlways'
+Plug 'ap/vim-css-color'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -122,7 +124,7 @@ let g:NERDSpaceDelims = 1
 " ============================================================================
 " subcat                                                          KEYMAP-SETUP
 
-map <F5> :make <CR>
+" map <F5> :make <CR>
 map <F8> :TagbarToggle <CR>
 noremap <C-PageUp> :bprevious <CR>
 noremap <C-PageDown> :bnext <CR>
@@ -162,6 +164,7 @@ let g:lmap.e = {
     \   'r' : [ 'so $MYVIMRC', 'Reload Neovim Config' ],
     \   'n' : [ 'Denite line -cursor-wrap -auto-highlight -input=subcat',
     \           'Navigate dotfiles' ],
+    \   'l' : [ 'lopen', 'Linter Errors']
     \}
 
 let g:lmap.p = {
@@ -188,6 +191,15 @@ let g:lmap.g = {
 let g:lmap.c = {
     \   'name' : 'Comment',
     \}
+
+let g:lmap.b = {
+    \   'name' : 'Buffers',
+    \   'n' : [ 'bnext', 'Next' ],
+    \   'p' : [ 'bprevious', 'Previous' ],
+    \   'q' : [ 'bdelete', 'Close' ],
+    \}
+
+let g:lmap.m = [ 'make', 'Make' ]
 
 call leaderGuide#register_prefix_descriptions(' ', "g:lmap")
 nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
@@ -267,5 +279,4 @@ let g:tagbar_type_make = {
                 \ 't:targets'
             \ ]
 \}
-
 
