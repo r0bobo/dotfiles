@@ -27,6 +27,7 @@ Plug 'junegunn/gv.vim'
 " Plug 'tpope/vim-eunuch'
 Plug 'Valloric/MatchTagAlways'
 Plug 'ap/vim-css-color'
+Plug 'tpope/vim-dispatch'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -98,7 +99,10 @@ autocmd Filetype html setlocal ts=2 sts=2 sw=2  "Tab length = 2 in html
 " subcat                                                       PLUGIN-SETTINGS 
 
 " filenames like *.xml, *.html, *.xhtml, ...
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+let g:closetag_filenames = '*.xml,*.html,*.xhtml,*.phtml,*.js'
+
+" Fix delimitmate and closetag issues that inserts extra >
+autocmd FileType xml,html,xhtml,phtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -119,6 +123,8 @@ autocmd BufEnter * call <SID>AutoProjectRootCD()
 let g:signify_vcs_list = [ 'git', 'hg' ]
 
 let g:NERDSpaceDelims = 1
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDCreateDefaultMappings= 0
 
 
 " ============================================================================
@@ -156,7 +162,8 @@ let g:lmap.d = {
             \   'Line Selected Word' ],
     \   'g' : [ 'Denite grep -cursor-wrap', 'Grep' ],
     \   'G' : [ 'DeniteCursorWord grep -cursor-wrap', 'Grep Selected Word' ],
-    \   'h' : [ 'Denite help -cursor-wrap -default-action=vert', 'Help' ],
+    \   'h' : [ 'Denite help -cursor-wrap', 'Help' ],
+    \   'e' : [ 'Denite location_list -cursor-wrap -auto-highlight', 'Linter Errors' ],
     \}
 
 let g:lmap.e = {
@@ -164,7 +171,8 @@ let g:lmap.e = {
     \   'r' : [ 'so $MYVIMRC', 'Reload Neovim Config' ],
     \   'n' : [ 'Denite line -cursor-wrap -auto-highlight -input=subcat',
     \           'Navigate dotfiles' ],
-    \   'l' : [ 'lopen', 'Linter Errors']
+    \   'l' : [ 'lopen', 'Linter Errors'],
+    \   'i' : [ 'edit $MYVIMRC', 'Open init.vim']
     \}
 
 let g:lmap.p = {
@@ -190,6 +198,19 @@ let g:lmap.g = {
 
 let g:lmap.c = {
     \   'name' : 'Comment',
+    \   ' ' : [ 'call feedkeys("\<Plug>NERDCommenterToggle")', 'Toggle' ],
+    \   '$' : [ 'call feedkeys("\<Plug>NERDCommenterToEOL")', 'To EOL' ],
+    \   'a' : [ 'call feedkeys("\<Plug>NERDCommenterAltDelims")', 'Alternate Delimitators' ],
+    \   'A' : [ 'call feedkeys("\<Plug>NERDCommenterAppend")', 'Append' ],
+    \   'b' : [ 'call feedkeys("\<Plug>NERDCommenterAlignBoth")', 'Align Both' ],
+    \   'c' : [ 'call feedkeys("\<Plug>NERDCommenterComment")', 'Comment' ],
+    \   'i' : [ 'call feedkeys("\<Plug>NERDCommenterInvert")', 'Invert' ],
+    \   'l' : [ 'call feedkeys("\<Plug>NERDCommenterAlignLeft")', 'Align Left' ],
+    \   'm' : [ 'call feedkeys("\<Plug>NERDCommenterMinimal")', 'Minimal' ],
+    \   'n' : [ 'call feedkeys("\<Plug>NERDCommenterNested")', 'Nested' ],
+    \   's' : [ 'call feedkeys("\<Plug>NERDCommenterSexy")', 'Sexy' ],
+    \   'u' : [ 'call feedkeys("\<Plug>NERDCommenterUncomment")', 'Uncomment' ],
+    \   'y' : [ 'call feedkeys("\<Plug>NERDCommenterYank")', 'Yank' ],
     \}
 
 let g:lmap.b = {
@@ -197,9 +218,15 @@ let g:lmap.b = {
     \   'n' : [ 'bnext', 'Next' ],
     \   'p' : [ 'bprevious', 'Previous' ],
     \   'q' : [ 'bdelete', 'Close' ],
+    \   'r' : [ 'edit', 'Reload' ],
     \}
 
-let g:lmap.m = [ 'make', 'Make' ]
+let g:lmap.m = {
+    \   'name' : 'Make',
+    \   'm' : [ 'Make', 'Make' ],
+    \   'b' : [ 'Make', 'Make (Background)' ],
+    \   'l' : [ 'Copen', 'Make Log' ],
+    \}
 
 call leaderGuide#register_prefix_descriptions(' ', "g:lmap")
 nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
