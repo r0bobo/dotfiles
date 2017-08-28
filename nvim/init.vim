@@ -4,7 +4,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'scrooloose/nerdcommenter'
 Plug 'raimondi/delimitmate'
-" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeFind' }
 Plug 'mhinz/vim-signify'
 Plug 'haya14busa/incsearch.vim'
 Plug 'itchyny/vim-cursorword'
@@ -15,7 +15,7 @@ Plug 'tpope/vim-rhubarb'
 " Plug 'ntpeters/vim-better-whitespace'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'w0rp/ale'
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'hecal3/vim-leader-guide'
 Plug 'ryanoasis/vim-devicons'
@@ -33,7 +33,7 @@ Plug 'honza/vim-snippets'
 
 " Airline
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 
 " Colorschemes
@@ -49,8 +49,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neco-syntax'
 Plug 'zchee/deoplete-jedi', { 'for': 'python' }
 Plug 'wellle/tmux-complete.vim'
-" Plug 'Shougo/echodoc'
-" Plug 'Konfekt/FastFold'
+Plug 'Shougo/echodoc'
+Plug 'Konfekt/FastFold'
 
 call plug#end()
 
@@ -73,9 +73,6 @@ set mouse=a
 
 set showmatch
 
-set ignorecase
-set smartcase
-
 set wrap!
 
 set hlsearch
@@ -96,6 +93,15 @@ set modelines=5
 
 autocmd Filetype html setlocal ts=2 sts=2 sw=2  "Tab length = 2 in html
 
+set nofoldenable
+
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+set cursorline
+
+let g:loaded_ruby_provider = 1
+
+let g:loaded_python_provider = 1
+let g:deoplete#sources#jedi#show_docstring = 1
 
 " ============================================================================
 " subcat                                                       PLUGIN-SETTINGS 
@@ -108,7 +114,7 @@ autocmd FileType xml,html,xhtml,phtml,js,htmldjango let b:delimitMate_matchpairs
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-let g:deoplete#auto_complete_delay=1
+let g:deoplete#auto_complete_delay=0
 
 function! <SID>AutoProjectRootCD()
   try
@@ -128,6 +134,11 @@ let g:NERDSpaceDelims = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDCreateDefaultMappings= 0
 
+let NERDTreeMinimalUI = 1
+
+let g:tagbar_autoshowtag = 1
+let g:tagbar_width = 31
+
 " Autoclose Deoplete preview
 autocmd CompleteDone * silent! pclose!
 
@@ -135,7 +146,8 @@ autocmd CompleteDone * silent! pclose!
 " subcat                                                          KEYMAP-SETUP
 
 " map <F5> :make <CR>
-map <F8> :TagbarToggle <CR>
+noremap <F9> :TagbarToggle <CR>
+noremap <F8> :NERDTreeFind <CR>
 noremap <C-PageUp> :bprevious <CR>
 noremap <C-PageDown> :bnext <CR>
 
@@ -143,8 +155,6 @@ noremap <silent> <C-Left> :TmuxNavigateLeft<CR>
 noremap <silent> <C-Down> :TmuxNavigateDown<CR>
 noremap <silent> <C-Up> :TmuxNavigateUp<CR>
 noremap <silent> <C-Right> :TmuxNavigateRight<CR>
-
-
 
 " ============================================================================
 " subcat                                                      LEADER-KEY-SETUP
@@ -160,8 +170,8 @@ let g:lmap.d = {
     \   'p' : [ 'DeniteProjectDir file_rec -cursor-wrap', 'Project Files'],
     \   'b' : [ 'Denite buffer -cursor-wrap', 'Open Buffers'],
     \   'o' : [ 'Denite file_old -cursor-wrap', 'Old File'],
-    \   't' : [ 'Denite outline -cursor-wrap -auto-highlight -split=vertical -winwidth=60', 'Code Tags'],
-    \   'l' : [ 'Denite line -cursor-wrap -auto-highlight', 'Line'],
+    \   't' : [ 'Denite outline -cursor-wrap -auto-highlight', 'Code Tags'],
+    \   'l' : [ 'Denite line -cursor-wrap -auto-highlight -smartcase', 'Line'],
     \   'L' : [ 'DeniteCursorWord line -cursor-wrap -auto-highlight',
             \   'Line Selected Word' ],
     \   'g' : [ 'Denite grep -cursor-wrap', 'Grep' ],
@@ -175,8 +185,7 @@ let g:lmap.e = {
     \   'r' : [ 'so $MYVIMRC', 'Reload Neovim Config' ],
     \   'n' : [ 'Denite line -cursor-wrap -auto-highlight -input=subcat',
     \           'Navigate dotfiles' ],
-    \   'l' : [ 'lopen', 'Linter Errors'],
-    \   'i' : [ 'edit $MYVIMRC', 'Open init.vim']
+    \   'i' : [ 'edit $MYVIMRC', 'Open init.vim'],
     \}
 
 let g:lmap.p = {
@@ -233,6 +242,11 @@ let g:lmap.m = {
     \   'l' : [ 'Copen', 'Make Log' ],
     \}
 
+let g:lmap.a = {
+    \   'name' : 'ALE',
+    \   't': [ 'ALEToggle', 'Toggle' ],
+    \}
+
 call leaderGuide#register_prefix_descriptions(' ', "g:lmap")
 nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
@@ -270,9 +284,6 @@ vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
 
 call denite#custom#var('file_rec', 'command',
 	\ ['rg', '--files', '--glob', '!.git', ''])
-
-call denite#custom#var('file_rec', 'command',
-            \ ['rg', '--files', '--glob', '!.git', ''])
 
 " Ripgrep command on grep source
 call denite#custom#var('grep', 'command', ['rg'])
