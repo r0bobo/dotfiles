@@ -6,13 +6,14 @@ export ZPLUG_HOME=${ZPLUG_HOME-~/.zplug}
 export VIMPLUG_HOME=${VIMPLUG_HOME-~/.local/share/nvim/site/autoload/plug.vim}
 export PATH=$HOME/.local/bin:$PATH
 
+
 # Start tmux
 if command -v tmux>/dev/null; then
   [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 fi
 
-# General zsh settings
 
+# General zsh settings
 export EDITOR='nvim'
 export DEFAULT_USER=`whoami`
 export USER=`whoami`
@@ -47,9 +48,6 @@ autoload -Uz compinit promptinit run-help
 compinit
 promptinit
 
-
-# setopt correct
-# setopt correctall
 setopt auto_cd
 setopt auto_pushd
 
@@ -62,25 +60,15 @@ eval "`pip completion --zsh`"
 compctl -K _pip_completion pip3
 
 export KEYTIMEOUT=1
+
 # Zsh aliases
-
 alias zshreload="source ~/.zshrc"
-alias promptreload="source $DOTFILES/zsh/prompt.zsh"
-
-# Directory
 alias ls='ls --color=auto'
 alias ll='ls -lh --color=auto'
 alias la='ls -lAh --color=auto'
 
-if hash termux-fix-shebang 2>/dev/null;then
-    alias upgrade_dotfiles="sh $DOTFILES/scripts/setup-dotfiles-termux"
-else
-    alias upgrade_dotfiles="zsh $DOTFILES/scripts/setup-dotfiles"
-fi
 
-alias grep='grep --color=auto'  # Color grep
 # Zplug plugin setup
-
 source $ZPLUG_HOME/init.zsh
 
 zplug "zsh-users/zsh-autosuggestions"
@@ -89,11 +77,8 @@ zplug "jreese/zsh-titles"
 zplug "srijanshetty/zsh-suffix-alias"
 
 # Themes
-
 zplug "mafredri/zsh-async", from:github
-# zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-# zplug "dfurnes/purer"
 
 zplug load
 
