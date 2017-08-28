@@ -28,8 +28,8 @@ Plug 'junegunn/gv.vim'
 Plug 'Valloric/MatchTagAlways'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-dispatch'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 " Airline
 Plug 'vim-airline/vim-airline'

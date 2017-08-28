@@ -31,6 +31,8 @@ setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
 setopt share_history
+setopt no_beep
+setopt extended_glob
 
 
 # Completion
@@ -50,6 +52,7 @@ promptinit
 
 setopt auto_cd
 setopt auto_pushd
+
 
 
 # Fix right prompt offset
@@ -75,6 +78,10 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zdharma/fast-syntax-highlighting"
 zplug "jreese/zsh-titles"
 zplug "srijanshetty/zsh-suffix-alias"
+zplug "zuxfoucault/colored-man-pages_mod"
+zplug "hlissner/zsh-autopair"
+zplug "hcgraf/zsh-sudo"
+zplug "zsh-users/zsh-completions"
 
 # Themes
 zplug "mafredri/zsh-async", from:github
