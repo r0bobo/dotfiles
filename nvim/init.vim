@@ -28,6 +28,8 @@ Plug 'junegunn/gv.vim'
 Plug 'Valloric/MatchTagAlways'
 Plug 'ap/vim-css-color'
 Plug 'tpope/vim-dispatch'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -102,7 +104,7 @@ autocmd Filetype html setlocal ts=2 sts=2 sw=2  "Tab length = 2 in html
 let g:closetag_filenames = '*.xml,*.html,*.xhtml,*.phtml,*.js'
 
 " Fix delimitmate and closetag issues that inserts extra >
-autocmd FileType xml,html,xhtml,phtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
+autocmd FileType xml,html,xhtml,phtml,js,htmldjango let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -126,6 +128,8 @@ let g:NERDSpaceDelims = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDCreateDefaultMappings= 0
 
+" Autoclose Deoplete preview
+autocmd CompleteDone * silent! pclose!
 
 " ============================================================================
 " subcat                                                          KEYMAP-SETUP
@@ -225,6 +229,7 @@ let g:lmap.m = {
     \   'name' : 'Make',
     \   'm' : [ 'Make', 'Make' ],
     \   'b' : [ 'Make', 'Make (Background)' ],
+    \   't' : [ 'Make test', 'Run Tests' ],
     \   'l' : [ 'Copen', 'Make Log' ],
     \}
 

@@ -57,6 +57,9 @@ setopt auto_pushd
 # Fix right prompt offset
 ZLE_RPROMPT_INDENT=0
 
+# Pip auto completion
+eval "`pip completion --zsh`"
+compctl -K _pip_completion pip3
 
 export KEYTIMEOUT=1
 # Zsh aliases
@@ -89,8 +92,8 @@ zplug "srijanshetty/zsh-suffix-alias"
 
 zplug "mafredri/zsh-async", from:github
 # zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
-# zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-zplug "dfurnes/purer"
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+# zplug "dfurnes/purer"
 
 zplug load
 
