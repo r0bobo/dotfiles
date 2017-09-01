@@ -332,7 +332,7 @@ vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
         \)
 
 call denite#custom#var('file_rec', 'command',
-	\ ['rg', '--files', '--glob', '!.git', ''])
+	\ ['rg', '--files', '--glob', '!.git', '--hidden'])
 
 call denite#custom#source(
 	\ 'file_rec', 'matchers', ['matcher_cpsm'])
