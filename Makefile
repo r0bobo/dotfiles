@@ -1,4 +1,5 @@
 INSTALL_DIR ?= $(HOME)
+BATS_INSTALL_DIR ?= /usr/local
 DOTFILES := $(shell pwd)
 ZPLUG_HOME = $(INSTALL_DIR)/.zplug
 VIMPLUG_HOME = $(INSTALL_DIR)/.local/share/nvim/site/autoload/plug.vim
@@ -43,7 +44,7 @@ $(VENV)/bin/activate: requirements.txt
 
 install_bats:
 	git clone https://github.com/sstephenson/bats.git bats
-	bats/install.sh ~/.local
+	bats/install.sh $(BATS_INSTALL_DIR)
 	rm -rf bats
 
 test:
