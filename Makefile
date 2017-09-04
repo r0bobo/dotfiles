@@ -40,9 +40,11 @@ FORCE:
 virtual_env: $(VENV)/bin/activate
 $(VENV)/bin/activate: requirements.txt
 	python3 -m venv --without-pip $(VENV)
-	curl https://bootstrap.pypa.io/get-pip.py | $(VENV)/bin/python
-	$(VENV)/bin/pip install -Ur requirements.txt
-	# Extra steps to fix issues in debian 8 and ubuntu 14.04
+	# Fix broken venv-pip in Debian 8 and Ubuntu 14.04
+	bash -c "source $(VENV)/bin/activate; \
+		curl https://bootstrap.pypa.io/get-pip.py | python"
+	bash -c "source $(VENV)/bin/activate; \
+		pip install -Ur requirements.txt"
 
 install_bats:
 	git clone https://github.com/sstephenson/bats.git bats
