@@ -5,15 +5,13 @@ addons:
   apt:
     sources:
         - sourceline: 'ppa:neovim-ppa/unstable'
+        - sourceline: 'ppa:duggan/bats'
     packages:
-        # - build-essential
         - neovim
-        # - git
-        # - curl
+        - bats
 
 before_install:
     - export LOCAL="$(mktemp --directory --tmpdir=${TMPDIR:/tmp} local.bin.XXXXXX)"
-    # - curl -L http://downloads.sourceforge.net/zsh/zsh-5.0.7.tar.gz | tar zx
     - curl -L http://downloads.sourceforge.net/zsh/zsh-5.3.1.tar.gz | tar zx
     - cd zsh-5.3.1
     - ./configure --prefix=$LOCAL
@@ -23,9 +21,9 @@ before_install:
     - export PATH="$LOCAL/bin:$PATH"
     - mkdir -p ~/.config/nvim
 
+
 script:
     - cd /home/travis/build/r0bobo/dotfiles
-    - make
+    - make test
+    - make install
 
-# Try starting nvim
-# - nvim -c "q"

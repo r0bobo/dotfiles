@@ -48,6 +48,7 @@ Plug 'tmhedberg/SimpylFold'
 " Plug 'embear/vim-localvimrc'
 Plug 'sjl/gundo.vim'
 Plug 'embear/vim-localvimrc'
+Plug 'vim-scripts/bats.vim'
 
 " Language Specific
 Plug 'vim-python/python-syntax', { 'for': 'python' }

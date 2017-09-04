@@ -2,10 +2,11 @@ INSTALL_DIR ?= $(HOME)
 DOTFILES := $(shell pwd)
 ZPLUG_HOME = $(INSTALL_DIR)/.zplug
 VIMPLUG_HOME = $(INSTALL_DIR)/.local/share/nvim/site/autoload/plug.vim
-VENV := .venv
+VENV = $(INSTALL_DIR)/.local/share/nvim/.virtualenv
 
 CONFIG_FILES := \
 	.config/nvim/init.vim \
+	.config/termite/config \
 	.ctags \
 	.gitconfig \
 	.ignore \
@@ -13,7 +14,13 @@ CONFIG_FILES := \
 	.tmuxline.conf \
    	.zshrc
 
-all: $(addprefix $(INSTALL_DIR)/, $(CONFIG_FILES)) vimplug zplug
+.PHONY: all install install_bats plugins test vimplug virtual_env zplug
+
+all: $(addprefix $(INSTALL_DIR)/, $(CONFIG_FILES))
+
+install: plugins all
+
+plugins: vimplug virtual_env zplug
 
 vimplug:
 	curl -fLo $(VIMPLUG_HOME) --create-dirs \
@@ -29,7 +36,15 @@ $(INSTALL_DIR)/%: FORCE
 
 FORCE:
 
-venv: $(VENV)/bin/activate
+virtual_env: $(VENV)/bin/activate
 $(VENV)/bin/activate: requirements.txt
 	python3 -m venv $(VENV)
 	$(VENV)/bin/pip install -Ur requirements.txt
+
+install_bats:
+	git clone https://github.com/sstephenson/bats.git bats
+	bats/install.sh ~/.local
+	rm -rf bats
+
+test:
+	bats test.sh

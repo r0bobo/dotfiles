@@ -1,3 +1,37 @@
+# Based on https://blog.scottnonnenberg.com/better-git-configuration/
+
 [user]
 	email = dean.todevski@gmail.com
 	name = Dean Todevski
+
+[alias]
+    prune = fetch --prune
+    # Because I constantly forget how to do this
+    # https://git-scm.com/docs/git-fetch#git-fetch--p
+
+    undo = reset --soft HEAD^
+    # Not quite as common as an amend, but still common
+    # https://git-scm.com/docs/git-reset#git-reset-emgitresetemltmodegtltcommitgt
+
+    tree = log --pretty=oneline --graph --color --decorate --all
+    # https://stackoverflow.com/questions/5361019/viewing-full-version-tree-in-git
+
+    glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+    # No need for a GUI - a nice, colorful, graphical representation
+    # https://git-scm.com/docs/git-log
+    # via https://medium.com/@payload.dd/thanks-for-the-git-st-i-will-use-this-4da5839a21a4
+
+[merge]
+    conflictstyle = diff3
+    # Standard diff is two sets of final changes. This introduces the original text before each side's changes.
+    # https://git-scm.com/docs/git-config#git-config-mergeconflictStyle
+
+[push]
+    followTags = true
+    # Because I get sick of telling git to do it manually
+    # https://git-scm.com/docs/git-config#git-config-pushfollowTags
+
+[status]
+    showUntrackedFiles = all
+    # Sometimes a newly-added folder, since it's only one line in git status, can slip under the radar.
+    # https://git-scm.com/docs/git-config#git-config-statusshowUntrackedFiles
