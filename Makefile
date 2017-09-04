@@ -1,9 +1,9 @@
 INSTALL_DIR ?= $(HOME)
 BATS_INSTALL_DIR ?= /usr/local
 DOTFILES := $(shell pwd)
-ZPLUG_HOME = $(INSTALL_DIR)/.zplug
-VIMPLUG_HOME = $(INSTALL_DIR)/.local/share/nvim/site/autoload/plug.vim
-VENV = $(INSTALL_DIR)/.local/share/nvim/.virtualenv
+ZPLUG_HOME := $(INSTALL_DIR)/.zplug
+VIMPLUG_HOME := $(INSTALL_DIR)/.local/share/nvim/site/autoload/plug.vim
+VENV := $(INSTALL_DIR)/.local/share/nvim/.virtualenv
 
 CONFIG_FILES := \
 	.config/nvim/init.vim \
@@ -39,8 +39,10 @@ FORCE:
 
 virtual_env: $(VENV)/bin/activate
 $(VENV)/bin/activate: requirements.txt
-	python3 -m venv $(VENV)
+	python3 -m venv --without-pip $(VENV)
+	curl https://bootstrap.pypa.io/get-pip.py | $(VENV)/bin/python
 	$(VENV)/bin/pip install -Ur requirements.txt
+	# Extra steps to fix issues in debian 8 and ubuntu 14.04
 
 install_bats:
 	git clone https://github.com/sstephenson/bats.git bats
