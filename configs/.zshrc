@@ -65,7 +65,7 @@ if [[ `whoami` == "deatod" ]]; then
     compaudit | xargs chmod g-w 2>/dev/null
 
     PURE_PROMPT_SYMBOL='>'
-else
+elif [[ `whoami` == "dean" ]]; then
     if command -v tmux>/dev/null; then
         [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
     fi
