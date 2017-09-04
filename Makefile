@@ -1,25 +1,31 @@
+INSTALL_DIR ?= $(HOME)
 DOTFILES := $(shell pwd)
-ZPLUG_HOME = $(HOME)/.zplug
-VIMPLUG_HOME = $(HOME)/.local/share/nvim/site/autoload/plug.vim
+ZPLUG_HOME = $(INSTALL_DIR)/.zplug
+VIMPLUG_HOME = $(INSTALL_DIR)/.local/share/nvim/site/autoload/plug.vim
 VENV := .venv
 
 CONFIG_FILES := \
+	.config/nvim/init.vim \
 	.ctags \
 	.gitconfig \
-	.ignore
+	.ignore \
+	.tmux.conf \
+	.tmuxline.conf \
+   	.zshrc
 
-all: $(addprefix $(HOME)/, $(CONFIG_FILES))
-
-zplug:
-	[ -d $(ZPLUG_HOME) ] || git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
+all: $(addprefix $(INSTALL_DIR)/, $(CONFIG_FILES)) vimplug zplug
 
 vimplug:
 	curl -fLo $(VIMPLUG_HOME) --create-dirs \
 	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;
 
-$(HOME)/%: FORCE
-	[ ! -L $@ ] || rm $@
-	ln -sfb $(DOTFILES)/configs/$* $@
+zplug:
+	[ -d $(ZPLUG_HOME) ] || git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
+
+$(INSTALL_DIR)/%: FORCE
+	@ [ ! -L $@ ] || rm $@
+	@ mkdir -p $(dir $@)
+	ln -sf --backup=numbered $(DOTFILES)/configs/$* $@
 
 FORCE:
 

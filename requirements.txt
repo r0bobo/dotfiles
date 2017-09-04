@@ -1,4 +1,4 @@
-greenlet==0.4.12
-jedi==0.10.2
-msgpack-python==0.4.8
-neovim==0.1.13
+greenlet
+jedi
+msgpack-python
+neovim
