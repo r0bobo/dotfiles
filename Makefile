@@ -33,9 +33,7 @@ plugins: vimplug virtual_env zplug
 $(INSTALL_DIR)/%: FORCE
 	@ [ ! -L $@ ] || rm $@
 	@ mkdir -p $(dir $@)
-
-	# Create numbered backup if supported
-	ln -sf --backup=numbered $(DOTFILES)/configs/$* $@ \
+	ln -sf --backup=numbered $(DOTFILES)/configs/$* $@ 2>/dev/null\
 		|| ln -sfb $(DOTFILES)/configs/$* $@
 
 FORCE:

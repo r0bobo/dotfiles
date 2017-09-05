@@ -17,7 +17,7 @@ teardown() {
 @test "Backup existing config" {
     touch testdir/.ctags
     INSTALL_DIR=testdir make
-    result=$(ls -1q testdir/.ctags* | wc -l)
+    result=$(ls -1 testdir/.ctags* | wc -l)
     [ "$result" -eq 2 ]
 }
 
