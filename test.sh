@@ -17,7 +17,8 @@ teardown() {
 @test "Backup existing config" {
     touch testdir/.ctags
     INSTALL_DIR=testdir make
-    [ -f testdir/.ctags.~1~ ]
+    result=$(ls -1q testdir/.ctags* | wc -l)
+    [ "$result" -eq 2 ]
 }
 
 @test "Setup vimplug" {

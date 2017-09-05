@@ -15,7 +15,14 @@ CONFIG_FILES := \
 	.tmuxline.conf \
    	.zshrc
 
-.PHONY: all install install_bats plugins test vimplug virtual_env zplug
+.PHONY: all \
+	install \
+	install_bats \
+	plugins \
+	test \
+	vimplug \
+	virtual_env \
+	zplug
 
 all: $(addprefix $(INSTALL_DIR)/, $(CONFIG_FILES))
 
@@ -23,19 +30,27 @@ install: plugins all
 
 plugins: vimplug virtual_env zplug
 
+$(INSTALL_DIR)/%: FORCE
+	@ [ ! -L $@ ] || rm $@
+	@ mkdir -p $(dir $@)
+
+	# Create numbered backup if supported
+	ln -sf --backup=numbered $(DOTFILES)/configs/$* $@ \
+		|| ln -sfb $(DOTFILES)/configs/$* $@
+
+FORCE:
+
+install_bats:
+	git clone https://github.com/sstephenson/bats.git bats
+	bats/install.sh $(BATS_INSTALL_DIR)
+	rm -rf bats
+
 vimplug:
 	curl -fLo $(VIMPLUG_HOME) --create-dirs \
 	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;
 
 zplug:
 	[ -d $(ZPLUG_HOME) ] || git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
-
-$(INSTALL_DIR)/%: FORCE
-	@ [ ! -L $@ ] || rm $@
-	@ mkdir -p $(dir $@)
-	ln -sf --backup=numbered $(DOTFILES)/configs/$* $@
-
-FORCE:
 
 virtual_env: $(VENV)/bin/activate
 $(VENV)/bin/activate: requirements.txt
@@ -45,11 +60,6 @@ $(VENV)/bin/activate: requirements.txt
 		curl https://bootstrap.pypa.io/get-pip.py | python"
 	bash -c "source $(VENV)/bin/activate; \
 		pip install -Ur requirements.txt"
-
-install_bats:
-	git clone https://github.com/sstephenson/bats.git bats
-	bats/install.sh $(BATS_INSTALL_DIR)
-	rm -rf bats
 
 test:
 	bats test.sh
