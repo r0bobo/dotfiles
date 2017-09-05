@@ -68,7 +68,7 @@ Plug 'morhetz/gruvbox'
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'chemzqm/denite-extra'
 Plug 'Shougo/neoinclude.vim'
-" Plug 'nixprime/cpsm', { 'do': 'PY3=ON ./install.sh'}
+Plug 'nixprime/cpsm', { 'do': 'PY3=ON ./install.sh'}
 
 " Deoplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -135,6 +135,7 @@ set incsearch
 let g:loaded_ruby_provider = 1
 
 let g:loaded_python_provider = 1
+let g:python3_host_prog = $HOME."/.local/share/nvim/.virtualenv/bin/python"
 let g:deoplete#sources#jedi#show_docstring = 1
 
 
@@ -152,17 +153,17 @@ autocmd FileType xml,html,xhtml,phtml,js,htmldjango let b:delimitMate_matchpairs
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let g:deoplete#auto_complete_delay=0
 
-function! <SID>AutoProjectRootCD()
-  try
-    if &ft != 'help'
-      ProjectRootCD
-    endif
-  catch
-    " Silently ignore invalid buffers
-  endtry
-endfunction
+" function! <SID>AutoProjectRootCD()
+  " try
+    " if &ft != 'help'
+      " ProjectRootCD
+    " endif
+  " catch
+    " " Silently ignore invalid buffers
+  " endtry
+" endfunction
 
-autocmd BufEnter * call <SID>AutoProjectRootCD()
+" autocmd BufEnter * call <SID>AutoProjectRootCD()
 
 let g:signify_vcs_list = [ 'git', 'hg' ]
 
@@ -332,19 +333,24 @@ vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
         \ 'noremap'
         \)
 
-call denite#custom#var('file_rec', 'command',
-	\ ['rg', '--files', '--glob', '!.git', '--hidden'])
 
-call denite#custom#source(
-	\ 'file_rec', 'matchers', ['matcher_cpsm'])
+" Use ripgrep if avialable
+if executable('rg')
+    call denite#custom#var('file_rec', 'command',
+        \ ['rg', '--files', '--glob', '!.git', '--hidden'])
 
-" Ripgrep command on grep source
-call denite#custom#var('grep', 'command', ['rg'])
-call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
+    call denite#custom#var('grep', 'command', ['rg'])
+    call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+    call denite#custom#var('grep', 'separator', ['--'])
+    call denite#custom#var('grep', 'final_opts', [])
+endif
+
+
+" call denite#custom#source(
+	" \ 'file_rec', 'matchers', ['matcher_cpsm'])
+
 
 " Change default prompt
 call denite#custom#option('default', 'prompt', '>>')
