@@ -3,6 +3,11 @@
 " NeoVim Config
 " ==============================================================================
 "
+let g:loaded_ruby_provider = 1
+
+let g:loaded_python_provider = 1
+let g:python3_host_prog = $HOME."/.local/share/nvim/.virtualenv/bin/python"
+
 " 1. VIM_PLUG {{{
 " ==============================================================================
 call plug#begin('~/.local/share/nvim/plugged')
@@ -45,7 +50,6 @@ Plug 'nixprime/cpsm', { 'do': 'PY3=ON ./install.sh' }
 Plug 'joonty/vdebug'
 Plug 'ludovicchabant/vim-lawrencium', { 'on': 'Hgvdiff' }
 Plug 'tmhedberg/SimpylFold'
-" Plug 'embear/vim-localvimrc'
 Plug 'sjl/gundo.vim'
 Plug 'embear/vim-localvimrc'
 Plug 'vim-scripts/bats.vim'
@@ -113,6 +117,7 @@ set backspace=indent,eol,start
 
 set clipboard+=unnamedplus
 
+set termguicolors
 set background=dark
 :silent! let g:gruvbox_contrast_dark="soft"
 :silent! colorscheme gruvbox
@@ -132,12 +137,6 @@ set cursorline
 set hlsearch
 set incsearch
 
-let g:loaded_ruby_provider = 1
-
-let g:loaded_python_provider = 1
-let g:python3_host_prog = $HOME."/.local/share/nvim/.virtualenv/bin/python"
-let g:deoplete#sources#jedi#show_docstring = 1
-
 
 " }}}
 " 3. PLUGIN-SETTINGS {{{
@@ -152,6 +151,7 @@ autocmd FileType xml,html,xhtml,phtml,js,htmldjango let b:delimitMate_matchpairs
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let g:deoplete#auto_complete_delay=0
+let g:deoplete#sources#jedi#show_docstring = 1
 
 " function! <SID>AutoProjectRootCD()
   " try
@@ -185,6 +185,9 @@ let g:polyglot_disabled = ['python']
 let g:python_highlight_all = 1
 
 let NERDCreateDefaultMappings = 0
+
+let g:localvimrc_sandbox = 0
+let g:localvimrc_ask= 0
 
 " }}}
 " 4. KEYMAP-SETUP {{{
@@ -371,8 +374,7 @@ let g:tmuxline_powerline_separators = 0
 
 " 
 let g:airline#extensions#tabline#enabled = 1
-
-
+let g:airline#extensions#tmuxline#enabled = 0
 
 " }}}
 " 8. TAGBAR-CONFIG {{{
