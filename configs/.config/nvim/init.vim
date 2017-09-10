@@ -169,10 +169,6 @@ let g:NERDCreateDefaultMappings= 0
 
 let NERDTreeMinimalUI = 1
 
-let g:tagbar_autoshowtag = 1
-let g:tagbar_autofocus = 1
-let g:tagbar_width = 31
-
 " Disable polyglot python and used enhanced python syntax
 let g:polyglot_disabled = ['python']
 let g:python_highlight_all = 1
@@ -365,6 +361,11 @@ let g:airline#extensions#tmuxline#enabled = 0
 " }}}
 " TAGBAR-CONFIG {{{
 " ==============================================================================
+let g:tagbar_autoshowtag = 1
+let g:tagbar_autofocus = 1
+let g:tagbar_width = 31
+let g:tagbar_autoclose = 1
+let g:tagbar_compact = 1
 
 let g:tagbar_type_make = {
             \ 'kinds':[
@@ -372,5 +373,15 @@ let g:tagbar_type_make = {
                 \ 't:targets'
             \ ]
 \}
+
+let g:tagbar_type_css = {
+\ 'ctagstype' : 'Css',
+    \ 'kinds'     : [
+        \ 'c:classes',
+        \ 's:selectors',
+        \ 'i:identities'
+    \ ]
+\ }
+
 
 " }}}
