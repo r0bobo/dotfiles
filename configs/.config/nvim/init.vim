@@ -38,7 +38,6 @@ Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar', { 'on': ['TagbarOpen', 'TagbarToggle'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'hecal3/vim-leader-guide'
-Plug 'ryanoasis/vim-devicons'
 Plug 'alvan/vim-closetag'
 Plug 'sheerun/vim-polyglot'
 Plug 'dbakker/vim-projectroot'
@@ -85,11 +84,15 @@ Plug 'wellle/tmux-complete.vim'
 Plug 'Shougo/echodoc'
 Plug 'Konfekt/FastFold'
 
+if $USER=="dean"
+    Plug 'ryanoasis/vim-devicons'
+endif
+
 call plug#end()
 
 
 " }}}
-" GENERAL-SETTINGS {{{
+" GENERAL SETTINGS {{{
 " ==============================================================================
 if $USER=="dean"
     set termguicolors
