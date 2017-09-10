@@ -1,16 +1,16 @@
 # vim:foldmethod=marker:foldlevel=0:foldenable
 
 # ZSH Config
-# ==============================================================================
+# ==========
 
-# 1. PATHS {{{
+# PATHS {{{
 # ==============================================================================
 export ZPLUG_HOME=${ZPLUG_HOME-~/.zplug}
 export VIMPLUG_HOME=${VIMPLUG_HOME-~/.local/share/nvim/site/autoload/plug.vim}
 export PATH=$HOME/.local/bin:$PATH
 
 # }}}
-# 2. HOST SPECIFIC {{{
+# HOST SPECIFIC {{{
 # ==============================================================================
 if [[ `whoami` == "deatod" ]]; then
     # create a zkbd compatible hash;
@@ -72,7 +72,7 @@ elif [[ `whoami` == "dean" ]]; then
 fi
 
 # }}}
-# 3. GENERAL SETTINGS {{{
+# GENERAL SETTINGS {{{
 # ==============================================================================
 export EDITOR='nvim'
 export DEFAULT_USER=`whoami`
@@ -127,7 +127,7 @@ fi
 export KEYTIMEOUT=1
 
 # }}}
-# 4. ALIASES {{{
+# ALIASES {{{
 # ==============================================================================
 
 alias zshreload="source ~/.zshrc"
@@ -137,7 +137,7 @@ alias la='ls -lAh --color=auto'
 
 
 # }}}
-# 5. ZPLUG {{{
+# ZPLUG {{{
 # ==============================================================================
 
 source $ZPLUG_HOME/init.zsh
@@ -158,7 +158,7 @@ zplug load
 
 
 # }}}
-# 6. FZF CONFIG {{{
+# FZF CONFIG {{{
 # ==============================================================================
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
