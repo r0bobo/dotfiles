@@ -1,33 +1,37 @@
 " vim:foldmethod=marker:foldlevel=0:foldenable
 
 " NeoVim Config
+" =============
+
+" INITIAL {{{
 " ==============================================================================
-"
 let g:loaded_ruby_provider = 1
 
 let g:loaded_python_provider = 1
 let g:python3_host_prog = $HOME."/.local/share/nvim/.virtualenv/bin/python"
 
-" 1. VIM_PLUG {{{
+
+" }}}
+" PLUGINS {{{
 " ==============================================================================
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'scrooloose/nerdcommenter', { 'on': [
-            \ '<Plug>NERDCommenterToggle',
-            \ '<Plug>NERDCommenterComment',
-            \ '<Plug>NERDCommenterUncomment' ] }
+        \ '<Plug>NERDCommenterToggle',
+        \ '<Plug>NERDCommenterComment',
+        \ '<Plug>NERDCommenterUncomment' ] }
 Plug 'raimondi/delimitmate'
-Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeFind', 'NERDTreeToggle', 'NERDTreeOpen'] }
+Plug 'scrooloose/nerdtree',
+        \ { 'on': ['NERDTreeFind', 'NERDTreeToggle', 'NERDTreeOpen'] }
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight', { 'on': [
-            \ 'NERDTreeFind',
-            \ 'NERDTreeToggle',
-            \ 'NERDTreeOpen'] }
+        \ 'NERDTreeFind',
+        \ 'NERDTreeToggle',
+        \ 'NERDTreeOpen'] }
 Plug 'mhinz/vim-signify'
 Plug 'haya14busa/incsearch.vim'
 Plug 'itchyny/vim-cursorword'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-" Plug 'mhinz/vim-startify'
 " Plug 'ntpeters/vim-better-whitespace'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'w0rp/ale'
@@ -65,7 +69,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'edkolev/tmuxline.vim'
 
 " Colorschemes
-" Plug 'mhartington/oceanic-next'
 Plug 'morhetz/gruvbox'
 
 " Denite
@@ -86,8 +89,11 @@ call plug#end()
 
 
 " }}}
-" 2. GENERAL-SETTINGS {{{
+" GENERAL-SETTINGS {{{
 " ==============================================================================
+if $USER=="dean"
+    set termguicolors
+endif
 
 set encoding=utf-8
 
@@ -110,6 +116,7 @@ set showmatch
 
 set wrap!
 
+set cursorline
 set hlsearch
 set incsearch
 
@@ -117,31 +124,26 @@ set backspace=indent,eol,start
 
 set clipboard+=unnamedplus
 
-set termguicolors
+set nofoldenable
+
+" Theme
 set background=dark
 :silent! let g:gruvbox_contrast_dark="soft"
 :silent! colorscheme gruvbox
 
-:silent! call deoplete#enable()
-
 set modeline
 set modelines=5
 
+
+" }}}
+" FILETYPE-SETTINGS {{{
+" =============================================================================
 autocmd Filetype html setlocal ts=2 sts=2 sw=2  "Tab length = 2 in html
-
-set nofoldenable
-
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-set cursorline
-set hlsearch
-set incsearch
 
 
 " }}}
-" 3. PLUGIN-SETTINGS {{{
+" PLUGIN-SETTINGS {{{
 " =============================================================================
-
 " filenames like *.xml, *.html, *.xhtml, ...
 let g:closetag_filenames = '*.xml,*.html,*.xhtml,*.phtml,*.js'
 
@@ -149,21 +151,15 @@ let g:closetag_filenames = '*.xml,*.html,*.xhtml,*.phtml,*.js'
 autocmd FileType xml,html,xhtml,phtml,js,htmldjango let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 " deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 let g:deoplete#auto_complete_delay=0
 let g:deoplete#sources#jedi#show_docstring = 1
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-" function! <SID>AutoProjectRootCD()
-  " try
-    " if &ft != 'help'
-      " ProjectRootCD
-    " endif
-  " catch
-    " " Silently ignore invalid buffers
-  " endtry
-" endfunction
+:silent! call deoplete#enable()
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
-" autocmd BufEnter * call <SID>AutoProjectRootCD()
+" Autoclose Deoplete preview
+autocmd CompleteDone * silent! pclose!
 
 let g:signify_vcs_list = [ 'git', 'hg' ]
 
@@ -177,20 +173,18 @@ let g:tagbar_autoshowtag = 1
 let g:tagbar_autofocus = 1
 let g:tagbar_width = 31
 
-" Autoclose Deoplete preview
-autocmd CompleteDone * silent! pclose!
-
 " Disable polyglot python and used enhanced python syntax
-let g:polyglot_disabled = ['python'] 
+let g:polyglot_disabled = ['python']
 let g:python_highlight_all = 1
 
 let NERDCreateDefaultMappings = 0
 
 let g:localvimrc_sandbox = 0
-let g:localvimrc_ask= 0
+let g:localvimrc_ask = 0
+
 
 " }}}
-" 4. KEYMAP-SETUP {{{
+" KEYMAP-SETUP {{{
 " ==============================================================================
 
 noremap <F9> :TagbarOpen -j <CR>
@@ -209,7 +203,7 @@ noremap <silent> <C-Right> :TmuxNavigateRight<CR>
 
 
 " }}}
-" 5. LEADER-KEY-SETUP {{{
+" LEADER-KEY-SETUP {{{
 " ==============================================================================
 
 let mapleader = ' '
@@ -238,7 +232,7 @@ let g:lmap.e = {
     \   'name' : 'Extra',
     \   'r' : [ 'so $MYVIMRC', 'Reload Neovim Config' ],
     \   'i' : [ 'edit $MYVIMRC', 'Open init.vim'],
-    \   'n' : [ 'Denite line -cursor-wrap -auto-highlight -input=^.*\{{3}$',
+    \   'n' : [ 'Denite line -cursor-wrap -auto-highlight -input=^.*\{{3}$ -mode=normal',
     \           'Navigate dotfiles' ],
     \}
 
@@ -300,12 +294,12 @@ let g:lmap.i = {
     \   'n' : [ 'NERDTreeToggle', 'Open NERDTree'],
     \}
 
-call leaderGuide#register_prefix_descriptions(' ', "g:lmap")
+:silent! call leaderGuide#register_prefix_descriptions(' ', "g:lmap")
 nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
 
 " "}}}
-" 6. DENITE-CONFIG {{{
+" DENITE-CONFIG {{{
 " ==============================================================================
 
 :silent! call denite#custom#map(
@@ -339,45 +333,37 @@ vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
 
 " Use ripgrep if avialable
 if executable('rg')
-    call denite#custom#var('file_rec', 'command',
+    :silent! call denite#custom#var('file_rec', 'command',
         \ ['rg', '--files', '--glob', '!.git', '--hidden'])
 
-    call denite#custom#var('grep', 'command', ['rg'])
-    call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
-    call denite#custom#var('grep', 'recursive_opts', [])
-    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-    call denite#custom#var('grep', 'separator', ['--'])
-    call denite#custom#var('grep', 'final_opts', [])
+    :silent! call denite#custom#var('grep', 'command', ['rg'])
+    :silent! call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading'])
+    :silent! call denite#custom#var('grep', 'recursive_opts', [])
+    :silent! call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+    :silent! call denite#custom#var('grep', 'separator', ['--'])
+    :silent! call denite#custom#var('grep', 'final_opts', [])
 endif
 
-
 " call denite#custom#source(
-	" \ 'file_rec', 'matchers', ['matcher_cpsm'])
-
+    " \ 'file_rec', 'matchers', ['matcher_cpsm'])
 
 " Change default prompt
-call denite#custom#option('default', 'prompt', '>>')
+:silent! call denite#custom#option('default', 'prompt', '>>')
 
 
 " "}}}
-" 7. AIRLINE-CONFIG {{{
+" AIRLINE-CONFIG {{{
 " ==============================================================================
-
-" if !exists('g:airline_symbols')
-" 	let g:airline_symbols = {}
-" endif
-" 
 let g:airline_powerline_fonts = 0
-" let g:airline_symbols.space = "\ua0"
 
 let g:tmuxline_powerline_separators = 0
 
-" 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 0
 
+
 " }}}
-" 8. TAGBAR-CONFIG {{{
+" TAGBAR-CONFIG {{{
 " ==============================================================================
 
 let g:tagbar_type_make = {
