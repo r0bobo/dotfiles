@@ -6,6 +6,7 @@ VIMPLUG_HOME := $(INSTALL_DIR)/.local/share/nvim/site/autoload/plug.vim
 VENV := $(INSTALL_DIR)/.local/share/nvim/.virtualenv
 
 CONFIG_FILES := \
+	.config/alacritty/alacritty.yml \
 	.config/nvim/init.vim \
 	.config/termite/config \
 	.ctags \
