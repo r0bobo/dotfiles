@@ -143,6 +143,7 @@ set modelines=5
 " =============================================================================
 autocmd Filetype html setlocal ts=2 sts=2 sw=2  "Tab length = 2 in html
 
+autocmd Filetype python setlocal foldmethod=indent
 
 " }}}
 " PLUGIN-SETTINGS {{{
