@@ -9,6 +9,7 @@ let g:loaded_ruby_provider = 1
 
 let g:loaded_python_provider = 1
 let g:python3_host_prog = $HOME."/.local/share/nvim/.virtualenv/bin/python"
+let g:deoplete#sources#jedi#python_path = g:python3_host_prog
 
 
 " }}}
@@ -210,7 +211,12 @@ let mapleader = ' '
 set timeoutlen=20
 set ttimeoutlen=0
 
-let g:lmap = {}
+let g:lmap = {
+    \   '/' : [ 'Denite line -cursor-wrap -auto-highlight -smartcase', 'Line'],
+    \   '*' : [ 'DeniteCursorWord line -cursor-wrap -auto-highlight',
+            \   'Line Selected Word' ],
+    \}
+
 let g:lmap.d = {
     \   'name' : 'Denite',
     \   'p' : [ 'ProjectRootExe DeniteProjectDir file_rec -cursor-wrap', 'Project Files'],
@@ -218,6 +224,7 @@ let g:lmap.d = {
     \   'b' : [ 'Denite buffer -cursor-wrap', 'Open Buffers'],
     \   'o' : [ 'Denite file_old -cursor-wrap', 'Old File'],
     \   't' : [ 'Denite outline -cursor-wrap -auto-highlight', 'Code Tags'],
+    \   'T' : [ 'DeniteCursorWord outline -cursor-wrap -auto-highlight', 'Code Tags'],
     \   'l' : [ 'Denite line -cursor-wrap -auto-highlight -smartcase', 'Line'],
     \   'L' : [ 'DeniteCursorWord line -cursor-wrap -auto-highlight',
             \   'Line Selected Word' ],
