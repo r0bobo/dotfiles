@@ -89,6 +89,10 @@ if $USER=="dean"
     Plug 'ryanoasis/vim-devicons'
 endif
 
+if $USER=="deatod"
+    Plug '~/.vim_plugin'
+endif
+
 call plug#end()
 
 
@@ -291,8 +295,9 @@ let g:lmap.m = {
 let g:lmap.a = {
     \   'name' : 'ALE',
     \   't': [ 'ALEToggle', 'Toggle' ],
-    \   'n': [ 'call feedkeys("\<Plug>(ale_next_wrap)")', 'Next Error' ],
-    \   'p': [ 'call feedkeys("\<Plug>(ale_previous_wrap)")', 'Previous Error' ],
+    \   'n': [ 'ALENextWrap', 'Next Error' ],
+    \   'p': [ 'ALEPreviousWrap', 'Previous Error' ],
+    \   's': [ 'ALEFixSuggest', 'Show suggestions' ],
     \}
 
 let g:lmap.i = {
