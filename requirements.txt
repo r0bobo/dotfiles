@@ -1,4 +1,13 @@
+certifi
+chardet
+docopt
 greenlet
+idna
 jedi
 msgpack-python
 neovim
+python-dateutil
+requests
+six
+urllib3
+vint
