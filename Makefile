@@ -11,6 +11,7 @@ CONFIG_FILES := \
 	.config/termite/config \
 	.ctags \
 	.gitconfig \
+	.globalrc \
 	.ignore \
 	.spacemacs \
 	.tmux.conf \
