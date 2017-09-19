@@ -145,7 +145,6 @@ source $ZPLUG_HOME/init.zsh
 
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zdharma/fast-syntax-highlighting"
-zplug "jreese/zsh-titles"
 zplug "zuxfoucault/colored-man-pages_mod"
 zplug "hlissner/zsh-autopair"
 zplug "hcgraf/zsh-sudo"
