@@ -225,7 +225,6 @@ let g:lmap.d = {
     \   'name' : 'Denite',
     \   'p' : [ 'ProjectRootExe DeniteProjectDir file_rec -cursor-wrap', 'Project Files'],
     \   'P' : [ 'DeniteBufferDir file_rec -cursor-wrap', 'Dir Files'],
-    \   'b' : [ 'Denite buffer -cursor-wrap', 'Open Buffers'],
     \   'o' : [ 'Denite file_old -cursor-wrap', 'Old File'],
     \   't' : [ 'Denite outline -cursor-wrap -auto-highlight', 'Code Tags'],
     \   'T' : [ 'DeniteCursorWord outline -cursor-wrap -auto-highlight', 'Code Tags'],
@@ -277,6 +276,7 @@ let g:lmap.c = {
 
 let g:lmap.b = {
     \   'name' : 'Buffers',
+    \   'b' : [ 'Denite buffer -cursor-wrap', 'List Buffers'],
     \   'n' : [ 'bnext', 'Next' ],
     \   'p' : [ 'bprevious', 'Previous' ],
     \   'q' : [ 'bdelete', 'Close' ],
@@ -338,6 +338,34 @@ vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
 :silent! call denite#custom#map(
         \ 'normal',
         \ '<Down>',
+        \ '<denite:move_to_next_line>',
+        \ 'noremap'
+        \)
+
+:silent! call denite#custom#map(
+        \ 'insert',
+        \ '<C-k>',
+        \ '<denite:move_to_previous_line>',
+        \ 'noremap'
+        \)
+
+:silent! call denite#custom#map(
+        \ 'insert',
+        \ '<C-j>',
+        \ '<denite:move_to_next_line>',
+        \ 'noremap'
+        \)
+
+:silent! call denite#custom#map(
+        \ 'normal',
+        \ '<C-k>',
+        \ '<denite:move_to_previous_line>',
+        \ 'noremap'
+        \)
+
+:silent! call denite#custom#map(
+        \ 'normal',
+        \ '<C-j>',
         \ '<denite:move_to_next_line>',
         \ 'noremap'
         \)
