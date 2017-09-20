@@ -45,7 +45,6 @@ This function should only modify configuration layer settings."
      nginx
      markdown
      org
-     javascript
      html
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -359,7 +358,9 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  ;; Set powerline separator style
   (setq powerline-default-separator 'arrow)
+  ;; Make prettier completion popup
   (custom-set-faces
    '(company-tooltip-common
      ((t (:inherit company-tooltip :weight bold :underline nil))))
