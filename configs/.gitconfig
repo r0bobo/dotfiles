@@ -38,3 +38,5 @@
 
 [color]
 	ui = true
+[magit]
+	hideCampaign = true
