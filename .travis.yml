@@ -8,10 +8,10 @@ cache: pip
 addons:
   apt:
     sources:
-        - sourceline: 'ppa:neovim-ppa/unstable'
+        # - sourceline: 'ppa:neovim-ppa/unstable'
         - sourceline: 'ppa:duggan/bats'
     packages:
-        - neovim
+        # - neovim
         - bats
 
 before_install:
