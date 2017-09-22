@@ -46,17 +46,20 @@ This function should only modify configuration layer settings."
             shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)
+     shell-scripts
      syntax-checking
      themes-megapack
      version-control
-     vimscript
      )
    dean--layers-thinkpad
    '(
      django
+     github
      html
      markdown
      nginx
+     systemd
+     vimscript
      )
   dean--layers-work
   '(
