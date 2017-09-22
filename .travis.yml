@@ -21,4 +21,3 @@ before_install:
 script:
     - cd /home/travis/build/r0bobo/dotfiles
     - make test
-
