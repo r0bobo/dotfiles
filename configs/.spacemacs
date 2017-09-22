@@ -58,10 +58,17 @@ This function should only modify configuration layer settings."
      markdown
      nginx
      )
-   )
+  dean--layers-work
+  '(
+    mercurial
+    )
+  )
 
   (cond ((equal user-login-name "dean")
-         (setq dean--layers (append dean--layers dean--layers-thinkpad))))
+         (setq dean--layers (append dean--layers dean--layers-thinkpad)))
+        ((equal user-login-name "deatod")
+         (setq dean--layers (append dean--layers dean--layers-work)))
+         )
 
   (setq-default
    ;; List of configuration layers to load.
