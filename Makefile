@@ -16,6 +16,7 @@ CONFIG_FILES := \
 	.spacemacs \
 	.tmux.conf \
 	.tmuxline.conf \
+	.zshenv \
 	.zshrc
 
 .PHONY: all

@@ -3,14 +3,6 @@
 # ZSH Config
 # ==========
 
-# PATHS {{{
-# ==============================================================================
-export ZPLUG_HOME=${ZPLUG_HOME-~/.zplug}
-export VIMPLUG_HOME=${VIMPLUG_HOME-~/.local/share/nvim/site/autoload/plug.vim}
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.gem/ruby/2.3.0/bin:$PATH
-
-# }}}
 # HOST SPECIFIC {{{
 # ==============================================================================
 if [[ `whoami` == "deatod" ]]; then
