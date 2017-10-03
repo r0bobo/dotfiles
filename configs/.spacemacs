@@ -55,6 +55,7 @@ This function should only modify configuration layer settings."
    dean--layers-thinkpad
    '(
      django
+     docker
      github
      html
      markdown
