@@ -50,7 +50,6 @@ This function should only modify configuration layer settings."
      shell-scripts
      syntax-checking
      themes-megapack
-     version-control
      )
    dean--layers-thinkpad
    '(
@@ -61,12 +60,15 @@ This function should only modify configuration layer settings."
      markdown
      nginx
      systemd
+     version-control
      vimscript
      yaml
      )
   dean--layers-work
   '(
     mercurial
+    (version-control :variables
+                     version-control-diff-tool 'diff-hl)
     )
   )
 
