@@ -5,7 +5,7 @@
 
 # DUMB TERMINALS {{{
 # ==============================================================================
-if [[ "TERM" == "dumb" ]] && unsetopt zle && PS1='$ ' && return
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
 # }}}
 # HOST SPECIFIC {{{
