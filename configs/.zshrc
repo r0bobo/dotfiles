@@ -5,6 +5,7 @@
 
 # DUMB TERMINALS {{{
 # ==============================================================================
+# Disable zsh features when using "dumb" terminal to avoid issues with Emacs Tramp
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ ' && return
 
 # }}}
