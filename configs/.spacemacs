@@ -35,6 +35,7 @@ This function should only modify configuration layer settings."
    '(
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t)
+     common-lisp
      emacs-lisp
      git
      gtags
@@ -50,6 +51,7 @@ This function should only modify configuration layer settings."
      shell-scripts
      syntax-checking
      themes-megapack
+     treemacs
      version-control
      )
    dean--layers-thinkpad
