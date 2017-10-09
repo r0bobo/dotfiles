@@ -50,9 +50,11 @@ This function should only modify configuration layer settings."
      shell-scripts
      syntax-checking
      themes-megapack
+     treemacs
      )
    dean--layers-thinkpad
    '(
+     common-lisp
      django
      docker
      github
