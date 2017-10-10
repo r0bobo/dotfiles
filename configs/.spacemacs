@@ -32,8 +32,7 @@ This function should only modify configuration layer settings."
   ;; Setup different layers for different computers
   (setq
    dean--layers
-   '(
-     (auto-completion :variables
+   '((auto-completion :variables
                       auto-completion-enable-snippets-in-popup t)
      emacs-lisp
      git
@@ -50,11 +49,9 @@ This function should only modify configuration layer settings."
      shell-scripts
      syntax-checking
      themes-megapack
-     treemacs
-     )
+     treemacs)
    dean--layers-thinkpad
-   '(
-     common-lisp
+   '(common-lisp
      django
      docker
      github
@@ -64,17 +61,16 @@ This function should only modify configuration layer settings."
      systemd
      version-control
      vimscript
-     yaml
-     )
+     yaml)
   dean--layers-work
-  '(
-    mercurial
+  '(mercurial
     (version-control :variables
-                     version-control-diff-tool 'diff-hl)
-    )
+                     version-control-diff-tool 'diff-hl))
+  users-home
+  '("dean" "deant" "pi" "u0_a97")
   )
 
-  (cond ((equal user-login-name "dean")
+  (cond ((member user-login-name users-home)
          (setq dean--layers (append dean--layers dean--layers-thinkpad)))
         ((equal user-login-name "deatod")
          (setq dean--layers (append dean--layers dean--layers-work)))
@@ -160,8 +156,7 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(gruvbox
-                         solarized-light
-                         leuven)
+                         solarized-light)
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
    dotspacemacs-colorize-cursor-according-to-state t
