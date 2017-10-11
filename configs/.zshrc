@@ -171,3 +171,10 @@ function ff() {
 }
 
 # }}}
+# PLUGINS {{{
+# ==============================================================================
+
+# added by travis gem
+[ -f /home/dean/.travis/travis.sh ] && source /home/dean/.travis/travis.sh
+
+# }}}
