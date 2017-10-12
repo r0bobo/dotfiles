@@ -372,6 +372,9 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
+  (spacemacs|use-package-add-hook eshell
+    :pre-init
+    (setq eshell-aliases-file (concat dotspacemacs-directory "eshell-aliases")))
   )
 
 (defun dotspacemacs/user-config ()
