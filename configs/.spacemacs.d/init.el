@@ -43,7 +43,10 @@ This function should only modify configuration layer settings."
      imenu-list
      org
      python
-     ranger
+     (ranger :variables
+             ranger-show-literal nil
+             ranger-max-preview-size 1
+             ranger-dont-show-binary t)
      (shell :variables
             shell-default-shell 'eshell
             shell-default-height 30
