@@ -27,7 +27,8 @@ This function should only modify configuration layer settings."
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path
-   '("~/.spacemacs.d/layers/")
+   '("~/.spacemacs.d/layers/"
+     "~/.emacs.d/private/")
    )
 
   ;; Setup different layers for different computers

@@ -1,5 +1,30 @@
-#+TITLE: Mercurial VCS Layer
+#+TITLE: mercurial layer
+
+[[file:img/mercurial.png]]
+
+* Table of Contents                                        :TOC_4_gh:noexport:
+- [[#description][Description]]
+  - [[#features][Features:]]
+- [[#install][Install]]
+- [[#key-bindings][Key bindings]]
 
 * Description
 This is a mercurial layer copied from [[https://github.com/syl20bnr/spacemacs/pull/7455/commits/36330cd56ec1a3428afeeb08bd45dff068d30567][this pull request]] by [[https://github.com/jbenden][jbenden]].
 It uses [[https://github.com/ananthakumaran/monky][monky]].
+
+** Features:
+  - Status
+  - Diff
+  - Blame
+  - ...
+
+* Install
+To use this configuration layer, add it to your =~/.spacemacs=. You will need to
+add =mercurial= to the existing =dotspacemacs-configuration-layers= list in this
+file.
+
+* Key bindings
+
+| Key Binding | Description      |
+|-------------+------------------|
+| ~SPC g g s~ | Mercurial status |
