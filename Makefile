@@ -13,7 +13,7 @@ CONFIG_FILES := \
 	.gitconfig \
 	.globalrc \
 	.ignore \
-	.spacemacs \
+	.spacemacs.d \
 	.tmux.conf \
 	.tmuxline.conf \
 	.zshenv \
@@ -30,9 +30,13 @@ plugins: vimplug virtual_env zplug
 
 $(INSTALL_DIR)/%: FORCE
 	@ [ ! -L $@ ] || rm $@
+	@ # Backup directory if already exists
+	@ if [ -d $@ ]; then [ -d $@.~ ] && rm -r $@.~; mv $@ $@.~; fi
 	@ mkdir -p $(dir $@)
-	ln -sf --backup=numbered $(DOTFILES)/configs/$* $@ 2>/dev/null\
+	@ # Create symlink and backup (dont create numbered backup if not supported)
+	@	ln -sf --backup=numbered $(DOTFILES)/configs/$* $@ 2>/dev/null\
 		|| ln -sfb $(DOTFILES)/configs/$* $@
+	@ echo "linking $@"
 
 FORCE:
 
@@ -55,7 +59,7 @@ zplug:
 virtual_env: $(VENV)/bin/activate
 $(VENV)/bin/activate: requirements.txt
 	python3 -m venv --without-pip $(VENV)
-	# Fix broken venv-pip in Debian 8 and Ubuntu 14.04
+	@ # Fix broken venv-pip in Debian 8 and Ubuntu 14.04
 	bash -c "source $(VENV)/bin/activate; \
 		curl https://bootstrap.pypa.io/get-pip.py | python"
 	bash -c "source $(VENV)/bin/activate; \
