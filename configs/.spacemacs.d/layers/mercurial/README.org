@@ -1,0 +1,5 @@
+#+TITLE: Mercurial VCS Layer
+
+* Description
+This is a mercurial layer copied from [[https://github.com/syl20bnr/spacemacs/pull/7455/commits/36330cd56ec1a3428afeeb08bd45dff068d30567][this pull request]] by [[https://github.com/jbenden][jbenden]].
+It uses [[https://github.com/ananthakumaran/monky][monky]].
