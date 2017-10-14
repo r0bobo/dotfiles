@@ -176,7 +176,13 @@ It should only modify the values of Spacemacs settings."
                                :size 13
                                :weight normal
                                :width normal
-                               :powerline-scale 1.2))
+                               :powerline-scale 1.2)
+                               ("DejaVu Sans Mono for Powerline"
+                                :size 13
+                                :weight normal
+                                :width normal
+                                :powerline-scale 1.2)
+                               )
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands `M-x' (after pressing on the leader key).
