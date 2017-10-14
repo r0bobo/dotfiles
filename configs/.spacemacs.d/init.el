@@ -55,7 +55,7 @@ This function should only modify configuration layer settings."
      syntax-checking
      themes-megapack
      treemacs)
-   dean--layers-thinkpad
+   dean--layers-home
    '(common-lisp
      django
      docker
@@ -76,7 +76,7 @@ This function should only modify configuration layer settings."
   )
 
   (cond ((member user-login-name users-home)
-         (setq dean--layers (append dean--layers dean--layers-thinkpad)))
+         (setq dean--layers (append dean--layers dean--layers-home)))
         ((equal user-login-name "deatod")
          (setq dean--layers (append dean--layers dean--layers-work)))
          )
