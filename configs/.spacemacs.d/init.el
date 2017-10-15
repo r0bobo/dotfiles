@@ -57,6 +57,7 @@ This function should only modify configuration layer settings."
      treemacs)
    dean--layers-home
    '(common-lisp
+     deft
      django
      docker
      github
