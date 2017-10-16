@@ -55,8 +55,9 @@ This function should only modify configuration layer settings."
      syntax-checking
      themes-megapack
      treemacs)
-   dean--layers-thinkpad
+   dean--layers-home
    '(common-lisp
+     deft
      django
      docker
      github
@@ -76,7 +77,7 @@ This function should only modify configuration layer settings."
   )
 
   (cond ((member user-login-name users-home)
-         (setq dean--layers (append dean--layers dean--layers-thinkpad)))
+         (setq dean--layers (append dean--layers dean--layers-home)))
         ((equal user-login-name "deatod")
          (setq dean--layers (append dean--layers dean--layers-work)))
          )
@@ -160,7 +161,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(gruvbox
+   dotspacemacs-themes '(gruvbox-dark-soft
                          solarized-light)
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
