@@ -36,6 +36,7 @@ This function should only modify configuration layer settings."
    dean--layers
    '((auto-completion :variables
                       auto-completion-enable-snippets-in-popup t)
+     deft
      emacs-lisp
      git
      gtags
