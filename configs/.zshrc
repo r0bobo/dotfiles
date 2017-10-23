@@ -163,11 +163,24 @@ zplug load
 # FZF CONFIG {{{
 # ==============================================================================
 
+# http://www.owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --no-messages \
+       --glob "!(.git,node_modules,.hg)/*"'
 
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 function ff() {
     nvim $(fzf)
+}
+
+tm() {
+    [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+    if [ $1 ]; then
+        tmux $change -t "$1" 2>/dev/null \
+            || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
+    fi
+    session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) \
+           && tmux $change -t "$session" || echo "No sessions found."
 }
 
 # }}}
