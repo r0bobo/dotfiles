@@ -396,6 +396,8 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  ;; Avoid startup errors with zshenv (https://github.com/syl20bnr/spacemacs/issues/3920)
+  (setq exec-path-from-shell-arguments '("-i"))
   ;; Set powerline separator style
   (setq powerline-default-separator 'slant)
   ;; Make prettier completion popup
