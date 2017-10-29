@@ -117,11 +117,11 @@ setopt auto_pushd
 # Fix right prompt offset
 ZLE_RPROMPT_INDENT=0
 
-# Pip auto completion
-if type "pip" > /dev/null; then
-    eval "`pip completion --zsh`"
-    compctl -K _pip_completion pip3
-fi
+# # Pip auto completion
+# if type "pip" > /dev/null; then
+#     eval "`pip completion --zsh`"
+#     compctl -K _pip_completion pip3
+# fi
 
 export KEYTIMEOUT=1
 
