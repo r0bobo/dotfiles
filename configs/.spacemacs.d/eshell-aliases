@@ -3,3 +3,4 @@ alias cheat-search curl cheat.sh/~$1
 alias la ls -la $*
 alias ll ls -l $*
 alias update-spacemacs git -C ~/.emacs.d pull --rebase
+alias cd pushd $1
