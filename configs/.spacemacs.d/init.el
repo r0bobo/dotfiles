@@ -388,6 +388,11 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (spacemacs|use-package-add-hook eshell
     :pre-init
     (setq eshell-aliases-file (concat dotspacemacs-directory "eshell-aliases")))
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (eshell-cmpl-initialize)
+              (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
+              (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)))
   )
 
 (defun dotspacemacs/user-config ()
@@ -406,6 +411,14 @@ before packages are loaded."
      ((t (:inherit company-tooltip :weight bold :underline nil))))
    '(company-tooltip-common-selection
      ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+  ;; Use ranger-deer instead of dired
+  (ranger-override-dired-mode t)
+
+  (cond ((equal user-login-name "deatod")
+         (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/" t)
+         (require 'crc-mode)
+         (require 'crg-mode)
+         ))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
