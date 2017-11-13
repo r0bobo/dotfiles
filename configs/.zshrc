@@ -64,10 +64,10 @@ if [[ `whoami` == "deatod" ]]; then
     compaudit | xargs chmod g-w 2>/dev/null
 
     PURE_PROMPT_SYMBOL='>'
-elif [[ `whoami` == "dean" ]]; then
-    if command -v tmux>/dev/null; then
-        [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
-    fi
+# elif [[ `whoami` == "dean" ]]; then
+    # if command -v tmux>/dev/null; then
+        # [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+    # fi
 fi
 
 # }}}
@@ -160,7 +160,7 @@ zplug load
 
 
 # }}}
-# FZF CONFIG {{{
+# FUNCTIONS {{{
 # ==============================================================================
 
 # http://www.owen.cymru/fzf-ripgrep-navigate-with-bash-faster-than-ever-before/
@@ -173,6 +173,7 @@ function ff() {
     nvim $(fzf)
 }
 
+# Create new session or select existing one
 tm() {
     [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
     if [ $1 ]; then
@@ -182,6 +183,16 @@ tm() {
     session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) \
            && tmux $change -t "$session" || echo "No sessions found."
 }
+
+# Detach from tmux instead of exiting
+exit() {
+    if [[ -z $TMUX ]]; then
+        builtin exit
+    else
+        tmux detach
+    fi
+}
+
 
 # }}}
 # PLUGINS {{{
