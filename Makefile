@@ -65,7 +65,7 @@ $(VENV)/bin/activate: requirements.txt
 	bash -c "source $(VENV)/bin/activate; \
 		pip install -Ur requirements.txt"
 
-.PHONY: spacemac
+.PHONY: spacemacs
 spacemacs:
 	git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
