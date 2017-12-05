@@ -419,8 +419,6 @@ before packages are loaded."
      ((t (:inherit company-tooltip :weight bold :underline nil))))
    '(company-tooltip-common-selection
      ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
-  ;; Use ranger-deer instead of dired
-  (ranger-override-dired-mode t)
 
   (cond ((equal user-login-name "deatod")
          (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/" t)
