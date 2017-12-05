@@ -184,15 +184,6 @@ tm() {
            && tmux $change -t "$session" || echo "No sessions found."
 }
 
-# Detach from tmux instead of exiting
-exit() {
-    if [[ -z $TMUX ]]; then
-        builtin exit
-    else
-        tmux detach
-    fi
-}
-
 
 # }}}
 # PLUGINS {{{
