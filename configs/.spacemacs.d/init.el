@@ -55,7 +55,8 @@ This function should only modify configuration layer settings."
      shell-scripts
      syntax-checking
      themes-megapack
-     treemacs)
+     treemacs
+     yaml)
    dean--layers-home
    '(common-lisp
      deft
@@ -70,8 +71,7 @@ This function should only modify configuration layer settings."
      rust
      systemd
      version-control
-     vimscript
-     yaml)
+     vimscript)
   dean--layers-work
   '(mercurial
     (version-control :variables
@@ -126,6 +126,10 @@ It should only modify the values of Spacemacs settings."
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    ;; (default 5)
    dotspacemacs-elpa-timeout 5
+   ;; If non-nil then Spacelpa repository is the primary source to install
+   ;; a locked version of packages. If nil then Spacemacs will install the lastest
+   ;; version of packages from MELPA. (default nil)
+   dotspacemacs-use-spacelpa nil
    ;; If non-nil then verify the signature for downloaded Spacelpa archives.
    ;; (default nil)
    dotspacemacs-verify-spacelpa-archives t
