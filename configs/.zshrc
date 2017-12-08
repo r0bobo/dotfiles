@@ -104,6 +104,8 @@ zstyle ':completion:*:default'  list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 
+# Add local completion scripts
+fpath=($HOME/.zsh/completion $fpath)
 
 autoload -Uz compinit promptinit run-help
 compinit
