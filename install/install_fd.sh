@@ -6,8 +6,8 @@ set -e
 
 # Setup paths
 DOWNLOAD_DIR=~/Downloads
-DOWNLOAD_URL='https://api.github.com/repos/BurntSushi/ripgrep/releases/latest'
-DEST_DIR_NAME=ripgrep
+DOWNLOAD_URL='https://api.github.com/repos/sharkdp/fd/releases/latest'
+DEST_DIR_NAME=fd
 
 PKGDIR=~/.local
 ZSH_COMP_DIR=~/.zsh/completion
@@ -23,16 +23,17 @@ function install_pkg() {
     download_gh_release $DOWNLOAD_URL \
                         $DOWNLOAD_DIR \
                         $DEST_DIR_NAME \
-                        x86_64-unknown-linux
+                        x86_64-unknown-linux-gnu
+
 
     echo "Installing"
     install -d -m 755 "$PKGDIR/bin/"
     install -d "$PKGDIR/share/man/man1/"
     install -d -m 755 "$ZSH_COMP_DIR/"
 
-    install -m 755 "rg" "$PKGDIR/bin/rg"
-    install -m 644 "rg.1" "$PKGDIR/share/man/man1/rg.1"
-    install -m 644 "complete/_rg" "$ZSH_COMP_DIR/_rg"
+    install -m 755 "fd" "$PKGDIR/bin/fd"
+    install -m 644 "fd.1" "$PKGDIR/share/man/man1/fd.1"
+    install -m 644 "autocomplete/_fd" "$ZSH_COMP_DIR/_fd"
 
     echo "Cleaning up"
     rm -rf "${DOWNLOAD_DIR:?}/$DEST_DIR_NAME" \
@@ -47,9 +48,9 @@ function install_pkg() {
 #   DOWNLOAD_DIR
 ################################
 function remove_pkg() {
-    rm -v "$PKGDIR/bin/rg"
-    rm -v "$PKGDIR/share/man/man1/rg.1"
-    rm -v "$ZSH_COMP_DIR/_rg"
+    rm -v "$PKGDIR/bin/fd"
+    rm -v "$PKGDIR/share/man/man1/fd.1"
+    rm -v "$ZSH_COMP_DIR/_fd"
 
     echo "Finished"
 }
