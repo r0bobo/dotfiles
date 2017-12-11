@@ -98,7 +98,7 @@ This function should only modify configuration layer settings."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(exec-path-from-shell)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and deletes any unused
@@ -418,8 +418,6 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  ;; Avoid startup errors with zshenv (https://github.com/syl20bnr/spacemacs/issues/3920)
-  (setq exec-path-from-shell-arguments '("-i"))
   ;; Set powerline separator style
   (setq powerline-default-separator 'slant)
   ;; Make prettier completion popup
