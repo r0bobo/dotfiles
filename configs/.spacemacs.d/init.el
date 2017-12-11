@@ -428,7 +428,9 @@ before packages are loaded."
      ((t (:inherit company-tooltip :weight bold :underline nil))))
    '(company-tooltip-common-selection
      ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
-
+  ;; Keymaps
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode "ic" 'org-cliplink)
+  ;; Custom
   (cond ((equal user-login-name "deatod")
          (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/" t)
          (require 'crc-mode)
