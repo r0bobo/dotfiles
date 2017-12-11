@@ -42,6 +42,7 @@ This function should only modify configuration layer settings."
      gtags
      helm
      imenu-list
+     nlinum
      org
      python
      (ranger :variables
