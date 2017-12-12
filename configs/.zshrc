@@ -136,6 +136,7 @@ alias ls='ls --color=auto'
 alias ll='ls -lh --color=auto'
 alias la='ls -lAh --color=auto'
 alias e='emacsclient -nca ""'
+alias et='emacsclient -ta ""'
 
 function cheat() {
     curl cheat.sh/$1
