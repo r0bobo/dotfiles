@@ -135,7 +135,7 @@ alias zshreload="source ~/.zshrc"
 alias ls='ls --color=auto'
 alias ll='ls -lh --color=auto'
 alias la='ls -lAh --color=auto'
-alias e='emacsclient -nc'
+alias e='emacsclient -nca ""'
 
 function cheat() {
     curl cheat.sh/$1
