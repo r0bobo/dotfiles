@@ -26,13 +26,9 @@ function install_pkg() {
                         x86_64-unknown-linux
 
     echo "Installing"
-    install -d -m 755 "$PKGDIR/bin/"
-    install -d "$PKGDIR/share/man/man1/"
-    install -d -m 755 "$ZSH_COMP_DIR/"
-
-    install -m 755 "rg" "$PKGDIR/bin/rg"
-    install -m 644 "rg.1" "$PKGDIR/share/man/man1/rg.1"
-    install -m 644 "complete/_rg" "$ZSH_COMP_DIR/_rg"
+    install -Dm 755 "rg" "$PKGDIR/bin/rg"
+    install -Dm 644 "rg.1" "$PKGDIR/share/man/man1/rg.1"
+    install -Dm 644 "complete/_rg" "$ZSH_COMP_DIR/_rg"
 
     echo "Cleaning up"
     rm -rf "${DOWNLOAD_DIR:?}/$DEST_DIR_NAME" \

@@ -27,13 +27,9 @@ function install_pkg() {
 
 
     echo "Installing"
-    install -d -m 755 "$PKGDIR/bin/"
-    install -d "$PKGDIR/share/man/man1/"
-    install -d -m 755 "$ZSH_COMP_DIR/"
-
-    install -m 755 "fd" "$PKGDIR/bin/fd"
-    install -m 644 "fd.1" "$PKGDIR/share/man/man1/fd.1"
-    install -m 644 "autocomplete/_fd" "$ZSH_COMP_DIR/_fd"
+    install -Dm 755 "fd" "$PKGDIR/bin/fd"
+    install -Dm 644 "fd.1" "$PKGDIR/share/man/man1/fd.1"
+    install -Dm 644 "autocomplete/_fd" "$ZSH_COMP_DIR/_fd"
 
     echo "Cleaning up"
     rm -rf "${DOWNLOAD_DIR:?}/$DEST_DIR_NAME" \
