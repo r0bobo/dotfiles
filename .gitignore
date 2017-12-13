@@ -2,4 +2,3 @@
 bak/
 .venv/
 /configs/.spacemacs.d/spacemacs-custom-settings.el
-/configs/.spacemacs.d/layers/private

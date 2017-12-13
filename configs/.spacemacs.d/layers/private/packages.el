@@ -1,4 +1,4 @@
-;;; packages.el --- private-home layer packages file for Spacemacs.
+;;; packages.el --- private layer packages file for Spacemacs.
 ;;
 ;; Copyright (c) 2012-2017 Sylvain Benner & Contributors
 ;;
@@ -18,20 +18,20 @@
 ;;
 ;;
 ;; Briefly, each package to be installed or configured by this layer should be
-;; added to `private-home-packages'. Then, for each package PACKAGE:
+;; added to `private-packages'. Then, for each package PACKAGE:
 ;;
 ;; - If PACKAGE is not referenced by any other Spacemacs layer, define a
-;;   function `private-home/init-PACKAGE' to load and initialize the package.
+;;   function `private/init-PACKAGE' to load and initialize the package.
 
 ;; - Otherwise, PACKAGE is already referenced by another Spacemacs layer, so
-;;   define the functions `private-home/pre-init-PACKAGE' and/or
-;;   `private-home/post-init-PACKAGE' to customize the package as it is loaded.
+;;   define the functions `private/pre-init-PACKAGE' and/or
+;;   `private/post-init-PACKAGE' to customize the package as it is loaded.
 
 ;;; Code:
 
-(defconst private-home-packages
+(defconst private-packages
   '()
-  "The list of Lisp packages required by the private-home layer.
+  "The list of Lisp packages required by the private layer.
 
 Each entry is either:
 
@@ -58,6 +58,6 @@ Each entry is either:
       - A list beginning with the symbol `recipe' is a melpa
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
-(defun private-home/init ())
+(defun private/init ())
 
 ;;; packages.el ends here

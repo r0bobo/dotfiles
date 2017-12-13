@@ -1,7 +1,7 @@
-#+TITLE: private-home layer
+#+TITLE: private layer
 
 # The maximum height of the logo should be 200 pixels.
-[[img/private-home.png]]
+[[img/private.png]]
 
 # TOC links should be GitHub style anchors.
 * Table of Contents                                        :TOC_4_gh:noexport:
@@ -21,7 +21,7 @@ This layer adds support for something.
 
 * Install
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
-add =private-home= to the existing =dotspacemacs-configuration-layers= list in this
+add =private= to the existing =dotspacemacs-configuration-layers= list in this
 file.
 
 * Key bindings
