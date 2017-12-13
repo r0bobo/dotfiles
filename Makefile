@@ -69,6 +69,16 @@ $(VENV)/bin/activate: requirements.txt
 spacemacs:
 	git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
 
+.PHONY: spacemacs-layer-home
+spacemacs-layer-home:
+	cd ~/.spacemacs.d/layers && \
+		ln -s private-home private
+
+.PHONY: spacemacs-layer-work
+spacemacs-layer-home:
+	cd ~/.spacemacs.d/layers && \
+		ln -s private-home private
+
 .PHONY: test
 test:
 	bats test.sh
