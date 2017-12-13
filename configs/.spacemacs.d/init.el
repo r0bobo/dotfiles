@@ -29,67 +29,33 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layer-path
    '("~/.spacemacs.d/layers/"
      "~/.emacs.d/private/")
-   )
-
-  ;; Setup different layers for different computers
-  (setq
-   dean--layers
-   '((auto-completion :variables
-                      auto-completion-enable-snippets-in-popup t)
-     deft
-     emacs-lisp
-     git
-     gtags
-     helm
-     imenu-list
-     nlinum
-     org
-     python
-     (ranger :variables
-             ranger-show-literal nil
-             ranger-max-preview-size 1
-             ranger-dont-show-binary t)
-     (shell :variables
-            shell-default-shell 'eshell
-            shell-default-height 30
-            shell-default-position 'bottom)
-     shell-scripts
-     syntax-checking
-     themes-megapack
-     treemacs
-     yaml)
-   dean--layers-home
-   '(common-lisp
-     deft
-     django
-     docker
-     github
-     html
-     markdown
-     nginx
-     php
-     ruby
-     rust
-     systemd
-     version-control
-     vimscript)
-  dean--layers-work
-  '(mercurial
-    (version-control :variables
-                     version-control-diff-tool 'diff-hl))
-  users-home
-  '("dean" "deant" "pi" "u0_a97")
-  )
-
-  (cond ((member user-login-name users-home)
-         (setq dean--layers (append dean--layers dean--layers-home)))
-        ((equal user-login-name "deatod")
-         (setq dean--layers (append dean--layers dean--layers-work)))
-         )
-
-  (setq-default
    ;; List of configuration layers to load.
-   dotspacemacs-configuration-layers dean--layers
+   dotspacemacs-configuration-layers
+   '((auto-completion :variables
+                       auto-completion-enable-snippets-in-popup t)
+      deft
+      emacs-lisp
+      git
+      gtags
+      helm
+      imenu-list
+      nlinum
+      org
+      python
+      private
+      (ranger :variables
+              ranger-show-literal nil
+              ranger-max-preview-size 1
+              ranger-dont-show-binary t)
+      (shell :variables
+             shell-default-shell 'eshell
+             shell-default-height 30
+             shell-default-position 'bottom)
+      shell-scripts
+      syntax-checking
+      themes-megapack
+      treemacs
+      yaml)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
