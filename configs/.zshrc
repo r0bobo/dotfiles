@@ -135,13 +135,18 @@ alias zshreload="source ~/.zshrc"
 alias ls='ls --color=auto'
 alias ll='ls -lh --color=auto'
 alias la='ls -lAh --color=auto'
-alias e='emacsclient -nca ""'
-alias et='emacsclient -ta ""'
 
 function cheat() {
     curl cheat.sh/$1
 }
 
+function e() {
+    if [ -z $DISPLAY ];then
+        emacsclient -ta "" "$@"
+    else
+        emacsclient -nca "" "$@"
+    fi
+}
 
 # }}}
 # ZPLUG {{{
