@@ -369,7 +369,7 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; Use custom-file instead of dotspacemacs/emacs-custom-settings
   (setq custom-file "~/.spacemacs.d/spacemacs-custom-settings.el")
-  (load custom-file)
+  (load-file custom-file)
   ;; Setup eshell
   (spacemacs|use-package-add-hook eshell
     :pre-init
@@ -398,10 +398,4 @@ before packages are loaded."
   ;; Keymaps
   (spacemacs/set-leader-keys-for-major-mode 'org-mode "ic" 'org-cliplink)
   (spacemacs/set-leader-keys "bb" 'helm-buffers-list)
-  ;; Custom
-  (cond ((equal user-login-name "deatod")
-         (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/" t)
-         (require 'crc-mode)
-         (require 'crg-mode)
-         ))
   )

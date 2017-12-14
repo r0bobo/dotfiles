@@ -13,4 +13,3 @@
  (if (equal user-login-name "deatod")
      'private-work
    'private-home))
-
