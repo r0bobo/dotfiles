@@ -38,6 +38,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar', { 'on': ['TagbarOpen', 'TagbarToggle'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'hecal3/vim-leader-guide'
 Plug 'alvan/vim-closetag'
 Plug 'sheerun/vim-polyglot'
