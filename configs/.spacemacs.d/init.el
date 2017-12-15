@@ -32,30 +32,36 @@ This function should only modify configuration layer settings."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '((auto-completion :variables
-                       auto-completion-enable-snippets-in-popup t)
-      deft
-      emacs-lisp
-      git
-      gtags
-      helm
-      imenu-list
-      nlinum
-      org
-      python
-      private
-      (ranger :variables
-              ranger-show-literal nil
-              ranger-max-preview-size 1
-              ranger-dont-show-binary t)
-      (shell :variables
-             shell-default-shell 'eshell
-             shell-default-height 30
-             shell-default-position 'bottom)
-      shell-scripts
-      syntax-checking
-      themes-megapack
-      treemacs
-      yaml)
+                      auto-completion-tab-key-behavior 'complete
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-enable-help-tooltip t)
+     colors
+     deft
+     emacs-lisp
+     git
+     gtags
+     helm
+     (ibuffer :variables
+              ibuffer-group-buffers-by 'projects)
+     imenu-list
+     nlinum
+     org
+     python
+     private
+     (ranger :variables
+             ranger-show-literal nil
+             ranger-max-preview-size 1
+             ranger-dont-show-binary t)
+     semantic
+     (shell :variables
+            shell-default-shell 'eshell
+            shell-default-height 30
+            shell-default-position 'bottom)
+     shell-scripts
+     syntax-checking
+     themes-megapack
+     treemacs
+     yaml)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
