@@ -15,6 +15,7 @@
    django
    docker
    github
+   javascript
    html
    markdown
    nginx
@@ -23,4 +24,5 @@
    rust
    systemd
    version-control
-   vimscript))
+   vimscript
+   xkcd))
