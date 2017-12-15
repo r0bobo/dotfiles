@@ -395,7 +395,15 @@ before packages are loaded."
      ((t (:inherit company-tooltip :weight bold :underline nil))))
    '(company-tooltip-common-selection
      ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
-  ;; Keymaps
-  (spacemacs/set-leader-keys-for-major-mode 'org-mode "ic" 'org-cliplink)
-  (spacemacs/set-leader-keys "bb" 'helm-buffers-list)
+  ;; Global keymaps
+  (spacemacs/set-leader-keys
+    "bb" 'helm-buffers-list
+    ;; Replace "qq" with frame killer to avoid killing daemon by mistake
+    "qq" 'spacemacs/frame-killer
+    "qz" 'spacemacs/prompt-kill-emacs
+    )
+  ;; Major mode keymaps
+  (spacemacs/set-leader-keys-for-major-mode
+    'org-mode "ic" 'org-cliplink
+    )
   )
