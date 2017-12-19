@@ -37,6 +37,8 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-help-tooltip t)
      colors
      deft
+     (elfeed :variables
+             rmh-elfeed-org-files (list "~/.spacemacs.d/elfeed.org"))
      emacs-lisp
      git
      gtags

@@ -1,0 +1,24 @@
+* Table of contents                                                     :TOC:
+- [[#games][Games]]
+  - [[#games-1][Games]]
+    - [[#rps][RPS]]
+- [[#computer][Computer]]
+  - [[#programming][Programming]]
+    - [[#cronweekly][cron.weekly]]
+    - [[#hacker-noon][Hacker Noon]]
+    - [[#nixcraft][nixCraft]]
+  - [[#firefox][Firefox]]
+    - [[#weeks-in-firefox][Weeks in Firefox]]
+
+* Games                                                        :elfeed:
+** Games                                                              :games:
+*** [[https://feeds.feedburner.com/RockPaperShotgun][RPS]]
+
+* Computer                                                     :elfeed:
+** Programming                                                    :dev:linux:
+*** [[https://www.cronweekly.com/feed/][cron.weekly]]
+*** [[https://hackernoon.com/feed][Hacker Noon]]
+*** [[https://www.cyberciti.biz/feed/][nixCraft]]
+
+** Firefox                                                          :firefox:
+*** [[https://blog.nightly.mozilla.org/feed][Weeks in Firefox]]
