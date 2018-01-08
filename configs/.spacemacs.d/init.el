@@ -161,22 +161,22 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '(("Fira Mono"
-                               :size 16
-                               :weight normal
-                               :width normal
-                               :powerline-scale 1.3)
-                               ("DejaVu Sans Mono"
-                               :size 13
-                               :weight normal
-                               :width normal
-                               :powerline-scale 1.2)
-                               ("DejaVu Sans Mono for Powerline"
-                                :size 13
-                                :weight normal
-                                :width normal
-                                :powerline-scale 1.2)
-                               )
+   dotspacemacs-default-font '(("SauceCodePro Nerd Font"
+                      :size 16
+                      :weight normal
+                      :width normal
+                      :powerline-scale 1.4)
+                     ("DejaVu Sans Mono"
+                      :size 13
+                      :weight normal
+                      :width normal
+                      :powerline-scale 1.2)
+                     ("DejaVu Sans Mono for Powerline"
+                      :size 13
+                      :weight normal
+                      :width normal
+                      :powerline-scale 1.2)
+                     )
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands `M-x' (after pressing on the leader key).
