@@ -40,7 +40,6 @@ This function should only modify configuration layer settings."
      (elfeed :variables
              rmh-elfeed-org-files (list "~/.spacemacs.d/elfeed.org"))
      emacs-lisp
-     evil-cleverparens
      (evil-snipe :variables
                  evil-snipe-enable-alternate-f-and-t-behaviors t)
      git
@@ -425,8 +424,4 @@ before packages are loaded."
   (spacemacs/set-leader-keys-for-major-mode
     'org-mode "ic" 'org-cliplink
     )
-  ;; Turn on cleverparens
-  (spacemacs/toggle-evil-cleverparens-on)
-  (add-hook 'emacs-lisp-mode-hook #'evil-cleverparens-mode)
-  (add-hook 'lisp-mode-hook #'evil-cleverparens-mode)
   )
