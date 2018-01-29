@@ -505,4 +505,9 @@ before packages are loaded."
   (with-eval-after-load 'company
     (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word)
     )
+
+  ;; Workaround for mode line sepratator rendering bug with emacsclient
+  ;; https://github.com/syl20bnr/spacemacs/issues/10181
+  (spacemacs|do-after-display-system-init
+   (spacemacs-modeline/init-spaceline))
   )
