@@ -507,4 +507,14 @@ before packages are loaded."
   (spacemacs/set-leader-keys-for-major-mode
     'org-mode "ic" 'org-cliplink
     )
+
+  ;; Helm keymaps
+  (with-eval-after-load 'helm
+    (define-key helm-map (kbd "C-w") 'evil-delete-backward-word)
+    )
+
+  ;; Company keymaps
+  (with-eval-after-load 'company
+    (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word)
+    )
   )
