@@ -10,7 +10,8 @@
 ;;; License: GPLv3
 
 (configuration-layer/declare-layers
- '(common-lisp
+ '(ansible
+   common-lisp
    deft
    django
    docker
