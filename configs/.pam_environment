@@ -1,0 +1,3 @@
+PATH DEFAULT=${PATH}:/home/@{PAM_USER}/.local/bin
+MANPATH DEFAULT=${MANPATH}:/home/@{PAM_USER}/.local/share/man
+INFOPATH DEFAULT=${INFOPATH}:/home/@{PAM_USER}/.local/share/man

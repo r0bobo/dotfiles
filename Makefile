@@ -13,6 +13,7 @@ CONFIG_FILES := \
 	.gitconfig \
 	.globalrc \
 	.ignore \
+	.pam_environment \
 	.spacemacs.d \
 	.tmux.conf \
 	.tmuxline.conf \
