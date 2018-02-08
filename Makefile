@@ -14,6 +14,8 @@ CONFIG_FILES := \
 	.globalrc \
 	.ignore \
 	.pam_environment \
+  .pip/pip.conf \
+	.pypirc \
 	.spacemacs.d \
 	.tmux.conf \
 	.tmuxline.conf \
