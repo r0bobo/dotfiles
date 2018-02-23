@@ -8,6 +8,7 @@ VENV := $(INSTALL_DIR)/.local/share/nvim/.virtualenv
 CONFIG_FILES := \
 	.config/alacritty/alacritty.yml \
 	.config/nvim/init.vim \
+	.config/ranger \
 	.config/termite/config \
 	.ctags \
 	.gitconfig \
