@@ -51,7 +51,8 @@ This function should only modify configuration layer settings."
      imenu-list
      lsp
      nlinum
-     org
+     (org :variables
+          org-projectile-file "TODO.org")
      (python :variables
              python-backend 'lsp
              python-test-runner 'pytest)
@@ -521,4 +522,7 @@ before packages are loaded."
   ;; https://github.com/syl20bnr/spacemacs/issues/10181
   (spacemacs|do-after-display-system-init
    (spacemacs-modeline/init-spaceline))
+  ;; Customize spaceline
+  (spaceline-toggle-minor-modes-off)
+
   )
