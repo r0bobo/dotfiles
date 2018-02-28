@@ -12,7 +12,6 @@
 (configuration-layer/declare-layers
  '(ansible
    common-lisp
-   deft
    django
    docker
    github
@@ -21,10 +20,13 @@
    (markdown :variables
              markdown-command "pandoc")
    nginx
+   puppet
    php
+   restclient
    ruby
    rust
    systemd
+   vagrant
    version-control
    vimscript
    xkcd))

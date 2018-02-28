@@ -40,8 +40,6 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-help-tooltip t)
      colors
      deft
-     (elfeed :variables
-             rmh-elfeed-org-files (list "~/.spacemacs.d/elfeed.org"))
      emacs-lisp
      (evil-snipe :variables
                  evil-snipe-enable-alternate-f-and-t-behaviors t)
