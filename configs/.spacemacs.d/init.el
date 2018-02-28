@@ -49,9 +49,12 @@ This function should only modify configuration layer settings."
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
      imenu-list
+     lsp
      nlinum
      org
-     python
+     (python :variables
+             python-backend 'lsp
+             python-test-runner 'pytest)
      private
      (ranger :variables
              ranger-show-literal nil
@@ -466,6 +469,10 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
               (eshell-cmpl-initialize)
               (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
               (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)))
+
+  (add-hook 'flycheck-mode-hook
+            (lambda ()
+             (flycheck-add-next-checker 'python-flake8 'python-pylint)))
   )
 
 (defun dotspacemacs/user-config ()
@@ -480,8 +487,8 @@ before packages are loaded."
      ((t (:inherit company-tooltip :weight bold :underline nil))))
    '(company-tooltip-common-selection
      ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
-  ;; Global keymaps
 
+  ;; Global keymaps
   (spacemacs/set-leader-keys
     "bb" 'helm-buffers-list
     ;; Replace "qq" with frame killer to avoid killing daemon by mistake
