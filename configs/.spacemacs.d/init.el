@@ -40,8 +40,6 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-help-tooltip t)
      colors
      deft
-     (elfeed :variables
-             rmh-elfeed-org-files (list "~/.spacemacs.d/elfeed.org"))
      emacs-lisp
      (evil-snipe :variables
                  evil-snipe-enable-alternate-f-and-t-behaviors t)
@@ -52,8 +50,14 @@ This function should only modify configuration layer settings."
               ibuffer-group-buffers-by 'projects)
      imenu-list
      nlinum
+     lsp
+     markdown
      org
-     python
+     (python :variables
+             python-backend 'lsp
+             python-test-runner 'pytest)
+     ;; (python :variables
+     ;;         python-test-runner 'pytest)
      private
      (ranger :variables
              ranger-show-literal nil
@@ -82,7 +86,8 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(exec-path-from-shell)
+   dotspacemacs-excluded-packages '(exec-path-from-shell
+                           vi-tilde-fringe)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -199,10 +204,16 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 17
-                               :weight normal
-                               :width normal)
+   dotspacemacs-default-font '(
+                               ("Source Code Pro"
+                                :size 17
+                                :weight normal
+                                :width normal)
+                               ("DejaVu Sans Mono"
+                                :size 13
+                                :weight normal
+                                :width normal)
+                               )
 
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
@@ -463,11 +474,18 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (spacemacs|use-package-add-hook eshell
     :pre-init
     (setq eshell-aliases-file (concat dotspacemacs-directory "eshell-aliases")))
+
   (add-hook 'eshell-mode-hook
             (lambda ()
               (eshell-cmpl-initialize)
               (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
               (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)))
+
+  (add-hook 'flycheck-mode-hook
+            (lambda ()
+              (setq-local flycheck-python-flake8-executable "python3")
+              (setq-local flycheck-python-pycompile-executable "python3")
+              (setq-local flycheck-python-pylint-executable "python3")))
   )
 
 (defun dotspacemacs/user-config ()
@@ -510,4 +528,7 @@ before packages are loaded."
   ;; https://github.com/syl20bnr/spacemacs/issues/10181
   (spacemacs|do-after-display-system-init
    (spacemacs-modeline/init-spaceline))
+
+  ;; Customize spaceline
+  (spaceline-toggle-minor-modes-off)
   )
