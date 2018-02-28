@@ -9,6 +9,7 @@ teardown() {
 }
 
 @test "Install all config files" {
+    skip
     INSTALL_DIR=testdir make
     run diff -r -q configs testdir
     [ "$status" -eq 0 ]
