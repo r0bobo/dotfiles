@@ -18,7 +18,8 @@
    github
    javascript
    html
-   markdown
+   (markdown :variables
+             markdown-command "pandoc")
    nginx
    php
    ruby

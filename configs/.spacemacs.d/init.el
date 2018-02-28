@@ -506,6 +506,12 @@ before packages are loaded."
     (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word)
     )
 
+  ;; Markdown TOC config
+  (with-eval-after-load 'company
+    (custom-set-variables
+     '(markdown-toc-header-toc-title "# Table of Contents"))
+    )
+
   ;; Workaround for mode line sepratator rendering bug with emacsclient
   ;; https://github.com/syl20bnr/spacemacs/issues/10181
   (spacemacs|do-after-display-system-init
