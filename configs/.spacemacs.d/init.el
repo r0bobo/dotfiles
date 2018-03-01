@@ -82,7 +82,8 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(exec-path-from-shell)
+   dotspacemacs-excluded-packages '(exec-path-from-shell
+                                    vi-tilde-fringe)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -199,10 +200,16 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 17
-                               :weight normal
-                               :width normal)
+   dotspacemacs-default-font '(
+                               ("Source Code Pro"
+                                :size 17
+                                :weight normal
+                                :width normal)
+                               ("DejaVu Sans Mono"
+                                :size 13
+                                :weight normal
+                                :width normal)
+                               )
 
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
