@@ -51,8 +51,6 @@ This function should only modify configuration layer settings."
      imenu-list
      lsp
      nlinum
-     (org :variables
-          org-projectile-file "TODO.org")
      (python :variables
              python-backend 'lsp
              python-test-runner 'pytest)
