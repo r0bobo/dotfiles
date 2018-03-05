@@ -39,7 +39,6 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-help-tooltip t)
      colors
-     deft
      emacs-lisp
      (evil-snipe :variables
                  evil-snipe-enable-alternate-f-and-t-behaviors t)
@@ -51,6 +50,7 @@ This function should only modify configuration layer settings."
      imenu-list
      lsp
      nlinum
+     parinfer
      (python :variables
              python-backend 'lsp
              python-test-runner 'pytest)
