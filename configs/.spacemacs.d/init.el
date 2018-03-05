@@ -122,7 +122,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; If non-nil then Spacelpa repository is the primary source to install
    ;; a locked version of packages. If nil then Spacemacs will install the
-   ;; lastest version of packages from MELPA. (default nil)
+   ;; latest version of packages from MELPA. (default nil)
    dotspacemacs-use-spacelpa nil
 
    ;; If non-nil then verify the signature for downloaded Spacelpa archives.
@@ -407,6 +407,9 @@ It should only modify the values of Spacemacs settings."
    ;; emphasis the current one). (default 'all)
    dotspacemacs-highlight-delimiters 'all
 
+   ;; If non-nil, start an Emacs server if one is not already running.
+   dotspacemacs-enable-server t
+
    ;; If non-nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
    dotspacemacs-persistent-server t
@@ -530,4 +533,12 @@ before packages are loaded."
   ;; Customize spaceline
   (spaceline-toggle-minor-modes-off)
 
+  ;; Disable to imporve scroll performance significantly
+  ;; https://emacs.stackexchange.com/questions/28736/emacs-pointcursor-movement-lag/28746
+  (setq auto-window-vscroll nil)
+
+  ;; Include underscore in word motion for all programming languages
+  (add-hook 'prog-mode-hook
+            #'(lambda ()
+                      (modify-syntax-entry ?_ "w")))
   )
