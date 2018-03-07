@@ -481,8 +481,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
   (add-hook 'flycheck-mode-hook
             (lambda ()
-             (flycheck-add-next-checker 'python-flake8 'python-pylint)))
-  )
+             (flycheck-add-next-checker 'python-flake8 'python-pylint))))
+
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -502,29 +502,29 @@ before packages are loaded."
     "bb" 'helm-buffers-list
     ;; Replace "qq" with frame killer to avoid killing daemon by mistake
     "qq" 'spacemacs/frame-killer
-    "qz" 'spacemacs/prompt-kill-emacs
-    )
+    "qz" 'spacemacs/prompt-kill-emacs)
+
 
   ;; Major mode keymaps
   (spacemacs/set-leader-keys-for-major-mode
-    'org-mode "ic" 'org-cliplink
-    )
+    'org-mode "ic" 'org-cliplink)
+
 
   ;; Helm keymaps
   (with-eval-after-load 'helm
-    (define-key helm-map (kbd "C-w") 'evil-delete-backward-word)
-    )
+    (define-key helm-map (kbd "C-w") 'evil-delete-backward-word))
+
 
   ;; Company keymaps
   (with-eval-after-load 'company
-    (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word)
-    )
+    (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word))
+
 
   ;; Markdown TOC config
   (with-eval-after-load 'company
     (custom-set-variables
-     '(markdown-toc-header-toc-title "# Table of Contents"))
-    )
+     '(markdown-toc-header-toc-title "# Table of Contents")))
+
 
   ;; Workaround for mode line sepratator rendering bug with emacsclient
   ;; https://github.com/syl20bnr/spacemacs/issues/10181
@@ -540,5 +540,5 @@ before packages are loaded."
   ;; Include underscore in word motion for all programming languages
   (add-hook 'prog-mode-hook
             #'(lambda ()
-                      (modify-syntax-entry ?_ "w")))
+                (modify-syntax-entry ?_ "w")))
   )
