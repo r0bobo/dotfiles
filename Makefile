@@ -12,9 +12,12 @@ CONFIG_FILES := \
 	.config/ranger \
 	.config/termite/config \
 	.ctags \
+	.eslintrc \
 	.gitconfig \
 	.globalrc \
 	.ignore \
+	.jsbeautifyrc \
+	.npmrc \
 	.pam_environment \
   .pip/pip.conf \
 	.pypirc \
