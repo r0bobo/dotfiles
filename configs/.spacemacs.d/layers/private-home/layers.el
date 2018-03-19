@@ -29,6 +29,7 @@
    restclient
    ruby
    rust
+   salt
    systemd
    vagrant
    version-control
