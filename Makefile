@@ -7,6 +7,7 @@ VENV := $(INSTALL_DIR)/.local/share/nvim/.virtualenv
 
 CONFIG_FILES := \
 	.config/alacritty/alacritty.yml \
+	.config/fish/fishfile \
 	.config/mpv \
 	.config/nvim/init.vim \
 	.config/ranger \
@@ -76,6 +77,11 @@ $(VENV)/bin/activate: requirements.txt
 .PHONY: spacemacs
 spacemacs:
 	git clone -b develop https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
+.PHONY: fisherman
+fisherman:
+	curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher	
+	fish -c fisher
 
 # .PHONY: spacemacs-layer-home
 # spacemacs-layer-home:
