@@ -7,7 +7,9 @@ VENV := $(INSTALL_DIR)/.local/share/nvim/.virtualenv
 
 CONFIG_FILES := \
 	.config/alacritty/alacritty.yml \
+	.config/fish/config.fish \
 	.config/fish/fishfile \
+	.config/fish/functions/setpath.fish \
 	.config/mpv \
 	.config/nvim/init.vim \
 	.config/ranger \
