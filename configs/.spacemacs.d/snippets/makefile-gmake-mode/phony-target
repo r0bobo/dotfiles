@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: phony target
+# key: pt
+# expand-env: ((yas-indent-line nil))
+# --
+.PHONY: $1
+$1: $2  ## $3
+	$4
