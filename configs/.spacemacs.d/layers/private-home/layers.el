@@ -14,6 +14,8 @@
    common-lisp
    django
    docker
+   (elfeed :variables
+           rmh-elfeed-org-files (list "~/.spacemacs.d/elfeed.org"))
    github
    javascript
    html

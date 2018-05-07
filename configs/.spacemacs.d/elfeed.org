@@ -1,24 +1,25 @@
 * Table of contents                                                     :TOC:
-- [[#games][Games]]
-  - [[#games-1][Games]]
-    - [[#rps][RPS]]
+  :PROPERTIES:
+  :VISIBILITY: all
+  :END:
 - [[#computer][Computer]]
   - [[#programming][Programming]]
-    - [[#cronweekly][cron.weekly]]
-    - [[#hacker-noon][Hacker Noon]]
-    - [[#nixcraft][nixCraft]]
+    - [[#arch-news][Arch News]]
   - [[#firefox][Firefox]]
     - [[#weeks-in-firefox][Weeks in Firefox]]
+  - [[#github-releases][Github releases]]
+    - [[#pipenv][pipenv]]
+    - [[#ripgrep][ripgrep]]
+    - [[#fisherman][fisherman]]
 
-* Games                                                        :elfeed:
-** Games                                                              :games:
-*** [[https://feeds.feedburner.com/RockPaperShotgun][RPS]]
-
-* Computer                                                     :elfeed:
-** Programming                                                    :dev:linux:
-*** [[https://www.cronweekly.com/feed/][cron.weekly]]
-*** [[https://hackernoon.com/feed][Hacker Noon]]
-*** [[https://www.cyberciti.biz/feed/][nixCraft]]
+* Computer                                                           :elfeed:
+** Programming                                                        :linux:
+*** [[https://wiki.archlinux.org/api.php?hidebots=1&urlversion=1&days=7&limit=50&action=feedrecentchanges&feedformat=rss][Arch News]]                                                          :arch:
 
 ** Firefox                                                          :firefox:
 *** [[https://blog.nightly.mozilla.org/feed][Weeks in Firefox]]
+
+** Github releases                                                   :github:
+*** [[https://github.com/pypa/pipenv/releases.atom][pipenv]]
+*** [[https://github.com/BurntSushi/ripgrep][ripgrep]] 
+*** [[https://github.com/fisherman/fisherman][fisherman]] 
