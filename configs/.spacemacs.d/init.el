@@ -48,8 +48,12 @@ This function should only modify configuration layer settings."
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
      imenu-list
+     json
      lsp
      nlinum
+     (org :variables
+          org-enable-hugo-support t
+          org-projectile-file "TODO.org")
      parinfer
      (python :variables
              python-backend 'lsp

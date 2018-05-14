@@ -22,16 +22,13 @@
    (markdown :variables
              markdown-command "pandoc")
    nginx
-   (org :variables
-        org-enable-hugo-support t
-        org-projectile-file "TODO.org")
-   puppet
    php
    react
    restclient
    ruby
    rust
    salt
+   sql
    systemd
    vagrant
    version-control
