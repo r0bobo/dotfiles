@@ -506,27 +506,22 @@ before packages are loaded."
     "qq" 'spacemacs/frame-killer
     "qz" 'spacemacs/prompt-kill-emacs)
 
-
   ;; Major mode keymaps
   (spacemacs/set-leader-keys-for-major-mode
     'org-mode "ic" 'org-cliplink)
-
 
   ;; Helm keymaps
   (with-eval-after-load 'helm
     (define-key helm-map (kbd "C-w") 'evil-delete-backward-word))
 
-
   ;; Company keymaps
   (with-eval-after-load 'company
     (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word))
-
 
   ;; Markdown TOC config
   (with-eval-after-load 'company
     (custom-set-variables
      '(markdown-toc-header-toc-title "# Table of Contents")))
-
 
   ;; Workaround for mode line sepratator rendering bug with emacsclient
   ;; https://github.com/syl20bnr/spacemacs/issues/10181
@@ -534,6 +529,8 @@ before packages are loaded."
    (spacemacs-modeline/init-spaceline))
   ;; Customize spaceline
   (spaceline-toggle-minor-modes-off)
+  (spaceline-toggle-buffer-position-off)
+  (spaceline-toggle-buffer-size-off)
 
   ;; Disable to imporve scroll performance significantly
   ;; https://emacs.stackexchange.com/questions/28736/emacs-pointcursor-movement-lag/28746
