@@ -10,21 +10,18 @@
 ;;; License: GPLv3
 
 (configuration-layer/declare-layers
- '(ansible
-   common-lisp
+ '(common-lisp
    django
    docker
    (elfeed :variables
            rmh-elfeed-org-files (list "~/.spacemacs.d/elfeed.org"))
    github
    javascript
-   html
    (markdown :variables
              markdown-command "pandoc")
    nginx
    php
    react
-   restclient
    ruby
    rust
    salt
@@ -32,5 +29,4 @@
    systemd
    vagrant
    version-control
-   vimscript
-   xkcd))
+   vimscript))

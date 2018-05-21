@@ -35,7 +35,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '((auto-completion :variables
+   '((ansible
+      auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-help-tooltip t)
      colors
@@ -45,6 +46,7 @@ This function should only modify configuration layer settings."
      git
      gtags
      helm
+     html
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
      imenu-list
@@ -54,7 +56,6 @@ This function should only modify configuration layer settings."
      (org :variables
           org-enable-hugo-support t
           org-projectile-file "TODO.org")
-     parinfer
      (python :variables
              python-backend 'lsp
              python-test-runner 'pytest)
@@ -63,6 +64,7 @@ This function should only modify configuration layer settings."
              ranger-show-literal nil
              ranger-max-preview-size 1
              ranger-dont-show-binary t)
+     restclient
      semantic
      (shell :variables
             shell-default-shell 'eshell
@@ -79,8 +81,8 @@ This function should only modify configuration layer settings."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(apache-mode
-                                      doom-themes
-                                      org-cliplink)
+                                      org-cliplink
+                                      python-pytest)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -106,6 +108,25 @@ It should only modify the values of Spacemacs settings."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
+   ;; If non-nil then enable support for the portable dumper. You'll need
+   ;; to compile Emacs 27 from source following the instructions in file
+   ;; EXPERIMENTAL.org at to root of the git repository.
+   ;; (default nil)
+   dotspacemacs-enable-emacs-pdumper nil
+
+   ;; File path pointing to emacs 27.1 executable compiled with support
+   ;; for the portable dumper (this is currently the branch pdumper).
+   ;; (default "emacs")
+   dotspacemacs-emacs-pdumper-executable-file "emacs"
+
+   ;; Name of the Spacemacs dump file. This is the file will be created by the
+   ;; portable dumper in the cache directory under dumps sub-directory.
+   ;; To load it when starting Emacs add the parameter `--dump-file'
+   ;; when invoking Emacs 27.1 executable on the command line, for instance:
+   ;;   ./emacs --dump-file=~/.emacs.d/.cache/dumps/spacemacs.pdmp
+   ;; (default spacemacs.pdmp)
+   dotspacemacs-emacs-dumper-dump-file "spacemacs.pdmp"
+
    ;; If non-nil ELPA repositories are contacted via HTTPS whenever it's
    ;; possible. Set it to nil if you have no way to use HTTPS in your
    ;; environment, otherwise it is strongly recommended to let it set to t.
@@ -178,6 +199,10 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default major mode of the scratch buffer (default `text-mode')
    dotspacemacs-scratch-mode 'emacs-lisp-mode
+
+   ;; Initial message in the scratch buffer, such as "Welcome to Spacemacs!"
+   ;; (default nil)
+   dotspacemacs-initial-scratch-message nil
 
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
@@ -485,6 +510,12 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
             (lambda ()
              (flycheck-add-next-checker 'python-flake8 'python-pylint))))
 
+(defun dotspacemacs/user-load ()
+  "Library to load while dumping.
+This function is called while dumping Spacemacs configuration. You can
+`require' or `load' the libraries of your choice that will be included
+in the dump."
+  )
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -509,6 +540,8 @@ before packages are loaded."
   ;; Major mode keymaps
   (spacemacs/set-leader-keys-for-major-mode
     'org-mode "ic" 'org-cliplink)
+  (spacemacs/set-leader-keys
+    "xlo" 'occur)
 
   ;; Helm keymaps
   (with-eval-after-load 'helm
@@ -523,14 +556,10 @@ before packages are loaded."
     (custom-set-variables
      '(markdown-toc-header-toc-title "# Table of Contents")))
 
-  ;; Workaround for mode line sepratator rendering bug with emacsclient
-  ;; https://github.com/syl20bnr/spacemacs/issues/10181
-  (spacemacs|do-after-display-system-init
-   (spacemacs-modeline/init-spaceline))
   ;; Customize spaceline
   (spaceline-toggle-minor-modes-off)
-  (spaceline-toggle-buffer-position-off)
   (spaceline-toggle-buffer-size-off)
+  (spaceline-toggle-hud-off)
 
   ;; Disable to imporve scroll performance significantly
   ;; https://emacs.stackexchange.com/questions/28736/emacs-pointcursor-movement-lag/28746
@@ -551,6 +580,11 @@ before packages are loaded."
    web-mode-css-indent-offset 2
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2)
+
+  ;; Start xml-files in xml-mode
+  (add-to-list 'auto-mode-alist '("\\.xml" . nxml-mode))
+  (add-hook 'nxml-mode-hook 'flycheck-mode)
+
 
   ;; Html indentation
   (with-eval-after-load 'web-mode
