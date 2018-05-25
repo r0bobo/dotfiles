@@ -72,6 +72,8 @@ This function should only modify configuration layer settings."
             shell-default-position 'bottom)
      shell-scripts
      syntax-checking
+     (sql :variables
+          sql-capitalize-keywords t)
      themes-megapack
      treemacs
      yaml)
@@ -407,14 +409,16 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; (default nil)
    dotspacemacs-line-numbers
-   '(:relative nil
-               :disabled-for-modes dired-mode
-               doc-view-mode
-               markdown-mode
-               org-mode
-               pdf-view-mode
-               text-mode
-               :size-limit-kb 1000)
+   '(:disabled-for-modes
+     dired-mode
+     doc-view-mode
+     magit-mode
+     markdown-mode
+     org-mode
+     pdf-view-mode
+     text-mode
+     :relative nil
+     :size-limit-kb 1000)
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
@@ -569,6 +573,9 @@ before packages are loaded."
   (add-hook 'prog-mode-hook
             #'(lambda ()
                 (modify-syntax-entry ?_ "w")))
+
+  ;; Dired settings
+  (setq dired-listing-switches "-alh")
 
   ;; React settings
   (setq-default

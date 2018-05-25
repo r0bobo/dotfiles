@@ -25,7 +25,6 @@
    ruby
    rust
    salt
-   sql
    systemd
    vagrant
    version-control
