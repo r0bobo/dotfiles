@@ -53,7 +53,6 @@ This function should only modify configuration layer settings."
      imenu-list
      json
      lsp
-     nlinum
      (org :variables
           org-enable-hugo-support t
           org-projectile-file "TODO.org")
