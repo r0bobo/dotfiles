@@ -35,12 +35,13 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '((ansible
-      auto-completion :variables
+   '(ansible
+     (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-help-tooltip t)
      colors
      emacs-lisp
+     erc
      (evil-snipe :variables
                  evil-snipe-enable-alternate-f-and-t-behaviors t)
      git
@@ -83,6 +84,7 @@ This function should only modify configuration layer settings."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(apache-mode
+                                      jq-mode
                                       org-cliplink
                                       python-pytest)
 
@@ -90,7 +92,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(exec-path-from-shell
+   dotspacemacs-excluded-packages '(
                                     vi-tilde-fringe)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
