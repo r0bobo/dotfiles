@@ -60,10 +60,6 @@ This function should only modify configuration layer settings."
              python-backend 'lsp
              python-test-runner 'pytest)
      private
-     (ranger :variables
-             ranger-show-literal nil
-             ranger-max-preview-size 1
-             ranger-dont-show-binary t)
      restclient
      semantic
      (shell :variables
@@ -544,6 +540,7 @@ before packages are loaded."
 
   ;; Major mode keymaps
   (spacemacs/set-leader-keys-for-major-mode
+    'org-mode "bv" 'org-edit-src-code
     'org-mode "ic" 'org-cliplink)
   (spacemacs/set-leader-keys
     "xlo" 'occur)
