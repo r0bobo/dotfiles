@@ -509,7 +509,15 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 
   (add-hook 'flycheck-mode-hook
             (lambda ()
-             (flycheck-add-next-checker 'python-flake8 'python-pylint))))
+              (flycheck-add-next-checker 'python-flake8 'python-pylint)))
+
+  ;; Fix font in new frames
+  ;; https://github.com/syl20bnr/spacemacs/issues/10894
+  (add-to-list
+   'default-frame-alist
+   '(font . "-ADBO-Source Code Pro-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1"))
+
+  )
 
 (defun dotspacemacs/user-load ()
   "Library to load while dumping.
@@ -524,6 +532,12 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+  ;; Set environment variables
+  (setenv "WORKON_HOME"
+          (concat
+           (getenv "HOME")
+           "/.cache/pypoetry/virtualenvs/"))
+
   ;; Make prettier completion popup
   (custom-set-faces
    '(company-tooltip-common
@@ -540,8 +554,9 @@ before packages are loaded."
 
   ;; Major mode keymaps
   (spacemacs/set-leader-keys-for-major-mode
-    'org-mode "bv" 'org-edit-src-code
     'org-mode "ic" 'org-cliplink)
+  (spacemacs/set-leader-keys-for-major-mode
+    'org-mode "bv" 'org-edit-src-code)
   (spacemacs/set-leader-keys
     "xlo" 'occur)
 
@@ -559,9 +574,12 @@ before packages are loaded."
      '(markdown-toc-header-toc-title "# Table of Contents")))
 
   ;; Customize spaceline
-  (spaceline-toggle-minor-modes-off)
-  (spaceline-toggle-buffer-size-off)
-  (spaceline-toggle-hud-off)
+  (spacemacs|do-after-display-system-init
+   (spacemacs-modeline/init-spaceline)
+   (spaceline-toggle-minor-modes-off)
+   (spaceline-toggle-buffer-size-off)
+   (spaceline-toggle-hud-off)
+   )
 
   ;; Disable to imporve scroll performance significantly
   ;; https://emacs.stackexchange.com/questions/28736/emacs-pointcursor-movement-lag/28746
