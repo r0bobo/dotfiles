@@ -16,7 +16,9 @@
    (elfeed :variables
            rmh-elfeed-org-files (list "~/.spacemacs.d/elfeed.org"))
    github
-   javascript
+   (javascript :variables
+               js2-basic-offset 2
+               js-indent-level 2)
    (markdown :variables
              markdown-command "pandoc")
    nginx
@@ -28,4 +30,6 @@
    systemd
    vagrant
    version-control
-   vimscript))
+   vimscript
+   vue
+   web-beautify))

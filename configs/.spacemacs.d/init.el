@@ -595,8 +595,6 @@ before packages are loaded."
 
   ;; React settings
   (setq-default
-   ;; js2-mode
-   js2-basic-offset 2
    ;; web-mode
    css-indent-offset 2
    web-mode-markup-indent-offset 2
