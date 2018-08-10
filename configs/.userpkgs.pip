@@ -1,0 +1,10 @@
+docker-compose
+http-prompt
+httpie
+importmagic
+ipdb
+ipython
+pip
+poetry
+pyls-isort
+python-language-server[all]

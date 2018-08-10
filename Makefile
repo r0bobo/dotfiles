@@ -85,6 +85,10 @@ fisherman:
 	curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher	
 	fish -c fisher
 
+.PHONY: setup-pip
+setup-pip:  ## Install user-wide python packages from ~/.userpkgs.pip
+	pip3 install --requirement $(HOME)/.userpkgs.pip --user --upgrade
+
 # .PHONY: spacemacs-layer-home
 # spacemacs-layer-home:
 # 	cd ~/.spacemacs.d/layers && \
