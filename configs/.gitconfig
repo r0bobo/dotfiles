@@ -2,7 +2,7 @@
 
 [user]
 	email = dean.todevski@gmail.com
-	name = Dean Todevski
+	name = Dean Lindqvist Todevski
 
 [core]
 	hooksPath = .githooks
@@ -23,6 +23,9 @@
 	# No need for a GUI - a nice, colorful, graphical representation
 	# https://git-scm.com/docs/git-log
 	# via https://medium.com/@payload.dd/thanks-for-the-git-st-i-will-use-this-4da5839a21a4
+
+[core]
+hooksPath = .githooks
 
 [merge]
 	conflictstyle = diff3
