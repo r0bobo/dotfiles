@@ -9,3 +9,10 @@ $HOME/.local/share/man
 
 setpath INFOPATH \
 $HOME/.local/bin \
+
+
+if test $TERM = "dumb"
+    function fish_prompt
+        echo "\$ "
+    end
+end
