@@ -47,3 +47,5 @@ hooksPath = .githooks
 
 [magit]
 	hideCampaign = true
+[magithub]
+	online = false
