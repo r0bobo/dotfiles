@@ -1,4 +1,4 @@
-;; -*- mode: emacs-lisp -*-
+;; -*- mode: emacs-lisp; lexical-binding: t -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
@@ -45,8 +45,11 @@ This function should only modify configuration layer settings."
      (evil-snipe :variables
                  evil-snipe-enable-alternate-f-and-t-behaviors t)
      git
-     gtags
-     helm
+     (helm :variables
+           helm-enable-auto-resize
+           nil helm-no-header nil helm-position 'bottom
+           helm-use-fuzzy 'always spacemacs-helm-rg-max-column-number
+           1024)
      html
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
@@ -70,6 +73,7 @@ This function should only modify configuration layer settings."
      syntax-checking
      (sql :variables
           sql-capitalize-keywords t)
+     templates
      themes-megapack
      treemacs
      yaml)
@@ -78,6 +82,9 @@ This function should only modify configuration layer settings."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
+   ;; To use a local version of a package, use the `:location' property:
+   ;; '(your-package :location "~/path/to/your-package/")
+   ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(apache-mode
                                       jq-mode
                                       org-cliplink
@@ -174,7 +181,8 @@ It should only modify the values of Spacemacs settings."
                                     vim-style-visual-feedback t
                                     vim-style-remap-Y-to-y$ t
                                     vim-style-retain-visual-state-on-shift t
-                                    vim-style-visual-line-move-text t)
+                                    vim-style-visual-line-move-text t
+                                    vim-style-ex-substitute-global nil)
 
    ;; If non-nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
@@ -214,11 +222,11 @@ It should only modify the values of Spacemacs settings."
                          spacemacs-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
-   ;; `all-the-icons', `custom', `vim-powerline' and `vanilla'. The first three
-   ;; are spaceline themes. `vanilla' is default Emacs mode-line. `custom' is a
-   ;; user defined themes, refer to the DOCUMENTATION.org for more info on how
-   ;; to create your own spaceline theme. Value can be a symbol or list with\
-   ;; additional properties.
+   ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
+   ;; first three are spaceline themes. `doom' is the doom-emacs mode-line.
+   ;; `vanilla' is default Emacs mode-line. `custom' is a user defined themes,
+   ;; refer to the DOCUMENTATION.org for more info on how to create your own
+   ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
    dotspacemacs-mode-line-theme '(spacemacs
                                   :separator slant
@@ -300,9 +308,9 @@ It should only modify the values of Spacemacs settings."
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
    dotspacemacs-max-rollback-slots 5
 
-   ;; If non-nil, the paste transient-state is enabled. While enabled, pressing
-   ;; `p' several times cycles through the elements in the `kill-ring'.
-   ;; (default nil)
+   ;; If non-nil, the paste transient-state is enabled. While enabled, after you
+   ;; paste something, pressing `C-j' and `C-k' several times cycles through the
+   ;; elements in the `kill-ring'. (default nil)
    dotspacemacs-enable-paste-transient-state t
 
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
@@ -388,8 +396,7 @@ It should only modify the values of Spacemacs settings."
      org-mode
      pdf-view-mode
      text-mode
-     :relative nil
-     :size-limit-kb 1000)
+     :relative nil)
 
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
@@ -467,6 +474,14 @@ It should only modify the values of Spacemacs settings."
    ;; visiting README.org files of Spacemacs.
    ;; (default nil)
    dotspacemacs-pretty-docs t))
+
+(defun dotspacemacs/user-env ()
+  "Environment variables setup.
+This function defines the environment variables for your Emacs session. By
+default it calls `spacemacs/load-spacemacs-env' which loads the environment
+variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
+See the header of this file for more information."
+  (spacemacs/load-spacemacs-env))
 
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
@@ -603,4 +618,20 @@ before packages are loaded."
     (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
   (add-hook 'css-mode-hook
             'flycheck-mode)
+
+  ;; Disable importmagic to improve performance significantly
+  (remove-hook 'python-mode-hook 'importmagic-mode)
+
+  ;; (with-eval-after-load 'lsp-mode
+  ;;   (lsp-define-stdio-client lsp-python "python"
+  ;;                            (lsp-make-traverser #'(lambda (dir)
+	;; 					                                         (directory-files
+	;; 					                                          dir
+	;; 					                                          nil
+	;; 					                                          ".git")))
+	;; 		                       '("pyls"))
+
+  ;;   )
+
+  ;; (setq lsp-message-project-root-warning 1)
   )
