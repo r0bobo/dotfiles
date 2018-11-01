@@ -40,10 +40,12 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-help-tooltip t)
      colors
+     dired
      emacs-lisp
      erc
      (evil-snipe :variables
                  evil-snipe-enable-alternate-f-and-t-behaviors t)
+     go
      git
      (helm :variables
            helm-enable-auto-resize
@@ -74,6 +76,7 @@ This function should only modify configuration layer settings."
      (sql :variables
           sql-capitalize-keywords t)
      templates
+     terraform
      themes-megapack
      treemacs
      yaml)
