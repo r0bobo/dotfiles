@@ -30,17 +30,19 @@ This function should only modify configuration layer settings."
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path
-   '("~/.spacemacs.d/layers/"
-     "~/.emacs.d/private/")
+   '("~/.emacs.d/private/")
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(ansible
+   '(asciidoc
+     ansible
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-help-tooltip t)
      colors
-     dired
+     common-lisp
+     copy-as-format
+     docker
      emacs-lisp
      erc
      (evil-snipe :variables
@@ -57,15 +59,26 @@ This function should only modify configuration layer settings."
               ibuffer-group-buffers-by 'projects)
      imenu-list
      json
+     jsonnet
+     (javascript :variables
+                 js2-basic-offset 2
+                 js-indent-level 2)
+     (markdown :variables
+               markdown-command "pandoc")
      lsp
      (org :variables
           org-enable-hugo-support t
           org-projectile-file "TODO.org")
+     nginx
+     pass
+     php
      (python :variables
              python-backend 'lsp
              python-test-runner 'pytest)
-     private
+     react
      restclient
+     ruby
+     rust
      semantic
      (shell :variables
             shell-default-shell 'eshell
@@ -73,12 +86,19 @@ This function should only modify configuration layer settings."
             shell-default-position 'bottom)
      shell-scripts
      syntax-checking
+     systemd
      (sql :variables
           sql-capitalize-keywords t)
      templates
-     terraform
+     (terraform :variables
+                terraform-auto-format-on-save t)
      themes-megapack
      treemacs
+     (version-control :variables
+                       version-control-diff-tool 'git-gutter)
+     vimscript
+     web-beautify
+     xclipboard
      yaml)
 
    ;; List of additional packages that will be installed without being
@@ -89,6 +109,7 @@ This function should only modify configuration layer settings."
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(apache-mode
+                                      forge
                                       jq-mode
                                       org-cliplink
                                       python-pytest)
@@ -98,6 +119,7 @@ This function should only modify configuration layer settings."
 
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(
+                                    git-gutter+
                                     vi-tilde-fringe)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
@@ -212,7 +234,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-startup-buffer-responsive t
 
    ;; Default major mode of the scratch buffer (default `text-mode')
-   dotspacemacs-scratch-mode 'emacs-lisp-mode
+   dotspacemacs-scratch-mode 'text-mode
 
    ;; Initial message in the scratch buffer, such as "Welcome to Spacemacs!"
    ;; (default nil)
@@ -484,7 +506,17 @@ This function defines the environment variables for your Emacs session. By
 default it calls `spacemacs/load-spacemacs-env' which loads the environment
 variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
 See the header of this file for more information."
-  (spacemacs/load-spacemacs-env))
+  (add-to-list 'exec-path "~/.cargo/bin")
+  (add-to-list 'exec-path "~/.local/bin")
+  (add-to-list 'exec-path "~/.npm/bin")
+  (add-to-list 'exec-path "~/go/bin")
+  ;; (setenv "PATH" (concat (getenv "PATH") ":~/.cargo/bin"))
+  ;; (setenv "PATH" (concat (getenv "PATH") ":~/.local/bin"))
+  ;; (setenv "PATH" (concat (getenv "PATH") ":~/.npm/bin"))
+  ;; (setenv "PATH" (concat (getenv "PATH") ":~/go/bin"))
+  ;; (setenv "PATH" "~/.npm/bin:$PATH" t)
+  ;; (spacemacs/load-spacemacs-env)
+  )
 
 (defun dotspacemacs/user-init ()
   "Initialization for user code:
@@ -509,6 +541,12 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (add-hook 'flycheck-mode-hook
             (lambda ()
               (flycheck-add-next-checker 'python-flake8 'python-pylint)))
+
+  (add-hook 'yaml-mode
+            (lambda ()
+              (spacemacs/toggle-line-numbers-on)
+              )
+            )
 
   ;; Fix font in new frames
   ;; https://github.com/syl20bnr/spacemacs/issues/10894
@@ -574,7 +612,6 @@ before packages are loaded."
 
   ;; Customize spaceline
   (spacemacs|do-after-display-system-init
-   (spacemacs-modeline/init-spaceline)
    (spaceline-toggle-minor-modes-off)
    (spaceline-toggle-buffer-size-off)
    (spaceline-toggle-hud-off)
@@ -624,6 +661,12 @@ before packages are loaded."
 
   ;; Disable importmagic to improve performance significantly
   (remove-hook 'python-mode-hook 'importmagic-mode)
+
+  ;; (with-eval-after-load 'forge
+  ;;   (add-to-list 'forge-alist
+  ;;                '("git.todevski.com:2222"
+  ;;                  "git.todevski.com"
+  ;;                  forge-gitlab-repository)))
 
   ;; (with-eval-after-load 'lsp-mode
   ;;   (lsp-define-stdio-client lsp-python "python"
