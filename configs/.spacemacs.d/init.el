@@ -29,8 +29,7 @@ This function should only modify configuration layer settings."
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path
-   '("~/.emacs.d/private/")
+   dotspacemacs-configuration-layer-path '()
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
@@ -39,6 +38,7 @@ This function should only modify configuration layer settings."
      (auto-completion :variables
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-help-tooltip t)
+     asciidoc
      colors
      common-lisp
      copy-as-format
@@ -184,7 +184,6 @@ It should only modify the values of Spacemacs settings."
    ;; If non-nil then verify the signature for downloaded Spacelpa archives.
    ;; (default nil)
    dotspacemacs-verify-spacelpa-archives t
-
    ;; If non-nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
@@ -208,7 +207,6 @@ It should only modify the values of Spacemacs settings."
                                     vim-style-retain-visual-state-on-shift t
                                     vim-style-visual-line-move-text t
                                     vim-style-ex-substitute-global nil)
-
    ;; If non-nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
 
@@ -226,12 +224,17 @@ It should only modify the values of Spacemacs settings."
    ;; `recents' `bookmarks' `projects' `agenda' `todos'.
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((bookmarks . 5)
-                                (recents . 5)
-                                (projects . 7))
-
+   dotspacemacs-startup-lists
+   '((bookmarks . 5)
+     (recents . 5)
+     (projects . 7))
    ;; True if the home buffer should respond to resize events. (default t)
    dotspacemacs-startup-buffer-responsive t
+
+   ;; Default major mode for a new empty buffer. Possible values are mode
+   ;; names such as `text-mode'; and `nil' to use Fundamental mode.
+   ;; (default `text-mode')
+   dotspacemacs-new-empty-buffer-major-mode 'text-mode
 
    ;; Default major mode of the scratch buffer (default `text-mode')
    dotspacemacs-scratch-mode 'text-mode
@@ -243,9 +246,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(doom-vibrant
-                         spacemacs-light)
-
+   dotspacemacs-themes
+   '(doom-vibrant spacemacs-light)
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
    ;; first three are spaceline themes. `doom' is the doom-emacs mode-line.
@@ -253,26 +255,18 @@ It should only modify the values of Spacemacs settings."
    ;; refer to the DOCUMENTATION.org for more info on how to create your own
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
-   dotspacemacs-mode-line-theme '(spacemacs
-                                  :separator slant
-                                  :separator-scale 1.6)
-
+   dotspacemacs-mode-line-theme
+   '(spacemacs :separator slant
+               :separator-scale 1.6)
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
    dotspacemacs-colorize-cursor-according-to-state t
 
-   ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
-   ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '(
-                               ("Source Code Pro"
-                                :size 17
-                                :weight normal
-                                :width normal)
-                               ("DejaVu Sans Mono"
-                                :size 13
-                                :weight normal
-                                :width normal)
-                               )
+   ;; Default font or prioritized list of fonts.
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 13.0
+                               :weight normal
+                               :width normal)
 
    ;; The leader key (default "SPC")
    dotspacemacs-leader-key "SPC"
@@ -373,6 +367,11 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil) (Emacs 24.4+ only)
    dotspacemacs-maximized-at-startup t
 
+   ;; If non-nil the frame is undecorated when Emacs starts up. Combine this
+   ;; variable with `dotspacemacs-maximized-at-startup' in OSX to obtain
+   ;; borderless fullscreen. (default nil)
+   dotspacemacs-undecorated-at-startup nil
+
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -400,10 +399,14 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-smooth-scrolling t
 
    ;; Control line numbers activation.
-   ;; If set to `t' or `relative' line numbers are turned on in all `prog-mode' and
-   ;; `text-mode' derivatives. If set to `relative', line numbers are relative.
+   ;; If set to `t', `relative' or `visual' then line numbers are enabled in all
+   ;; `prog-mode' and `text-mode' derivatives. If set to `relative', line
+   ;; numbers are relative. If set to `visual', line numbers are also relative,
+   ;; but lines are only visual lines are counted. For example, folded lines
+   ;; will not be counted and wrapped lines are counted as multiple lines.
    ;; This variable can also be set to a property list for finer control:
    ;; '(:relative nil
+   ;;   :visual nil
    ;;   :disabled-for-modes dired-mode
    ;;                       doc-view-mode
    ;;                       markdown-mode
@@ -411,6 +414,7 @@ It should only modify the values of Spacemacs settings."
    ;;                       pdf-view-mode
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
+   ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
    dotspacemacs-line-numbers
    '(:disabled-for-modes
@@ -510,11 +514,6 @@ See the header of this file for more information."
   (add-to-list 'exec-path "~/.local/bin")
   (add-to-list 'exec-path "~/.npm/bin")
   (add-to-list 'exec-path "~/go/bin")
-  ;; (setenv "PATH" (concat (getenv "PATH") ":~/.cargo/bin"))
-  ;; (setenv "PATH" (concat (getenv "PATH") ":~/.local/bin"))
-  ;; (setenv "PATH" (concat (getenv "PATH") ":~/.npm/bin"))
-  ;; (setenv "PATH" (concat (getenv "PATH") ":~/go/bin"))
-  ;; (setenv "PATH" "~/.npm/bin:$PATH" t)
   ;; (spacemacs/load-spacemacs-env)
   )
 
@@ -526,7 +525,7 @@ It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; Use custom-file instead of dotspacemacs/emacs-custom-settings
   (setq custom-file "~/.spacemacs.d/spacemacs-custom-settings.el")
-  (load-file custom-file)
+  (load custom-file)
 
   ;; Setup eshell
   (spacemacs|use-package-add-hook eshell
@@ -547,13 +546,6 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
               (spacemacs/toggle-line-numbers-on)
               )
             )
-
-  ;; Fix font in new frames
-  ;; https://github.com/syl20bnr/spacemacs/issues/10894
-  (add-to-list
-   'default-frame-alist
-   '(font . "-ADBO-Source Code Pro-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1"))
-
   )
 
 (defun dotspacemacs/user-load ()
@@ -661,23 +653,6 @@ before packages are loaded."
 
   ;; Disable importmagic to improve performance significantly
   (remove-hook 'python-mode-hook 'importmagic-mode)
-
-  ;; (with-eval-after-load 'forge
-  ;;   (add-to-list 'forge-alist
-  ;;                '("git.todevski.com:2222"
-  ;;                  "git.todevski.com"
-  ;;                  forge-gitlab-repository)))
-
-  ;; (with-eval-after-load 'lsp-mode
-  ;;   (lsp-define-stdio-client lsp-python "python"
-  ;;                            (lsp-make-traverser #'(lambda (dir)
-	;; 					                                         (directory-files
-	;; 					                                          dir
-	;; 					                                          nil
-	;; 					                                          ".git")))
-	;; 		                       '("pyls"))
-
-  ;;   )
 
   ;; (setq lsp-message-project-root-warning 1)
   )
