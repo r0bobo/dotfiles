@@ -546,6 +546,13 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
               (spacemacs/toggle-line-numbers-on)
               )
             )
+
+  ;; Fix font in new frames
+  ;; https://github.com/syl20bnr/spacemacs/issues/10894
+  (add-to-list
+   'default-frame-alist
+   '(font . "-ADBO-Source Code Pro-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1"))
+
   )
 
 (defun dotspacemacs/user-load ()
