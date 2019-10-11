@@ -81,7 +81,7 @@ This function should only modify configuration layer settings."
      rust
      semantic
      (shell :variables
-            shell-default-shell 'eshell
+            shell-default-shell 'vterm
             shell-default-height 30
             shell-default-position 'bottom)
      shell-scripts
