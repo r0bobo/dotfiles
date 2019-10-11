@@ -568,12 +568,6 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
-  ;; Set environment variables
-  (setenv "WORKON_HOME"
-          (concat
-           (getenv "HOME")
-           "/.cache/pypoetry/virtualenvs/"))
-
   ;; Make prettier completion popup
   (custom-set-faces
    '(company-tooltip-common
