@@ -46,7 +46,8 @@ This function should only modify configuration layer settings."
      erc
      (evil-snipe :variables
                  evil-snipe-enable-alternate-f-and-t-behaviors t)
-     go
+     (go :variables
+         go-backend 'lsp)
      git
      (helm :variables
            helm-enable-auto-resize
