@@ -8,6 +8,8 @@
 	hooksPath = .githooks
 
 [alias]
+	st = status
+
 	prune = fetch --prune
 	# Because I constantly forget how to do this
 	# https://git-scm.com/docs/git-fetch#git-fetch--p
