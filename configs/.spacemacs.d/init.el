@@ -64,6 +64,7 @@ This function should only modify configuration layer settings."
                  js-indent-level 2)
      (markdown :variables
                markdown-command "pandoc")
+     lua
      lsp
      (org :variables
           org-enable-hugo-support t
@@ -654,6 +655,4 @@ before packages are loaded."
 
   ;; Disable importmagic to improve performance significantly
   (remove-hook 'python-mode-hook 'importmagic-mode)
-
-  ;; (setq lsp-message-project-root-warning 1)
   )
