@@ -209,8 +209,11 @@ It should only modify the values of Spacemacs settings."
                                     vim-style-retain-visual-state-on-shift t
                                     vim-style-visual-line-move-text t
                                     vim-style-ex-substitute-global nil)
-   ;; If non-nil output loading progress in `*Messages*' buffer. (default nil)
-   dotspacemacs-verbose-loading nil
+
+   ;; If non-nil show the version string in the Spacemacs buffer. It will
+   ;; appear as (spacemacs version)@(emacs version)
+   ;; (default t)
+   dotspacemacs-startup-buffer-show-version t
 
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
@@ -266,7 +269,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font or prioritized list of fonts.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13.0
+                               :size 11.0
                                :weight normal
                                :width normal)
 
@@ -497,6 +500,13 @@ It should only modify the values of Spacemacs settings."
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
 
+   ;; If non nil activate `clean-aindent-mode' which tries to correct
+   ;; virtual indentation of simple modes. This can interfer with mode specific
+   ;; indent handling like has been reported for `go-mode'.
+   ;; If it does deactivate it here.
+   ;; (default t)
+   dotspacemacs-use-clean-aindent-mode t
+
    ;; Either nil or a number of seconds. If non-nil zone out after the specified
    ;; number of seconds. (default nil)
    dotspacemacs-zone-out-when-idle nil
@@ -529,32 +539,11 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (setq custom-file "~/.spacemacs.d/spacemacs-custom-settings.el")
   (load custom-file)
 
-  ;; Setup eshell
-  (spacemacs|use-package-add-hook eshell
-    :pre-init
-    (setq eshell-aliases-file (concat dotspacemacs-directory "eshell-aliases")))
-  (add-hook 'eshell-mode-hook
-            (lambda ()
-              (eshell-cmpl-initialize)
-              (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
-              (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history)))
-
-  (add-hook 'flycheck-mode-hook
-            (lambda ()
-              (flycheck-add-next-checker 'python-flake8 'python-pylint)))
-
   (add-hook 'yaml-mode
             (lambda ()
               (spacemacs/toggle-line-numbers-on)
               )
             )
-
-  ;; Fix font in new frames
-  ;; https://github.com/syl20bnr/spacemacs/issues/10894
-  (add-to-list
-   'default-frame-alist
-   '(font . "-ADBO-Source Code Pro-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1"))
-
   )
 
 (defun dotspacemacs/user-load ()
@@ -570,6 +559,7 @@ This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
 before packages are loaded."
+
   ;; Make prettier completion popup
   (custom-set-faces
    '(company-tooltip-common
@@ -583,14 +573,6 @@ before packages are loaded."
     ;; Replace "qq" with frame killer to avoid killing daemon by mistake
     "qq" 'spacemacs/frame-killer
     "qz" 'spacemacs/prompt-kill-emacs)
-
-  ;; Major mode keymaps
-  (spacemacs/set-leader-keys-for-major-mode
-    'org-mode "ic" 'org-cliplink)
-  (spacemacs/set-leader-keys-for-major-mode
-    'org-mode "bv" 'org-edit-src-code)
-  (spacemacs/set-leader-keys
-    "xlo" 'occur)
 
   ;; Helm keymaps
   (with-eval-after-load 'helm
@@ -654,6 +636,4 @@ before packages are loaded."
   (add-hook 'css-mode-hook
             'flycheck-mode)
 
-  ;; Disable importmagic to improve performance significantly
-  (remove-hook 'python-mode-hook 'importmagic-mode)
   )
