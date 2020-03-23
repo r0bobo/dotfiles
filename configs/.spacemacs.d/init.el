@@ -100,7 +100,8 @@ This function should only modify configuration layer settings."
      vimscript
      web-beautify
      xclipboard
-     yaml)
+     (yaml :variables
+           yaml-enable-lsp t))
 
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -538,6 +539,8 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   ;; Use custom-file instead of dotspacemacs/emacs-custom-settings
   (setq custom-file "~/.spacemacs.d/spacemacs-custom-settings.el")
   (load custom-file)
+
+  (setq lsp-yaml-schemas '(:kubernetes "*"))
 
   (add-hook 'yaml-mode
             (lambda ()
