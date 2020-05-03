@@ -1,5 +1,0 @@
-*.old
-bak/
-.venv/
-/configs/.spacemacs.d/spacemacs-custom-settings.el
-/configs/.config/ranger/.original/

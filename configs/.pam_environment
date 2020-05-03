@@ -1,7 +1,0 @@
-PATH DEFAULT=${PATH}:/home/@{PAM_USER}/.local/bin
-PATH DEFAULT=${PATH}:/home/@{PAM_USER}/.npm/bin
-PATH DEFAULT=${PATH}:/home/@{PAM_USER}/.gem/ruby/2.5.0/bin
-PATH DEFAULT=${PATH}:/home/@{PAM_USER}/.cargo/bin
-
-MANPATH DEFAULT=${MANPATH}:/home/@{PAM_USER}/.local/share/man
-INFOPATH DEFAULT=${INFOPATH}:/home/@{PAM_USER}/.local/share/man

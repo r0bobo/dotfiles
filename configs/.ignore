@@ -1,5 +1,0 @@
-.git
-.hg
-.venv
-.virtualenv
-*.pyc
