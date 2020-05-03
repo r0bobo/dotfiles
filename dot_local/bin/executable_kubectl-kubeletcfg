@@ -1,0 +1,11 @@
+#!/bin/bash -eu
+
+COLUMNS=(
+    'NAME:.metadata.name'
+    'ACTIVE:.status.config.active.configMap.name'
+    'ASSIGNED:.status.config.assigned.configMap.name'
+    'LAST KNOWN GOOD:.status.config.lastKnownGood.configMap.name'
+)
+
+IFS=,
+kubectl get nodes -o "custom-columns=${COLUMNS[*]}"
