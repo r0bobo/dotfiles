@@ -1,0 +1,11 @@
+[b2]
+type = b2
+account = {{ pass "backblaze_B2/dean-backup/ID" }}
+key = {{ pass "backblaze_B2/dean-backup/key" }}
+hard_delete = true
+
+[rgw]
+type = s3
+provider = Ceph
+env_auth = true
+endpoint = https://s3.todevski.com
