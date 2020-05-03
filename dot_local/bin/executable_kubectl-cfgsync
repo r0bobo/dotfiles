@@ -1,0 +1,5 @@
+#!/bin/bash -eu
+
+mv "$HOME/.kube/config" "$HOME/.kube/config.$(date +%s)"
+vault kv get -field=kubeconfig secret/kubernetes/clusters/todevski > ~/.kube/config
+echo "New kubeconfig fetched from Vault"

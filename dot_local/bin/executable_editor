@@ -1,0 +1,19 @@
+#!/bin/bash -e
+
+if ! hash emacs 2> /dev/null; then
+   vim "$@"
+   exit
+fi
+
+if ! systemctl --user is-active emacs.service >/dev/null; then
+    echo "Waiting for emacs server to start..."
+    until systemctl --user is-active emacs.service >/dev/null; do
+        sleep 1
+    done
+fi
+
+if [ -z "$DISPLAY" ]; then
+    emacsclient -t "$@"
+else
+    emacsclient -nc "$@"
+fi
