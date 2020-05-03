@@ -6,4 +6,5 @@ README.md
 {{- if ne .home true }}
 .config/rclone/rclone.conf
 .config/lab.hcl
+.local/bin/rgw-config
 {{- end }}
