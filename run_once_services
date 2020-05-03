@@ -1,7 +1,17 @@
 #!/bin/bash -eu
 
+# Setup gpg
+ln -sf /usr/share/doc/gnupg2/examples/systemd-user/*.{service,socket} \
+   "$HOME/.config/systemd/user/"
+
 systemctl --user daemon-reload
 
 systemctl --user enable --now emacs.service
 systemctl --user enable --now systemd-tmpfiles-clean.timer
 systemctl --user enable --now tmp-cleanup.timer
+
+systemctl --user enable --now dirmngr.socket
+systemctl --user enable --now gpg-agent-browser.socket
+systemctl --user enable --now gpg-agent-extra.socket
+systemctl --user enable --now gpg-agent.socket
+systemctl --user enable --now gpg-agent-ssh.socket
