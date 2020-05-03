@@ -1,8 +1,10 @@
 {{- $email := promptString "email" -}}
 {{- $name := promptString "name" -}}
 {{- $home := promptString "home" -}}
+{{- $graphical := promptString "graphical" -}}
 
 data:
   email: "{{ $email }}"
   name: "{{ $name }}"
   home: {{ $home }}
+  graphical: {{ $graphical }}

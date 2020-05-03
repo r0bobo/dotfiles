@@ -1,5 +1,10 @@
 #!/bin/bash -eu
 
+
+GRAPHICAL="{{ .graphical }}"
+[[ "$GRAPHICAL" != true ]] && exit 0
+
+
 >&2 echo Configuring Gnome settings
 
 
