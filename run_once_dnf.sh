@@ -1,13 +1,19 @@
 #!/bin/bash -eu
 
-sudo dnf copr enable -y chmouel/tektoncd-cli
-sudo dnf copr enable -y robobo/packages
 
 packages=(
     emacs
+    fd-find
+    fzf
+    kubectl
     lab
     ripgrep
     starship
+    tmux
+    vim
+    zsh
+    zsh-autosuggestions
+    zsh-fast-syntax-highlighting
 
     # Golang dev
     godoctor
@@ -15,6 +21,31 @@ packages=(
     golang-x-tools-gorename
     golang-x-tools-guru
 
+    # adapta-gtk-theme
+    # adobe-source-code-pro-fonts
+    # alacritty
+    # flatpak
+    # papirus-icon-theme
+
 )
+
+# RPM Fusion
+sudo dnf install "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
+sudo dnf install "https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
+
+cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+[kubernetes]
+name=Kubernetes
+baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+exclude=kubelet kubeadm kubectl
+EOF
+
+# Copr repos
+sudo dnf copr enable -y chmouel/tektoncd-cli
+sudo dnf copr enable -y robobo/packages
 
 sudo dnf install -y "${packages[@]}"
