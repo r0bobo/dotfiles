@@ -1,4 +1,7 @@
 #!/bin/bash -eu
 
+systemctl --user daemon-reload
+
 systemctl --user enable --now emacs.service
 systemctl --user enable --now systemd-tmpfiles-clean.timer
+systemctl --user enable --now tmp-cleanup.timer

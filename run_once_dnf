@@ -2,6 +2,7 @@
 
 
 packages=(
+
     emacs
     fd-find
     fzf
@@ -9,6 +10,7 @@ packages=(
     lab
     ripgrep
     starship
+    tmpwatch
     tmux
     vim
     zsh
