@@ -1,3 +1,5 @@
+# -*- zsh -*-
+
 alias e=editor
 alias estat="journalctl --user-unit=emacs.service --follow"
 alias k=kubectl
@@ -9,8 +11,7 @@ alias zshreload="source $HOME/.zshrc"
 
 
 proj() {
-    BASE="$HOME/projects"
-    PROJ="$(fd --max-depth=2 --base-directory="$BASE" --type=directory \
-               | fzf --preview='ls $HOME/projects/{}')"
-    cd "$BASE/$PROJ"
+    PROJ="$(fd --max-depth=2 --base-directory="$PROJECT_DIR" --type=directory \
+               | fzf --preview="ls $PROJECT_DIR/{}")"
+    cd "$PROJECT_DIR/$PROJ"
 }

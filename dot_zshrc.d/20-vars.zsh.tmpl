@@ -1,3 +1,5 @@
+# -*- zsh -*-
+
 export EDITOR=editor
 export LIBVIRT_DEFAULT_URI=qemu+ssh://hypervisor/system
 export VAULT_ADDR=https://vault.service.todevski:8200
@@ -7,3 +9,5 @@ path+=$HOME/.local/bin
 path+=$HOME/.cargo/bin
 path+=$HOME/.npm/bin
 path+=$HOME/go/bin
+
+PROJECT_DIR="$HOME/{{ .project_dir }}"
