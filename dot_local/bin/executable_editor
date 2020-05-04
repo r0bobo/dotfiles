@@ -1,8 +1,7 @@
 #!/bin/bash -e
 
 if ! hash emacs 2> /dev/null; then
-   vim "$@"
-   exit
+   exec vim "$@"
 fi
 
 if ! systemctl --user is-active emacs.service >/dev/null; then
@@ -13,7 +12,7 @@ if ! systemctl --user is-active emacs.service >/dev/null; then
 fi
 
 if [ -z "$DISPLAY" ]; then
-    emacsclient -t "$@"
+    exec emacsclient -t "$@"
 else
-    emacsclient -nc "$@"
+    exec emacsclient -nc "$@"
 fi
