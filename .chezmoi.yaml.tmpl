@@ -1,8 +1,10 @@
 {{- $email := promptString "email" -}}
 {{- $name := promptString "name" -}}
-{{- $home := promptString "home" -}}
+{{- $home := promptString "home computer [true/false]" -}}
+{{- $font_size := promptString "font size" -}}
 
 data:
   email: "{{ $email }}"
   name: "{{ $name }}"
   home: {{ $home }}
+  font_size: {{ $font_size }}
