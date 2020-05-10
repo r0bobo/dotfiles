@@ -1,4 +1,4 @@
-# -*- zsh -*-
+# -*- sh -*-
 
 alias e=editor
 alias estat="journalctl --user-unit=emacs.service --follow"
