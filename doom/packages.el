@@ -47,3 +47,7 @@
 ;(package! builtin-package :recipe (:branch "develop"))
 
 (package! rego-mode)
+
+;; Disable evil-escape since I never use it anyway
+(package! evil-escape
+  :disable t)
