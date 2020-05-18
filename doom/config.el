@@ -66,3 +66,13 @@
       "d" #'systemd-doc-directives
       "h" #'systemd-doc-open)
 
+;; Don't put ansible-doc mode in emacs-state
+(after! ansible-doc
+  (set-evil-initial-state! '(ansible-doc-module-mode) 'normal))
+
+;; Improve ansible file detection
+(def-project-mode! +ansible-yaml-mode
+  :modes '(yaml-mode)
+  :add-hooks '(ansible ansible-auto-decrypt-encrypt ansible-doc-mode)
+  :match "/\\(main\\|site\\|encrypted\\|\\(\\(roles\\|tasks\\|handlers\\|vars\\|defaults\\|meta\\|group_vars\\|host_vars\\)/.+\\)\\)\\.ya?ml$")
+
