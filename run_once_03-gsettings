@@ -38,7 +38,9 @@ gset org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4']"
 # Keybinds
 gset org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
   '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/',
-  '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/'
+  '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/',
+  '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/'
 ]"
 keybind custom0 'Emacs' 'emacsclient -nc' '<Super>e'
 keybind custom1 'Terminal' 'alacritty-xway' '<Super>Return'
+keybind custom2 'Org-capture' \'$HOME/.local/bin/org-capture\' '<Super>c'
