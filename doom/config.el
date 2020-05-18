@@ -52,6 +52,10 @@
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
 
+;; Change localleader to ,
+(setq doom-localleader-key ",")
+
+;; Shorten which-key popup delay
 (use-package! which-key
   :config
   (setq which-key-idle-delay 0.5))
