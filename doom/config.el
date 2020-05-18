@@ -60,3 +60,9 @@
   :config
   (setq which-key-idle-delay 0.5))
 
+;; Configure systemd mode maps
+(map! :map systemd-mode-map
+      :localleader
+      "d" #'systemd-doc-directives
+      "h" #'systemd-doc-open)
+
