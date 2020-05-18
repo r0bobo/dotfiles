@@ -56,4 +56,3 @@
   :config
   (setq which-key-idle-delay 0.5))
 
-(use-package! rego-mode)
