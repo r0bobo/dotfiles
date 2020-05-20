@@ -73,13 +73,8 @@
 (set-lookup-handlers! 'ansible-mode
   :documentation #'ansible-doc)
 
-(set-popup-rule!
-  "^\\*ansible-doc"
-  :height 0.4
-  :quit t
-  :select t
-  :ttl t
-  )
+(set-popup-rule! "^\\*ansible-doc"
+  :height 0.4 :quit t :select t :ttl t)
 
 ;; Improve ansible file detection
 (def-project-mode! +ansible-yaml-mode
