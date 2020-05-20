@@ -82,3 +82,10 @@
   :add-hooks '(ansible ansible-auto-decrypt-encrypt ansible-doc-mode)
   :match "/\\(main\\|site\\|encrypted\\|\\(\\(roles\\|tasks\\|handlers\\|vars\\|defaults\\|meta\\|group_vars\\|host_vars\\)/.+\\)\\)\\.ya?ml$")
 
+;; Add extra capture templates
+(after! org
+  (add-to-list 'org-capture-templates
+               '("l" "Link" entry
+                  (file+headline "links.org" "New Links")
+                  "* %(org-cliplink-capture)\n :PROPERTIES:\n :CATEGORY: %?\n :END:\n %i\n"
+                  :prepend t :kill-buffer t)))
