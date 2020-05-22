@@ -125,4 +125,3 @@ Disable pretty symbols in ~python-mode~.
 (after! python-mode
   (set-pretty-symbols! 'python-mode nil))
 #+END_SRC
-
