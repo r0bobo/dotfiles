@@ -1,4 +1,4 @@
-#!/bin/bash -eu
+#!/bin/bash -e
 
 # Only run when graphical
 [[ "$XDG_CURRENT_DESKTOP" == '' ]] && exit 0
