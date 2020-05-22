@@ -16,7 +16,7 @@ packages=(
     vim
     zsh
     zsh-autosuggestions
-    zsh-syntax-highlighting
+    zsh-fast-syntax-highlighting
 
     # Golang dev
     godoctor
