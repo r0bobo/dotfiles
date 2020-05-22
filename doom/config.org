@@ -1,0 +1,120 @@
+#+TITLE: Config
+#+AUTHOR: Dean Lindqvist Todevski
+#+EMAIL: dean.todevski.com
+#+LANGUAGE: en
+#+STARTUP: inlineimages
+#+STARTUP: overview
+#+PROPERTY: header-args :tangle yes :cache yes :results silent :padline no
+
+* Table of Contents :TOC_3_gh:
+:PROPERTIES:
+:VISIBILITY: children
+:END:
+- [[#configuration][Configuration]]
+  - [[#header][Header]]
+  - [[#personal-info][Personal Info]]
+  - [[#ui][UI]]
+  - [[#org-mode][Org-Mode]]
+    - [[#capture-templates][Capture Templates]]
+    - [[#literate-config-auto-compile][Literate config auto-compile]]
+  - [[#ansible][Ansible]]
+    - [[#documentation][Documentation]]
+    - [[#activation][Activation]]
+  - [[#systmed][Systmed]]
+  - [[#general][General]]
+
+* Configuration
+:PROPERTIES:
+:VISIBILITY: children
+:END:
+** Header
+#+BEGIN_SRC elisp
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+END_SRC
+
+** Personal Info
+#+BEGIN_SRC elisp
+(setq user-full-name "Dean Lindqvist Todevski"
+      user-mail-address "dean.todevski@gmail.com")
+#+END_SRC
+
+** UI
+#+BEGIN_SRC elisp
+(setq doom-font (font-spec :family "Source Code Pro" :size 14)
+      doom-theme 'doom-vibrant
+      display-line-numbers-type t)
+#+END_SRC
+
+** Org-Mode
+#+BEGIN_SRC elisp
+(setq org-directory "~/org/")
+#+END_SRC
+
+*** Capture Templates
+#+BEGIN_SRC elisp
+(after! org
+  (add-to-list 'org-capture-templates
+               '("l" "Link" entry
+                 (file+headline "links.org" "New Links")
+                 "* %(org-cliplink-capture)\n :PROPERTIES:\n :CATEGORY: %?\n :END:\n %i\n"
+                 :prepend t :kill-buffer t)))
+#+END_SRC
+
+
+*** Literate config auto-compile
+The ~literal~ module auto-tangles ~*.org~ files in ~DOOMDIR~ but change to
+Chezmoi dir without actually changing ~DOOMDIR~ due to other hassle.
+
+#+BEGIN_SRC elisp
+;;;###autoload
+(defun +literate-recompile-maybe-h ()
+  (when (and (eq major-mode 'org-mode)
+             (file-in-directory-p buffer-file-name (expand-file-name "~/.local/share/chezmoi/doom")))
+    (+literate-tangle 'force)))
+#+END_SRC
+
+** Ansible
+*** Documentation
+#+BEGIN_SRC elisp
+(after! ansible-doc
+  (set-evil-initial-state! '(ansible-doc-module-mode) 'normal))
+
+(set-popup-rule! "^\\*ansible-doc"
+  :height 0.4 :quit t :select t :ttl t)
+
+(set-lookup-handlers! 'ansible-mode
+  :documentation #'ansible-doc)
+#+END_SRC
+
+*** Activation
+Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/spacemacs/blob/develop/layers/%2Btools/ansible/config.el#L19][Spacemacs]].
+
+#+BEGIN_SRC elisp
+(def-project-mode! +ansible-yaml-mode
+  :modes '(yaml-mode)
+  :add-hooks '(ansible ansible-auto-decrypt-encrypt ansible-doc-mode)
+  :match "/\\(main\\|site\\|encrypted\\|\\(\\(roles\\|tasks\\|handlers\\|vars\\|defaults\\|meta\\|group_vars\\|host_vars\\)/.+\\)\\)\\.ya?ml$")
+#+END_SRC
+
+** Systmed
+#+BEGIN_SRC elisp
+(map! :map systemd-mode-map
+      :localleader
+      "d" #'systemd-doc-directives
+      "h" #'systemd-doc-open)
+
+#+END_SRC
+
+** General
+Change localleader to ~,~
+#+BEGIN_SRC elisp
+(setq doom-localleader-key ",")
+#+END_SRC
+
+Shorten which-key popup delay
+#+BEGIN_SRC elisp
+(use-package! which-key
+  :config
+  (setq which-key-idle-delay 0.5))
+#+END_SRC
+

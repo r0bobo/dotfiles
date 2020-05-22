@@ -1,91 +1,38 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
-
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
 (setq user-full-name "Dean Lindqvist Todevski"
       user-mail-address "dean.todevski@gmail.com")
-
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
-;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Source Code Pro" :size 14))
-
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-vibrant)
-
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
+(setq doom-font (font-spec :family "Source Code Pro" :size 14)
+      doom-theme 'doom-vibrant
+      display-line-numbers-type t)
 (setq org-directory "~/org/")
-
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
-
-
-;; Here are some additional functions/macros that could help you configure Doom:
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c g k').
-;; This will open documentation for it, including demos of how they are used.
-;;
-;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
-;; they are implemented.
-
-;; Change localleader to ,
-(setq doom-localleader-key ",")
-
-;; Shorten which-key popup delay
-(use-package! which-key
-  :config
-  (setq which-key-idle-delay 0.5))
-
-;; Configure systemd mode maps
-(map! :map systemd-mode-map
-      :localleader
-      "d" #'systemd-doc-directives
-      "h" #'systemd-doc-open)
-
-;; Don't put ansible-doc mode in emacs-state
+(after! org
+  (add-to-list 'org-capture-templates
+               '("l" "Link" entry
+                 (file+headline "links.org" "New Links")
+                 "* %(org-cliplink-capture)\n :PROPERTIES:\n :CATEGORY: %?\n :END:\n %i\n"
+                 :prepend t :kill-buffer t)))
+;;;###autoload
+(defun +literate-recompile-maybe-h ()
+  (when (and (eq major-mode 'org-mode)
+             (file-in-directory-p buffer-file-name (expand-file-name "~/.local/share/chezmoi/doom")))
+    (+literate-tangle 'force)))
 (after! ansible-doc
   (set-evil-initial-state! '(ansible-doc-module-mode) 'normal))
-
-(set-lookup-handlers! 'ansible-mode
-  :documentation #'ansible-doc)
 
 (set-popup-rule! "^\\*ansible-doc"
   :height 0.4 :quit t :select t :ttl t)
 
-;; Improve ansible file detection
+(set-lookup-handlers! 'ansible-mode
+  :documentation #'ansible-doc)
 (def-project-mode! +ansible-yaml-mode
   :modes '(yaml-mode)
   :add-hooks '(ansible ansible-auto-decrypt-encrypt ansible-doc-mode)
   :match "/\\(main\\|site\\|encrypted\\|\\(\\(roles\\|tasks\\|handlers\\|vars\\|defaults\\|meta\\|group_vars\\|host_vars\\)/.+\\)\\)\\.ya?ml$")
-
-;; Add extra capture templates
-(after! org
-  (add-to-list 'org-capture-templates
-               '("l" "Link" entry
-                  (file+headline "links.org" "New Links")
-                  "* %(org-cliplink-capture)\n :PROPERTIES:\n :CATEGORY: %?\n :END:\n %i\n"
-                  :prepend t :kill-buffer t)))
+(map! :map systemd-mode-map
+      :localleader
+      "d" #'systemd-doc-directives
+      "h" #'systemd-doc-open)
+(setq doom-localleader-key ",")
+(use-package! which-key
+  :config
+  (setq which-key-idle-delay 0.5))

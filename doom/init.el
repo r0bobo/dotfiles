@@ -172,5 +172,5 @@
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
-       ;;literate
+       literate
        (default +bindings +smartparens))
