@@ -22,6 +22,7 @@
     - [[#activation][Activation]]
   - [[#systmed][Systmed]]
   - [[#general][General]]
+  - [[#python][Python]]
 
 * Configuration
 :PROPERTIES:
@@ -116,5 +117,12 @@ Shorten which-key popup delay
 (use-package! which-key
   :config
   (setq which-key-idle-delay 0.5))
+#+END_SRC
+
+** Python
+Disable pretty symbols in ~python-mode~.
+#+BEGIN_SRC elisp
+(after! python-mode
+  (set-pretty-symbols! 'python-mode nil))
 #+END_SRC
 

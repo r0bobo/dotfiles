@@ -36,3 +36,5 @@
 (use-package! which-key
   :config
   (setq which-key-idle-delay 0.5))
+(after! python-mode
+  (set-pretty-symbols! 'python-mode nil))
