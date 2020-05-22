@@ -9,3 +9,5 @@ for plugin in $plugins; do
         source "$plugin"
     fi
 done
+
+eval "$(direnv hook zsh)"

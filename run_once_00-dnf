@@ -3,6 +3,7 @@
 
 packages=(
 
+    direnv
     emacs
     fd-find
     fzf
