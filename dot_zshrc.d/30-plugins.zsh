@@ -1,14 +1,14 @@
-plugins=(
-    '/usr/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh'
-    '/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
-    '/usr/share/fzf/shell/key-bindings.zsh'
-)
 #!/bin/zsh
 
-for plugin in $plugins; do
-    if [[ -r $plugin ]]; then
-        source "$plugin"
+_plugin() {
+    if [[ -r $1 ]]; then
+        source $1
     fi
-done
+}
+
+_plugin /usr/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+_plugin /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+_plugin /usr/share/fzf/shell/key-bindings.zsh
 
 eval "$(direnv hook zsh)"
+eval "$(starship init zsh)"

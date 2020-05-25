@@ -23,9 +23,6 @@ zstyle ':completion:*' substitute 1
 zstyle ':completion:*' verbose true
 zstyle :compinstall filename '/home/dean/.zshrc'
 
-autoload -Uz compinit
-compinit
-
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
