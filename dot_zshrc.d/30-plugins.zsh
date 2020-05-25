@@ -3,6 +3,7 @@ plugins=(
     '/usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
     '/usr/share/fzf/shell/key-bindings.zsh'
 )
+#!/bin/zsh
 
 for plugin in $plugins; do
     if [[ -r $plugin ]]; then

@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 zstyle ':completion:*' add-space true
 zstyle ':completion:*' completer _list _expand _complete _ignored _match _approximate _prefix
 zstyle ':completion:*' completions 1
