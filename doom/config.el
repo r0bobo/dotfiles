@@ -11,6 +11,12 @@
                  (file+headline "links.org" "New Links")
                  "* %(org-cliplink-capture)\n :PROPERTIES:\n :CATEGORY: %?\n :END:\n %i\n"
                  :prepend t :kill-buffer t)))
+
+(after! org
+  (add-to-list 'org-capture-templates
+               '("t" "Personal todo" entry
+                 (file+headline +org-capture-todo-file "Todos")
+                 "* TODO %?\n%i\n%a" :prepend t)))
 ;;;###autoload
 (defun +literate-recompile-maybe-h ()
   (when (and (eq major-mode 'org-mode)
