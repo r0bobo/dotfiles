@@ -25,13 +25,20 @@ packages=(
     golang-x-tools-gorename
     golang-x-tools-guru
 
-    # adapta-gtk-theme
-    # adobe-source-code-pro-fonts
-    # alacritty
-    # flatpak
-    # papirus-icon-theme
-
 )
+
+# Graphical packages
+if [[ "$XDG_CURRENT_DESKTOP" != '' ]]; then
+    packages+=(
+
+        adapta-gtk-theme
+        adobe-source-code-pro-fonts
+        alacritty
+        flatpak
+        papirus-icon-theme
+
+    )
+fi
 
 # RPM Fusion
 sudo dnf install "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm"
