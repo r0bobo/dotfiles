@@ -5,6 +5,7 @@ packages=(
 
     direnv
     emacs
+    exa
     fd-find
     fzf
     kubectl

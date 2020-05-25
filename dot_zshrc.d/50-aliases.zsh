@@ -2,9 +2,12 @@
 
 alias e=editor
 alias k=kubectl
-alias la="ls -lAh"
 
 alias estat="journalctl --user-unit=emacs.service --follow"
+
+alias ls=exa
+alias la="exa -la"
+alias ll="exa -l"
 
 alias less="less -FSRX"
 
