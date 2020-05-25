@@ -23,6 +23,7 @@
   - [[#systmed][Systmed]]
   - [[#general][General]]
   - [[#python][Python]]
+  - [[#javascript][Javascript]]
 
 * Configuration
 :PROPERTIES:
@@ -125,3 +126,11 @@ Disable pretty symbols in ~python-mode~.
 (after! python-mode
   (set-pretty-symbols! 'python-mode nil))
 #+END_SRC
+
+** Javascript
+Disable pretty symbols in ~js2-mode~.
+#+BEGIN_SRC elisp
+(after! js2-mode
+  (set-pretty-symbols! 'js2-mode nil))
+#+END_SRC
+

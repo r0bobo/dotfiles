@@ -38,3 +38,5 @@
   (setq which-key-idle-delay 0.5))
 (after! python-mode
   (set-pretty-symbols! 'python-mode nil))
+(after! js2-mode
+  (set-pretty-symbols! 'js2-mode nil))
