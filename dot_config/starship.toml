@@ -1,4 +1,9 @@
 add_newline = true
 
+[aws]
+displayed_items = "all"
+[aws.region_aliases]
+eu-central-1 = "fra"
+
 [kubernetes]
 disabled = true
