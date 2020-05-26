@@ -17,9 +17,10 @@ _bashcomp() {
 
 _gocomp() {
     cmd=$1
+    cmpdir="$COMPDIR/_$cmd"
 
     # Return if command doesn't exist
-    cmpdir="$COMPDIR/_$cmd"
+    [[ -x "$cmd" ]] || return 0
 
     if [[ ! -r "$cmpdir" ]] || [[ "$NOW" != $(zstat -F '%j' +mtime -- "$cmpdir") ]]; then
         "$cmd" completion zsh > "$COMPDIR/_$cmd"
