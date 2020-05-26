@@ -18,6 +18,7 @@ _bashcomp() {
 _gocomp() {
     cmd=$1
 
+    # Return if command doesn't exist
     cmpdir="$COMPDIR/_$cmd"
 
     if [[ ! -r "$cmpdir" ]] || [[ "$NOW" != $(zstat -F '%j' +mtime -- "$cmpdir") ]]; then
