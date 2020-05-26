@@ -16,6 +16,7 @@ packages=(
     tmpwatch
     tmux
     vim
+    xclip
     zsh
     zsh-autosuggestions
     zsh-fast-syntax-highlighting
