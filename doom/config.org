@@ -22,6 +22,7 @@
     - [[#activation][Activation]]
   - [[#systmed][Systmed]]
   - [[#general][General]]
+    - [[#keymaps][Keymaps]]
   - [[#python][Python]]
   - [[#javascript][Javascript]]
 
@@ -124,6 +125,13 @@ Shorten which-key popup delay
 (use-package! which-key
   :config
   (setq which-key-idle-delay 0.5))
+#+END_SRC
+
+*** Keymaps
+#+BEGIN_SRC elisp
+(map!
+ :leader
+ "b h" #'+doom-dashboard/open)
 #+END_SRC
 
 ** Python

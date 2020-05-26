@@ -42,6 +42,9 @@
 (use-package! which-key
   :config
   (setq which-key-idle-delay 0.5))
+(map!
+ :leader
+ "b h" #'+doom-dashboard/open)
 (after! python-mode
   (set-pretty-symbols! 'python-mode nil))
 (after! js2-mode
