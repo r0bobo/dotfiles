@@ -46,6 +46,7 @@ autoload -U +X bashcompinit
 
 
 # Zsh completion for typical go binaries
+_gocomp eksctl
 _gocomp kubectl
 _gocomp tkn
 
