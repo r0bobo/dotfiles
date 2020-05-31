@@ -20,9 +20,19 @@ _gocomp() {
     cmpdir="$COMPDIR/_$cmd"
 
     # Return if command doesn't exist
-    [[ -x "$cmd" ]] || return 0
+    command -v "$cmd" >/dev/null || return 0
 
-    if [[ ! -r "$cmpdir" ]] || [[ "$NOW" != $(zstat -F '%j' +mtime -- "$cmpdir") ]]; then
+    # Generate completion if it doesn't exist
+    if [[ ! -r "$cmpdir" ]]; then
+        "$cmd" completion zsh > "$COMPDIR/_$cmd"
+        return 0
+    fi
+
+    # Regenerate completion if binary
+    # is newer than completion file
+    cmdtime="$(zstat +mtime "$(which "$cmd")")"
+    cmptime="$(zstat +mtime "$cmpdir")"
+    if [[ "$cmdtime" > "$cmptime" ]]; then
         "$cmd" completion zsh > "$COMPDIR/_$cmd"
     fi
 }
