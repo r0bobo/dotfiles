@@ -11,4 +11,4 @@ _plugin /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 _plugin /usr/share/fzf/shell/key-bindings.zsh
 
 eval "$(direnv hook zsh)"
-eval "$(starship init zsh)"
+eval "$(starship init zsh --print-full-init)"
