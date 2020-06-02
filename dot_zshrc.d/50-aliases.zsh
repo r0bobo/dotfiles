@@ -21,6 +21,9 @@ alias cout='xclip -out -selection clipboard'
 alias dh='dirs -v'
 
 
+alias -g sYaml="-o yaml | bat -l yaml --style numbers"
+
+
 proj() {
     PROJ="$(fd --max-depth=2 --base-directory="$PROJECT_DIR" --type=directory \
                | fzf --preview="ls $PROJECT_DIR/{}")"
