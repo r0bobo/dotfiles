@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+alias d=docker
 alias e=editor
 alias k=kubectl
 
