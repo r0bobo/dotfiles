@@ -57,5 +57,7 @@ bashcompinit
 # Bash completion
 _bashcomp aws aws_completer
 _bashcomp consul
+_bashcomp kustomize
+_bashcomp mc
 _bashcomp terraform
 _bashcomp vault
