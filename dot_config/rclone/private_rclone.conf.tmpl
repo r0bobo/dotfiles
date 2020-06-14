@@ -4,8 +4,8 @@ account = {{ pass "backblaze_B2/dean-backup/ID" }}
 key = {{ pass "backblaze_B2/dean-backup/key" }}
 hard_delete = true
 
-[rgw]
+[minio]
 type = s3
-provider = Ceph
+provider = Minio
 env_auth = true
 endpoint = https://s3.todevski.com
