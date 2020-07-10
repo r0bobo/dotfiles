@@ -46,6 +46,8 @@
 ;; our package manager can't deal with; see raxod502/straight.el#279)
 ;(package! builtin-package :recipe (:branch "develop"))
 
+(package! jsonnet-mode)
+
 (package! rego-mode)
 
 ;; Disable evil-escape since I never use it anyway
