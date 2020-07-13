@@ -45,6 +45,7 @@
 (map!
  :leader
  "b h" #'+doom-dashboard/open)
+(setq projectile-project-search-path '("~/src/" "~/projects/"))
 (after! python-mode
   (set-pretty-symbols! 'python-mode nil))
 (after! js2-mode

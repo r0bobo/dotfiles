@@ -23,6 +23,7 @@
   - [[#systmed][Systmed]]
   - [[#general][General]]
     - [[#keymaps][Keymaps]]
+  - [[#projectile][Projectile]]
   - [[#python][Python]]
   - [[#javascript][Javascript]]
 
@@ -134,6 +135,10 @@ Shorten which-key popup delay
  "b h" #'+doom-dashboard/open)
 #+END_SRC
 
+** Projectile
+#+BEGIN_SRC elisp
+(setq projectile-project-search-path '("~/src/" "~/projects/"))
+#+END_SRC
 ** Python
 Disable pretty symbols in ~python-mode~.
 #+BEGIN_SRC elisp
