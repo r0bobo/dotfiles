@@ -2,7 +2,11 @@
 (setq user-full-name "Dean Lindqvist Todevski"
       user-mail-address "dean.todevski@gmail.com")
 (setq doom-font (font-spec :family "Source Code Pro" :size 14)
-      doom-theme 'doom-vibrant
+      doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 14)
+      doom-unicode-font (font-spec :family "Source Code Pro" :size 14)
+      doom-big-font (font-spec :family "Source Code Pro" :size 26))
+
+(setq doom-theme 'doom-vibrant
       display-line-numbers-type t)
 (setq org-directory "~/org/")
 (after! org
