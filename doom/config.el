@@ -46,6 +46,7 @@
 (use-package! which-key
   :config
   (setq which-key-idle-delay 0.5))
+(setq auth-sources '("~/.authinfo"))
 (map!
  :leader
  "b h" #'+doom-dashboard/open)

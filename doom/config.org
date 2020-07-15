@@ -132,6 +132,10 @@ Shorten which-key popup delay
   (setq which-key-idle-delay 0.5))
 #+END_SRC
 
+#+BEGIN_SRC elisp
+(setq auth-sources '("~/.authinfo"))
+#+END_SRC
+
 *** Keymaps
 #+BEGIN_SRC elisp
 (map!
