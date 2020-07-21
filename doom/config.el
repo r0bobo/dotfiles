@@ -8,6 +8,7 @@
 
 (setq doom-theme 'doom-vibrant
       display-line-numbers-type t)
+(setq +pretty-code-enabled-modes '(org-mode))
 (setq org-directory "~/org/")
 (after! org
   (add-to-list 'org-capture-templates
@@ -51,7 +52,6 @@
  :leader
  "b h" #'+doom-dashboard/open)
 (setq projectile-project-search-path '("~/src/" "~/projects/"))
-(after! python-mode
-  (set-pretty-symbols! 'python-mode nil))
-(after! js2-mode
-  (set-pretty-symbols! 'js2-mode nil))
+(setq magit-repository-directories
+      '(("~/src" . 2)
+        ("~/projects" . 2)))

@@ -14,18 +14,18 @@
   - [[#header][Header]]
   - [[#personal-info][Personal Info]]
   - [[#ui][UI]]
+  - [[#pretty-code][Pretty Code]]
   - [[#org-mode][Org-Mode]]
     - [[#capture-templates][Capture Templates]]
     - [[#literate-config-auto-compile][Literate config auto-compile]]
   - [[#ansible][Ansible]]
     - [[#documentation][Documentation]]
     - [[#activation][Activation]]
-  - [[#systmed][Systmed]]
+  - [[#systemd][Systemd]]
   - [[#general][General]]
     - [[#keymaps][Keymaps]]
   - [[#projectile][Projectile]]
-  - [[#python][Python]]
-  - [[#javascript][Javascript]]
+  - [[#magit][Magit]]
 
 * Configuration
 :PROPERTIES:
@@ -53,6 +53,10 @@
       display-line-numbers-type t)
 #+END_SRC
 
+** Pretty Code
+#+BEGIN_SRC elisp
+(setq +pretty-code-enabled-modes '(org-mode))
+#+END_SRC
 ** Org-Mode
 #+BEGIN_SRC elisp
 (setq org-directory "~/org/")
@@ -110,7 +114,7 @@ Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/sp
   :match "/\\(main\\|site\\|encrypted\\|\\(\\(roles\\|tasks\\|handlers\\|vars\\|defaults\\|meta\\|group_vars\\|host_vars\\)/.+\\)\\)\\.ya?ml$")
 #+END_SRC
 
-** Systmed
+** Systemd
 #+BEGIN_SRC elisp
 (map! :map systemd-mode-map
       :localleader
@@ -147,17 +151,9 @@ Shorten which-key popup delay
 #+BEGIN_SRC elisp
 (setq projectile-project-search-path '("~/src/" "~/projects/"))
 #+END_SRC
-** Python
-Disable pretty symbols in ~python-mode~.
+** Magit
 #+BEGIN_SRC elisp
-(after! python-mode
-  (set-pretty-symbols! 'python-mode nil))
+(setq magit-repository-directories
+      '(("~/src" . 2)
+        ("~/projects" . 2)))
 #+END_SRC
-
-** Javascript
-Disable pretty symbols in ~js2-mode~.
-#+BEGIN_SRC elisp
-(after! js2-mode
-  (set-pretty-symbols! 'js2-mode nil))
-#+END_SRC
-
