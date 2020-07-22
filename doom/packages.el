@@ -55,3 +55,5 @@
   :disable t)
 
 (package! systemd)
+
+(package! bats-mode)
