@@ -12,6 +12,10 @@ alias ll="exa -l"
 
 alias less="less -FSRX"
 
+# Colors
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+
 alias ssh-fix="chmod 600 ~/.ssh/{*/*.key,config}"
 alias virsh-local="virsh -c qemu:///system"
 alias zshreload="source $HOME/.zshrc"

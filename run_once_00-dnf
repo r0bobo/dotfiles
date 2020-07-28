@@ -3,11 +3,13 @@
 
 packages=(
 
+    bat
     direnv
     emacs
     exa
     fd-find
     fzf
+    grc
     kubectl
     lab
     rclone
