@@ -35,10 +35,16 @@
 	# Standard diff is two sets of final changes. This introduces the original text before each side's changes.
 	# https://git-scm.com/docs/git-config#git-config-mergeconflictStyle
 
+[pull]
+	rebase = true
+
 [push]
 	followTags = true
 	# Because I get sick of telling git to do it manually
 	# https://git-scm.com/docs/git-config#git-config-pushfollowTags
+
+[rebase]
+	autoStash = true
 
 [status]
 	showUntrackedFiles = all
