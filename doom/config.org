@@ -25,6 +25,7 @@
     - [[#activation][Activation]]
   - [[#systemd][Systemd]]
   - [[#magit][Magit]]
+- [[#things-to-remember][Things to remember]]
 
 * Configuration
 :PROPERTIES:
@@ -65,6 +66,7 @@ Repeat searches with snipe or ~f/t~ upon pressing the key again.
 #+END_SRC
 
 ** Global Keymaps
+
 #+BEGIN_SRC elisp
 (map!
  :leader
@@ -161,3 +163,15 @@ Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/sp
       '(("~/src" . 2)
         ("~/projects" . 2)))
 #+END_SRC
+
+
+* Things to remember
+
+| Key                 | Effect                                      |
+|---------------------+---------------------------------------------|
+| ~SPC u SPC '~       | Choose Ivy session to resume                |
+| ~g;~, ~g,~, ~gi~    | Go to last change, edit at last change      |
+| ~C-c C-e~           | Edit dired files as text                    |
+| ~:s//test/~         | Replace string that was previously replaced |
+| ~:s/foo/&bar~       | Will change foo to foobar                   |
+| ~:%!jq --sort-keys~ | Run external command on region              |
