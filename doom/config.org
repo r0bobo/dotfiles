@@ -13,6 +13,9 @@
 - [[#configuration][Configuration]]
   - [[#header][Header]]
   - [[#personal-info][Personal Info]]
+  - [[#general][General]]
+  - [[#global-keymaps][Global Keymaps]]
+  - [[#projectile][Projectile]]
   - [[#ui][UI]]
   - [[#pretty-code][Pretty Code]]
   - [[#org-mode][Org-Mode]]
@@ -21,9 +24,6 @@
     - [[#documentation][Documentation]]
     - [[#activation][Activation]]
   - [[#systemd][Systemd]]
-  - [[#general][General]]
-    - [[#keymaps][Keymaps]]
-  - [[#projectile][Projectile]]
   - [[#magit][Magit]]
 
 * Configuration
@@ -41,6 +41,53 @@
       user-mail-address "dean.todevski@gmail.com")
 #+END_SRC
 
+** General
+Change localleader to ~,~
+#+BEGIN_SRC elisp
+(setq doom-localleader-key ",")
+#+END_SRC
+
+Shorten which-key popup delay
+#+BEGIN_SRC elisp
+(use-package! which-key
+  :config
+  (setq which-key-idle-delay 0.5))
+#+END_SRC
+
+Authsources are used in for example Forge
+#+BEGIN_SRC elisp
+(setq auth-sources '("~/.authinfo"))
+#+END_SRC
+
+Repeat searches with snipe or ~f/t~ upon pressing the key again.
+#+BEGIN_SRC elisp
+(setq evil-snipe-repeat-keys t)
+#+END_SRC
+
+** Global Keymaps
+#+BEGIN_SRC elisp
+(map!
+ :leader
+ :desc "Search in project" "/" #'+default/search-project
+ :desc "Doom dashboard" "b h" #'+doom-dashboard/open)
+#+END_SRC
+
+Go to last changes hydra
+#+BEGIN_SRC elisp
+(defhydra hydra-goto-chg (:timeout 2)
+  "goto-chg"
+  (";" goto-last-change "goto-last-change")
+  ("," goto-last-change-reverse "goto-last-change-reverse")
+  ("i" goto-last-change-reverse "goto-last-change-reverse")
+  )
+
+(map! :n "g;" 'hydra-goto-chg/goto-last-change)
+#+END_SRC
+
+** Projectile
+#+BEGIN_SRC elisp
+(setq projectile-project-search-path '("~/src/" "~/projects/"))
+#+END_SRC
 ** UI
 #+BEGIN_SRC elisp
 (setq doom-font (font-spec :family "Source Code Pro" :size 14)
@@ -106,38 +153,8 @@ Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/sp
       :localleader
       "d" #'systemd-doc-directives
       "h" #'systemd-doc-open)
-
 #+END_SRC
 
-** General
-Change localleader to ~,~
-#+BEGIN_SRC elisp
-(setq doom-localleader-key ",")
-#+END_SRC
-
-Shorten which-key popup delay
-#+BEGIN_SRC elisp
-(use-package! which-key
-  :config
-  (setq which-key-idle-delay 0.5))
-#+END_SRC
-
-#+BEGIN_SRC elisp
-(setq auth-sources '("~/.authinfo"))
-#+END_SRC
-
-*** Keymaps
-#+BEGIN_SRC elisp
-(map!
- :leader
- :desc "Search in project" "/" #'+default/search-project
- :desc "Doom dashboard" "b h" #'+doom-dashboard/open)
-#+END_SRC
-
-** Projectile
-#+BEGIN_SRC elisp
-(setq projectile-project-search-path '("~/src/" "~/projects/"))
-#+END_SRC
 ** Magit
 #+BEGIN_SRC elisp
 (setq magit-repository-directories

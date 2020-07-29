@@ -1,6 +1,25 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 (setq user-full-name "Dean Lindqvist Todevski"
       user-mail-address "dean.todevski@gmail.com")
+(setq doom-localleader-key ",")
+(use-package! which-key
+  :config
+  (setq which-key-idle-delay 0.5))
+(setq auth-sources '("~/.authinfo"))
+(setq evil-snipe-repeat-keys t)
+(map!
+ :leader
+ :desc "Search in project" "/" #'+default/search-project
+ :desc "Doom dashboard" "b h" #'+doom-dashboard/open)
+(defhydra hydra-goto-chg (:timeout 2)
+  "goto-chg"
+  (";" goto-last-change "goto-last-change")
+  ("," goto-last-change-reverse "goto-last-change-reverse")
+  ("i" goto-last-change-reverse "goto-last-change-reverse")
+  )
+
+(map! :n "g;" 'hydra-goto-chg/goto-last-change)
+(setq projectile-project-search-path '("~/src/" "~/projects/"))
 (setq doom-font (font-spec :family "Source Code Pro" :size 14)
       doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 14)
       doom-unicode-font (font-spec :family "Source Code Pro" :size 14)
@@ -38,16 +57,6 @@
       :localleader
       "d" #'systemd-doc-directives
       "h" #'systemd-doc-open)
-(setq doom-localleader-key ",")
-(use-package! which-key
-  :config
-  (setq which-key-idle-delay 0.5))
-(setq auth-sources '("~/.authinfo"))
-(map!
- :leader
- :desc "Search in project" "/" #'+default/search-project
- :desc "Doom dashboard" "b h" #'+doom-dashboard/open)
-(setq projectile-project-search-path '("~/src/" "~/projects/"))
 (setq magit-repository-directories
       '(("~/src" . 2)
         ("~/projects" . 2)))
