@@ -183,6 +183,7 @@ Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/sp
 | ~S-SPC~             | Start a sub-search of what Ivy currently displays |
 | ~g p~               | Selected pasted text                              |
 | ~=~                 | Fix indentation on selected text                  |
+| ~SPC i y~           | Show clipboard history                            |
 
 ** Tips
 *** How to search github
