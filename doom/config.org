@@ -26,6 +26,9 @@
   - [[#systemd][Systemd]]
   - [[#magit][Magit]]
 - [[#things-to-remember][Things to remember]]
+  - [[#keysfeatures][Keys/features]]
+  - [[#tips][Tips]]
+    - [[#how-to-search-github][How to search github]]
 
 * Configuration
 :PROPERTIES:
@@ -167,6 +170,7 @@ Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/sp
 
 * Things to remember
 
+** Keys/features
 | Key                 | Effect                                            |
 |---------------------+---------------------------------------------------|
 | ~SPC u SPC '~       | Choose Ivy session to resume                      |
@@ -177,3 +181,17 @@ Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/sp
 | ~:%!jq --sort-keys~ | Run external command on region                    |
 | ~SPC p t~           | Show project todos in magit                       |
 | ~S-SPC~             | Start a sub-search of what Ivy currently displays |
+| ~g p~               | Selected pasted text                              |
+| ~=~                 | Fix indentation on selected text                  |
+
+** Tips
+*** How to search github
+If you want to see how others are configuring different parts of emacs
+you can use the following to search github to spy on them:
+
+~language:emacs-lisp language:org type:Code {symbol,hook,function,etc}~
+
+For example I just wanted to see how others were enabling
+~pdf-view-midnight-minor-mode~ with doom, so I searched:
+
+~language:emacs-lisp language:org type:Code pdf-view-midnight-minor-mode doom~
