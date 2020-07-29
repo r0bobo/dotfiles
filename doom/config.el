@@ -50,7 +50,8 @@
 (setq auth-sources '("~/.authinfo"))
 (map!
  :leader
- "b h" #'+doom-dashboard/open)
+ :desc "Search in project" "/" #'+default/search-project
+ :desc "Doom dashboard" "b h" #'+doom-dashboard/open)
 (setq projectile-project-search-path '("~/src/" "~/projects/"))
 (setq magit-repository-directories
       '(("~/src" . 2)

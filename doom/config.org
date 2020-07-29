@@ -144,7 +144,8 @@ Shorten which-key popup delay
 #+BEGIN_SRC elisp
 (map!
  :leader
- "b h" #'+doom-dashboard/open)
+ :desc "Search in project" "/" #'+default/search-project
+ :desc "Doom dashboard" "b h" #'+doom-dashboard/open)
 #+END_SRC
 
 ** Projectile
