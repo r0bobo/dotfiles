@@ -6,7 +6,6 @@ _plugin() {
     fi
 }
 
-_plugin /etc/profile.d/grc.bashrc
 _plugin /usr/share/fzf/shell/key-bindings.zsh
 _plugin /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 _plugin /usr/share/zsh-fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
