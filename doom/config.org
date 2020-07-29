@@ -17,7 +17,6 @@
   - [[#pretty-code][Pretty Code]]
   - [[#org-mode][Org-Mode]]
     - [[#capture-templates][Capture Templates]]
-    - [[#literate-config-auto-compile][Literate config auto-compile]]
   - [[#ansible][Ansible]]
     - [[#documentation][Documentation]]
     - [[#activation][Activation]]
@@ -76,19 +75,6 @@
                '("t" "Personal todo" entry
                  (file+headline +org-capture-todo-file "Todos")
                  "* TODO %?\n%i\n%a" :prepend t)))
-#+END_SRC
-
-
-*** Literate config auto-compile
-The ~literal~ module auto-tangles ~*.org~ files in ~DOOMDIR~ but change to
-Chezmoi dir without actually changing ~DOOMDIR~ due to other hassle.
-
-#+BEGIN_SRC elisp
-;;;###autoload
-(defun +literate-recompile-maybe-h ()
-  (when (and (eq major-mode 'org-mode)
-             (file-in-directory-p buffer-file-name (expand-file-name "~/.local/share/chezmoi/doom")))
-    (+literate-tangle 'force)))
 #+END_SRC
 
 ** Ansible
