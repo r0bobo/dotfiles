@@ -6,7 +6,10 @@
   :config
   (setq which-key-idle-delay 0.5))
 (setq auth-sources '("~/.authinfo"))
-(setq evil-snipe-repeat-keys t)
+(use-package! evil-snipe
+  :config
+  (setq evil-snipe-repeat-keys t)
+  )
 (map!
  :leader
  :desc "Search in project" "/" #'+default/search-project

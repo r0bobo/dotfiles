@@ -65,7 +65,10 @@ Authsources are used in for example Forge
 
 Repeat searches with snipe or ~f/t~ upon pressing the key again.
 #+BEGIN_SRC elisp
-(setq evil-snipe-repeat-keys t)
+(use-package! evil-snipe
+  :config
+  (setq evil-snipe-repeat-keys t)
+  )
 #+END_SRC
 
 ** Global Keymaps
