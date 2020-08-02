@@ -15,6 +15,7 @@
   - [[#personal-info][Personal Info]]
   - [[#general][General]]
   - [[#global-keymaps][Global Keymaps]]
+  - [[#dired][Dired]]
   - [[#projectile][Projectile]]
   - [[#ui][UI]]
   - [[#pretty-code][Pretty Code]]
@@ -92,6 +93,12 @@ Go to last changes hydra
 (map! :n "g;" 'hydra-goto-chg/goto-last-change)
 #+END_SRC
 
+** Dired
+#+BEGIN_SRC elisp
+(map! :map dired-mode-map
+      :localleader
+      :desc "Edit filenames" "e" #'wdired-change-to-wdired-mode)
+#+END_SRC
 ** Projectile
 #+BEGIN_SRC elisp
 (setq projectile-project-search-path '("~/src/" "~/projects/"))
