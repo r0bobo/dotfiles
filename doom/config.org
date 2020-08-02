@@ -1,6 +1,6 @@
 #+TITLE: Config
 #+AUTHOR: Dean Lindqvist Todevski
-#+EMAIL: dean.todevski.com
+#+EMAIL: dean.todevski@gmail.com
 #+LANGUAGE: en
 #+STARTUP: inlineimages
 #+STARTUP: overview
