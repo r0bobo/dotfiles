@@ -14,6 +14,7 @@
   - [[#header][Header]]
   - [[#personal-info][Personal Info]]
   - [[#general][General]]
+  - [[#literate][Literate]]
   - [[#global-keymaps][Global Keymaps]]
   - [[#dired][Dired]]
   - [[#projectile][Projectile]]
@@ -70,6 +71,15 @@ Repeat searches with snipe or ~f/t~ upon pressing the key again.
   :config
   (setq evil-snipe-repeat-keys t)
   )
+#+END_SRC
+
+** Literate
+#+BEGIN_SRC elisp
+(eval-after-load (expand-file-name "~/.emacs.d/modules/config/literate/autoload.el")
+  '(defun +literate-recompile-maybe-h ()
+     "Recompile literate config to `doom-private-dir'."
+  (when (string-equal buffer-file-name (expand-file-name +literate-config-file))
+    (+literate-tangle-h))))
 #+END_SRC
 
 ** Global Keymaps

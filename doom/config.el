@@ -27,6 +27,9 @@
   )
 
 (map! :n "g;" 'hydra-goto-chg/goto-last-change)
+(map! :map dired-mode-map
+      :localleader
+      :desc "Edit filenames" "e" #'wdired-change-to-wdired-mode)
 (setq projectile-project-search-path '("~/src/" "~/projects/"))
 (setq doom-font (font-spec :family "Source Code Pro" :size 14)
       doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 14)
