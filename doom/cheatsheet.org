@@ -3,7 +3,6 @@
 #+EMAIL: dean.todevski@gmail.com
 #+LANGUAGE: en
 #+STARTUP: inlineimages
-#+STARTUP: overview
 
 * Table of Contents :TOC_3_gh:
 :PROPERTIES:
@@ -18,6 +17,7 @@
   - [[#edit-pasted-text][Edit pasted text]]
   - [[#indentation][Indentation]]
   - [[#clipboard-history][Clipboard history]]
+  - [[#filepath--filename][Filepath / filename]]
 - [[#tips][Tips]]
   - [[#how-to-search-github][How to search Github]]
 - [[#org-re-reveal][Org re-reveal]]
@@ -68,6 +68,11 @@
 | ~SPC i y~ | Show clipboard history |
 |-----------+------------------------|
 
+** Filepath / filename
+|-----------+-------------------------|
+| ~SPC i f~ | Insert current filename |
+| ~SPC i F~ | Insert current filepath |
+|-----------+-------------------------|
 
 * Tips
 ** How to search Github
