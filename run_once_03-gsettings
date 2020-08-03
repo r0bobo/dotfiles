@@ -3,26 +3,22 @@
 # Only run when graphical
 [[ "$XDG_CURRENT_DESKTOP" == '' ]] && exit 0
 
-
->&2 echo Configuring Gnome settings
-
+echo >&2 Configuring Gnome settings
 
 gset() {
-    gsettings set "$@"
+	gsettings set "$@"
 }
 
 keybind() {
-    path="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/$1/"
-    gset "$path" name "$2"
-    gset "$path" command "$3"
-    gset "$path" binding "$4"
+	path="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/$1/"
+	gset "$path" name "$2"
+	gset "$path" command "$3"
+	gset "$path" binding "$4"
 }
-
 
 # Generic
 gset org.gnome.desktop.interface gtk-theme "Adapta-Eta"
 gset org.gnome.desktop.interface enable-hot-corners "false"
-
 
 # Workspace
 gset org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Super>exclam']"
@@ -38,7 +34,6 @@ gset org.gnome.shell.keybindings switch-to-application-2 "[]"
 gset org.gnome.shell.keybindings switch-to-application-3 "[]"
 gset org.gnome.shell.keybindings switch-to-application-4 "[]"
 
-
 # Keybinds
 gset org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
   '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/',
@@ -46,5 +41,5 @@ gset org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
   '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/'
 ]"
 keybind custom0 'Emacs' 'emacsclient -nc' '<Super>e'
-keybind custom1 'Terminal' 'alacritty-xway' '<Super>Return'
-keybind custom2 'Org-capture' \'$HOME/.local/bin/org-capture\' '<Super>c'
+keybind custom1 'Terminal' 'sh -c "WAYLAND_DISPLAY= alacritty"' '<Super>Return'
+keybind custom2 'Org-capture' "$HOME/.local/bin/org-capture" '<Super>c'
