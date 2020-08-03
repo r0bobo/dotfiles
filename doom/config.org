@@ -3,7 +3,7 @@
 #+EMAIL: dean.todevski@gmail.com
 #+LANGUAGE: en
 #+STARTUP: inlineimages
-#+STARTUP: overview
+# #+STARTUP: overview
 #+PROPERTY: header-args :tangle yes :cache yes :results silent :padline no
 
 * Table of Contents :TOC_3_gh:
@@ -27,10 +27,8 @@
     - [[#activation][Activation]]
   - [[#systemd][Systemd]]
   - [[#magit][Magit]]
-- [[#things-to-remember][Things to remember]]
-  - [[#keysfeatures][Keys/features]]
-  - [[#tips][Tips]]
-    - [[#how-to-search-github][How to search github]]
+  - [[#custom][Custom]]
+    - [[#functions][Functions]]
 
 * Configuration
 :PROPERTIES:
@@ -88,7 +86,12 @@ Repeat searches with snipe or ~f/t~ upon pressing the key again.
 (map!
  :leader
  :desc "Search in project" "/" #'+default/search-project
- :desc "Doom dashboard" "b h" #'+doom-dashboard/open)
+ :desc "Doom dashboard" "b h" #'+doom-dashboard/open
+
+ :prefix ("d" . "dean")
+ :desc "Cheatsheet" "c" 'dean/cheatsheet
+ :desc "Doom Config" "d" 'dean/doom-config
+ )
 #+END_SRC
 
 Go to last changes hydra
@@ -188,31 +191,20 @@ Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/sp
 #+END_SRC
 
 
-* Things to remember
+** Custom
+*** Functions
+#+BEGIN_SRC elisp
+(defun dean/doom-config (&optional initial-input)
+  "Search Doom private config and jump to a heading."
+  (interactive)
+  (doom-completing-read-org-headings
+   "Config: " (list (concat doom-private-dir "config.org"))
+   2 nil initial-input))
 
-** Keys/features
-| Key                 | Effect                                            |
-|---------------------+---------------------------------------------------|
-| ~SPC u SPC '~       | Choose Ivy session to resume                      |
-| ~g;~, ~g,~, ~gi~    | Go to last change, edit at last change            |
-| ~C-c C-e~           | Edit dired files as text                          |
-| ~:s//test/~         | Replace string that was previously replaced       |
-| ~:s/foo/&bar~       | Will change foo to foobar                         |
-| ~:%!jq --sort-keys~ | Run external command on region                    |
-| ~SPC p t~           | Show project todos in magit                       |
-| ~S-SPC~             | Start a sub-search of what Ivy currently displays |
-| ~g p~               | Selected pasted text                              |
-| ~=~                 | Fix indentation on selected text                  |
-| ~SPC i y~           | Show clipboard history                            |
-
-** Tips
-*** How to search github
-If you want to see how others are configuring different parts of emacs
-you can use the following to search github to spy on them:
-
-~language:emacs-lisp language:org type:Code {symbol,hook,function,etc}~
-
-For example I just wanted to see how others were enabling
-~pdf-view-midnight-minor-mode~ with doom, so I searched:
-
-~language:emacs-lisp language:org type:Code pdf-view-midnight-minor-mode doom~
+(defun dean/cheatsheet (&optional initial-input)
+  "Search private cheatsheet and jump to heading."
+  (interactive)
+  (doom-completing-read-org-headings
+   "Cheatsheet: " (list (concat doom-private-dir "cheatsheet.org"))
+   2 nil initial-input))
+#+END_SRC
