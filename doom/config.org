@@ -91,6 +91,7 @@ Repeat searches with snipe or ~f/t~ upon pressing the key again.
  :prefix ("d" . "dean")
  :desc "Cheatsheet" "c" 'dean/cheatsheet
  :desc "Doom Config" "d" 'dean/doom-config
+ :desc "Font Size" "z" #'+hydra/text-zoom/body
  )
 #+END_SRC
 

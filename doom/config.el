@@ -23,6 +23,7 @@
  :prefix ("d" . "dean")
  :desc "Cheatsheet" "c" 'dean/cheatsheet
  :desc "Doom Config" "d" 'dean/doom-config
+ :desc "Font Size" "z" #'+hydra/text-zoom/body
  )
 (defhydra hydra-goto-chg (:timeout 2)
   "goto-chg"
