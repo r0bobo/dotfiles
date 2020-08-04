@@ -2,7 +2,9 @@
 
 alias d=docker
 alias e=editor
-alias k=kubectl
+
+alias kubectl='EDITOR=vim kubectl'
+alias k='kubectl'
 
 # Emacs commands
 alias emacs-log='journalctl --user-unit=emacs.service --follow'
