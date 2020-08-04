@@ -38,3 +38,5 @@ proj() {
 	cd "$PROJECT_DIR/$PROJ"
 	tm "$PROJ"
 }
+
+ssh_until_connection() { until ssh "$1"; do sleep 3; done; }
