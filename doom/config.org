@@ -41,33 +41,33 @@
 
 ** Personal Info
 #+BEGIN_SRC elisp
-(setq user-full-name "Dean Lindqvist Todevski"
+(setq! user-full-name "Dean Lindqvist Todevski"
       user-mail-address "dean.todevski@gmail.com")
 #+END_SRC
 
 ** General
 Change localleader to ~,~
 #+BEGIN_SRC elisp
-(setq doom-localleader-key ",")
+(setq! doom-localleader-key ",")
 #+END_SRC
 
 Shorten which-key popup delay
 #+BEGIN_SRC elisp
 (use-package! which-key
   :config
-  (setq which-key-idle-delay 0.5))
+  (setq! which-key-idle-delay 0.5))
 #+END_SRC
 
 Authsources are used in for example Forge
 #+BEGIN_SRC elisp
-(setq auth-sources '("~/.authinfo"))
+(setq! auth-sources '("~/.authinfo"))
 #+END_SRC
 
 Repeat searches with snipe or ~f/t~ upon pressing the key again.
 #+BEGIN_SRC elisp
 (use-package! evil-snipe
   :config
-  (setq evil-snipe-repeat-keys t)
+  (setq! evil-snipe-repeat-keys t)
   )
 #+END_SRC
 
@@ -115,26 +115,26 @@ Go to last changes hydra
 #+END_SRC
 ** Projectile
 #+BEGIN_SRC elisp
-(setq projectile-project-search-path '("~/src/" "~/projects/"))
+(setq! projectile-project-search-path '("~/src/" "~/projects/"))
 #+END_SRC
 ** UI
 #+BEGIN_SRC elisp
-(setq doom-font (font-spec :family "Source Code Pro" :size 14)
+(setq! doom-font (font-spec :family "Source Code Pro" :size 14)
       doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 14)
       doom-unicode-font (font-spec :family "Source Code Pro" :size 14)
       doom-big-font (font-spec :family "Source Code Pro" :size 26))
 
-(setq doom-theme 'doom-vibrant
+(setq! doom-theme 'doom-vibrant
       display-line-numbers-type t)
 #+END_SRC
 
 ** Pretty Code
 #+BEGIN_SRC elisp
-(setq +pretty-code-enabled-modes '(org-mode))
+(setq! +pretty-code-enabled-modes '(org-mode))
 #+END_SRC
 ** Org-Mode
 #+BEGIN_SRC elisp
-(setq org-directory "~/org/")
+(setq! org-directory "~/org/")
 #+END_SRC
 
 *** Capture Templates
@@ -186,7 +186,7 @@ Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/sp
 
 ** Magit
 #+BEGIN_SRC elisp
-(setq magit-repository-directories
+(setq! magit-repository-directories
       '(("~/src" . 2)
         ("~/projects" . 2)))
 #+END_SRC

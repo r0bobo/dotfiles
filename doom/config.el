@@ -1,14 +1,14 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-(setq user-full-name "Dean Lindqvist Todevski"
+(setq! user-full-name "Dean Lindqvist Todevski"
       user-mail-address "dean.todevski@gmail.com")
-(setq doom-localleader-key ",")
+(setq! doom-localleader-key ",")
 (use-package! which-key
   :config
-  (setq which-key-idle-delay 0.5))
-(setq auth-sources '("~/.authinfo"))
+  (setq! which-key-idle-delay 0.5))
+(setq! auth-sources '("~/.authinfo"))
 (use-package! evil-snipe
   :config
-  (setq evil-snipe-repeat-keys t)
+  (setq! evil-snipe-repeat-keys t)
   )
 (eval-after-load (expand-file-name "~/.emacs.d/modules/config/literate/autoload.el")
   '(defun +literate-recompile-maybe-h ()
@@ -36,16 +36,16 @@
 (map! :map dired-mode-map
       :localleader
       :desc "Edit filenames" "e" #'wdired-change-to-wdired-mode)
-(setq projectile-project-search-path '("~/src/" "~/projects/"))
-(setq doom-font (font-spec :family "Source Code Pro" :size 14)
+(setq! projectile-project-search-path '("~/src/" "~/projects/"))
+(setq! doom-font (font-spec :family "Source Code Pro" :size 14)
       doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 14)
       doom-unicode-font (font-spec :family "Source Code Pro" :size 14)
       doom-big-font (font-spec :family "Source Code Pro" :size 26))
 
-(setq doom-theme 'doom-vibrant
+(setq! doom-theme 'doom-vibrant
       display-line-numbers-type t)
-(setq +pretty-code-enabled-modes '(org-mode))
-(setq org-directory "~/org/")
+(setq! +pretty-code-enabled-modes '(org-mode))
+(setq! org-directory "~/org/")
 (after! org
   (add-to-list 'org-capture-templates
                '("l" "Link" entry
@@ -74,7 +74,7 @@
       :localleader
       "d" #'systemd-doc-directives
       "h" #'systemd-doc-open)
-(setq magit-repository-directories
+(setq! magit-repository-directories
       '(("~/src" . 2)
         ("~/projects" . 2)))
 (defun dean/doom-config (&optional initial-input)
