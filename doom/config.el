@@ -46,6 +46,8 @@
       display-line-numbers-type t)
 (setq! +pretty-code-enabled-modes '(org-mode))
 (setq! org-directory "~/org/")
+(add-hook 'org-mode-hook
+          'literate-calc-minor-mode)
 (after! org
   (add-to-list 'org-capture-templates
                '("l" "Link" entry

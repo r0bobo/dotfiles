@@ -57,3 +57,5 @@
 (package! systemd)
 
 (package! bats-mode)
+
+(package! literate-calc-mode)

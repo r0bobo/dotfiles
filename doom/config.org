@@ -21,6 +21,7 @@
   - [[#ui][UI]]
   - [[#pretty-code][Pretty Code]]
   - [[#org-mode][Org-Mode]]
+    - [[#literate-calc-mode][Literate calc mode]]
     - [[#capture-templates][Capture Templates]]
   - [[#ansible][Ansible]]
     - [[#documentation][Documentation]]
@@ -135,6 +136,12 @@ Go to last changes hydra
 ** Org-Mode
 #+BEGIN_SRC elisp
 (setq! org-directory "~/org/")
+#+END_SRC
+
+*** Literate calc mode
+#+BEGIN_SRC elisp
+(add-hook 'org-mode-hook
+          'literate-calc-minor-mode)
 #+END_SRC
 
 *** Capture Templates
