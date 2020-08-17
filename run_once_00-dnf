@@ -1,47 +1,53 @@
 #!/bin/bash -e
 
-
 packages=(
 
-    bat
-    direnv
-    emacs
-    exa
-    fd-find
-    fzf
-    grc
-    kubectl
-    lab
-    rclone
-    ripgrep
-    starship
-    tmpwatch
-    tmux
-    vim
-    xclip
-    zsh
-    zsh-autosuggestions
-    zsh-fast-syntax-highlighting
+	bat
+	direnv
+	emacs
+	exa
+	fd-find
+	fzf
+	grc
+	kubectl
+	lab
+	rclone
+	ripgrep
+	starship
+	tmpwatch
+	tmux
+	vim
+	xclip
+	zsh
+	zsh-autosuggestions
+	zsh-fast-syntax-highlighting
 
-    # Golang dev
-    godoctor
-    golang-x-tools-gopls
-    golang-x-tools-gorename
-    golang-x-tools-guru
+	# Golang dev
+	godoctor
+	golang-x-tools-gopls
+	golang-x-tools-gorename
+	golang-x-tools-guru
 
 )
 
 # Graphical packages
 if [[ "$XDG_CURRENT_DESKTOP" != '' ]]; then
-    packages+=(
+	packages+=(
 
-        adapta-gtk-theme
-        adobe-source-code-pro-fonts
-        alacritty
-        flatpak
-        papirus-icon-theme
+		adapta-gtk-theme
+		adobe-source-code-pro-fonts
+		alacritty
+		flatpak
+		papirus-icon-theme
 
-    )
+		# Firefox VA-API
+		# https://mastransky.wordpress.com/2020/06/03/firefox-on-fedora-finally-gets-va-api-on-wayland/
+		ffmpeg
+		libva
+		libva-utils
+		libva-intel-driver
+
+	)
 fi
 
 # RPM Fusion
