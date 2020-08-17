@@ -1,0 +1,5 @@
+#!/bin/bash -e
+
+echo >&2 "Installing git-sync script"
+curl -Lo ~/.local/bin/git-sync https://raw.githubusercontent.com/simonthum/git-sync/master/git-sync
+chmod +x ~/.local/bin/git-sync
