@@ -47,6 +47,10 @@
       display-line-numbers-type t)
 (setq! +pretty-code-enabled-modes '(org-mode))
 (setq! org-directory "~/org/")
+
+(map! :map org-mode-map
+      :localleader
+      "x" #'org-babel-tangle)
 (add-hook 'org-mode-hook
           'literate-calc-minor-mode)
 (after! org

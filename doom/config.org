@@ -138,6 +138,10 @@ Go to last changes hydra
 ** Org-Mode
 #+BEGIN_SRC elisp
 (setq! org-directory "~/org/")
+
+(map! :map org-mode-map
+      :localleader
+      "x" #'org-babel-tangle)
 #+END_SRC
 
 *** Literate calc mode
