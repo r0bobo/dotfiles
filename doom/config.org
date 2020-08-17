@@ -74,12 +74,15 @@ Repeat searches with snipe or ~f/t~ upon pressing the key again.
 #+END_SRC
 
 ** Literate
+Switch to the new window after splitting
 #+BEGIN_SRC elisp
 (eval-after-load (expand-file-name "~/.emacs.d/modules/config/literate/autoload.el")
   '(defun +literate-recompile-maybe-h ()
      "Recompile literate config to `doom-private-dir'."
   (when (string-equal buffer-file-name (expand-file-name +literate-config-file))
     (+literate-tangle-h))))
+(setq evil-split-window-below t
+      evil-vsplit-window-right t)
 #+END_SRC
 
 ** Global Keymaps
@@ -116,10 +119,12 @@ Go to last changes hydra
       :localleader
       :desc "Edit filenames" "e" #'wdired-change-to-wdired-mode)
 #+END_SRC
+
 ** Projectile
 #+BEGIN_SRC elisp
 (setq! projectile-project-search-path '("~/src/" "~/projects/"))
 #+END_SRC
+
 ** UI
 #+BEGIN_SRC elisp
 (setq! doom-font (font-spec :family "Source Code Pro" :size 14)
@@ -135,6 +140,7 @@ Go to last changes hydra
 #+BEGIN_SRC elisp
 (setq! +pretty-code-enabled-modes '(org-mode))
 #+END_SRC
+
 ** Org-Mode
 #+BEGIN_SRC elisp
 (setq! org-directory "~/org/")
