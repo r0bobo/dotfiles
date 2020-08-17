@@ -53,7 +53,7 @@
   (add-to-list 'org-capture-templates
                '("l" "Link" entry
                  (file+headline "links.org" "New Links")
-                 "* %(org-cliplink-capture)\n :PROPERTIES:\n :CATEGORY: %?\n :END:\n %i\n"
+                 "* %(org-cliplink-capture)\n%?\n %i\n"
                  :prepend t :kill-buffer t)))
 
 (after! org
