@@ -62,3 +62,5 @@
   :recipe (:host github :repo "tuh8888/chezmoi.el"))
 
 (package! literate-calc-mode)
+
+(package! k8s-mode)
