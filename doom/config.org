@@ -26,6 +26,7 @@
   - [[#ansible][Ansible]]
     - [[#documentation][Documentation]]
     - [[#activation][Activation]]
+  - [[#chezmoi][Chezmoi]]
   - [[#systemd][Systemd]]
   - [[#magit][Magit]]
   - [[#custom][Custom]]
@@ -182,6 +183,13 @@ Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/sp
   :modes '(yaml-mode)
   :add-hooks '(ansible ansible-auto-decrypt-encrypt ansible-doc-mode)
   :match "/\\(main\\|site\\|encrypted\\|\\(\\(roles\\|tasks\\|handlers\\|vars\\|defaults\\|meta\\|group_vars\\|host_vars\\)/.+\\)\\)\\.ya?ml$")
+#+END_SRC
+
+** Chezmoi
+#+BEGIN_SRC elisp
+(use-package! chezmoi
+    :commands '(chezmoi|diff chezmoi|ediff chezmoi|find chezmoi|magit-status chezmoi|write)
+    )
 #+END_SRC
 
 ** Systemd
