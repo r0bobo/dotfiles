@@ -188,7 +188,7 @@ Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/sp
 ** Chezmoi
 #+BEGIN_SRC elisp
 (use-package! chezmoi
-    :commands '(chezmoi|diff chezmoi|ediff chezmoi|find chezmoi|magit-status chezmoi|write)
+    :commands (chezmoi|diff chezmoi|ediff chezmoi|find chezmoi|magit-status chezmoi|write)
     )
 #+END_SRC
 
