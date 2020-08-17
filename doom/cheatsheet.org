@@ -6,8 +6,8 @@
 
 * Table of Contents :TOC_3_gh:
 :PROPERTIES:
-
-
+:VISIBILITY: children
+:END:
 - [[#keybinds--features][Keybinds / features]]
   - [[#resume-ivy-session][Resume Ivy session]]
   - [[#ivy-sub-search][Ivy sub-search]]
