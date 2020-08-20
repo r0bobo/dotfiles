@@ -47,7 +47,8 @@
 
 (setq! doom-theme 'doom-vibrant
       display-line-numbers-type t)
-(setq! +pretty-code-enabled-modes '(org-mode))
+(setq! +ligatures-in-modes '(org-mode)
+       +ligatures-extras-in-modes '(org-mode))
 (setq! org-directory "~/org/")
 
 (map! :map org-mode-map

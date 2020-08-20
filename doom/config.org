@@ -138,7 +138,8 @@ Go to last changes hydra
 
 ** Pretty Code
 #+BEGIN_SRC elisp
-(setq! +pretty-code-enabled-modes '(org-mode))
+(setq! +ligatures-in-modes '(org-mode)
+       +ligatures-extras-in-modes '(org-mode))
 #+END_SRC
 
 ** Org-Mode
