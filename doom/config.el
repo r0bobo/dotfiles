@@ -53,7 +53,7 @@
 
 (map! :map org-mode-map
       :localleader
-      "x" #'org-babel-tangle)
+      "=" #'org-babel-tangle)
 (add-hook 'org-mode-hook
           'literate-calc-minor-mode)
 (after! org

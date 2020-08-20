@@ -148,7 +148,7 @@ Go to last changes hydra
 
 (map! :map org-mode-map
       :localleader
-      "x" #'org-babel-tangle)
+      "=" #'org-babel-tangle)
 #+END_SRC
 
 *** Literate calc mode
