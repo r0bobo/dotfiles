@@ -218,6 +218,12 @@ Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/sp
         ("~/projects" . 2)))
 #+END_SRC
 
+Setup =git.todevski.com= as a Gitlab server for remote browsing.
+#+BEGIN_SRC elisp
+(add-to-list 'browse-at-remote-remote-type-domains
+             '("git.todevski.com" . "gitlab"))
+#+END_SRC
+
 
 ** Custom
 *** Functions
