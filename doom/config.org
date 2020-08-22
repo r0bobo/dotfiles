@@ -220,8 +220,10 @@ Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/sp
 
 Setup =git.todevski.com= as a Gitlab server for remote browsing.
 #+BEGIN_SRC elisp
-(add-to-list 'browse-at-remote-remote-type-domains
-             '("git.todevski.com" . "gitlab"))
+(use-package! browse-at-remote
+  :config
+  (add-to-list 'browse-at-remote-remote-type-domains
+               '("git.todevski.com" . "gitlab")))
 #+END_SRC
 
 

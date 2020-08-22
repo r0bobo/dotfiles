@@ -90,8 +90,10 @@
 (setq! magit-repository-directories
       '(("~/src" . 2)
         ("~/projects" . 2)))
-(add-to-list 'browse-at-remote-remote-type-domains
-             '("git.todevski.com" . "gitlab"))
+(use-package! browse-at-remote
+  :config
+  (add-to-list 'browse-at-remote-remote-type-domains
+               '("git.todevski.com" . "gitlab")))
 (defun dean/doom-config (&optional initial-input)
   "Search Doom private config and jump to a heading."
   (interactive)
