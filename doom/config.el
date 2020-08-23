@@ -10,11 +10,6 @@
   :config
   (setq! evil-snipe-repeat-keys t)
   )
-(eval-after-load (expand-file-name "~/.emacs.d/modules/config/literate/autoload.el")
-  '(defun +literate-recompile-maybe-h ()
-     "Recompile literate config to `doom-private-dir'."
-  (when (string-equal buffer-file-name (expand-file-name +literate-config-file))
-    (+literate-tangle-h))))
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
 (map!
