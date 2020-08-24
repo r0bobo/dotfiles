@@ -3,3 +3,11 @@
 echo >&2 "Installing git-sync script"
 curl -Lo ~/.local/bin/git-sync https://raw.githubusercontent.com/simonthum/git-sync/master/git-sync
 chmod +x ~/.local/bin/git-sync
+
+# Only run when graphical
+[[ "$XDG_CURRENT_DESKTOP" == '' ]] && exit 0
+
+sudo systemctl disable --now packagekit.service
+sudo systemctl disable --now packagekit-offline-update.service
+sudo systemctl mask packagekit.service
+sudo systemctl mask packgekit-offline-update.service
