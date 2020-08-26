@@ -12,10 +12,3 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
 	fd --type d --hidden --follow --exclude ".git" . "$1"
 }
-
-fman() {
-	man -k . |
-		fzf --prompt='> ' --header Manpages --height 40 --query "$1" --exact |
-		awk '{print $1}' |
-		xargs -r man
-}
