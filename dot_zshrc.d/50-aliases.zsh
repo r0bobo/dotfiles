@@ -32,11 +32,4 @@ alias cout='xclip -out -selection clipboard'
 
 alias dh='dirs -v'
 
-proj() {
-	PROJ="$(fd --max-depth=2 --base-directory="$PROJECT_DIR" --type=directory |
-		fzf --preview="ls $PROJECT_DIR/{}")"
-	cd "$PROJECT_DIR/$PROJ"
-	tm "$PROJ"
-}
-
 ssh_until_connection() { until ssh "$1"; do sleep 3; done; }
