@@ -25,7 +25,7 @@ alias ssh='TERM=xterm-256color ssh'
 alias ssh-fix='chmod 600 ~/.ssh/{*/*.key,config}'
 
 alias virsh-local='virsh -c qemu:///system'
-alias zshreload='source $HOME/.zshrc'
+alias zshreload='exec zsh'
 
 alias cin='xclip -in -selection clipboard'
 alias cout='xclip -out -selection clipboard'
