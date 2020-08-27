@@ -23,11 +23,13 @@
  :desc "Search in project" "/" #'+default/search-project
  :desc "Doom dashboard" "b h" #'+doom-dashboard/open
 
+ :prefix "o"
+ :desc "Undo tree" "u" 'undo-tree-visualize
+ :desc "Font Size" "z" #'+hydra/text-zoom/body
+
  :prefix ("d" . "dean")
  :desc "Cheatsheet" "c" 'dean/cheatsheet
  :desc "Doom Config" "d" 'dean/doom-config
- :desc "Font Size" "z" #'+hydra/text-zoom/body
- :desc "Undo tree" "u" 'undo-tree-visualize
  )
 (defhydra hydra-goto-chg (:timeout 2)
   "goto-chg"
