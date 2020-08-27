@@ -20,7 +20,6 @@
   - [[#filepath--filename][Filepath / filename]]
 - [[#tips][Tips]]
   - [[#how-to-search-github][How to search Github]]
-- [[#org-re-reveal][Org re-reveal]]
 
 * Keybinds / features
 ** Resume Ivy session
@@ -85,6 +84,3 @@ For example I just wanted to see how others were enabling
 ~pdf-view-midnight-minor-mode~ with doom, so I searched:
 
 ~language:emacs-lisp language:org type:Code pdf-view-midnight-minor-mode doom~
-
-* Org re-reveal
-[[https://github.com/emacsmirror/org-re-reveal/blob/master/index.org][Documentation]]
