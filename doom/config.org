@@ -12,6 +12,7 @@
 :END:
 - [[#configuration][Configuration]]
   - [[#header][Header]]
+  - [[#functions][Functions]]
   - [[#personal-info][Personal Info]]
   - [[#general][General]]
   - [[#global-keymaps][Global Keymaps]]
@@ -29,7 +30,7 @@
   - [[#systemd][Systemd]]
   - [[#magit][Magit]]
   - [[#custom][Custom]]
-    - [[#functions][Functions]]
+    - [[#functions-1][Functions]]
 
 * Configuration
 :PROPERTIES:
@@ -38,6 +39,16 @@
 ** Header
 #+BEGIN_SRC elisp
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+END_SRC
+
+** Functions
+#+BEGIN_SRC elisp
+(defun dean-filter-existing-directories (&rest paths)
+  "Output directories that exists."
+  (let (existing-paths)
+    (dolist (path paths existing-paths)
+        (when (file-directory-p (expand-file-name path))
+          (setq existing-paths (cons path existing-paths))))))
 #+END_SRC
 
 ** Personal Info
@@ -114,8 +125,13 @@ Go to last changes hydra
 #+END_SRC
 
 ** Projectile
+Add paths to =projectile-project-search-path= if they exists.
+Projecile does not seem to like it if directories do not.
 #+BEGIN_SRC elisp
-(setq! projectile-project-search-path '("~/src/" "~/projects/"))
+(with-eval-after-load 'projectile
+  (setq! projectile-project-search-path
+         (dean-filter-existing-directories
+          "~/src/" "~/projects/")))
 #+END_SRC
 
 ** UI

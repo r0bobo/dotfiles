@@ -1,4 +1,10 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+(defun dean-filter-existing-directories (&rest paths)
+  "Output directories that exists."
+  (let (existing-paths)
+    (dolist (path paths existing-paths)
+        (when (file-directory-p (expand-file-name path))
+          (setq existing-paths (cons path existing-paths))))))
 (setq! user-full-name "Dean Lindqvist Todevski"
       user-mail-address "dean.todevski@gmail.com")
 (setq! doom-localleader-key ",")
@@ -34,7 +40,10 @@
 (map! :map dired-mode-map
       :localleader
       :desc "Edit filenames" "e" #'wdired-change-to-wdired-mode)
-(setq! projectile-project-search-path '("~/src/" "~/projects/"))
+(with-eval-after-load 'projectile
+  (setq! projectile-project-search-path
+         (dean-filter-existing-directories
+          "~/src/" "~/projects/")))
 (setq! doom-font (font-spec :family "Source Code Pro" :size 14)
       doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 14)
       doom-unicode-font (font-spec :family "Source Code Pro" :size 14)
