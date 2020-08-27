@@ -40,7 +40,8 @@
 (map! :map dired-mode-map
       :localleader
       :desc "Edit filenames" "e" #'wdired-change-to-wdired-mode)
-(with-eval-after-load 'projectile
+(use-package! projectile
+  :config
   (setq! projectile-project-search-path
          (dean-filter-existing-directories
           "~/src/" "~/projects/")))

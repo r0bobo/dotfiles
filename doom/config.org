@@ -128,7 +128,8 @@ Go to last changes hydra
 Add paths to =projectile-project-search-path= if they exists.
 Projecile does not seem to like it if directories do not.
 #+BEGIN_SRC elisp
-(with-eval-after-load 'projectile
+(use-package! projectile
+  :config
   (setq! projectile-project-search-path
          (dean-filter-existing-directories
           "~/src/" "~/projects/")))
