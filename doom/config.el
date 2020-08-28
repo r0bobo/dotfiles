@@ -104,6 +104,8 @@
 (add-to-list '+lookup-provider-url-alist
              '("Melpa"       "https://melpa.org/#/?q=%s")
              '("go.dev"      "https://pkg.go.dev/search?q=%s"))
+(map! :map company-active-map
+      "<return>" #'company-complete-selection)
 (defun dean/doom-config (&optional initial-input)
   "Search Doom private config and jump to a heading."
   (interactive)

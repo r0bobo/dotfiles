@@ -30,6 +30,7 @@
   - [[#systemd][Systemd]]
   - [[#magit][Magit]]
   - [[#lookup][Lookup]]
+  - [[#company][Company]]
   - [[#custom][Custom]]
     - [[#functions-1][Functions]]
 
@@ -245,6 +246,12 @@ Update list of lookup urls
 (add-to-list '+lookup-provider-url-alist
              '("Melpa"       "https://melpa.org/#/?q=%s")
              '("go.dev"      "https://pkg.go.dev/search?q=%s"))
+#+END_SRC
+
+** Company
+#+BEGIN_SRC elisp
+(map! :map company-active-map
+      "<return>" #'company-complete-selection)
 #+END_SRC
 
 ** Custom
