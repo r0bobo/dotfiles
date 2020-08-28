@@ -29,6 +29,7 @@
   - [[#chezmoi][Chezmoi]]
   - [[#systemd][Systemd]]
   - [[#magit][Magit]]
+  - [[#lookup][Lookup]]
   - [[#custom][Custom]]
     - [[#functions-1][Functions]]
 
@@ -238,6 +239,13 @@ Setup =git.todevski.com= as a Gitlab server for remote browsing.
                '("git.todevski.com" . "gitlab")))
 #+END_SRC
 
+** Lookup
+Update list of lookup urls
+#+BEGIN_SRC elisp
+(add-to-list '+lookup-provider-url-alist
+             '("Melpa"       "https://melpa.org/#/?q=%s")
+             '("go.dev"      "https://pkg.go.dev/search?q=%s"))
+#+END_SRC
 
 ** Custom
 *** Functions

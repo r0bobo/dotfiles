@@ -101,6 +101,9 @@
   :config
   (add-to-list 'browse-at-remote-remote-type-domains
                '("git.todevski.com" . "gitlab")))
+(add-to-list '+lookup-provider-url-alist
+             '("Melpa"       "https://melpa.org/#/?q=%s")
+             '("go.dev"      "https://pkg.go.dev/search?q=%s"))
 (defun dean/doom-config (&optional initial-input)
   "Search Doom private config and jump to a heading."
   (interactive)
