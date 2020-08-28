@@ -64,3 +64,5 @@
 (package! literate-calc-mode)
 
 (package! k8s-mode)
+
+(package! suggest)
