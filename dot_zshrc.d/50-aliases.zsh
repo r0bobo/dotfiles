@@ -33,3 +33,8 @@ alias cout='xclip -out -selection clipboard'
 alias dh='dirs -v'
 
 ssh_until_connection() { until ssh "$1"; do sleep 3; done; }
+
+fix_zoom() {
+    sudo cp /etc/os-release $(flatpak info -l org.freedesktop.Platform)/files/lib/.
+    sudo flatpak override --socket=session-bus us.zoom.Zoom
+}
