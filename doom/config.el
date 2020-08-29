@@ -46,7 +46,7 @@
   :config
   (setq! projectile-project-search-path
          (dean-filter-existing-directories
-          "~/src/" "~/projects/")))
+          "~/src/" "~/projects/" "/projects/services")))
 (setq! doom-font (font-spec :family "Source Code Pro" :size 14)
       doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 14)
       doom-unicode-font (font-spec :family "Source Code Pro" :size 14)
