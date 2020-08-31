@@ -106,6 +106,8 @@
              '("go.dev"      "https://pkg.go.dev/search?q=%s"))
 (map! :map company-active-map
       "<return>" #'company-complete-selection)
+(use-package! jq-mode
+  :mode ("\\.jq" . jq-mode))
 (defun dean/doom-config (&optional initial-input)
   "Search Doom private config and jump to a heading."
   (interactive)

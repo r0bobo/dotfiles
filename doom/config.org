@@ -31,6 +31,7 @@
   - [[#magit][Magit]]
   - [[#lookup][Lookup]]
   - [[#company][Company]]
+  - [[#jq][Jq]]
   - [[#custom][Custom]]
     - [[#functions-1][Functions]]
 
@@ -252,6 +253,12 @@ Update list of lookup urls
 #+BEGIN_SRC elisp
 (map! :map company-active-map
       "<return>" #'company-complete-selection)
+#+END_SRC
+
+** Jq
+#+BEGIN_SRC elisp
+(use-package! jq-mode
+  :mode ("\\.jq" . jq-mode))
 #+END_SRC
 
 ** Custom

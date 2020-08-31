@@ -66,3 +66,5 @@
 (package! k8s-mode)
 
 (package! suggest)
+
+(package! jq-mode)
