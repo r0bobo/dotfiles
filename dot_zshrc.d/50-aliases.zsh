@@ -32,6 +32,10 @@ alias cout='xclip -out -selection clipboard'
 
 alias dh='dirs -v'
 
+# Remove colourify from make.
+# Breaks auto completion and other things
+unalias make
+
 ssh_until_connection() { until ssh "$1"; do sleep 3; done; }
 
 fix_zoom() {
