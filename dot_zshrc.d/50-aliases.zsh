@@ -36,7 +36,7 @@ alias dh='dirs -v'
 # Breaks auto completion and other things
 unalias make
 
-ssh_until_connection() { until ssh "$1"; do sleep 3; done; }
+ssh_until_connection() { until ssh $@; do sleep 3; done; }
 
 fix_zoom() {
     sudo cp /etc/os-release $(flatpak info -l org.freedesktop.Platform)/files/lib/.
