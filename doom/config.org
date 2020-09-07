@@ -3,7 +3,6 @@
 #+EMAIL: dean.todevski@gmail.com
 #+LANGUAGE: en
 #+STARTUP: inlineimages
-# #+STARTUP: overview
 #+PROPERTY: header-args :tangle yes :cache yes :results silent :padline no
 
 * Table of Contents :TOC_3_gh:
