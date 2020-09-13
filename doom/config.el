@@ -30,6 +30,7 @@
  :prefix ("d" . "dean")
  :desc "Cheatsheet" "c" 'dean/cheatsheet
  :desc "Doom Config" "d" 'dean/doom-config
+ :desc "Sort lines" "s" 'sort-lines
  )
 (defhydra hydra-goto-chg (:timeout 2)
   "goto-chg"
