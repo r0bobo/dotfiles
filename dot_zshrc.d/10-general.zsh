@@ -30,8 +30,6 @@ setopt append_history share_history histignorealldups histignorespace
 setopt extendedglob notify
 setopt autocd auto_pushd
 unsetopt beep
-bindkey -e
-setopt menu_complete
 
 DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome

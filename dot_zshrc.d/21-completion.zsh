@@ -1,9 +1,11 @@
 #!/bin/zsh
 
+fpath+=/usr/share/zsh/vendor-completions
+
 zmodload zsh/stat
 
-NOW="$(date +%j)"
 COMPDIR="$HOME/.local/share/zsh/completions"
+
 
 _bashcomp() {
     cmd=$1
@@ -17,24 +19,12 @@ _bashcomp() {
 
 _gocomp() {
     cmd=$1
-    cmpdir="$COMPDIR/_$cmd"
 
     # Return if command doesn't exist
     command -v "$cmd" >/dev/null || return 0
 
-    # Generate completion if it doesn't exist
-    if [[ ! -r "$cmpdir" ]]; then
-        "$cmd" completion zsh > "$COMPDIR/_$cmd"
-        return 0
-    fi
-
-    # Regenerate completion if binary
-    # is newer than completion file
-    cmdtime="$(zstat +mtime "$(which "$cmd")")"
-    cmptime="$(zstat +mtime "$cmpdir")"
-    if [[ "$cmdtime" > "$cmptime" ]]; then
-        "$cmd" completion zsh > "$COMPDIR/_$cmd"
-    fi
+    _cached_output "$(which "$cmd")" "$cmd" completion zsh \
+        > "$COMPDIR/_$cmd"
 }
 
 
