@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 GRC_PROFILE="/etc/profile.d/grc.sh"
 
@@ -18,7 +18,7 @@ mangle-colourify() {
 		command="${temp#\'}"
 
 		printf '\n'
-		printf '  (whence -w "%s" | grep -q alias) && unalias "%s"\n' "$funcname" "$funcname"
+		printf '  unalias "%s" &>0 || true\n' "$funcname"
 		printf '  function %s { %s "$@"; }\n' "$funcname" "$command"
 	done < <(grep -E '^\s*[^#]\s*alias' <"$GRC_PROFILE" | sed -E 's|^\s*alias\s*(.+)+|\1|g')
 	printf 'fi\n'
