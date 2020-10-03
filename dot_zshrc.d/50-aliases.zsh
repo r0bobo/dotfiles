@@ -35,14 +35,3 @@ alias dh='dirs -v'
 # Remove colourify from make.
 # Breaks auto completion and other things
 unalias make
-
-ssh_until_connection() { until ssh $@; do sleep 3; done; }
-
-fix_zoom() {
-	sudo cp /etc/os-release $(flatpak info -l org.freedesktop.Platform)/files/lib/.
-	sudo flatpak override --socket=session-bus us.zoom.Zoom
-}
-
-ssl_check() {
-	docker run --rm -ti drwetter/testssl.sh:3.1dev "$@"
-}

@@ -13,6 +13,13 @@ path+=$HOME/.emacs.d/bin
 path+=$HOME/.cargo/bin
 path+=${KREW_ROOT:-$HOME/.krew}/bin
 
+ZSH_COMPDIR="$HOME/.local/share/zsh/completions"
+ZSH_CACHEDIR="$HOME/.local/share/zsh/cache"
+mkdir -p "$ZSH_CACHEDIR" "$ZSH_COMPDIR"
+
+fpath+="$ZSH_COMPDIR"
+fpath+=/usr/share/zsh/vendor-completions
+
 # Setup gpg ssh agent
 unset SSH_AGENT_PID
 if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
