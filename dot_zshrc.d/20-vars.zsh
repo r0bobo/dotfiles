@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 export EDITOR=editor
 export LIBVIRT_DEFAULT_URI=qemu+ssh://hypervisor/system

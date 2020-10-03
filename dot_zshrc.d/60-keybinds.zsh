@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 zmodload -i zsh/complist # needed to get menuselect keymap
 

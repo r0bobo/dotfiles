@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 -plugin /usr/share/fzf/shell/key-bindings.zsh
 -plugin /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh

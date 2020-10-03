@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
