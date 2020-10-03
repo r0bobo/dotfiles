@@ -35,7 +35,7 @@ zmodload zsh/stat
         command="${temp#\'}"
 
         printf '\n'
-        printf '  unalias "%s" &>0 || true\n' "$funcname"
+        printf '  unalias "%s" &>/dev/null || true\n' "$funcname"
         printf '  function %s { %s "$@"; }\n' "$funcname" "$command"
     done < <(grep -E '^\s*[^#]\s*alias' <"$grc_profile" | sed -E 's|^\s*alias\s*(.+)+|\1|g')
     printf 'fi\n'
