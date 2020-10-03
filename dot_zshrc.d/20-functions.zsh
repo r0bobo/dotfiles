@@ -86,13 +86,13 @@ zsh-profile() {
     ) | less
 }
 
-ssh_until_connection() { until ssh $@; do sleep 3; done; }
+ssh-until-connection() { until ssh $@; do sleep 3; done; }
 
-fix_zoom() {
+fix-zoom() {
     sudo cp /etc/os-release $(flatpak info -l org.freedesktop.Platform)/files/lib/.
     sudo flatpak override --socket=session-bus us.zoom.Zoom
 }
 
-ssl_check() {
+ssl-check() {
     docker run --rm -ti drwetter/testssl.sh:3.1dev "$@"
 }

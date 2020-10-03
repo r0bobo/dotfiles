@@ -21,12 +21,12 @@ zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p
 zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' substitute 1
 zstyle ':completion:*' verbose true
-zstyle :compinstall filename '/home/dean/.zshrc'
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt append_history share_history histignorealldups histignorespace
+
 setopt extendedglob notify
 setopt autocd auto_pushd
 unsetopt beep
