@@ -28,8 +28,9 @@ SAVEHIST=10000
 setopt append_history share_history histignorealldups histignorespace
 
 setopt extendedglob notify
-setopt autocd auto_pushd
+setopt autocd
 unsetopt beep
+
 
 DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome

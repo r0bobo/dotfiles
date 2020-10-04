@@ -2,7 +2,7 @@
 
 # Source global definitions
 if [ -f /etc/zshrc ]; then
-    . /etc/zshrc
+    source /etc/zshrc
 fi
 
 [[ -v ZSH_PROFILE_ENABLED ]] && zmodload zsh/zprof
