@@ -96,3 +96,7 @@ fix-zoom() {
 ssl-check() {
     docker run --rm -ti drwetter/testssl.sh:3.1dev "$@"
 }
+
+mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
