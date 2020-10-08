@@ -17,8 +17,9 @@ zmodload zsh/stat
     cat "$cachefile"
 }
 
--mangle_colourify() {
+-mangle_colourify_except() {
     grc_profile="$1"
+    excludes=(${@:2})
 
     printf 'GRC="$(which grc)"\n'
     printf 'if [ "$TERM" != dumb ] && [ -n "$GRC" ]; then\n'
@@ -34,9 +35,13 @@ zmodload zsh/stat
         temp="${temp%\'}"
         command="${temp#\'}"
 
-        printf '\n'
-        printf '  unalias "%s" &>/dev/null || true\n' "$funcname"
-        printf '  function %s { %s "$@"; }\n' "$funcname" "$command"
+        for exclude in "${excludes[@]}"; do
+            if [[ "$funcname" != "$exclude" ]]; then
+                printf '\n'
+                printf '  unalias "%s" &>/dev/null || true\n' "$funcname"
+                printf '  function %s { %s "$@"; }\n' "$funcname" "$command"
+            fi
+        done
     done < <(grep -E '^\s*[^#]\s*alias' <"$grc_profile" | sed -E 's|^\s*alias\s*(.+)+|\1|g')
     printf 'fi\n'
 }
