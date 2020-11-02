@@ -16,3 +16,6 @@ Style/TrailingCommaInArrayLiteral:
 
 Style/TrailingCommaInHashLiteral:
   Enabled: false
+
+Style/Next:
+  Enabled: false
