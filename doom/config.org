@@ -251,8 +251,13 @@ Update list of lookup urls
 
 ** Company
 #+BEGIN_SRC elisp
-(map! :map company-active-map
-      "<return>" #'company-complete-selection)
+(use-package! company
+  :config
+  (map! :map company-active-map
+        "<return>" #'company-complete-selection)
+  (map! :map global-map
+        :i [remap indent-for-tab-command] #'company-indent-or-complete-common)
+  )
 #+END_SRC
 
 ** Jq

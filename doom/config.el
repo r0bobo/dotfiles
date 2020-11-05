@@ -105,8 +105,13 @@
 (add-to-list '+lookup-provider-url-alist
              '("Melpa"       "https://melpa.org/#/?q=%s")
              '("go.dev"      "https://pkg.go.dev/search?q=%s"))
-(map! :map company-active-map
-      "<return>" #'company-complete-selection)
+(use-package! company
+  :config
+  (map! :map company-active-map
+        "<return>" #'company-complete-selection)
+  (map! :map global-map
+        :i [remap indent-for-tab-command] #'company-indent-or-complete-common)
+  )
 (use-package! jq-mode
   :mode ("\\.jq" . jq-mode))
 (defun dean/doom-config (&optional initial-input)
