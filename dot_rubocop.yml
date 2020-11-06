@@ -8,6 +8,15 @@ Naming/AccessorMethodName:
 Metrics/MethodLength:
   Enabled: false
 
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
 Layout/FirstHashElementIndentation:
   Enabled: false
 
