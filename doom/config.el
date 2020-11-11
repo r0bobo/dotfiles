@@ -102,6 +102,12 @@
   :config
   (add-to-list 'browse-at-remote-remote-type-domains
                '("git.todevski.com" . "gitlab")))
+(use-package! transient
+  :config
+  (transient-bind-q-to-quit))
+(use-package! magit
+  :config
+  (unbind-key "z" magit-mode-map))
 (add-to-list '+lookup-provider-url-alist
              '("Melpa"       "https://melpa.org/#/?q=%s")
              '("go.dev"      "https://pkg.go.dev/search?q=%s"))

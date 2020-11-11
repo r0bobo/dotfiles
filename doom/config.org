@@ -241,6 +241,18 @@ Setup =git.todevski.com= as a Gitlab server for remote browsing.
                '("git.todevski.com" . "gitlab")))
 #+END_SRC
 
+#+begin_src elisp
+(use-package! transient
+  :config
+  (transient-bind-q-to-quit))
+#+end_src
+
+#+begin_src elisp
+(use-package! magit
+  :config
+  (unbind-key "z" magit-mode-map))
+#+end_src
+
 ** Lookup
 Update list of lookup urls
 #+BEGIN_SRC elisp
