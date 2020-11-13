@@ -7,6 +7,7 @@
           (setq existing-paths (cons path existing-paths))))))
 (setq! user-full-name "Dean Lindqvist Todevski"
       user-mail-address "dean.todevski@gmail.com")
+(setq evil-snipe-override-evil-repeat-keys nil)
 (setq! doom-localleader-key ",")
 (use-package! which-key
   :config

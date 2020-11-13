@@ -62,6 +62,7 @@
 ** General
 Change localleader to ~,~
 #+BEGIN_SRC elisp
+(setq evil-snipe-override-evil-repeat-keys nil)
 (setq! doom-localleader-key ",")
 #+END_SRC
 
