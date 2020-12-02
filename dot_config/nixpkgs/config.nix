@@ -3,7 +3,7 @@
     myPackages = pkgs.buildEnv {
       name = "my-packages";
       paths = [
-        antibody
+
         chezmoi
         dive
         dogdns
@@ -15,6 +15,15 @@
         kustomize
         starship
         wrk
+
+        # Zsh stuf
+        antibody
+        nix-zsh-completions
+        zsh-autosuggestions
+        zsh-completions
+        zsh-fast-syntax-highlighting
+        zsh-syntax-highlighting
+
       ];
       pathsToLink = [
         "/bin"
