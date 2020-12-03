@@ -24,7 +24,6 @@
         zsh-autosuggestions
         zsh-completions
         zsh-fast-syntax-highlighting
-        zsh-syntax-highlighting
 
       ];
       pathsToLink = [
