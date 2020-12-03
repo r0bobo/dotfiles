@@ -7,12 +7,14 @@
         chezmoi
         dive
         dogdns
-        helm
         hey
         k9s
+        kail
         kind
         kpt
+        kubernetes-helm
         kustomize
+        operator-sdk
         starship
         wrk
 
