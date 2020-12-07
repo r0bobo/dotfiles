@@ -33,11 +33,12 @@
        doom                ; what makes DOOM look the way it does
        doom-dashboard      ; a nifty splash screen for Emacs
        ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
+       ;;(emoji +unicode)  ; 🙂
        ;;fill-column       ; a `fill-column' indicator
        hl-todo             ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        hydra
        ;;indent-guides     ; highlighted indent columns
-       (ligatures +extra)  ; ligatures and symbols to make your code pretty again
+       ;;ligatures         ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
        modeline            ; snazzy, Atom-inspired modeline, plus API
        ;;nav-flash         ; blink cursor line after big motions
@@ -133,7 +134,7 @@
        (go +lsp)           ; the hipster dialect
        ;;(haskell +dante)  ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
-       ;;idris             ;
+       ;;idris             ; a language you can depend on
        (json +lsp)         ; At least it ain't XML
        ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
        (javascript +lsp)   ; all(hope(abandon(ye(who(enter(here))))))
