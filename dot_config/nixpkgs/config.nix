@@ -25,6 +25,9 @@
           wrk
           yq-go
 
+          # Golang
+          gomodifytags
+
           # Zsh stuf
           antibody
           nix-zsh-completions
