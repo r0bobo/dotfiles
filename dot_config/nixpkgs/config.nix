@@ -4,10 +4,13 @@
       name = "my-packages";
       paths = [
 
+        argocd
+        cfssl
         chezmoi
         dive
         dogdns
         hey
+        go-jsonnet
         k9s
         kail
         kind
@@ -15,8 +18,10 @@
         kubernetes-helm
         kustomize
         operator-sdk
+        skaffold
         starship
         wrk
+        yq-go
 
         # Zsh stuf
         antibody
