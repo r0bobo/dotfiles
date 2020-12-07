@@ -54,7 +54,7 @@
       doom-unicode-font (font-spec :family "Source Code Pro" :size 14)
       doom-big-font (font-spec :family "Source Code Pro" :size 26))
 
-(setq! doom-theme 'doom-vibrant
+(setq! doom-theme 'doom-dracula
       display-line-numbers-type t)
 (setq! +ligatures-in-modes '(org-mode)
        +ligatures-extras-in-modes '(org-mode))
