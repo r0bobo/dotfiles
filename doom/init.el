@@ -26,7 +26,7 @@
        (company +tng)      ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ivy                 ; a search engine for love and life
+       (ivy +prescient)    ; a search engine for love and life
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -97,7 +97,7 @@
        ;;gist              ; interacting with github gists
        lookup              ; navigate your code and its documentation
        lsp
-       (magit +forge)      ; a git porcelain for Emacs
+       magit               ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        (pass +auth)        ; password manager for nerds
        ;;pdf               ; pdf enhancements
@@ -122,7 +122,7 @@
        ;;csharp            ; unity, .NET, and mono shenanigans
        data                ; config/data formats
        ;;(dart +flutter)   ; paint ui and not much else
-       ;;elixir            ; erlang done right
+       (elixir +lsp)       ; erlang done right
        ;;elm               ; care for a cup of TEA?
        emacs-lisp          ; drown in parentheses
        ;;erlang            ; an elegant language for a more civilized age
@@ -156,7 +156,7 @@
        ;;purescript        ; javascript, but functional
        (python +lsp)       ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
-       racket              ; a DSL for DSLs
+       ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
        rest                ; Emacs as a REST client
        ;;rst               ; ReST in peace
