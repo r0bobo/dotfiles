@@ -28,6 +28,11 @@
 | ~SPC u SPC '~ | Choose session to resume |
 |---------------+--------------------------|
 
+** Ivy replace text in all matches
+|-----------+------------------------------------|
+| ~C-c C-e~ | Replace text in all matching files |
+|-----------+------------------------------------|
+
 ** Ivy sub-search
 |---------+---------------------------------------------------|
 | ~S-SPC~ | Start a sub-search of what Ivy currently displays |
