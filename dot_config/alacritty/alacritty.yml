@@ -76,71 +76,72 @@ font:
 #     cyan:    '0x2aa198'
 #     white:   '0xfdf6e3'
 
-# Ayu Mirage
-colors:
-  primary:
-    background: '#212733'
-    foreground: '#d9d7ce'
-  cursor:
-    text:    '#d9d7ce'
-    cursor:  '#ffcc66'
-  selection:
-    text: '#212733'
-    backrgound: '#343f4c'
-  normal:
-    black:   '#191e2a'
-    red:     '#ed8274'
-    green:   '#a6cc70'
-    yellow:  '#fad07b'
-    blue:    '#6dcbfa'
-    magenta: '#cfbafa'
-    cyan:    '#90e1c6'
-    white:   '#c7c7c7'
-  bright:
-    black:   '#686868'
-    red:     '#f28779'
-    green:   '#bae67e'
-    yellow:  '#ffd580'
-    blue:    '#73d0ff'
-    magenta: '#d4bfff'
-    cyan:    '#95e6cb'
-    white:   '#ffffff'
-
-# # Colors (Dracula)
+# # Ayu Mirage
 # colors:
 #   primary:
-#     background: '#282a36'
-#     foreground: '#f8f8f2'
+#     background: "#212733"
+#     foreground: "#d9d7ce"
 #   cursor:
-#     text: '#44475a'
-#     cursor: '#f8f8f2'
+#     text: "#d9d7ce"
+#     cursor: "#ffcc66"
 #   selection:
-#     text: '#f8f8f2'
-#     background: '#44475a'
+#     text: "#212733"
+#     backrgound: "#343f4c"
 #   normal:
-#     black:   '#000000'
-#     red:     '#ff5555'
-#     green:   '#50fa7b'
-#     yellow:  '#f1fa8c'
-#     blue:    '#bd93f9'
-#     magenta: '#ff79c6'
-#     cyan:    '#8be9fd'
-#     white:   '#bfbfbf'
+#     black: "#191e2a"
+#     red: "#ed8274"
+#     green: "#a6cc70"
+#     yellow: "#fad07b"
+#     blue: "#6dcbfa"
+#     magenta: "#cfbafa"
+#     cyan: "#90e1c6"
+#     white: "#c7c7c7"
 #   bright:
-#     black:   '#4d4d4d'
-#     red:     '#ff6e67'
-#     green:   '#5af78e'
-#     yellow:  '#f4f99d'
-#     blue:    '#caa9fa'
-#     magenta: '#ff92d0'
-#     cyan:    '#9aedfe'
-#     white:   '#e6e6e6'
-#   dim:
-#     black:   '#14151b'
-#     red:     '#ff2222'
-#     green:   '#1ef956'
-#     yellow:  '#ebf85b'
-#     blue:    '#4d5b86'
-#     magenta: '#ff46b0'
-#     cyan:    '#59dffc'
-#     white:   '#e6e6d1'
+#     black: "#686868"
+#     red: "#f28779"
+#     green: "#bae67e"
+#     yellow: "#ffd580"
+#     blue: "#73d0ff"
+#     magenta: "#d4bfff"
+#     cyan: "#95e6cb"
+#     white: "#ffffff"
+
+# Colors (Dracula)
+colors:
+  primary:
+    background: "0x282a36"
+    foreground: "0xf8f8f2"
+  cursor:
+    text: "0x44475a"
+    cursor: "0xf8f8f2"
+  selection:
+    text: "0xf8f8f2"
+    background: "0x44475a"
+  normal:
+    black: "0x000000"
+    red: "0xff5555"
+    green: "0x50fa7b"
+    yellow: "0xf1fa8c"
+    blue: "0xbd93f9"
+    magenta: "0xff79c6"
+    cyan: "0x8be9fd"
+    white: "0xbfbfbf"
+  bright:
+    black: "0x4d4d4d"
+    red: "0xff6e67"
+    green: "0x5af78e"
+    yellow: "0xf4f99d"
+    blue: "0xcaa9fa"
+    magenta: "0xff92d0"
+    cyan: "0x9aedfe"
+    white: "0xe6e6e6"
+  dim:
+    black: "0x14151b"
+    red: "0xff2222"
+    green: "0x1ef956"
+    yellow: "0xebf85b"
+    blue: "0x4d5b86"
+    magenta: "0xff46b0"
+    cyan: "0x59dffc"
+    white: "0xe6e6d1"
+  indexed_colors: []
