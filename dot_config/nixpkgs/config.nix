@@ -10,6 +10,7 @@
           chezmoi
           dive
           dogdns
+          gmailctl
           go-jsonnet
           hey
           k9s
@@ -29,7 +30,6 @@
           gomodifytags
 
           # Zsh stuf
-          antibody
           nix-zsh-completions
           zsh-autosuggestions
           zsh-completions
