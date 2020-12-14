@@ -23,6 +23,7 @@
           operator-sdk
           skaffold
           starship
+          terraform
           wrk
           yq-go
 
