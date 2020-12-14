@@ -5,7 +5,6 @@
         name = "my-packages";
         paths = [
 
-          argocd
           cfssl
           chezmoi
           dive
