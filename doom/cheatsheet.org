@@ -10,6 +10,7 @@
 :END:
 - [[#keybinds--features][Keybinds / features]]
   - [[#resume-ivy-session][Resume Ivy session]]
+  - [[#ivy-replace-text-in-all-matches][Ivy replace text in all matches]]
   - [[#ivy-sub-search][Ivy sub-search]]
   - [[#go-to-last-change][Go to last change]]
   - [[#ex-commands][EX commands]]
