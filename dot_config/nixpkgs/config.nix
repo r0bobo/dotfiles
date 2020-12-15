@@ -5,7 +5,7 @@
         name = "my-packages";
         paths = [
 
-          cfssl
+          bitwarden-cli
           chezmoi
           dive
           dogdns
