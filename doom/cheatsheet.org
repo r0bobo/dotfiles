@@ -20,6 +20,7 @@
   - [[#clipboard-history][Clipboard history]]
   - [[#filepath--filename][Filepath / filename]]
   - [[#evil-mc-multiple-cursors][Evil MC (multiple cursors)]]
+  - [[#dired][Dired]]
 - [[#tips][Tips]]
   - [[#how-to-search-github][How to search Github]]
 
@@ -83,11 +84,17 @@
 
 ** Evil MC (multiple cursors)
 |-------+-------------------------------------------------------------------------|
-| ~gzz~ | toggle new (frozen) cursors at point                                    |
-| ~gzt~ | toggle mirroring on and off (or switch to insert mode to activate them) |
-| ~gzA~ | place cursors at the end of each selected line                          |
-| ~gzI~ | place them at the beginning                                             |
+| ~gzz~ | Toggle new (frozen) cursors at point                                    |
+| ~gzt~ | Toggle mirroring on and off (or switch to insert mode to activate them) |
+| ~gzA~ | Place cursors at the end of each selected line                          |
+| ~gzI~ | Place them at the beginning                                             |
 |-------+-------------------------------------------------------------------------|
+
+** Dired
+|-----+----------------------------|
+| ~(~ | Hide details               |
+| ~)~ | Show git details for files |
+|-----+----------------------------|
 
 * Tips
 ** How to search Github
