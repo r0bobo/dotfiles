@@ -27,6 +27,7 @@
           yq-go
 
           # Golang
+          golangci-lint
           gomodifytags
 
           # Zsh stuf
