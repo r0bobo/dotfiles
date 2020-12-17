@@ -1,0 +1,10 @@
+[Unit]
+Description=Delete and compact orphaned Doom Emacs packages & repos
+DefaultDependencies=no
+Conflicts=shutdown.target
+Before=shutdown.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/.emacs.d/bin/doom purge --regraft
+IOSchedulingClass=idle
