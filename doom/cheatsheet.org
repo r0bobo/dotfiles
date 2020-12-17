@@ -4,7 +4,7 @@
 #+LANGUAGE: en
 #+STARTUP: inlineimages
 
-* Table of Contents :TOC_3_gh:
+* Table of Contents :TOC:
 :PROPERTIES:
 :VISIBILITY: children
 :END:
@@ -19,10 +19,12 @@
   - [[#indentation][Indentation]]
   - [[#clipboard-history][Clipboard history]]
   - [[#filepath--filename][Filepath / filename]]
+  - [[#evil-mc-multiple-cursors][Evil MC (multiple cursors)]]
 - [[#tips][Tips]]
   - [[#how-to-search-github][How to search Github]]
 
 * Keybinds / features
+
 ** Resume Ivy session
 |---------------+--------------------------|
 | ~SPC '~       | Resume last session      |
@@ -78,6 +80,14 @@
 | ~SPC i f~ | Insert current filename |
 | ~SPC i F~ | Insert current filepath |
 |-----------+-------------------------|
+
+** Evil MC (multiple cursors)
+|-------+-------------------------------------------------------------------------|
+| ~gzz~ | toggle new (frozen) cursors at point                                    |
+| ~gzt~ | toggle mirroring on and off (or switch to insert mode to activate them) |
+| ~gzA~ | place cursors at the end of each selected line                          |
+| ~gzI~ | place them at the beginning                                             |
+|-------+-------------------------------------------------------------------------|
 
 * Tips
 ** How to search Github
