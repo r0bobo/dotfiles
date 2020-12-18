@@ -208,17 +208,8 @@ exist after each headings's drawers."
                                    (org-at-heading-p)
                                    (looking-at-p "\n"))
                          (insert "\n"))))
-                   t (if prefix
-                         nil
-                       'tree)))
-(add-hook 'before-save-hook (lambda ()
-                              (if (and
-                                   (eq major-mode 'org-mode) ; Org-mode
-                                   (not (string-equal default-directory (expand-file-name kb/agenda-dir))) ; Not agenda-dir
-                                   (not (string-equal buffer-file-name (expand-file-name "seedbox.org" org-roam-directory))))
-                                  (let ((current-prefix-arg 4)) ; Emulate C-u
-                                    (call-interactively 'unpackaged/org-fix-blank-lines)))
-                              ))
+                   t))
+(add-hook 'before-save-hook #'unpackaged/org-fix-blank-lines)
 (after! ansible-doc
   (set-evil-initial-state! '(ansible-doc-module-mode) 'normal))
 

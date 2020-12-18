@@ -9,6 +9,7 @@
 :properties:
 :visibility: children
 :end:
+
 - [[#configuration][Configuration]]
   - [[#header][Header]]
   - [[#functions][Functions]]
@@ -23,7 +24,7 @@
     - [[#literate-calc-mode][Literate calc mode]]
     - [[#capture-templates][Capture Templates]]
     - [[#return-dwim][Return DWIM]]
-    - [[#org-mode-auto-format][Org-mode auto-format]]
+    - [[#auto-format][Auto-format]]
   - [[#ansible][Ansible]]
     - [[#documentation][Documentation]]
     - [[#activation][Activation]]
@@ -41,12 +42,15 @@
 :properties:
 :visibility: children
 :end:
+
 ** Header
+
 #+begin_src elisp
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 #+end_src
 
 ** Functions
+
 #+begin_src elisp
 (defun dean-filter-existing-directories (&rest paths)
   "Output directories that exists."
@@ -57,12 +61,14 @@
 #+end_src
 
 ** Personal Info
+
 #+begin_src elisp
 (setq! user-full-name "Dean Lindqvist Todevski"
       user-mail-address "dean.todevski@gmail.com")
 #+end_src
 
 ** General
+
 Change localleader to ~,~
 #+begin_src elisp
 (setq evil-snipe-override-evil-repeat-keys nil)
@@ -127,6 +133,7 @@ Go to last changes hydra
 #+end_src
 
 ** Dired
+
 #+begin_src elisp
 (map! :map dired-mode-map
       :localleader
@@ -134,6 +141,7 @@ Go to last changes hydra
 #+end_src
 
 ** Projectile
+
 Add paths to =projectile-project-search-path= if they exists.
 Projecile does not seem to like it if directories do not.
 #+begin_src elisp
@@ -145,6 +153,7 @@ Projecile does not seem to like it if directories do not.
 #+end_src
 
 ** UI
+
 #+begin_src elisp
 (setq! doom-font (font-spec :family "Source Code Pro" :size 14)
       doom-variable-pitch-font (font-spec :family "Source Code Pro" :size 14)
@@ -156,12 +165,14 @@ Projecile does not seem to like it if directories do not.
 #+end_src
 
 ** Pretty Code
+
 #+begin_src elisp
 (setq! +ligatures-in-modes '(org-mode)
        +ligatures-extras-in-modes '(org-mode))
 #+end_src
 
 ** Org-Mode
+
 #+begin_src elisp
 (setq! org-directory "~/org/")
 
@@ -171,12 +182,14 @@ Projecile does not seem to like it if directories do not.
 #+end_src
 
 *** Literate calc mode
+
 #+begin_src elisp
 (add-hook 'org-mode-hook
           'literate-calc-minor-mode)
 #+end_src
 
 *** Capture Templates
+
 #+begin_src elisp
 (after! org
   (add-to-list 'org-capture-templates
@@ -194,13 +207,13 @@ Projecile does not seem to like it if directories do not.
 
 *** Return DWIM
 
-Taken from [[https://github.com/alphapapa/unpackaged.el#org-return-dwim][alphapapa/unpackaged.el]]
-
 #+begin_quote
 A helpful replacement for org-return. With prefix, call org-return.
 
 On headings, move point to position after entry content. In lists, insert a new item or end the list, with checkbox if appropriate. In tables, insert a new row or end the table.
 #+end_quote
+
+Taken from [[https://github.com/alphapapa/unpackaged.el#org-return-dwim][alphapapa/unpackaged.el]]
 
 #+begin_src elisp
 (after! org
@@ -310,15 +323,15 @@ Remap ~return~ to dwim version.
  :i [return] #'unpackaged/org-return-dwim)
 #+end_src
 
-*** Org-mode auto-format
-
-Taken from [[https://github.com/alphapapa/unpackaged.el#ensure-blank-lines-between-headings-and-before-contents][alphapapa/unpackaged.el]]
+*** Auto-format
 
 #+begin_quote
 Ensure that blank lines exist between headings and between headings and their contents. With prefix, operate on whole buffer. Ensures that blank lines exist after each headings’s drawers.
 
 For those who prefer to maintain blank lines between headings, this makes it easy to automatically add them where necessary, to a subtree or the whole buffer. It also adds blank lines after drawers. Works well with *~org-return-dwim~.
 #+end_quote
+
+Taken from [[https://github.com/alphapapa/unpackaged.el#ensure-blank-lines-between-headings-and-before-contents][alphapapa/unpackaged.el]]
 
 #+begin_src elisp
 ;;;###autoload
@@ -351,25 +364,18 @@ exist after each headings's drawers."
                                    (org-at-heading-p)
                                    (looking-at-p "\n"))
                          (insert "\n"))))
-                   t (if prefix
-                         nil
-                       'tree)))
+                   t))
 #+end_src
 
 Run command on save
 #+begin_src elisp
-(add-hook 'before-save-hook (lambda ()
-                              (if (and
-                                   (eq major-mode 'org-mode) ; Org-mode
-                                   (not (string-equal default-directory (expand-file-name kb/agenda-dir))) ; Not agenda-dir
-                                   (not (string-equal buffer-file-name (expand-file-name "seedbox.org" org-roam-directory))))
-                                  (let ((current-prefix-arg 4)) ; Emulate C-u
-                                    (call-interactively 'unpackaged/org-fix-blank-lines)))
-                              ))
+(add-hook 'before-save-hook #'unpackaged/org-fix-blank-lines)
 #+end_src
 
 ** Ansible
+
 *** Documentation
+
 #+begin_src elisp
 (after! ansible-doc
   (set-evil-initial-state! '(ansible-doc-module-mode) 'normal))
@@ -382,6 +388,7 @@ Run command on save
 #+end_src
 
 *** Activation
+
 Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/spacemacs/blob/develop/layers/%2Btools/ansible/config.el#L19][Spacemacs]].
 
 #+begin_src elisp
@@ -392,6 +399,7 @@ Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/sp
 #+end_src
 
 ** Chezmoi
+
 #+begin_src elisp
 (use-package! chezmoi
     :commands (chezmoi|diff chezmoi|ediff chezmoi|find chezmoi|magit-status chezmoi|write)
@@ -399,6 +407,7 @@ Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/sp
 #+end_src
 
 ** Systemd
+
 #+begin_src elisp
 (map! :map systemd-mode-map
       :localleader
@@ -407,6 +416,7 @@ Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/sp
 #+end_src
 
 ** Magit
+
 #+begin_src elisp
 (setq! magit-repository-directories
       '(("~/src" . 2)
@@ -434,6 +444,7 @@ Setup =git.todevski.com= as a Gitlab server for remote browsing.
 #+end_src
 
 ** Lookup
+
 Update list of lookup urls
 #+begin_src elisp
 (add-to-list '+lookup-provider-url-alist
@@ -442,6 +453,7 @@ Update list of lookup urls
 #+end_src
 
 ** Company
+
 #+begin_src elisp
 (use-package! company
   :config
@@ -454,19 +466,23 @@ Update list of lookup urls
 #+end_src
 
 ** Jq
+
 #+begin_src elisp
 (use-package! jq-mode
   :mode ("\\.jq" . jq-mode))
 #+end_src
 
 ** Ivy
+
 Show preview of buffers
 #+begin_src elisp
 (setq +ivy-buffer-preview t)
 #+end_src
 
 ** Custom
+
 *** Functions
+
 #+begin_src elisp
 (defun dean/doom-config (&optional initial-input)
   "Search Doom private config and jump to a heading."
