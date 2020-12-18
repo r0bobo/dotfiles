@@ -122,6 +122,7 @@
   )
 (use-package! jq-mode
   :mode ("\\.jq" . jq-mode))
+(setq +ivy-buffer-preview t)
 (defun dean/doom-config (&optional initial-input)
   "Search Doom private config and jump to a heading."
   (interactive)

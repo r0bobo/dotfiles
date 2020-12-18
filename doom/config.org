@@ -31,6 +31,7 @@
   - [[#lookup][Lookup]]
   - [[#company][Company]]
   - [[#jq][Jq]]
+  - [[#ivy][Ivy]]
   - [[#custom][Custom]]
     - [[#functions-1][Functions]]
 
@@ -279,6 +280,12 @@ Update list of lookup urls
 (use-package! jq-mode
   :mode ("\\.jq" . jq-mode))
 #+END_SRC
+
+** Ivy
+Show preview of buffers
+#+begin_src elisp
+(setq +ivy-buffer-preview t)
+#+end_src
 
 ** Custom
 *** Functions
