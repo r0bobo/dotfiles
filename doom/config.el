@@ -222,13 +222,6 @@ exist after each headings's drawers."
   :modes '(yaml-mode)
   :add-hooks '(ansible ansible-auto-decrypt-encrypt ansible-doc-mode)
   :match "/\\(main\\|site\\|encrypted\\|\\(\\(roles\\|tasks\\|handlers\\|vars\\|defaults\\|meta\\|group_vars\\|host_vars\\)/.+\\)\\)\\.ya?ml$")
-(use-package! chezmoi
-    :commands (chezmoi|diff chezmoi|ediff chezmoi|find chezmoi|magit-status chezmoi|write)
-    )
-(map! :map systemd-mode-map
-      :localleader
-      "d" #'systemd-doc-directives
-      "h" #'systemd-doc-open)
 (setq! magit-repository-directories
       '(("~/src" . 2)
         ("~/projects" . 2)))
@@ -253,8 +246,6 @@ exist after each headings's drawers."
   (map! :map global-map
         :i [remap indent-for-tab-command] #'company-indent-or-complete-common)
   )
-(use-package! jq-mode
-  :mode ("\\.jq" . jq-mode))
 (setq +ivy-buffer-preview t)
 (use-package! smerge-mode
   :config
@@ -307,3 +298,12 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
   (doom-completing-read-org-headings
    "Cheatsheet: " (list (concat doom-private-dir "cheatsheet.org"))
    2 nil initial-input))
+(use-package! chezmoi
+  :commands (chezmoi|diff chezmoi|ediff chezmoi|find chezmoi|magit-status chezmoi|write)
+  )
+(use-package! jq-mode
+  :mode ("\\.jq" . jq-mode))
+(map! :map systemd-mode-map
+      :localleader
+      "d" #'systemd-doc-directives
+      "h" #'systemd-doc-open)
