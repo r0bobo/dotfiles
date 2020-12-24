@@ -1,30 +1,5 @@
-#+TITLE: Cheatsheet
-#+AUTHOR: Dean Lindqvist Todevski
-#+EMAIL: dean.todevski@gmail.com
-#+LANGUAGE: en
+#+TITLE:   Cheatsheet
 #+STARTUP: inlineimages
-
-* Table of Contents :TOC:
-:PROPERTIES:
-:VISIBILITY: children
-:END:
-
-- [[#keybinds--features][Keybinds / features]]
-  - [[#resume-ivy-session][Resume Ivy session]]
-  - [[#ivy-replace-text-in-all-matches][Ivy replace text in all matches]]
-  - [[#ivy-sub-search][Ivy sub-search]]
-  - [[#go-to-last-change][Go to last change]]
-  - [[#ex-commands][EX commands]]
-  - [[#magit-project-todos][Magit project todos]]
-  - [[#edit-pasted-text][Edit pasted text]]
-  - [[#indentation][Indentation]]
-  - [[#clipboard-history][Clipboard history]]
-  - [[#filepath--filename][Filepath / filename]]
-  - [[#evil-mc-multiple-cursors][Evil MC (multiple cursors)]]
-  - [[#dired][Dired]]
-  - [[#evil-element-object][Evil ~element~ object]]
-- [[#tips][Tips]]
-  - [[#how-to-search-github][How to search Github]]
 
 * Keybinds / features
 
@@ -118,7 +93,6 @@ Works in org-src block, org table etc
 | ~vie~ | Select in element |
 | ~yie~ | Copy in element   |
 |-------+-------------------|
-
 
 
 * Tips

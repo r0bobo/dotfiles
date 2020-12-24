@@ -1,49 +1,12 @@
-#+title: Config
-#+author: Dean Lindqvist Todevski
-#+email: dean.todevski@gmail.com
+#+title:    Config
+#+author:   Dean Lindqvist Todevski
+#+email:    dean.todevski@gmail.com
 #+language: en
-#+startup: inlineimages
+#+startup:  inlineimages
+#+startup:  content
 #+property: header-args :tangle yes :cache yes :results silent :padline no
 
-* Table of Contents :TOC_3:
-:properties:
-:visibility: children
-:end:
-
-- [[#configuration][Configuration]]
-  - [[#header][Header]]
-  - [[#functions][Functions]]
-  - [[#personal-info][Personal Info]]
-  - [[#general][General]]
-  - [[#global-keymaps][Global Keymaps]]
-  - [[#dired][Dired]]
-  - [[#projectile][Projectile]]
-  - [[#ui][UI]]
-  - [[#pretty-code][Pretty Code]]
-  - [[#org-mode][Org-Mode]]
-    - [[#literate-calc-mode][Literate calc mode]]
-    - [[#capture-templates][Capture Templates]]
-    - [[#return-dwim][Return DWIM]]
-    - [[#auto-format][Auto-format]]
-  - [[#ansible][Ansible]]
-    - [[#documentation][Documentation]]
-    - [[#activation][Activation]]
-  - [[#magit][Magit]]
-  - [[#lookup][Lookup]]
-  - [[#company][Company]]
-  - [[#ivy][Ivy]]
-  - [[#smerge-mode][Smerge-mode]]
-  - [[#custom][Custom]]
-    - [[#functions-1][Functions]]
-- [[#extra-packages][Extra packages]]
-  - [[#chezmoi][Chezmoi]]
-  - [[#jq][Jq]]
-  - [[#systemd][Systemd]]
-
 * Configuration
-:properties:
-:visibility: children
-:end:
 
 ** Header
 
@@ -60,6 +23,39 @@
     (dolist (path paths existing-paths)
         (when (file-directory-p (expand-file-name path))
           (setq existing-paths (cons path existing-paths))))))
+#+end_src
+
+#+begin_src elisp
+(defun dean/doom-config (&optional initial-input)
+  "Search Doom private config and jump to a heading."
+  (interactive)
+  (doom-completing-read-org-headings
+   "Config: " (list (concat doom-private-dir "config.org"))
+   2 nil initial-input))
+#+end_src
+
+*** Cheatsheet
+
+#+begin_src elisp
+(defun dean/cheatsheet (&optional initial-input)
+  "Display personal cheetsheet"
+  (interactive)
+  (let ((buffer-name "*cheatsheet*"))
+    (when (not (get-buffer buffer-name))
+      (with-current-buffer (get-buffer-create buffer-name)
+        (insert-file-contents (concat doom-private-dir "cheatsheet.org"))
+        (org-mode)
+        (display-line-numbers-mode -1)
+        (read-only-mode 1)))
+    (pop-to-buffer buffer-name)))
+#+end_src
+
+#+begin_src elisp
+(set-popup-rule! "^\\*cheatsheet\\*$"
+  :side 'bottom
+  :size 0.4
+  :select t
+  :quit 'current)
 #+end_src
 
 ** Personal Info
@@ -112,13 +108,13 @@ Switch to the new window after splitting
  :desc "Doom dashboard" "b h" #'+doom-dashboard/open
 
  :prefix "o"
- :desc "Undo tree" "u" 'undo-tree-visualize
+ :desc "Undo tree" "u" #'undo-tree-visualize
  :desc "Font Size" "z" #'+hydra/text-zoom/body
 
  :prefix ("d" . "dean")
- :desc "Cheatsheet" "c" 'dean/cheatsheet
- :desc "Doom Config" "d" 'dean/doom-config
- :desc "Sort lines" "s" 'sort-lines
+ :desc "Cheatsheet" "c" #'dean/cheatsheet
+ :desc "Doom Config" "d" #'dean/doom-config
+ :desc "Sort lines" "s" #'sort-lines
  )
 #+end_src
 
@@ -498,26 +494,6 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
   :hook (magit-diff-visit-file . (lambda ()
                                    (when smerge-mode
                                      (unpackaged/smerge-hydra/body)))))
-#+end_src
-
-** Custom
-
-*** Functions
-
-#+begin_src elisp
-(defun dean/doom-config (&optional initial-input)
-  "Search Doom private config and jump to a heading."
-  (interactive)
-  (doom-completing-read-org-headings
-   "Config: " (list (concat doom-private-dir "config.org"))
-   2 nil initial-input))
-
-(defun dean/cheatsheet (&optional initial-input)
-  "Search private cheatsheet and jump to heading."
-  (interactive)
-  (doom-completing-read-org-headings
-   "Cheatsheet: " (list (concat doom-private-dir "cheatsheet.org"))
-   2 nil initial-input))
 #+end_src
 
 * Extra packages

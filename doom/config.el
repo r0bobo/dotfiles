@@ -5,6 +5,28 @@
     (dolist (path paths existing-paths)
         (when (file-directory-p (expand-file-name path))
           (setq existing-paths (cons path existing-paths))))))
+(defun dean/doom-config (&optional initial-input)
+  "Search Doom private config and jump to a heading."
+  (interactive)
+  (doom-completing-read-org-headings
+   "Config: " (list (concat doom-private-dir "config.org"))
+   2 nil initial-input))
+(defun dean/cheatsheet (&optional initial-input)
+  "Display personal cheetsheet"
+  (interactive)
+  (let ((buffer-name "*cheatsheet*"))
+    (when (not (get-buffer buffer-name))
+      (with-current-buffer (get-buffer-create buffer-name)
+        (insert-file-contents (concat doom-private-dir "cheatsheet.org"))
+        (org-mode)
+        (display-line-numbers-mode -1)
+        (read-only-mode 1)))
+    (pop-to-buffer buffer-name)))
+(set-popup-rule! "^\\*cheatsheet\\*$"
+  :side 'bottom
+  :size 0.4
+  :select t
+  :quit 'current)
 (setq! user-full-name "Dean Lindqvist Todevski"
       user-mail-address "dean.todevski@gmail.com")
 (setq evil-snipe-override-evil-repeat-keys nil)
@@ -25,13 +47,13 @@
  :desc "Doom dashboard" "b h" #'+doom-dashboard/open
 
  :prefix "o"
- :desc "Undo tree" "u" 'undo-tree-visualize
+ :desc "Undo tree" "u" #'undo-tree-visualize
  :desc "Font Size" "z" #'+hydra/text-zoom/body
 
  :prefix ("d" . "dean")
- :desc "Cheatsheet" "c" 'dean/cheatsheet
- :desc "Doom Config" "d" 'dean/doom-config
- :desc "Sort lines" "s" 'sort-lines
+ :desc "Cheatsheet" "c" #'dean/cheatsheet
+ :desc "Doom Config" "d" #'dean/doom-config
+ :desc "Sort lines" "s" #'sort-lines
  )
 (defhydra hydra-goto-chg (:timeout 2)
   "goto-chg"
@@ -285,19 +307,6 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
   :hook (magit-diff-visit-file . (lambda ()
                                    (when smerge-mode
                                      (unpackaged/smerge-hydra/body)))))
-(defun dean/doom-config (&optional initial-input)
-  "Search Doom private config and jump to a heading."
-  (interactive)
-  (doom-completing-read-org-headings
-   "Config: " (list (concat doom-private-dir "config.org"))
-   2 nil initial-input))
-
-(defun dean/cheatsheet (&optional initial-input)
-  "Search private cheatsheet and jump to heading."
-  (interactive)
-  (doom-completing-read-org-headings
-   "Cheatsheet: " (list (concat doom-private-dir "cheatsheet.org"))
-   2 nil initial-input))
 (use-package! chezmoi
   :commands (chezmoi|diff chezmoi|ediff chezmoi|find chezmoi|magit-status chezmoi|write)
   )
