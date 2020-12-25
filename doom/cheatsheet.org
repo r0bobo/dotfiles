@@ -1,5 +1,6 @@
-#+TITLE:   Cheatsheet
-#+STARTUP: inlineimages
+#+title:   Cheatsheet
+#+startup: content
+#+startup: inlineimages
 
 * Keybinds / features
 

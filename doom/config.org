@@ -21,8 +21,8 @@
   "Output directories that exists."
   (let (existing-paths)
     (dolist (path paths existing-paths)
-        (when (file-directory-p (expand-file-name path))
-          (setq existing-paths (cons path existing-paths))))))
+      (when (file-directory-p (expand-file-name path))
+        (setq existing-paths (cons path existing-paths))))))
 #+end_src
 
 #+begin_src elisp
@@ -159,7 +159,7 @@ Projecile does not seem to like it if directories do not.
       doom-big-font (font-spec :family "Source Code Pro" :size 26))
 
 (setq! doom-theme 'doom-dracula
-      display-line-numbers-type t)
+       display-line-numbers-type t)
 #+end_src
 
 ** Pretty Code

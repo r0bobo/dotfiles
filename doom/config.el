@@ -3,8 +3,8 @@
   "Output directories that exists."
   (let (existing-paths)
     (dolist (path paths existing-paths)
-        (when (file-directory-p (expand-file-name path))
-          (setq existing-paths (cons path existing-paths))))))
+      (when (file-directory-p (expand-file-name path))
+        (setq existing-paths (cons path existing-paths))))))
 (defun dean/doom-config (&optional initial-input)
   "Search Doom private config and jump to a heading."
   (interactive)
@@ -77,7 +77,7 @@
       doom-big-font (font-spec :family "Source Code Pro" :size 26))
 
 (setq! doom-theme 'doom-dracula
-      display-line-numbers-type t)
+       display-line-numbers-type t)
 (setq! +ligatures-in-modes '(org-mode)
        +ligatures-extras-in-modes '(org-mode))
 (setq! org-directory "~/org/")
