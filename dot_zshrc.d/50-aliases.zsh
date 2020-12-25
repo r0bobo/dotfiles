@@ -9,7 +9,7 @@ alias k='kubectl'
 alias bat='bat --plain'
 
 # Emacs commands
-alias emacs-log='journalctl --user-unit=emacs.service --follow'
+alias emacs-log='journalctl --user-unit=emacs.service --pager-end'
 alias emacs-restart='systemctl --user restart emacs.service'
 alias emacs-status='systemctl --user status emacs.service'
 
