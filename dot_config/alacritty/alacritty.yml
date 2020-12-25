@@ -3,13 +3,13 @@ import:
 
 font:
   normal:
-    family: Source Code Pro
+    family: Jetbrains Mono
   bold:
-    family: Source Code Pro
+    family: Jetbrains Mono
   italic:
-    family: Source Code Pro
+    family: Jetbrains Mono
   bold_italic:
-    family: Source Code Pro
+    family: Jetbrains Mono
 
   size: 10.5
 

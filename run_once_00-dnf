@@ -13,14 +13,11 @@ packages=(
 	lab
 	rclone
 	ripgrep
-	starship
 	tmpwatch
 	tmux
 	vim
 	xclip
 	zsh
-	zsh-autosuggestions
-	zsh-fast-syntax-highlighting
 
 	# Golang dev
 	godoctor
@@ -38,14 +35,15 @@ if [[ "$XDG_CURRENT_DESKTOP" != '' ]]; then
 		adobe-source-code-pro-fonts
 		alacritty
 		flatpak
+		jetbrains-mono-fonts-all
 		papirus-icon-theme
 
 		# Firefox VA-API
 		# https://mastransky.wordpress.com/2020/06/03/firefox-on-fedora-finally-gets-va-api-on-wayland/
 		ffmpeg
 		libva
-		libva-utils
 		libva-intel-driver
+		libva-utils
 
 	)
 fi
