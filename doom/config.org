@@ -162,13 +162,6 @@ Projecile does not seem to like it if directories do not.
        display-line-numbers-type t)
 #+end_src
 
-** Pretty Code
-
-#+begin_src elisp
-(setq! +ligatures-in-modes '(org-mode)
-       +ligatures-extras-in-modes '(org-mode))
-#+end_src
-
 ** Org-Mode
 
 #+begin_src elisp

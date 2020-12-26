@@ -78,8 +78,6 @@
 
 (setq! doom-theme 'doom-dracula
        display-line-numbers-type t)
-(setq! +ligatures-in-modes '(org-mode)
-       +ligatures-extras-in-modes '(org-mode))
 (setq! org-directory "~/org/")
 
 (map! :map org-mode-map
