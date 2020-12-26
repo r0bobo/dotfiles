@@ -491,14 +491,6 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
 
 * Extra packages
 
-** Chezmoi
-
-#+begin_src elisp
-(use-package! chezmoi
-  :commands (chezmoi|diff chezmoi|ediff chezmoi|find chezmoi|magit-status chezmoi|write)
-  )
-#+end_src
-
 ** Jq
 
 #+begin_src elisp
