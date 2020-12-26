@@ -5,13 +5,13 @@
     (dolist (path paths existing-paths)
       (when (file-directory-p (expand-file-name path))
         (setq existing-paths (cons path existing-paths))))))
-(defun dean/doom-config (&optional initial-input)
+(defun dean/doom-config ()
   "Search Doom private config and jump to a heading."
   (interactive)
   (doom-completing-read-org-headings
    "Config: " (list (concat doom-private-dir "config.org"))
    2 nil initial-input))
-(defun dean/cheatsheet (&optional initial-input)
+(defun dean/cheatsheet ()
   "Display personal cheetsheet"
   (interactive)
   (let ((buffer-name "*cheatsheet*"))

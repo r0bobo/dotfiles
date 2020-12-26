@@ -26,7 +26,7 @@
 #+end_src
 
 #+begin_src elisp
-(defun dean/doom-config (&optional initial-input)
+(defun dean/doom-config ()
   "Search Doom private config and jump to a heading."
   (interactive)
   (doom-completing-read-org-headings
@@ -37,7 +37,7 @@
 *** Cheatsheet
 
 #+begin_src elisp
-(defun dean/cheatsheet (&optional initial-input)
+(defun dean/cheatsheet ()
   "Display personal cheetsheet"
   (interactive)
   (let ((buffer-name "*cheatsheet*"))
