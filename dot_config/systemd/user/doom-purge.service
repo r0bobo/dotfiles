@@ -6,5 +6,7 @@ Before=shutdown.target
 
 [Service]
 Type=oneshot
+Environment=DOOMDIR=%h/.local/share/chezmoi/doom
+Environment=DOOMLOCALDIR=%h/.local/share/doom
 ExecStart=%h/.emacs.d/bin/doom purge --regraft
 IOSchedulingClass=idle
