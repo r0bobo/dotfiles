@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
-#
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --color=16"
+
 # Use fd (https://github.com/sharkdp/fd) instead of the default find
 # command for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
