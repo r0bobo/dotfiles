@@ -10,7 +10,7 @@ flatpaks=(
     com.slack.Slack
     com.spotify.Client
     org.gtk.Gtk3theme.Adapta-Eta
-    org.nextcloud.Nextcloud
+    app/com.nextcloud.desktopclient.nextcloud/x86_64/stable
     org.telegram.desktop
 )
 
