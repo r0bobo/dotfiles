@@ -65,3 +65,5 @@
 (package! suggest)
 
 (package! jq-mode)
+
+(package! ssh-config-mode)
