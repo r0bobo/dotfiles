@@ -10,6 +10,7 @@
           chezmoi
           dive
           dogdns
+          gitAndTools.git-sync
           gmailctl
           go-jsonnet
           hey
