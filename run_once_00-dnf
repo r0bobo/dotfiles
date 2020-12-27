@@ -63,7 +63,6 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cl
 EOF
 
 # Copr repos
-sudo dnf copr enable -y chmouel/tektoncd-cli
 sudo dnf copr enable -y robobo/packages
 
 sudo dnf install -y "${packages[@]}"
