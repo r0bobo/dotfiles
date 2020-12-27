@@ -112,9 +112,9 @@ Switch to the new window after splitting
  :prefix "o"
  :desc "Undo tree" "u" #'undo-tree-visualize
  :desc "Font Size" "z" #'+hydra/text-zoom/body
+ :desc "Cheatsheet" "c" #'dean/cheatsheet
 
  :prefix ("d" . "dean")
- :desc "Cheatsheet" "c" #'dean/cheatsheet
  :desc "Doom Config" "d" #'dean/doom-config
  :desc "Sort lines" "s" #'sort-lines
  )
