@@ -6,6 +6,7 @@
         paths = [
 
           bitwarden-cli
+          cachix
           chezmoi
           dive
           dogdns
