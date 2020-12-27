@@ -37,6 +37,8 @@ alias dh='dirs -v'
 
 alias kzb='kustomize build "$(fd kustomization.yaml | xargs -l dirname | fzf)"   '
 
+alias nixup='nix-channel --update && nix-env -iA nixpkgs.myPackages && nix-env --upgrade'
+
 # Remove colourify from make.
 # Breaks auto completion and other things
 unalias make
