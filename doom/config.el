@@ -75,9 +75,9 @@
        doom-variable-pitch-font (font-spec :family "Jetbrains Mono" :size 14)
        doom-unicode-font (font-spec :family "Jetbrains Mono" :size 14)
        doom-big-font (font-spec :family "Jetbrains Mono" :size 26))
-
 (setq! doom-theme 'doom-dracula
        display-line-numbers-type t)
+(setq fancy-splash-image (concat doom-private-dir "doom-icon.png"))
 (setq! org-directory "~/org/")
 
 (map! :map org-mode-map

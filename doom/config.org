@@ -6,6 +6,8 @@
 #+startup:  content
 #+property: header-args :tangle yes :cache yes :results silent :padline no
 
+[[./doom-icon.png]]
+
 * Configuration
 
 ** Header
@@ -152,14 +154,28 @@ Projecile does not seem to like it if directories do not.
 
 ** UI
 
+*** Fonts
+
 #+begin_src elisp
 (setq! doom-font (font-spec :family "Jetbrains Mono" :size 14)
        doom-variable-pitch-font (font-spec :family "Jetbrains Mono" :size 14)
        doom-unicode-font (font-spec :family "Jetbrains Mono" :size 14)
        doom-big-font (font-spec :family "Jetbrains Mono" :size 26))
+#+end_src
 
+*** Theme
+
+#+begin_src elisp
 (setq! doom-theme 'doom-dracula
        display-line-numbers-type t)
+#+end_src
+
+*** Splash Icon
+
+Taken from [[github:eccentric-j/doom-icon][eccentric-j/doom-icon]].
+
+#+begin_src elisp
+(setq fancy-splash-image (concat doom-private-dir "doom-icon.png"))
 #+end_src
 
 ** Org-Mode
