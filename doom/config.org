@@ -529,5 +529,5 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
 (use-package! ox-ssh
   :config
   (setq org-ssh-export-suffix ""
-        org-ssh-header: "# -*- mode: ssh-config -*-"))
+        org-ssh-header "# -*- mode: ssh-config -*-"))
 #+end_src
