@@ -1,4 +1,4 @@
-# -*- gitignore
+# -*- gitignore -*-
 
 README.md
 
@@ -10,3 +10,4 @@ README.md
 {{- end }}
 
 /doom/
+/private_dot_ssh/config.org
