@@ -44,9 +44,6 @@
 :SSH_IDENTITY_FILE: ~/.ssh/keys/dn42-node.key
 :END:
 
-dean@10.0.20.20
-
-
 * Raspberry Pi:s
 
 [[./pi.png]]
