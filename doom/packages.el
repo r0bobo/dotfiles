@@ -67,3 +67,8 @@
 (package! jq-mode)
 
 (package! ssh-config-mode)
+
+(package! ox-ssh
+  :recipe
+  (:host github
+   :repo "r0bobo/ox-ssh"))

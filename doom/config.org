@@ -523,3 +523,11 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
       "h" #'systemd-doc-open)
 #+end_src
 
+** ox-ssh
+
+#+begin_src elisp
+(use-package! ox-ssh
+  :config
+  (setq org-ssh-export-suffix ""
+        org-ssh-header: "# -*- mode: ssh-config -*-"))
+#+end_src

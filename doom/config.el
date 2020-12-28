@@ -311,3 +311,7 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
       :localleader
       "d" #'systemd-doc-directives
       "h" #'systemd-doc-open)
+(use-package! ox-ssh
+  :config
+  (setq org-ssh-export-suffix ""
+        org-ssh-header: "# -*- mode: ssh-config -*-"))
