@@ -5,6 +5,8 @@
 #+startup:  inlineimages
 #+startup:  content
 
+#+export_file_name: config
+
 * Fedora Server
 :PROPERTIES:
 :HOST_OVERRIDE: hypervisor
@@ -21,6 +23,8 @@
 :IP: gitlab-0.node.todevski
 :SSH_USER: ansible
 :END:
+
+[[https://git.todevski.com][Gitlab]]
 
 ** Fedora Dev VM
 :PROPERTIES:
