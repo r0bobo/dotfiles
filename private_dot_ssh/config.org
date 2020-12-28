@@ -118,11 +118,3 @@ dean@10.0.20.20
 :SSH_USER_KNOWN_HOSTS_FILE: /dev/null
 :SSH_GSSAPI_AUTHENTICATION: no
 :END:
-
-
-
-* File Local Variables :noexport:
-
-# Local variables:
-# org-ssh-header: "# -*- mode: ssh-config -*-"
-# end:
