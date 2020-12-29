@@ -38,7 +38,7 @@ Host osmc
   User osmc
 
 Host router
-  HostName 192.168.1.
+  HostName 192.168.1.1
   IdentityFile ~/.ssh/keys/edgerouter.key
   User dean
 

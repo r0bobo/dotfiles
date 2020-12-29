@@ -79,7 +79,7 @@
 * Edgerouter X
 :PROPERTIES:
 :HOST_OVERRIDE: router
-:IP: 192.168.1.
+:IP: 192.168.1.1
 :SSH_USER: dean
 :SSH_IDENTITY_FILE: ~/.ssh/keys/edgerouter.key
 :END:
