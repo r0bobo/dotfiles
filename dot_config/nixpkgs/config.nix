@@ -20,11 +20,13 @@
           kpt
           kubernetes-helm
           kustomize
+          nix-tree
           nixfmt
           operator-sdk
           skaffold
           starship
-          terraform
+          terraform_0_14
+          terraform-provider-libvirt
           wrk
           yq-go
 
