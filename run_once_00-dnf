@@ -10,7 +10,7 @@ packages=(
 	fzf
 	grc
 	kubectl
-	lab
+	pass
 	rclone
 	ripgrep
 	tmpwatch
@@ -31,10 +31,12 @@ packages=(
 if [[ "$XDG_CURRENT_DESKTOP" != '' ]]; then
 	packages+=(
 
-		adapta-gtk-theme
+		# adapta-gtk-theme
 		adobe-source-code-pro-fonts
 		alacritty
+		arc-theme
 		flatpak
+		gnome-shell-extension-pop-shell
 		jetbrains-mono-fonts-all
 		papirus-icon-theme
 
