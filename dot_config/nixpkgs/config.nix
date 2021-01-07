@@ -10,6 +10,7 @@
           chezmoi
           dive
           dogdns
+          exercism
           gitAndTools.git-sync
           gmailctl
           go-jsonnet
@@ -23,10 +24,12 @@
           nix-tree
           nixfmt
           operator-sdk
+          rust-analyzer
+          rustup
           skaffold
           starship
-          terraform_0_14
           terraform-provider-libvirt
+          terraform_0_14
           wrk
           yq-go
 
