@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -euo pipefail
+
+FIREFOX_DIR="$HOME/.mozilla/firefox"
+PROFILE_FILE="$FIREFOX_DIR/profiles.ini"
+
+# end_line="$(awk '/Default=1/ { print NR }' "$PROFILE_FILE")"
+# begin_line="$(awk "NR<=$end_line && /^\[Profile/ { n=NR }; END { print n }" "$PROFILE_FILE")"
+
+# default_profile="$( \
+#     sed -ne "${begin_line},${end_line}p" "$PROFILE_FILE" \
+#     | awk -F= '/Path=/ { print $2 }')"
+
+default_profile="$(awk -F= '/^\[Install/,/.\*/ { n=NR }; NR>=$n && /Default=/{ print $2; exit }' "$PROFILE_FILE")"
+
+ln -sf "$HOME/.local/share/chezmoi/firefox/user.js" "$FIREFOX_DIR/$default_profile/user.js"
+echo "Linked $FIREFOX_DIR/$default_profile/user.js"
