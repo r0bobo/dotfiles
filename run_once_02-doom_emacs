@@ -1,8 +1,0 @@
-#!/bin/bash -eu
-
-DIR="$HOME/.emacs.d"
-
-test -d "$DIR/.git" \
-    || git clone --depth 1 https://github.com/hlissner/doom-emacs "$DIR"
-
-yes | "$DIR/bin/doom" install -p "$HOME/.config/doom"
