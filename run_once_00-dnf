@@ -46,6 +46,7 @@ if [[ "$XDG_CURRENT_DESKTOP" != '' ]]; then
 		libva
 		libva-intel-driver
 		libva-utils
+		libva-vdpau-driver  # Nvidia
 
 	)
 fi
