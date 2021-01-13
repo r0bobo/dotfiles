@@ -1,5 +1,5 @@
 // Force-enable webrender
-user_pref("gfx.webrender.enabled", true);
+user_pref("gfx.webrender.all", true);
 
 // Hardware acceleration for video
 user_pref("media.ffmpeg.vaapi-drm-display.enabled", true);
