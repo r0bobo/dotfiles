@@ -5,6 +5,7 @@
         name = "my-packages";
         paths = [
 
+          awscli2
           bitwarden-cli
           cachix
           chezmoi
