@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+require 'open3'
+
+def encrypt_val(value, name, namespace)
+  cmd = "kubeseal --controller-namespace=sealed-secrets --raw --name=#{name} --namespace=#{namespace}"
+  stdout, stderr, status = Open3.capture3(cmd, stdin_data: value)
+  puts stdout
+  return stdout if status.success?
+
+  abort "Error: #{stderr}"
+end
+
+def read_pass_key(path)
+  stdout, stderr, status = Open3.capture3("pass #{path}")
+  return stdout if status.success?
+
+  abort "Error: #{stderr}"
+end
+
+def render_secret(manifest)
+  name = manifest['metadata']['name']
+  namespace = manifest['metadata']['namespace']
+
+  manifest['spec']['encryptedData'].tap do |d|
+    d.each do |key, value|
+      d[key] = encrypt_val(value, name, namespace)
+    end
+  end
+
+  manifest
+end
+
+YAML.add_domain_type('', 'pass') do |_, value|
+  read_pass_key(value)
+end
+
+Dir.glob('*.unsealed.yaml').each do |file|
+  sealed_secret = render_secret(YAML.load_file(file))
+  new_file = file.sub(/\.unsealed\.yaml/, '.yaml')
+  File.open(new_file, 'w') do |dest|
+    dest.write(sealed_secret.to_yaml)
+    puts "#{file} => #{new_file}"
+  end
+end

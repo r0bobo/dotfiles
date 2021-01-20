@@ -8,7 +8,9 @@
           awscli2
           bitwarden-cli
           cachix
+          cargo
           chezmoi
+          clippy
           dive
           dogdns
           exercism
@@ -21,12 +23,13 @@
           kind
           kpt
           kubernetes-helm
+          kubeseal
           kustomize
           nix-tree
           nixfmt
           operator-sdk
+          rustc
           rust-analyzer
-          rustup
           skaffold
           starship
           terraform-provider-libvirt
