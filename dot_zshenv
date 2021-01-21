@@ -32,7 +32,18 @@ export DOOMLOCALDIR="$HOME/.local/share/doom"
 export LIBVIRT_DEFAULT_URI=qemu+ssh://hypervisor/system
 export VAULT_ADDR=https://vault.service.todevski:8200
 
+# Less config
 export PAGER=less
+lessflags=(
+	--ignore-case
+	--quit-if-one-screen
+	--chop-long-lines
+	--RAW-CONTROL-CHARS  # show colors
+	--no-init
+	--tabs=4
+)
+export LESS="${lessflags[*]}"
+unset lessflags
 
 # Manpages
 export MANPAGER='bat -lman -p'

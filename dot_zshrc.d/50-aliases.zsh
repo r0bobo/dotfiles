@@ -17,8 +17,6 @@ alias ls=exa
 alias la="exa -la"
 alias ll="exa -l"
 
-alias less="less -FSRX"
-
 # Colors
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
