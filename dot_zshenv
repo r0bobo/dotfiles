@@ -32,6 +32,8 @@ export DOOMLOCALDIR="$HOME/.local/share/doom"
 export LIBVIRT_DEFAULT_URI=qemu+ssh://hypervisor/system
 export VAULT_ADDR=https://vault.service.todevski:8200
 
+export PAGER=less
+
 # Manpages
 export MANPAGER='bat -lman -p'
 
