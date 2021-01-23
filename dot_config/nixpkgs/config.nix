@@ -25,11 +25,13 @@
           kubernetes-helm
           kubeseal
           kustomize
+          minikube
           nix-tree
           nixfmt
           operator-sdk
-          rustc
           rust-analyzer
+          rustc
+          rustfmt
           skaffold
           starship
           terraform-provider-libvirt
