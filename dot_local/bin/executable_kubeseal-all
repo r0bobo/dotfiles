@@ -6,7 +6,6 @@ require 'open3'
 def encrypt_val(value, name, namespace)
   cmd = "kubeseal --controller-namespace=sealed-secrets --raw --name=#{name} --namespace=#{namespace}"
   stdout, stderr, status = Open3.capture3(cmd, stdin_data: value)
-  puts stdout
   return stdout if status.success?
 
   abort "Error: #{stderr}"
@@ -14,7 +13,7 @@ end
 
 def read_pass_key(path)
   stdout, stderr, status = Open3.capture3("pass #{path}")
-  return stdout if status.success?
+  return stdout.chop if status.success?
 
   abort "Error: #{stderr}"
 end
