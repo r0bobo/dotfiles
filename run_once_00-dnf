@@ -17,6 +17,7 @@ packages=(
 	tmux
 	vim
 	xclip
+	z
 	zsh
 
 	# Golang dev
