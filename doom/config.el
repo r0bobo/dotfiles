@@ -273,6 +273,8 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
   :hook (magit-diff-visit-file . (lambda ()
                                    (when smerge-mode
                                      (unpackaged/smerge-hydra/body)))))
+(setq +format-on-save-enabled-modes
+      '(not terraform-mode))
 (use-package! jq-mode
   :mode ("\\.jq" . jq-mode))
 (map! :map systemd-mode-map
