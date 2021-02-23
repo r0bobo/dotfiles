@@ -33,7 +33,7 @@ Host venus
   User pi
 
 Host osmc
-  HostName osmc.node.todevski
+  HostName 192.168.1.133
   IdentityFile ~/.ssh/keys/osmc.key
   User osmc
 

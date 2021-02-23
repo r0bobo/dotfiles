@@ -71,7 +71,7 @@
 ** OSMC
 :PROPERTIES:
 :HOST_OVERRIDE: osmc
-:IP: osmc.node.todevski
+:IP: 192.168.1.133
 :SSH_USER: osmc
 :SSH_IDENTITY_FILE: ~/.ssh/keys/osmc.key
 :END:
