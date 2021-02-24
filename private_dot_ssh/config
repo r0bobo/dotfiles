@@ -32,10 +32,10 @@ Host venus
   IdentityFile ~/.ssh/keys/pi.key
   User pi
 
-Host osmc
+Host libreelec
   HostName 192.168.1.133
-  IdentityFile ~/.ssh/keys/osmc.key
-  User osmc
+  IdentityFile ~/.ssh/keys/libreelec.key
+  User root
 
 Host router
   HostName 192.168.1.1
