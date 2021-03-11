@@ -275,6 +275,10 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
                                      (unpackaged/smerge-hydra/body)))))
 (setq +format-on-save-enabled-modes
       '(not terraform-mode))
+(use-package! plantuml-mode
+  :mode ("\\.puml\\'" . plantuml-mode)
+  :config
+  (setq plantuml-default-exec-mode 'executable))
 (use-package! jq-mode
   :mode ("\\.jq" . jq-mode))
 (map! :map systemd-mode-map

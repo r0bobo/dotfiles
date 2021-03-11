@@ -463,6 +463,14 @@ Disable for some modes
 (setq +format-on-save-enabled-modes
       '(not terraform-mode))
 #+end_src
+** Plantuml
+
+#+begin_src elisp
+(use-package! plantuml-mode
+  :mode ("\\.puml\\'" . plantuml-mode)
+  :config
+  (setq plantuml-default-exec-mode 'executable))
+#+end_src
 * Extra packages
 
 ** Jq
@@ -489,3 +497,4 @@ Disable for some modes
   (setq org-ssh-export-suffix ""
         org-ssh-header "# -*- mode: ssh-config -*-"))
 #+end_src
+
