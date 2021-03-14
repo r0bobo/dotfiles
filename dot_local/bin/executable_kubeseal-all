@@ -13,18 +13,20 @@ end
 
 def read_pass_key(path)
   stdout, stderr, status = Open3.capture3("pass #{path}")
-  return stdout.chop if status.success?
+  return stdout.rstrip if status.success?
 
   abort "Error: #{stderr}"
 end
 
 def render_secret(manifest)
-  name = manifest['metadata']['name']
-  namespace = manifest['metadata']['namespace']
+  manifest.each do |doc|
+    name = doc['metadata']['name']
+    namespace = doc['metadata']['namespace']
 
-  manifest['spec']['encryptedData'].tap do |d|
-    d.each do |key, value|
-      d[key] = encrypt_val(value, name, namespace)
+    doc['spec']['encryptedData'].tap do |d|
+      d.each do |key, value|
+        d[key] = encrypt_val(value, name, namespace)
+      end
     end
   end
 
@@ -36,10 +38,11 @@ YAML.add_domain_type('', 'pass') do |_, value|
 end
 
 Dir.glob('*.unsealed.yaml').each do |file|
-  sealed_secret = render_secret(YAML.load_file(file))
+  source = YAML.load_stream(File.read(file))
+  sealed_secret = render_secret(source)
   new_file = file.sub(/\.unsealed\.yaml/, '.yaml')
   File.open(new_file, 'w') do |dest|
-    dest.write(sealed_secret.to_yaml)
+    dest.write(YAML.dump_stream(*sealed_secret))
     puts "#{file} => #{new_file}"
   end
 end
