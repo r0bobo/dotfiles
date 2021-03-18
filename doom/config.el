@@ -279,6 +279,9 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
   :mode ("\\.puml\\'" . plantuml-mode)
   :config
   (setq plantuml-default-exec-mode 'executable))
+(use-package! lsp-mode
+  :config
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'"))
 (use-package! jq-mode
   :mode ("\\.jq" . jq-mode))
 (map! :map systemd-mode-map
