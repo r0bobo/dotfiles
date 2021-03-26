@@ -22,10 +22,13 @@
           kail
           kind
           kpt
+          krew
+          kubectl
           kubernetes-helm
           kubeseal
           kustomize
           minikube
+          minio-client
           nix-tree
           nixfmt
           operator-sdk
