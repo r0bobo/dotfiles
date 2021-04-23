@@ -11,6 +11,7 @@
           cargo
           chezmoi
           clippy
+          cue
           dive
           dogdns
           exercism
