@@ -17,6 +17,7 @@
           gitAndTools.git-sync
           gmailctl
           go-jsonnet
+          grex
           hey
           k9s
           kail
