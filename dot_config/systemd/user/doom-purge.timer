@@ -1,9 +1,0 @@
-[Unit]
-Description=Delete and compact orphaned Doom Emacs packages & repos
-
-[Timer]
-OnStartupSec=5min
-OnUnitActiveSec=1d
-
-[Install]
-WantedBy=timers.target
