@@ -274,7 +274,14 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
                                    (when smerge-mode
                                      (unpackaged/smerge-hydra/body)))))
 (setq +format-on-save-enabled-modes
-      '(not terraform-mode))
+      '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
+            sql-mode         ; sqlformat is currently broken
+            tex-mode         ; latexindent is broken
+            latex-mode
+            dockerfile-mode
+            terraform-mode
+            sh-mode
+            ruby-mode))
 (use-package! plantuml-mode
   :mode ("\\.puml\\'" . plantuml-mode)
   :config

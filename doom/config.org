@@ -461,7 +461,14 @@ Disable for some modes
 
 #+begin_src elisp
 (setq +format-on-save-enabled-modes
-      '(not terraform-mode))
+      '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
+            sql-mode         ; sqlformat is currently broken
+            tex-mode         ; latexindent is broken
+            latex-mode
+            dockerfile-mode
+            terraform-mode
+            sh-mode
+            ruby-mode))
 #+end_src
 ** Plantuml
 
