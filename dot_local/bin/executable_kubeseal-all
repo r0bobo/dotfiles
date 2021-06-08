@@ -4,7 +4,7 @@ require 'yaml'
 require 'open3'
 
 def encrypt_val(value, name, namespace)
-  cmd = "kubeseal --controller-namespace=sealed-secrets --raw --name=#{name} --namespace=#{namespace}"
+  cmd = "kubeseal --controller-name=sealed-secrets --controller-namespace=sealed-secrets --raw --name=#{name} --namespace=#{namespace}"
   stdout, stderr, status = Open3.capture3(cmd, stdin_data: value)
   return stdout if status.success?
 
