@@ -34,6 +34,7 @@
           nix-tree
           nixfmt
           operator-sdk
+          ripgrep-all
           rust-analyzer
           rustc
           rustfmt
