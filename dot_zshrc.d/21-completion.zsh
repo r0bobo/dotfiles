@@ -15,4 +15,3 @@ autoload -U +X bashcompinit && bashcompinit
 -bashcomp kustomize
 -bashcomp mc
 -bashcomp terraform
--bashcomp vault

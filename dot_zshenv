@@ -30,7 +30,6 @@ fpath+="$HOME/.nix-profile/share/zsh/site-functions"
 export DOOMDIR="$HOME/.local/share/chezmoi/doom"
 export DOOMLOCALDIR="$HOME/.local/share/doom"
 export LIBVIRT_DEFAULT_URI=qemu+ssh://hypervisor/system
-export VAULT_ADDR=https://vault.service.todevski:8200
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
 
 # Less config

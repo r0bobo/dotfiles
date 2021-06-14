@@ -30,7 +30,6 @@
           kubeseal
           kustomize
           minikube
-          minio-client
           nix-tree
           nixfmt
           operator-sdk
@@ -41,7 +40,7 @@
           skaffold
           starship
           terraform-provider-libvirt
-          terraform_0_14
+          terraform_0_15
           wrk
           yq-go
 
