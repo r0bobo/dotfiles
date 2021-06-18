@@ -40,7 +40,7 @@
           skaffold
           starship
           terraform-provider-libvirt
-          terraform_0_15
+          terraform
           wrk
           yq-go
 
