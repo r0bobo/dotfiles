@@ -23,3 +23,6 @@ user_pref("mousewheel.min_line_scroll_amount", 75);
 // Disable webrtc popup
 // https://stackoverflow.com/questions/30852775/how-to-hide-firefox-camera-icon-overlay-in-windows
 user_pref("privacy.webrtc.legacyGlobalIndicator", false);
+
+// Enable calculator
+user_pref("browser.urlbar.suggest.calculator", true);
