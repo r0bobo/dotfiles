@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-export EDITOR=editor
+export EDITOR='emacsclient -t'
+export VISUAL='emacsclient -c'
 
 # XDG
 export XDG_CONFIG_HOME="$HOME/.config"
