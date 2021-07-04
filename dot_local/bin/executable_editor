@@ -11,8 +11,12 @@ if ! systemctl --user is-active emacs.service >/dev/null; then
 	done
 fi
 
-if [ -z "$DISPLAY" ]; then
+if [[ -z "$DISPLAY" ]]; then
 	exec emacsclient -t "$@"
 else
-	exec emacsclient -ncd "$DISPLAY" "$@"
+	if [[ "$(basename "$0")" = e ]]; then
+		exec emacsclient -ncd "$DISPLAY" "$@"
+	else
+		exec emacsclient -cd "$DISPLAY" "$@"
+	fi
 fi

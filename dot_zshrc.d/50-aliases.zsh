@@ -1,10 +1,8 @@
 #!/usr/bin/env zsh
 
 alias d=docker
-alias e=editor
-
-alias kubectl='EDITOR=vim kubectl'
-alias k='kubectl'
+alias k=kubectl
+alias tf=terraform
 
 alias bat='bat --plain'
 
