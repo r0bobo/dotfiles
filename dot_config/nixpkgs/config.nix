@@ -16,6 +16,7 @@
           dogdns
           exercism
           gitAndTools.git-sync
+          glab
           gmailctl
           go-jsonnet
           grex
@@ -32,14 +33,12 @@
           minikube
           nix-tree
           nixfmt
-          operator-sdk
           ripgrep-all
           rust-analyzer
           rustc
           rustfmt
           skaffold
           starship
-          terraform-provider-libvirt
           terraform
           wrk
           yq-go
