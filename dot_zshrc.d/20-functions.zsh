@@ -91,8 +91,6 @@ zsh-profile() {
     ) | less
 }
 
-ssh-until-connection() { until ssh $@; do sleep 3; done; }
-
 fix-zoom() {
     sudo cp /etc/os-release $(flatpak info -l org.freedesktop.Platform)/files/lib/.
     sudo flatpak override --socket=session-bus us.zoom.Zoom
