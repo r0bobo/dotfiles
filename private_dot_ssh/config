@@ -6,19 +6,15 @@ Host hypervisor
   User dean
 
 Host gitlab
-  HostName 192.168.1.102
-  User ansible
+  HostName 192.168.1.101
+  IdentityFile ~/.ssh/keys/gitlab-server.key
+  User dean
 
 Host fedora-dev
   HostName fedora-cloud1.node.todevski
 
-Host vpn-node
-  HostName vpn-node.node.todevski
-  IdentityFile ~/.ssh/keys/coreos.key
-  User ansible
-
 Host dn42-node
-  HostName 10.0.20.20
+  HostName 10.0.20.10
   IdentityFile ~/.ssh/keys/dn42-node.key
   User dean
 

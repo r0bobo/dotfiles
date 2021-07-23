@@ -20,8 +20,9 @@
 ** Gitlab VM
 :PROPERTIES:
 :HOST_OVERRIDE: gitlab
-:IP: 192.168.1.102
-:SSH_USER: ansible
+:IP: 192.168.1.101
+:SSH_USER: dean
+:SSH_IDENTITY_FILE: ~/.ssh/keys/gitlab-server.key
 :END:
 
 [[https://git.todevski.com][Gitlab]]
@@ -32,18 +33,10 @@
 :IP: fedora-cloud1.node.todevski
 :END:
 
-** VPN VM
-:PROPERTIES:
-:HOST_OVERRIDE: vpn-node
-:IP: vpn-node.node.todevski
-:SSH_USER: ansible
-:SSH_IDENTITY_FILE: ~/.ssh/keys/coreos.key
-:END:
-
 ** DN42 VM
 :PROPERTIES:
 :HOST_OVERRIDE: dn42-node
-:IP: 10.0.20.20
+:IP: 10.0.20.10
 :SSH_USER: dean
 :SSH_IDENTITY_FILE: ~/.ssh/keys/dn42-node.key
 :END:
