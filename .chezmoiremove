@@ -1,5 +1,6 @@
 .config/direnv/direnvrc
 
+.local/bin/gen-ssh-keys
 .local/bin/kubectl-cfgsync
 .local/bin/kubectl-kubeletcfg
 .local/bin/minio-config
