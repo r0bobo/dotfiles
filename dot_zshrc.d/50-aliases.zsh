@@ -35,7 +35,7 @@ alias kzb='kustomize build "$(fd kustomization.yaml | xargs -l dirname | fzf)"  
 
 alias nixup='nix-channel --update && nix-env -iA nixpkgs.myPackages && nix-env --upgrade'
 
-alias ssh-until='ssh -o ConnectTimeout=300 -o ConnectionAttempts=100'
+alias ssh-until='ssh -o ConnectTimeout=10 -o ConnectionAttempts=360'
 
 # Remove colourify from make.
 # Breaks auto completion and other things
