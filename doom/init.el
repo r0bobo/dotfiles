@@ -15,7 +15,7 @@
 ;;      directory (for easy access to its source code).
 
 
-(setq +literate-config-file "~/.local/share/chezmoi/doom/config.org")
+(setq +literate-config-file (concat doom-private-dir "config.org"))
 
 (doom! :input
        ;;chinese
