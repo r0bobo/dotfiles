@@ -289,6 +289,8 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
 (use-package! lsp-mode
   :config
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'"))
+(setq safe-local-variable-values
+      '((eval ansible)))
 (use-package! jq-mode
   :mode ("\\.jq" . jq-mode))
 (map! :map systemd-mode-map
