@@ -36,7 +36,7 @@
 ** DN42 VM
 :PROPERTIES:
 :HOST_OVERRIDE: dn42-node
-:IP: 10.0.20.10
+:IP: 192.168.240.10
 :SSH_USER: dean
 :SSH_IDENTITY_FILE: ~/.ssh/keys/dn42-node.key
 :END:

@@ -14,7 +14,7 @@ Host fedora-dev
   HostName fedora-cloud1.node.todevski
 
 Host dn42-node
-  HostName 10.0.20.10
+  HostName 192.168.240.10
   IdentityFile ~/.ssh/keys/dn42-node.key
   User dean
 
