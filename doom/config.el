@@ -254,10 +254,17 @@ appropriate.  In tables, insert a new row or end the table."
 (setq enable-local-variables :safe)
 (add-to-list 'safe-local-variable-values
              '((+format-on-save-enabled-modes quote (not ruby-mode))))
+(add-to-list 'safe-local-eval-forms
+             '(ansible))
 
 (add-to-list 'safe-local-eval-forms
-             '(ansible)
              '(ansible-doc-mode))
+
+(add-to-list 'safe-local-eval-forms
+             '(web-mode-set-engine "go"))
+
+(add-to-list 'safe-local-eval-forms
+             '(electric-indent-mode 0))
 (use-package! jq-mode
   :mode ("\\.jq" . jq-mode))
 (map! :map systemd-mode-map

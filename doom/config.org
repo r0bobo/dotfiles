@@ -449,14 +449,26 @@ Ignore huge go vendor directories
 (setq enable-local-variables :safe)
 #+end_src
 
-*** Whitelist
+*** Whitelist Variables
 #+begin_src elisp
 (add-to-list 'safe-local-variable-values
              '((+format-on-save-enabled-modes quote (not ruby-mode))))
+#+end_src
+
+*** Whitelist Evals
+#+begin_src elisp
+(add-to-list 'safe-local-eval-forms
+             '(ansible))
 
 (add-to-list 'safe-local-eval-forms
-             '(ansible)
              '(ansible-doc-mode))
+
+(add-to-list 'safe-local-eval-forms
+             '(web-mode-set-engine "go"))
+
+(add-to-list 'safe-local-eval-forms
+             '(electric-indent-mode 0))
+#+end_src
 #+end_src
 * Extra packages
 
