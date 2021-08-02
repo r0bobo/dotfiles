@@ -251,8 +251,13 @@ appropriate.  In tables, insert a new row or end the table."
 (use-package! lsp-mode
   :config
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'"))
-(setq safe-local-variable-values
-      '((eval ansible)))
+(setq enable-local-variables :safe)
+(add-to-list 'safe-local-variable-values
+             '((+format-on-save-enabled-modes quote (not ruby-mode))))
+
+(add-to-list 'safe-local-eval-forms
+             '(ansible)
+             '(ansible-doc-mode))
 (use-package! jq-mode
   :mode ("\\.jq" . jq-mode))
 (map! :map systemd-mode-map
