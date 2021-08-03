@@ -41,6 +41,7 @@
           starship
           terraform
           wrk
+          yadm
           yaml-language-server
           yq-go
 
