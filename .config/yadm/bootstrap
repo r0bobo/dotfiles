@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+error() {
+    echo -e "\e[31mError:\e[0m $*" >&2
+    exit 1
+}
+
+YADM_CLASS="$(yadm config local.class)"
+
+if [[ "$XDG_CURRENT_DESKTOP" != '' ]]; then
+    YADM_GRAPHICAL=true
+else
+    YADM_GRAPHICAL=false
+fi
+
+if [[ "$YADM_CLASS" = "" ]]; then
+    error yadm class undefined
+fi
+
+export YADM_CLASS YADM_GRAPHICAL
+
+
+# Directory to look for bootstrap executables in
+BOOTSTRAP_D="${BASH_SOURCE[0]}.d"
+
+if [[ ! -d "$BOOTSTRAP_D" ]]; then
+    error "bootstrap directory '$BOOTSTRAP_D' not found"
+fi
+
+find "$BOOTSTRAP_D" -type f | sort | while IFS= read -r bootstrap; do
+    if [[ -x "$bootstrap" && ! "$bootstrap" =~ "##" && ! "$bootstrap" =~ "~$" ]]; then
+        echo -e "\e[1m[ \e[36mbootstrap\e[39m ] $bootstrap\e[0m" >&2
+        if ! "$bootstrap"; then
+            error "bootstrap '$bootstrap' failed"
+        fi
+    fi
+done
