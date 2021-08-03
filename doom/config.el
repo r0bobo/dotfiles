@@ -265,6 +265,20 @@ appropriate.  In tables, insert a new row or end the table."
 
 (add-to-list 'safe-local-eval-forms
              '(electric-indent-mode 0))
+(use-package! tramp
+  :config
+  (add-to-list 'tramp-methods
+               '("yadm"
+                 (tramp-login-program "yadm")
+                 (tramp-login-args (("enter")))
+                 (tramp-login-env (("SHELL") ("/bin/sh")))
+                 (tramp-remote-shell "/bin/sh")
+                 (tramp-remote-shell-args ("-c")))))
+
+(defun yadm ()
+  "Open yadm repo in Magit."
+  (interactive)
+  (magit-status "/yadm::"))
 (use-package! jq-mode
   :mode ("\\.jq" . jq-mode))
 (map! :map systemd-mode-map
