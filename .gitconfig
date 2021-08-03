@@ -1,0 +1,48 @@
+[user]
+	name = Dean Lindqvist Todevski
+	signingkey = 6576D83E9B51358F
+
+[github]
+	user = r0bobo
+
+[core]
+	hooksPath = .githooks
+
+[alias]
+	glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	# No need for a GUI - a nice, colorful, graphical representation
+	# https://git-scm.com/docs/git-log
+	# via https://medium.com/@payload.dd/thanks-for-the-git-st-i-will-use-this-4da5839a21a4
+
+[merge]
+	conflictstyle = diff3
+	# Standard diff is two sets of final changes. This introduces the original text before each side's changes.
+	# https://git-scm.com/docs/git-config#git-config-mergeconflictStyle
+
+[pull]
+	rebase = true
+
+[push]
+	followTags = true
+	# Because I get sick of telling git to do it manually
+	# https://git-scm.com/docs/git-config#git-config-pushfollowTags
+
+[rebase]
+	autoStash = true
+
+[status]
+	showUntrackedFiles = all
+	# Sometimes a newly-added folder, since it's only one line in git status, can slip under the radar.
+	# https://git-scm.com/docs/git-config#git-config-statusshowUntrackedFiles
+
+[color]
+	ui = true
+
+[url "ssh://git@github.com/Zimpler"]
+	insteadof = https://github.com/Zimpler
+
+[init]
+	defaultBranch = main
+
+[include]
+	path = .gitconfig.local
