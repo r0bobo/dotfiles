@@ -1,0 +1,4 @@
+\x auto
+\set COMP_KEYWORD_CASE upper
+\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTCONTROL ignoredups
