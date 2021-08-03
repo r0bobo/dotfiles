@@ -1,0 +1,6 @@
+#!/bin/bash -eu
+
+url=$1
+echo | openssl s_client -servername "$url" -connect "$url:443" 2>/dev/null \
+    | openssl x509 -noout -dates \
+    | sed -nE 's/notAfter=(.*)$/\1/p'

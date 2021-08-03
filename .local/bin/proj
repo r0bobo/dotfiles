@@ -1,0 +1,15 @@
+#!/bin/bash
+set -euo pipefail
+
+dirs=(projects src)
+flags=("${dirs[@]/#/--search-path=}")
+
+proj_path="$(fd --base-directory="$HOME" "${flags[@]}" --type=directory --max-depth=2 2>/dev/null |
+	fzf --header=Projects --preview="ls --color=always $HOME/{}" --preview-window=up --height=30 --prompt='PROJ> ')" || exit 0
+
+for dir in "${dirs[@]}"; do
+	[[ $proj_path == $dir* ]] && proj_name="${proj_path#"$dir/"}"
+done
+
+cd "$HOME/$proj_path"
+tm "$proj_name"
