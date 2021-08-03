@@ -1,9 +1,0 @@
-[Unit]
-Description=Delete unreachable nix store paths
-
-[Timer]
-OnStartupSec=5min
-OnUnitActiveSec=1d
-
-[Install]
-WantedBy=timers.target

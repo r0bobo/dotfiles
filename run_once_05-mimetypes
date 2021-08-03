@@ -1,8 +1,0 @@
-#!/bin/bash -e
-
-# Only run when graphical
-[[ "$XDG_CURRENT_DESKTOP" == '' ]] && exit 0
-
-
-update-mime-database ~/.local/share/mime
-xdg-mime default emacs.desktop text/org

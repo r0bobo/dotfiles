@@ -1,6 +1,0 @@
-#!/bin/bash -e
-
-man -k . |
-	fzf --prompt='MAN> ' --header Manpages --height 40 --query "$1" --exact |
-	awk '{print $1}' |
-	xargs -r man

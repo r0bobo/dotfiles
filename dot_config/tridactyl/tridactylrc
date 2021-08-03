@@ -1,6 +1,0 @@
-sanitise tridactyllocal tridactylsync
-
-unbind <C-f>
-
-bind zp pin
-bind zd tabduplicate

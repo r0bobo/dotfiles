@@ -1,6 +1,0 @@
-#!/bin/bash -eu
-
-subnet="${1:-192.168.1.1/24}"
-nmap -sn "$subnet" -oG - \
-    | awk '$4=="Status:" && $5=="Up" {print $0}' \
-    | column -t
