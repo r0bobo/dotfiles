@@ -1,0 +1,111 @@
+#+title:   Cheatsheet
+#+startup: content
+#+startup: inlineimages
+
+* Keybinds / features
+
+** Resume Ivy session
+
+|---------------+--------------------------|
+| ~SPC '~       | Resume last session      |
+| ~SPC u SPC '~ | Choose session to resume |
+|---------------+--------------------------|
+
+** Ivy replace text in all matches
+
+|-----------+------------------------------------|
+| ~C-c C-e~ | Replace text in all matching files |
+|-----------+------------------------------------|
+
+** Ivy sub-search
+
+|---------+---------------------------------------------------|
+| ~S-SPC~ | Start a sub-search of what Ivy currently displays |
+|---------+---------------------------------------------------|
+
+** Go to last change
+
+|------+-----------------------|
+| ~g;~ | Go to last change     |
+| ~g,~ | Go to previous change |
+| ~gi~ | Edit last change      |
+|------+-----------------------|
+
+** EX commands
+
+|---------------------+---------------------------------------------|
+| ~:s//test/~         | Replace string that was previously replaced |
+| ~:s/foo/&bar~       | Will change foo to foobar                   |
+| ~:%!jq --sort-keys~ | Run external command on region              |
+|---------------------+---------------------------------------------|
+
+** Magit project todos
+
+|-----------+-----------------------------|
+| ~SPC p t~ | Show project todos in magit |
+|-----------+-----------------------------|
+
+** Edit pasted text
+
+|-------+----------------------|
+| ~g p~ | Selected pasted text |
+|-------+----------------------|
+
+** Indentation
+
+|-----+----------------------------------|
+| ~=~ | Fix indentation on selected text |
+|-----+----------------------------------|
+
+** Clipboard history
+
+|-----------+------------------------|
+| ~SPC i y~ | Show clipboard history |
+|-----------+------------------------|
+
+** Filepath / filename
+
+|-----------+-------------------------|
+| ~SPC i f~ | Insert current filename |
+| ~SPC i F~ | Insert current filepath |
+|-----------+-------------------------|
+
+** Evil MC (multiple cursors)
+
+|-------+-------------------------------------------------------------------------|
+| ~gzz~ | Toggle new (frozen) cursors at point                                    |
+| ~gzt~ | Toggle mirroring on and off (or switch to insert mode to activate them) |
+| ~gzA~ | Place cursors at the end of each selected line                          |
+| ~gzI~ | Place them at the beginning                                             |
+|-------+-------------------------------------------------------------------------|
+
+** Dired
+
+|-----+----------------------------|
+| ~(~ | Hide details               |
+| ~)~ | Show git details for files |
+|-----+----------------------------|
+
+** Evil ~element~ object
+
+Works in org-src block, org table etc
+
+|-------+-------------------|
+| ~vie~ | Select in element |
+| ~yie~ | Copy in element   |
+|-------+-------------------|
+
+
+* Tips
+
+** How to search Github
+
+If you want to see how others are configuring different parts of emacs
+you can use the following to search github to spy on them:
+
+~language:emacs-lisp language:org type:Code {symbol,hook,function,etc}~
+
+For example I just wanted to see how others were enabling
+~pdf-view-midnight-minor-mode~ with doom, so I searched:
+
+~language:emacs-lisp language:org type:Code pdf-view-midnight-minor-mode doom~

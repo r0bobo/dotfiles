@@ -1,0 +1,519 @@
+#+title:    Config
+#+author:   Dean Lindqvist Todevski
+#+email:    dean.todevski@gmail.com
+#+language: en
+#+startup:  inlineimages
+#+startup:  content
+#+property: header-args :tangle yes :cache yes :results silent :padline no
+
+[[./doom-icon.png]]
+
+* Configuration
+
+** Header
+
+#+begin_src elisp
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+end_src
+
+** Functions
+
+#+begin_src elisp
+(defun dean-filter-existing-directories (&rest paths)
+  "Output directories that exists."
+  (let (existing-paths)
+    (dolist (path paths existing-paths)
+      (when (file-directory-p (expand-file-name path))
+        (setq existing-paths (cons path existing-paths))))))
+#+end_src
+
+#+begin_src elisp
+(defun dean/doom-config ()
+  "Search Doom private config and jump to a heading."
+  (interactive)
+  (doom-completing-read-org-headings
+   "Config: " (list (concat doom-private-dir "config.org"))
+   2 nil initial-input))
+#+end_src
+
+*** Cheatsheet
+
+#+begin_src elisp
+(defun dean/cheatsheet ()
+  "Display personal cheetsheet"
+  (interactive)
+  (let ((buffer-name "*cheatsheet*"))
+    (when (not (get-buffer buffer-name))
+      (with-current-buffer (get-buffer-create buffer-name)
+        (insert-file-contents (concat doom-private-dir "cheatsheet.org"))
+        (org-mode)
+        (display-line-numbers-mode -1)
+        (read-only-mode 1)))
+    (pop-to-buffer buffer-name)))
+#+end_src
+
+#+begin_src elisp
+(set-popup-rule! "^\\*cheatsheet\\*$"
+  :side 'bottom
+  :size 0.4
+  :select t
+  :quit 'current)
+#+end_src
+
+** Personal Info
+
+#+begin_src elisp
+(setq! user-full-name "Dean Lindqvist Todevski"
+      user-mail-address "dean.todevski@gmail.com")
+#+end_src
+
+** General
+
+Change localleader to ~,~
+#+begin_src elisp
+(setq evil-snipe-override-evil-repeat-keys nil)
+(setq! doom-localleader-key ",")
+#+end_src
+
+Shorten which-key popup delay
+#+begin_src elisp
+(use-package! which-key
+  :config
+  (setq! which-key-idle-delay 0.5))
+#+end_src
+
+Authsources are used in for example Forge
+#+begin_src elisp
+(setq! auth-sources '("~/.authinfo"))
+#+end_src
+
+Repeat searches with snipe or ~f/t~ upon pressing the key again.
+#+begin_src elisp
+(use-package! evil-snipe
+  :config
+  (setq! evil-snipe-repeat-keys t)
+  )
+#+end_src
+
+Switch to the new window after splitting
+#+begin_src elisp
+(setq evil-split-window-below t
+      evil-vsplit-window-right t)
+#+end_src
+
+** Global Keymaps
+
+#+begin_src elisp
+(map!
+ :leader
+ :desc "Search in project" "/" #'+default/search-project
+ :desc "Doom dashboard" "b h" #'+doom-dashboard/open
+
+ :prefix "o"
+ :desc "Undo tree" "u" #'undo-tree-visualize
+ :desc "Font Size" "z" #'+hydra/text-zoom/body
+ :desc "Cheatsheet" "c" #'dean/cheatsheet
+
+ :prefix ("d" . "dean")
+ :desc "Doom Config" "d" #'dean/doom-config
+ :desc "Sort lines" "s" #'sort-lines
+ :desc "Yadm Magit" "y" #'yadm
+ )
+#+end_src
+
+Go to last changes hydra
+#+begin_src elisp
+(defhydra hydra-goto-chg (:timeout 2)
+  "goto-chg"
+  (";" goto-last-change "goto-last-change")
+  ("," goto-last-change-reverse "goto-last-change-reverse")
+  ("i" goto-last-change-reverse "goto-last-change-reverse")
+  )
+
+(map! :n "g;" 'hydra-goto-chg/goto-last-change)
+#+end_src
+
+** Dired
+
+#+begin_src elisp
+(map! :map dired-mode-map
+      :localleader
+      :desc "Edit filenames" "e" #'wdired-change-to-wdired-mode)
+#+end_src
+
+** Projectile
+
+Add paths to =projectile-project-search-path= if they exists.
+Projecile does not seem to like it if directories do not.
+#+begin_src elisp
+(use-package! projectile
+  :config
+  (setq! projectile-project-search-path
+         (dean-filter-existing-directories
+          "~/src/" "~/projects/" "/projects/services")))
+#+end_src
+
+** UI
+
+*** Fonts
+
+#+begin_src elisp
+(setq! doom-font (font-spec :family "Jetbrains Mono" :size 14)
+       doom-variable-pitch-font (font-spec :family "Jetbrains Mono" :size 14)
+       doom-unicode-font (font-spec :family "Jetbrains Mono" :size 14)
+       doom-big-font (font-spec :family "Jetbrains Mono" :size 26))
+#+end_src
+
+*** Theme
+
+#+begin_src elisp
+(setq! doom-theme 'doom-dracula
+       display-line-numbers-type t)
+#+end_src
+
+*** Splash Icon
+
+Taken from [[github:eccentric-j/doom-icon][eccentric-j/doom-icon]].
+
+#+begin_src elisp
+(setq fancy-splash-image (concat doom-private-dir "doom-icon.png"))
+#+end_src
+
+** Org-Mode
+
+#+begin_src elisp
+(setq! org-directory "~/org/")
+
+(map! :map org-mode-map
+      :localleader
+      "=" #'org-babel-tangle)
+#+end_src
+
+*** Literate calc mode
+
+#+begin_src elisp
+(add-hook 'org-mode-hook
+          'literate-calc-minor-mode)
+#+end_src
+
+*** Capture Templates
+
+#+begin_src elisp
+(after! org
+  (add-to-list 'org-capture-templates
+               '("l" "Link" entry
+                 (file+headline "links.org" "New Links")
+                 "* %(org-cliplink-capture)\n%?\n %i\n"
+                 :prepend t :kill-buffer t)))
+
+(after! org
+  (add-to-list 'org-capture-templates
+               '("t" "Personal todo" entry
+                 (file+headline +org-capture-todo-file "Todos")
+                 "* TODO %?\n%i\n%a" :prepend t)))
+#+end_src
+
+*** Return DWIM
+
+#+begin_quote
+A helpful replacement for org-return. With prefix, call org-return.
+
+On headings, move point to position after entry content. In lists, insert a new item or end the list, with checkbox if appropriate. In tables, insert a new row or end the table.
+#+end_quote
+
+Taken from [[https://github.com/alphapapa/unpackaged.el#org-return-dwim][alphapapa/unpackaged.el]]
+
+#+begin_src elisp
+(after! org
+  (defun unpackaged/org-element-descendant-of (type element)
+    "Return non-nil if ELEMENT is a descendant of TYPE.
+TYPE should be an element type, like `item' or `paragraph'.
+ELEMENT should be a list like that returned by `org-element-context'."
+    ;; MAYBE: Use `org-element-lineage'.
+    (when-let* ((parent (org-element-property :parent element)))
+      (or (eq type (car parent))
+          (unpackaged/org-element-descendant-of type parent))))
+
+;;;###autoload
+  (defun unpackaged/org-return-dwim (&optional default)
+    "A helpful replacement for `org-return'.  With prefix, call `org-return'.
+
+On headings, move point to position after entry content.  In
+lists, insert a new item or end the list, with checkbox if
+appropriate.  In tables, insert a new row or end the table."
+    ;; Inspired by John Kitchin: http://kitchingroup.cheme.cmu.edu/blog/2017/04/09/A-better-return-in-org-mode/
+    (interactive "P")
+    (if default
+        (org-return)
+      (cond
+       ;; Act depending on context around point.
+
+       ;; NOTE: I prefer RET to not follow links, but by uncommenting this block, links will be
+       ;; followed.
+
+       ;; ((eq 'link (car (org-element-context)))
+       ;;  ;; Link: Open it.
+       ;;  (org-open-at-point-global))
+
+       ((org-at-heading-p)
+        ;; Heading: Move to position after entry content.
+        ;; NOTE: This is probably the most interesting feature of this function.
+        (let ((heading-start (org-entry-beginning-position)))
+          (goto-char (org-entry-end-position))
+          (cond ((and (org-at-heading-p)
+                      (= heading-start (org-entry-beginning-position)))
+                 ;; Entry ends on its heading; add newline after
+                 (end-of-line)
+                 (insert "\n\n"))
+                (t
+                 ;; Entry ends after its heading; back up
+                 (forward-line -1)
+                 (end-of-line)
+                 (when (org-at-heading-p)
+                   ;; At the same heading
+                   (forward-line)
+                   (insert "\n")
+                   (forward-line -1))
+                 ;; FIXME: looking-back is supposed to be called with more arguments.
+                 (while (not (looking-back (rx (repeat 3 (seq (optional blank) "\n")))))
+                   (insert "\n"))
+                 (forward-line -1)))))
+
+       ((org-at-item-checkbox-p)
+        ;; Checkbox: Insert new item with checkbox.
+        (org-insert-todo-heading nil))
+
+       ((org-in-item-p)
+        ;; Plain list.  Yes, this gets a little complicated...
+        (let ((context (org-element-context)))
+          (if (or (eq 'plain-list (car context))  ; First item in list
+                  (and (eq 'item (car context))
+                       (not (eq (org-element-property :contents-begin context)
+                                (org-element-property :contents-end context))))
+                  (unpackaged/org-element-descendant-of 'item context))  ; Element in list item, e.g. a link
+              ;; Non-empty item: Add new item.
+              (org-insert-item)
+            ;; Empty item: Close the list.
+            ;; TODO: Do this with org functions rather than operating on the text. Can't seem to find the right function.
+            (delete-region (line-beginning-position) (line-end-position))
+            (insert "\n"))))
+
+       ((when (fboundp 'org-inlinetask-in-task-p)
+          (org-inlinetask-in-task-p))
+        ;; Inline task: Don't insert a new heading.
+        (org-return))
+
+       ((org-at-table-p)
+        (cond ((save-excursion
+                 (beginning-of-line)
+                 ;; See `org-table-next-field'.
+                 (cl-loop with end = (line-end-position)
+                          for cell = (org-element-table-cell-parser)
+                          always (equal (org-element-property :contents-begin cell)
+                                        (org-element-property :contents-end cell))
+                          while (re-search-forward "|" end t)))
+               ;; Empty row: end the table.
+               (delete-region (line-beginning-position) (line-end-position))
+               (org-return))
+              (t
+               ;; Non-empty row: call `org-return'.
+               (org-return))))
+       (t
+        ;; All other cases: call `org-return'.
+        (org-return))))))
+#+end_src
+
+Remap ~return~ to dwim version.
+#+begin_src elisp
+(map!
+ :after evil-org
+ :map evil-org-mode-map
+ :i [return] #'unpackaged/org-return-dwim)
+#+end_src
+
+** Ansible
+
+*** Documentation
+
+#+begin_src elisp
+(after! ansible-doc
+  (set-evil-initial-state! '(ansible-doc-module-mode) 'normal))
+
+(set-popup-rule! "^\\*ansible-doc"
+  :height 0.4 :quit t :select t :ttl t)
+
+(set-lookup-handlers! 'ansible-mode
+  :documentation #'ansible-doc)
+#+end_src
+
+*** Activation
+
+Mode enabled based on filename regex taken from [[https://github.com/syl20bnr/spacemacs/blob/develop/layers/%2Btools/ansible/config.el#L19][Spacemacs]].
+
+#+begin_src elisp
+(def-project-mode! +ansible-yaml-mode
+  :modes '(yaml-mode)
+  :add-hooks '(ansible ansible-auto-decrypt-encrypt ansible-doc-mode)
+  :match "/\\(main\\|site\\|encrypted\\|\\(\\(roles\\|tasks\\|handlers\\|vars\\|defaults\\|meta\\|group_vars\\|host_vars\\)/.+\\)\\)\\.ya?ml$")
+#+end_src
+
+** Magit
+
+#+begin_src elisp
+(setq! magit-repository-directories
+      '(("~/src" . 2)
+        ("~/projects" . 2)))
+#+end_src
+
+Setup =git.todevski.com= as a Gitlab server for remote browsing.
+#+begin_src elisp
+(use-package! browse-at-remote
+  :config
+  (add-to-list 'browse-at-remote-remote-type-domains
+               '("git.todevski.com" . "gitlab")))
+#+end_src
+
+#+begin_src elisp
+(use-package! transient
+  :config
+  (transient-bind-q-to-quit))
+#+end_src
+
+#+begin_src elisp
+(use-package! magit
+  :config
+  (unbind-key "z" magit-mode-map))
+#+end_src
+
+** Lookup
+
+Update list of lookup urls
+#+begin_src elisp
+(add-to-list '+lookup-provider-url-alist
+             '("Melpa"       "https://melpa.org/#/?q=%s")
+             '("go.dev"      "https://pkg.go.dev/search?q=%s"))
+#+end_src
+
+** Company
+
+#+begin_src elisp
+(use-package! company
+  :config
+  (map! :map company-active-map
+        :g "<return>" #'company-complete-selection
+        :g "RET" #'company-complete-selection)
+  (map! :map global-map
+        :i [remap indent-for-tab-command] #'company-indent-or-complete-common)
+  )
+#+end_src
+
+** Ivy
+
+Show preview of buffers
+#+begin_src elisp
+(setq +ivy-buffer-preview t)
+#+end_src
+
+** Autoformat
+Disable for some modes
+
+#+begin_src elisp
+(setq +format-on-save-enabled-modes
+      '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
+            sql-mode         ; sqlformat is currently broken
+            tex-mode         ; latexindent is broken
+            latex-mode
+            dockerfile-mode
+            terraform-mode
+            sh-mode
+            ruby-mode))
+#+end_src
+** Plantuml
+
+#+begin_src elisp
+(use-package! plantuml-mode
+  :mode ("\\.puml\\'" . plantuml-mode)
+  :config
+  (setq plantuml-default-exec-mode 'executable))
+#+end_src
+** LSP
+Ignore huge go vendor directories
+
+#+begin_src elisp
+(use-package! lsp-mode
+  :config
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'"))
+#+end_src
+** Local variables
+
+#+begin_src elisp
+(setq enable-local-variables :safe)
+#+end_src
+
+*** Whitelist Variables
+#+begin_src elisp
+(add-to-list 'safe-local-variable-values
+             '((+format-on-save-enabled-modes quote (not ruby-mode))))
+#+end_src
+
+*** Whitelist Evals
+#+begin_src elisp
+(add-to-list 'safe-local-eval-forms
+             '(ansible))
+
+(add-to-list 'safe-local-eval-forms
+             '(ansible-doc-mode))
+
+(add-to-list 'safe-local-eval-forms
+             '(web-mode-set-engine "go"))
+
+(add-to-list 'safe-local-eval-forms
+             '(electric-indent-mode 0))
+#+end_src
+
+** YADM
+Taken from [[https://philjackson.github.io//yadm/emacs/magit/2021/07/25/using-yadm-via-magit/][here]]
+
+#+begin_src elisp
+(use-package! tramp
+  :config
+  (add-to-list 'tramp-methods
+               '("yadm"
+                 (tramp-login-program "yadm")
+                 (tramp-login-args (("enter")))
+                 (tramp-login-env (("SHELL") ("/bin/sh")))
+                 (tramp-remote-shell "/bin/sh")
+                 (tramp-remote-shell-args ("-c")))))
+
+(defun yadm ()
+  "Open yadm repo in Magit."
+  (interactive)
+  (magit-status "/yadm::"))
+#+end_src
+* Extra packages
+
+** Jq
+
+#+begin_src elisp
+(use-package! jq-mode
+  :mode ("\\.jq" . jq-mode))
+#+end_src
+
+** Systemd
+
+#+begin_src elisp
+(map! :map systemd-mode-map
+      :localleader
+      "d" #'systemd-doc-directives
+      "h" #'systemd-doc-open)
+#+end_src
+
+** ox-ssh
+
+#+begin_src elisp
+(use-package! ox-ssh
+  :config
+  (setq org-ssh-export-suffix ""
+        org-ssh-header "# -*- mode: ssh-config -*-"))
+#+end_src
+
