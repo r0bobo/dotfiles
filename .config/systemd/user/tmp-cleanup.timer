@@ -1,0 +1,9 @@
+[Unit]
+Description=Cleanup of Temporary Directories
+
+[Timer]
+OnStartupSec=5min
+OnUnitActiveSec=1d
+
+[Install]
+WantedBy=timers.target
