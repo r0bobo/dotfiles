@@ -16,7 +16,6 @@
           dogdns
           exercism
           gitAndTools.git-sync
-          glab
           gmailctl
           go-jsonnet
           grex
@@ -38,9 +37,11 @@
           rustc
           rustfmt
           skaffold
+          solargraph
           starship
           terraform
           wrk
+          yaml-language-server
           yq-go
 
           # Golang

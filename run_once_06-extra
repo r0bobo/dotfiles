@@ -10,9 +10,6 @@ sudo systemctl mask packgekit-offline-update.service
 
 npm -g install \
 	prettier \
-	stylelint \
-	yaml-language-server
-
-gem install solargraph
+	stylelint
 
 firefox-link-userjs
