@@ -27,8 +27,6 @@ fpath+=/usr/share/zsh/vendor-completions
 fpath+="$HOME/.nix-profile/share/zsh/site-functions"
 
 # Apps
-export DOOMDIR="$HOME/.dotfiles/doom"
-export DOOMLOCALDIR="$HOME/.local/share/doom"
 export LIBVIRT_DEFAULT_URI=qemu+ssh://hypervisor/system
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
 
