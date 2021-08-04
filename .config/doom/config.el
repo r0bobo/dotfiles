@@ -5,12 +5,6 @@
     (dolist (path paths existing-paths)
       (when (file-directory-p (expand-file-name path))
         (setq existing-paths (cons path existing-paths))))))
-(defun dean/doom-config ()
-  "Search Doom private config and jump to a heading."
-  (interactive)
-  (doom-completing-read-org-headings
-   "Config: " (list (concat doom-private-dir "config.org"))
-   2 nil initial-input))
 (defun dean/cheatsheet ()
   "Display personal cheetsheet"
   (interactive)
@@ -52,9 +46,9 @@
  :desc "Cheatsheet" "c" #'dean/cheatsheet
 
  :prefix ("d" . "dean")
- :desc "Doom Config" "d" #'dean/doom-config
  :desc "Sort lines" "s" #'sort-lines
- :desc "Yadm Magit" "y" #'yadm
+ :desc "Yadm Magit" "y" #'dean/yadm-status
+ :desc "Find yadm manged file" "f" #'dean/yadm-find-file
  )
 (defhydra hydra-goto-chg (:timeout 2)
   "goto-chg"
@@ -276,10 +270,23 @@ appropriate.  In tables, insert a new row or end the table."
                  (tramp-remote-shell "/bin/sh")
                  (tramp-remote-shell-args ("-c")))))
 
-(defun yadm ()
+(defun dean/yadm-status ()
   "Open yadm repo in Magit."
   (interactive)
   (magit-status "/yadm::"))
+(defun dean-yadm-files ()
+  "List all yadm files"
+  (let ((default-directory "~"))
+    (split-string
+     (shell-command-to-string "yadm list"))))
+
+(defun dean/yadm-find-file ()
+  "Edit yadm managed file."
+  (interactive)
+  (find-file
+   (concat
+    (file-name-as-directory "~")
+    (completing-read "YADM file: " (dean-yadm-files) nil t))))
 (use-package! jq-mode
   :mode ("\\.jq" . jq-mode))
 (map! :map systemd-mode-map
