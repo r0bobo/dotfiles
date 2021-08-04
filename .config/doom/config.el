@@ -287,6 +287,7 @@ appropriate.  In tables, insert a new row or end the table."
    (concat
     (file-name-as-directory "~")
     (completing-read "YADM file: " (dean-yadm-files) nil t))))
+(set-file-template! "/kustomization\\.yaml$" :trigger "__kustomization.yaml" :mode 'yaml-mode)
 (use-package! jq-mode
   :mode ("\\.jq" . jq-mode))
 (map! :map systemd-mode-map
