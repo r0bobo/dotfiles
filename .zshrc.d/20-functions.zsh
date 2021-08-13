@@ -103,3 +103,14 @@ ssl-check() {
 mkcd() {
     mkdir -p "$1" && cd "$1"
 }
+
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':chpwd:*' recent-dirs-default yes
+zstyle ':completion:*' recent-dirs-insert always
+
+j() {
+    if ! result="$(cdr -l | fzf --with-nth 2 | awk '{print $1}')"; then
+        cdr "$result"
+    fi
+}
