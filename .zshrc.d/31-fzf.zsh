@@ -13,3 +13,14 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
 	fd --type d --hidden --follow --exclude ".git" . "$1"
 }
+
+# https://github.com/junegunn/fzf/wiki/Examples-(completion)#zsh-pass
+_fzf_complete_pass() {
+  _fzf_complete +m -- "$@" < <(
+    local prefix
+    prefix="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
+    command find -L "$prefix" \
+      -name "*.gpg" -type f | \
+      sed -e "s#${prefix}/\{0,1\}##" -e 's#\.gpg##' -e 's#\\#\\\\#' | sort
+  )
+}
