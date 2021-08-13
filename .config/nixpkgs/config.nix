@@ -40,6 +40,7 @@
           solargraph
           starship
           terraform
+          tmuxPlugins.extrakto
           wrk
           yadm
           yaml-language-server
