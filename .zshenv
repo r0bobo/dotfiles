@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-export EDITOR=editor
+export EDITOR=vim
 
 # XDG
 export XDG_CONFIG_HOME="$HOME/.config"
