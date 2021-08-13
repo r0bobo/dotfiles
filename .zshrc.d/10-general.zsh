@@ -38,3 +38,5 @@ setopt autopushd pushdminus pushdsilent pushdtohome
 autoload run-help
 
 setopt interactivecomments
+
+bindkey -e # emacs key bindings
