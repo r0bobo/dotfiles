@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+env ZSH_PROFILE_ENABLED=true zsh -i -c zprof | less

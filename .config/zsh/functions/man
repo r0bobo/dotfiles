@@ -1,0 +1,35 @@
+#!/usr/bin/env zsh
+
+set -o pipefail
+
+# Inspired by OMZ
+# https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/colored-man-pages/colored-man-pages.plugin.zsh
+
+autoload -Uz colors && colors
+
+local -a environment
+
+environment+=(
+    "LESS_TERMCAP_mb=${fg_bold[magenta]}"
+    "LESS_TERMCAP_md=${fg_bold[magenta]}"
+    "LESS_TERMCAP_me=${reset_color}"
+
+    # standout mode
+    "LESS_TERMCAP_so=${fg_bold[yellow]}${bg[blue]}"
+    "LESS_TERMCAP_se=${reset_color}"
+
+    # underlining
+    "LESS_TERMCAP_us=${fg_bold[green]}"
+    "LESS_TERMCAP_ue=${reset_color}"
+    "MANROFFOPT=-c"
+    "MANPAGER=less"
+)
+
+if [[ $# = 0 ]]; then
+    page="$(man -k . | fzf --prompt='MAN> ' --header Manpages --height 40)"
+    exitcode=$?
+    [[ $exitcode != 0 ]] && return $exitcode
+    set -- "$@" "$(awk '{print $1}' <<<"$page")"
+fi
+
+command env "${environment[@]}" man "$@"

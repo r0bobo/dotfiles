@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+TIMEFMT=$'%E'
+ZSH="$(which zsh)"
+for i in $(seq 1 10); do
+    echo "Loop $i"
+    printf '  system            '
+    usertime="$(export ZSH_NO_USER_CONFIG=true; time "$ZSH" -i -c exit)"
+    printf '  with user config  '
+    baretime="$(time "$ZSH" -i -c exit)"
+    echo
+done
