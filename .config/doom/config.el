@@ -45,9 +45,8 @@
  :desc "Font Size" "z" #'+hydra/text-zoom/body
  :desc "Cheatsheet" "c" #'dean/cheatsheet
 
- :prefix ("d" . "dean")
- :desc "Sort lines" "s" #'sort-lines
- :desc "Yadm Magit" "y" #'dean/yadm-status
+ :prefix ("y" . "yadm")
+ :desc "Yadm Magit Status" "s" #'dean/yadm-status
  :desc "Find yadm manged file" "f" #'dean/yadm-find-file
  )
 (defhydra hydra-goto-chg (:timeout 2)
@@ -288,6 +287,9 @@ appropriate.  In tables, insert a new row or end the table."
     (file-name-as-directory "~")
     (completing-read "YADM file: " (dean-yadm-files) nil t))))
 (set-file-template! "/kustomization\\.yaml$" :trigger "__kustomization.yaml" :mode 'yaml-mode)
+(map!
+ :map embark-region-map
+ "s" #'sort-lines)
 (use-package! jq-mode
   :mode ("\\.jq" . jq-mode))
 (map! :map systemd-mode-map
