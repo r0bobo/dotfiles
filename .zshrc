@@ -4,7 +4,7 @@ if [[ "$TERM" == "dumb" ]]; then
     PS1='$ '
     return
 else
-    for file in $HOME/.zshrc.d/*.zsh; do
+    for file in $XDG_CONFIG_HOME/zsh/*.zsh; do
         source "$file"
     done
 fi
