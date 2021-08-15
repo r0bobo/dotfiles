@@ -1,3 +1,7 @@
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
 # Disable zsh features when using "dumb" terminal to avoid issues with Emacs Tramp
 if [[ "$TERM" == "dumb" ]]; then
     unsetopt zle

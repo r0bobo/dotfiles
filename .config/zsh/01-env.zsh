@@ -1,12 +1,5 @@
 #!/usr/bin/env zsh
 
-export EDITOR=vim
-
-# XDG
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-
 # ZSH
 ZSH_COMPDIR="$XDG_DATA_HOME/zsh/completions"
 ZSH_CACHEDIR="$XDG_CACHE_HOME/zsh/cache"
@@ -29,6 +22,8 @@ fpath+="$HOME/.nix-profile/share/zsh/site-functions"
 # Apps
 export LIBVIRT_DEFAULT_URI=qemu+ssh://hypervisor/system
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
+
+export EDITOR=vim
 
 # Less config
 export PAGER=less
