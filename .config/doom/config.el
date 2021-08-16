@@ -296,7 +296,11 @@ appropriate.  In tables, insert a new row or end the table."
       :localleader
       "d" #'systemd-doc-directives
       "h" #'systemd-doc-open)
+(use-package! tree-sitter
   :config
+  (require 'tree-sitter-langs)
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
 (setq
  tramp-security-key-confirmed-regexp ""
  tramp-security-key-confirm-regexp "")

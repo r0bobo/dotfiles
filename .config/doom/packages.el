@@ -66,3 +66,5 @@
 
 (package! ssh-config-mode)
 
+(package! tree-sitter)
+(package! tree-sitter-langs)
