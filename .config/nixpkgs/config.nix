@@ -54,7 +54,7 @@
           nix-zsh-completions
           zsh-autosuggestions
           zsh-completions
-          zsh-fast-syntax-highlighting
+          zsh-syntax-highlighting
 
         ];
         pathsToLink = [ "/bin" "/share" ];
