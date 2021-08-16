@@ -529,3 +529,10 @@ Taken from [[https://philjackson.github.io//yadm/emacs/magit/2021/07/25/using-ya
   :config
 #+end_src
 
+* Workaround
+These started popping up as undefined for some reason
+#+begin_src elisp
+(setq
+ tramp-security-key-confirmed-regexp ""
+ tramp-security-key-confirm-regexp "")
+#+end_src

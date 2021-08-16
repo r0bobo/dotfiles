@@ -297,3 +297,6 @@ appropriate.  In tables, insert a new row or end the table."
       "d" #'systemd-doc-directives
       "h" #'systemd-doc-open)
   :config
+(setq
+ tramp-security-key-confirmed-regexp ""
+ tramp-security-key-confirm-regexp "")
