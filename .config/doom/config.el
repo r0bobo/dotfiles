@@ -296,7 +296,4 @@ appropriate.  In tables, insert a new row or end the table."
       :localleader
       "d" #'systemd-doc-directives
       "h" #'systemd-doc-open)
-(use-package! ox-ssh
   :config
-  (setq org-ssh-export-suffix ""
-        org-ssh-header "# -*- mode: ssh-config -*-"))

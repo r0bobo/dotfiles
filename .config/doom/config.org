@@ -524,12 +524,8 @@ Taken from [[https://philjackson.github.io//yadm/emacs/magit/2021/07/25/using-ya
       "h" #'systemd-doc-open)
 #+end_src
 
-** ox-ssh
 
 #+begin_src elisp
-(use-package! ox-ssh
   :config
-  (setq org-ssh-export-suffix ""
-        org-ssh-header "# -*- mode: ssh-config -*-"))
 #+end_src
 

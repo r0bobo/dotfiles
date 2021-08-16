@@ -60,15 +60,9 @@
 
 (package! literate-calc-mode)
 
-(package! k8s-mode)
-
 (package! suggest)
 
 (package! jq-mode)
 
 (package! ssh-config-mode)
 
-(package! ox-ssh
-  :recipe
-  (:host github
-   :repo "r0bobo/ox-ssh"))
