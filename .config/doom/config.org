@@ -144,7 +144,6 @@ Projecile does not seem to like it if directories do not.
 #+end_src
 
 ** UI
-
 *** Fonts
 
 #+begin_src elisp
@@ -331,9 +330,6 @@ Remap ~return~ to dwim version.
 
 (set-popup-rule! "^\\*ansible-doc"
   :height 0.4 :quit t :select t :ttl t)
-
-(set-lookup-handlers! 'ansible-mode
-  :documentation #'ansible-doc)
 #+end_src
 
 *** Activation
@@ -395,13 +391,6 @@ Update list of lookup urls
   (map! :map global-map
         :i [remap indent-for-tab-command] #'company-indent-or-complete-common)
   )
-#+end_src
-
-** Ivy
-
-Show preview of buffers
-#+begin_src elisp
-(setq +ivy-buffer-preview t)
 #+end_src
 
 ** Autoformat
@@ -523,7 +512,6 @@ Taken from [[https://philjackson.github.io//yadm/emacs/magit/2021/07/25/using-ya
       "d" #'systemd-doc-directives
       "h" #'systemd-doc-open)
 #+end_src
-
 
 ** Tree-sitter
 #+begin_src elisp

@@ -197,9 +197,6 @@ appropriate.  In tables, insert a new row or end the table."
 
 (set-popup-rule! "^\\*ansible-doc"
   :height 0.4 :quit t :select t :ttl t)
-
-(set-lookup-handlers! 'ansible-mode
-  :documentation #'ansible-doc)
 (def-project-mode! +ansible-yaml-mode
   :modes '(yaml-mode)
   :add-hooks '(ansible ansible-auto-decrypt-encrypt ansible-doc-mode)
@@ -228,7 +225,6 @@ appropriate.  In tables, insert a new row or end the table."
   (map! :map global-map
         :i [remap indent-for-tab-command] #'company-indent-or-complete-common)
   )
-(setq +ivy-buffer-preview t)
 (setq +format-on-save-enabled-modes
       '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
             sql-mode         ; sqlformat is currently broken
