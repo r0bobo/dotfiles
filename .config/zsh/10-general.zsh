@@ -47,4 +47,5 @@ setopt interactivecomments
 bindkey -e # emacs key bindings
 
 WORDCHARS="$WORDCHARS:s:/:" # Each element in path is treated as a word
+WORDCHARS="$WORDCHARS:s:=:" # Split word on =
 WORDCHARS="$WORDCHARS|" # Pipe is treated as word
