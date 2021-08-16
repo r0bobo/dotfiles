@@ -46,7 +46,7 @@
  :desc "Cheatsheet" "c" #'dean/cheatsheet
 
  :prefix ("y" . "yadm")
- :desc "Yadm Magit Status" "s" #'dean/yadm-status
+ :desc "Yadm Magit Status" "g" #'dean/yadm-status
  :desc "Find yadm manged file" "f" #'dean/yadm-find-file
  )
 (defhydra hydra-goto-chg (:timeout 2)
