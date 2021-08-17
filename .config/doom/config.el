@@ -280,7 +280,7 @@ appropriate.  In tables, insert a new row or end the table."
   (interactive)
   (find-file
    (concat
-    (file-name-as-directory "~")
+    (file-name-as-directory "/yadm::")
     (completing-read "YADM file: " (dean-yadm-files) nil t))))
 (set-file-template! "/kustomization\\.yaml$" :trigger "__kustomization.yaml" :mode 'yaml-mode)
 (map!

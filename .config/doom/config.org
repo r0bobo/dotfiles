@@ -482,7 +482,7 @@ Taken from [[https://philjackson.github.io//yadm/emacs/magit/2021/07/25/using-ya
   (interactive)
   (find-file
    (concat
-    (file-name-as-directory "~")
+    (file-name-as-directory "/yadm::")
     (completing-read "YADM file: " (dean-yadm-files) nil t))))
 #+end_src
 ** File templates
