@@ -44,10 +44,6 @@
  :desc "Undo tree" "u" #'undo-tree-visualize
  :desc "Font Size" "z" #'+hydra/text-zoom/body
  :desc "Cheatsheet" "c" #'dean/cheatsheet
-
- :prefix ("y" . "yadm")
- :desc "Yadm Magit Status" "g" #'dean/yadm-status
- :desc "Find yadm manged file" "f" #'dean/yadm-find-file
  )
 (defhydra hydra-goto-chg (:timeout 2)
   "goto-chg"
@@ -255,33 +251,6 @@ appropriate.  In tables, insert a new row or end the table."
 
 (add-to-list 'safe-local-eval-forms
              '(electric-indent-mode 0))
-(use-package! tramp
-  :config
-  (add-to-list 'tramp-methods
-               '("yadm"
-                 (tramp-login-program "yadm")
-                 (tramp-login-args (("enter")))
-                 (tramp-login-env (("SHELL") ("/bin/sh")))
-                 (tramp-remote-shell "/bin/sh")
-                 (tramp-remote-shell-args ("-c")))))
-
-(defun dean/yadm-status ()
-  "Open yadm repo in Magit."
-  (interactive)
-  (magit-status "/yadm::"))
-(defun dean-yadm-files ()
-  "List all yadm files"
-  (let ((default-directory "~"))
-    (split-string
-     (shell-command-to-string "yadm list"))))
-
-(defun dean/yadm-find-file ()
-  "Edit yadm managed file."
-  (interactive)
-  (find-file
-   (concat
-    (file-name-as-directory "/yadm::")
-    (completing-read "YADM file: " (dean-yadm-files) nil t))))
 (set-file-template! "/kustomization\\.yaml$" :trigger "__kustomization.yaml" :mode 'yaml-mode)
 (map!
  :map embark-region-map
