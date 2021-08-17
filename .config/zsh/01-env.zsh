@@ -38,8 +38,4 @@ lessflags=(
 export LESS="${lessflags[*]}"
 unset lessflags
 
-# Firefox fix for mixed Wayland/Xorg
-# https://mastransky.wordpress.com/2020/03/16/wayland-x11-how-to-run-firefox-in-mixed-environment/
-export MOZ_DBUS_REMOTE=1
-
 [[ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]] && source "$HOME/.nix-profile/etc/profile.d/nix.sh"
