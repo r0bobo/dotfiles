@@ -1,0 +1,46 @@
+#compdef kexplain
+
+_kexplain_resources() {
+    kubectl api-resources --no-headers -o name --cached | tr '\n' ' '
+}
+
+_kexplain_path() {
+    local _path_completion
+    local cache_key
+
+    cache_key="kexplain_${(j:.:)@}"
+
+    if ( [[ $_path_completion = "" ]] || _cache_invalid "$cache_key" ) && ! _retrieve_cache "$cache_key" _path_completion; then
+        _path_completion="$(kubectl explain ${(j:.:)@} \
+            | sed -nr 's/^\s{3}(\w+)\s.*/\1/p' \
+            | tr '\n' ' ')"
+        _store_cache "$cache_key" _path_completion
+    fi
+
+    echo "$_path_completion"
+}
+
+_kexplain() {
+    local state
+
+    if [[ "$CURRENT" = 2 ]]; then
+        _alternative '1::($(_kexplain_resources))'
+    else
+        if [[ "$PREFIX" = "" ]]; then
+            _alternative '::($(_kexplain_path ${words[2,CURRENT]}))'
+        else
+            _alternative '::($(_kexplain_path ${words[2,CURRENT-1]}))'
+        fi
+    fi
+}
+
+_paths() {
+    kubectl api-resources --no-headers -o name --cached | tr '\n' ' '
+}
+
+_kexplain "$@"
+
+# Local Variables:
+# mode: sh
+# eval: (sh-set-shell "zsh")
+# End:

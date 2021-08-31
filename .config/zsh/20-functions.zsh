@@ -75,7 +75,6 @@ ssl-check() {
     docker run --rm -ti drwetter/testssl.sh:3.1dev "$@"
 }
 
-fpath+="$XDG_CONFIG_HOME/zsh/functions"
 autoload -Uz j
 autoload -Uz man
 autoload -Uz zsh-benchmark

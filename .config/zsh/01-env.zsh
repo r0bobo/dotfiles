@@ -8,6 +8,8 @@ mkdir -p "$ZSH_CACHEDIR" "$ZSH_COMPDIR"
 fpath+="$ZSH_COMPDIR"
 fpath+=/usr/share/zsh/vendor-completions
 fpath+="$HOME/.nix-profile/share/zsh/site-functions"
+fpath+="$XDG_CONFIG_HOME/zsh/completion"
+fpath+="$XDG_CONFIG_HOME/zsh/functions"
 
 # Apps
 export LIBVIRT_DEFAULT_URI=qemu+ssh://hypervisor/system
