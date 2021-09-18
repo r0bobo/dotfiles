@@ -104,9 +104,11 @@
 ;;; Projectile
 (use-package! projectile
   :config
-  (setq! projectile-project-search-path
-         (dean-filter-existing-directories
-          "~/src/" "~/projects/" "/projects/services")))
+  (setq projectile-project-search-path
+         (seq-filter #'file-exists-p
+                     '("~/src/"
+                       "~/projects"
+                       "~/projects/services"))))
 
 ;;; Autoformat
 (setq +format-on-save-enabled-modes
