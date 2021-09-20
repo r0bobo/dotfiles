@@ -67,37 +67,6 @@
 
 ;;; PACKAGES
 ;;; ----------------------------------------------------------------------------
-(use-package! dired
-  :config
-  (map! :map dired-mode-map
-        :localleader
-        :desc "Edit filenames" "e" #'wdired-change-to-wdired-mode))
-
-
-(use-package! which-key
-  :config
-  (setq! which-key-idle-delay 0.5))
-
-
-(use-package! evil-snipe
-  :config
-  (setq! evil-snipe-repeat-keys t
-         evil-split-window-below t
-         evil-vsplit-window-right t))
-
-
-(use-package! org
-  :config
-  (setq! org-directory "~/org/")
-  (map! :map org-mode-map
-        :localleader
-        "=" #'org-babel-tangle))
-
-
-(use-package! literate-calc-mode
-  :hook (org-mode . literate-calc-minor-mode))
-
-
 (use-package! ansible
   :init
   (def-project-mode! +ansible-yaml-mode
@@ -114,23 +83,10 @@
   (set-evil-initial-state! '(ansible-doc-module-mode) 'normal))
 
 
-(use-package! magit
-  :config
-  (setq! magit-repository-directories
-         '(("~/src" . 2)
-           ("~/projects" . 2)))
-  (unbind-key "z" magit-mode-map))
-
-
 (use-package! browse-at-remote
   :config
   (add-to-list 'browse-at-remote-remote-type-regexps
                '("^git\\.todevski\\.com$" . "gitlab")))
-
-
-(use-package! transient
-  :config
-  (transient-bind-q-to-quit))
 
 
 (use-package! company
@@ -142,24 +98,11 @@
         :i [remap indent-for-tab-command] #'company-indent-or-complete-common))
 
 
-(use-package! projectile
+(use-package! dired
   :config
-  (setq projectile-project-search-path
-        (seq-filter #'file-exists-p
-                    '("~/src/"
-                      "~/projects"
-                      "~/projects/services"))))
-
-
-(use-package! plantuml-mode
-  :mode ("\\.puml\\'" . plantuml-mode)
-  :config (setq plantuml-default-exec-mode 'executable))
-
-
-(use-package! lsp-mode
-  :config
-  ;; Don't watch go vendor dir for changes. It makes everything crazy slow in some projects.
-  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'"))
+  (map! :map dired-mode-map
+        :localleader
+        :desc "Edit filenames" "e" #'wdired-change-to-wdired-mode))
 
 
 (use-package! embark
@@ -169,8 +112,55 @@
    "s" #'sort-lines))
 
 
+(use-package! evil-snipe
+  :config
+  (setq! evil-snipe-repeat-keys t
+         evil-split-window-below t
+         evil-vsplit-window-right t))
+
+
 (use-package! jq-mode
   :mode ("\\.jq" . jq-mode))
+
+
+(use-package! literate-calc-mode
+  :hook (org-mode . literate-calc-minor-mode))
+
+
+(use-package! lsp-mode
+  :config
+  ;; Don't watch go vendor dir for changes. It makes everything crazy slow in some projects.
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'"))
+
+
+(use-package! magit
+  :config
+  (setq! magit-repository-directories
+         '(("~/src" . 2)
+           ("~/projects" . 2)))
+  (unbind-key "z" magit-mode-map))
+
+
+(use-package! org
+  :config
+  (setq! org-directory "~/org/")
+  (map! :map org-mode-map
+        :localleader
+        "=" #'org-babel-tangle))
+
+
+(use-package! plantuml-mode
+  :mode ("\\.puml\\'" . plantuml-mode)
+  :config (setq plantuml-default-exec-mode 'executable))
+
+
+(use-package! projectile
+  :config
+  (setq projectile-project-search-path
+        (seq-filter #'file-exists-p
+                    '("~/src/"
+                      "~/projects"
+                      "~/projects/services"))))
 
 
 (use-package! systemd
@@ -181,10 +171,20 @@
         "h" #'systemd-doc-open))
 
 
+(use-package! transient
+  :config
+  (transient-bind-q-to-quit))
+
+
 (use-package! tree-sitter
   :hook (prog-mode . turn-on-tree-sitter-mode)
   :hook (tree-sitter-after-on . tree-sitter-hl-mode)
   :config (require 'tree-sitter-langs))
+
+
+(use-package! which-key
+  :config
+  (setq! which-key-idle-delay 0.5))
 
 
 ;;; CUSTOM
