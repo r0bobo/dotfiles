@@ -77,8 +77,8 @@
 
 (use-package! browse-at-remote
   :config
-  (add-to-list 'browse-at-remote-remote-type-domains
-               '("git.todevski.com" . "gitlab")))
+  (add-to-list 'browse-at-remote-remote-type-regexps
+               '("^git\\.todevski\\.com$" . "gitlab")))
 
 (use-package! transient
   :config
