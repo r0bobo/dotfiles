@@ -44,7 +44,7 @@
          ))
 
 (setq! evil-split-window-below t
-      evil-vsplit-window-right t)
+       evil-vsplit-window-right t)
 
 
 ;;; Org-mode
@@ -72,8 +72,8 @@
 
 ;;; Magit
 (setq! magit-repository-directories
-      '(("~/src" . 2)
-        ("~/projects" . 2)))
+       '(("~/src" . 2)
+         ("~/projects" . 2)))
 
 (use-package! browse-at-remote
   :config
@@ -87,6 +87,7 @@
 (use-package! magit
   :config
   (unbind-key "z" magit-mode-map))
+
 (add-to-list '+lookup-provider-url-alist
              '("Melpa"       "https://melpa.org/#/?q=%s")
              '("go.dev"      "https://pkg.go.dev/search?q=%s"))
@@ -98,17 +99,16 @@
         :g "<return>" #'company-complete-selection
         :g "RET" #'company-complete-selection)
   (map! :map global-map
-        :i [remap indent-for-tab-command] #'company-indent-or-complete-common)
-  )
+        :i [remap indent-for-tab-command] #'company-indent-or-complete-common))
 
 ;;; Projectile
 (use-package! projectile
   :config
   (setq projectile-project-search-path
-         (seq-filter #'file-exists-p
-                     '("~/src/"
-                       "~/projects"
-                       "~/projects/services"))))
+        (seq-filter #'file-exists-p
+                    '("~/src/"
+                      "~/projects"
+                      "~/projects/services"))))
 
 ;;; Autoformat
 (setq +format-on-save-enabled-modes
@@ -124,8 +124,7 @@
 ;;; Plantuml
 (use-package! plantuml-mode
   :mode ("\\.puml\\'" . plantuml-mode)
-  :config
-  (setq plantuml-default-exec-mode 'executable))
+  :config (setq plantuml-default-exec-mode 'executable))
 
 ;;; LSP
 ;; Don't watch go vendor dir for changes. It makes everything crazy slow in some projects.
@@ -134,9 +133,10 @@
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'"))
 
 ;;; Local variables
-(setq enable-local-variables :safe)
+;; (setq enable-local-variables :safe)
 (add-to-list 'safe-local-variable-values
              '((+format-on-save-enabled-modes quote (not ruby-mode))))
+
 (add-to-list 'safe-local-eval-forms
              '(ansible))
 
@@ -149,8 +149,13 @@
 (add-to-list 'safe-local-eval-forms
              '(electric-indent-mode 0))
 
+(add-to-list 'safe-local-eval-forms
+             '(sh-set-shell "zsh"))
+
 ;;; File template
-(set-file-template! "/kustomization\\.yaml$" :trigger "__kustomization.yaml" :mode 'yaml-mode)
+(set-file-template! "/kustomization\\.yaml$"
+  :trigger "__kustomization.yaml"
+  :mode 'yaml-mode)
 
 ;;; Embark
 (map!
@@ -169,10 +174,9 @@
 
 ;;; Tree-sitter
 (use-package! tree-sitter
-  :config
-  (require 'tree-sitter-langs)
-  (global-tree-sitter-mode)
-  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+  :hook (prog-mode . turn-on-tree-sitter-mode)
+  :hook (tree-sitter-after-on . tree-sitter-hl-mode)
+  :config (require 'tree-sitter-langs))
 
 ;;; Cheatsheet
 (map!
@@ -185,8 +189,3 @@
   :size 0.4
   :select t
   :quit 'current)
-
-;;; Workaround
-(setq
- tramp-security-key-confirmed-regexp ""
- tramp-security-key-confirm-regexp "")
