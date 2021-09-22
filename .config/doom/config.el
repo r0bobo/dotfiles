@@ -49,6 +49,7 @@
 
 
 ;;; Local variables
+(setq enable-local-variables t)
 (let ((vars
        ;; Safe dir-local variables
        '((+format-on-save-enabled-modes quote (not ruby-mode))))
