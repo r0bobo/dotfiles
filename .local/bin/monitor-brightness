@@ -10,8 +10,8 @@ EOF
 fi
 
 if (("$1" >= 25 && "$1" <= 100)); then
-    sudo ddcutil --bus=9 setvcp 10 "$1"
-    sudo ddcutil --bus=9 setvcp 12 "$1"
+    sudo ddcutil --bus=8 setvcp 10 "$1"
+    sudo ddcutil --bus=8 setvcp 12 "$1"
 else
     cat <<EOF
 ERROR: Enter number between 25 - 100
