@@ -29,6 +29,7 @@ gsettings set org.gnome.shell.keybindings switch-to-application-1 "[]"
 gsettings set org.gnome.shell.keybindings switch-to-application-2 "[]"
 gsettings set org.gnome.shell.keybindings switch-to-application-3 "[]"
 gsettings set org.gnome.shell.keybindings switch-to-application-4 "[]"
+gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
 
 # Keybinds
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
