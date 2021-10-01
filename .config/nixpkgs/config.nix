@@ -9,11 +9,11 @@
           bitwarden-cli
           cachix
           cargo
-          chezmoi
           clippy
           cue
           dive
           dogdns
+          elixir_ls
           exercism
           gitAndTools.git-sync
           gmailctl
