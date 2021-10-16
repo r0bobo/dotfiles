@@ -70,3 +70,5 @@
 (package! tree-sitter-langs)
 
 (package! kubedoc)
+
+(package! xref :pin "a82f459b37b31546bf274388baf8aca79e9c30d9")
