@@ -38,8 +38,16 @@
 [color]
 	ui = true
 
-[url "ssh://git@github.com/Zimpler"]
+[url "ssh://git@github.com/r0bobo"]
+	insteadof = https://github.com/r0bobo
+
+[url "ssh://git@github.com/zimpler"]
+	insteadof = https://github.com/zimpler
 	insteadof = https://github.com/Zimpler
+
+[url "ssh://git@gitlab.com/zimpler"]
+	insteadof = https://gitlab.com/zimpler
+	insteadof = https://gitlab.com/Zimpler
 
 [init]
 	defaultBranch = main
