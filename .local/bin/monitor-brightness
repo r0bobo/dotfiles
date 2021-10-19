@@ -2,19 +2,33 @@
 
 set -euo pipefail
 
-if [[ $# = 0 ]]; then
+monitor_name='DELL U3419W'
+
+set-brightness() {
+    sudo ddcutil --model="$monitor_name"
+}
+
+if [[ $# < 2 ]]; then
     cat <<EOF
-Usage: monitor-brightness [NUMBER]
+Usage: monitor-brightness [BRIGHTNESS] [CONTRAST]
 EOF
     exit 0
 fi
 
 if (("$1" >= 25 && "$1" <= 100)); then
-    sudo ddcutil --bus=8 setvcp 10 "$1"
-    sudo ddcutil --bus=8 setvcp 12 "$1"
+    sudo ddcutil --model="$monitor_name" setvcp 10 "$1"
 else
     cat <<EOF
-ERROR: Enter number between 25 - 100
+ERROR: BRIGHTNESS must be number between 25 - 100
+EOF
+    exit 1
+fi
+
+if (("$2" >= 25 && "$1" <= 100)); then
+    sudo ddcutil --model="$monitor_name" setvcp 12 "$2"
+else
+    cat <<EOF
+ERROR: CONTRAST must be number between 25 - 100
 EOF
     exit 1
 fi
