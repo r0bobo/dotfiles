@@ -17,33 +17,13 @@ dean::cached_output () {
     cat "$cachefile"
 }
 
-dean::mangle_colourify_except() {
-    grc_profile="$1"
-    excludes=(${@:2})
-
-    printf 'GRC="$(which grc)"\n'
-    printf 'if [ "$TERM" != dumb ] && [ -n "$GRC" ]; then\n'
-
-    while IFS= read -r alias; do
-        funcname="$(cut -d= -f1 <<<"$alias")"
-
-        cmd_raw="$(cut -d= -f2- <<<"$alias")"
-
-        # Remove surrounding quotes
-        temp="${cmd_raw%\"}"
-        temp="${temp#\"}"
-        temp="${temp%\'}"
-        command="${temp#\'}"
-
-        for exclude in "${excludes[@]}"; do
-            if [[ "$funcname" != "$exclude" ]]; then
-                printf '\n'
-                printf '  unalias "%s" &>/dev/null || true\n' "$funcname"
-                printf '  function %s { %s "$@"; }\n' "$funcname" "$command"
-            fi
-        done
-    done < <(grep -E '^\s*[^#]\s*alias' <"$grc_profile" | sed -E 's|^\s*alias\s*(.+)+|\1|g')
-    printf 'fi\n'
+dean::grc_except() {
+    while read -r conf; do
+        cmd="$conf:t:e"
+        printf '%s\n' "$@" | grep -q "^$cmd\$" && continue
+        [[ -z "$cmd" ]] && continue
+        echo "function ${cmd}() { grc -es --colour=auto $cmd }"
+    done < <(find $(readlink -f ~/.nix-profile/share/grc))
 }
 
 dean::bashcomp() {
