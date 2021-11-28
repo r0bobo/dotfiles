@@ -22,7 +22,7 @@ dean::grc_except() {
         cmd="$conf:t:e"
         printf '%s\n' "$@" | grep -q "^$cmd\$" && continue
         [[ -z "$cmd" ]] && continue
-        echo "function ${cmd}() { grc -es --colour=auto $cmd }"
+        echo "function ${cmd}() { grc -es --colour=auto $cmd \$@ }"
     done < <(find $(readlink -f ~/.nix-profile/share/grc))
 }
 
