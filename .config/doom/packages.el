@@ -71,3 +71,4 @@
 
 (package! kubedoc)
 
+(package! ipcalc)
