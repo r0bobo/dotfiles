@@ -8,5 +8,3 @@ dean::plugin "$HOME/.nix-profile/share/zsh-syntax-highlighting/zsh-syntax-highli
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh --print-full-init)"
-
-source <(dean::cached_output $(whence -p grc) dean::grc_except "make")

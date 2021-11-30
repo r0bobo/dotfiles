@@ -17,15 +17,6 @@ dean::cached_output () {
     cat "$cachefile"
 }
 
-dean::grc_except() {
-    while read -r conf; do
-        cmd="$conf:t:e"
-        printf '%s\n' "$@" | grep -q "^$cmd\$" && continue
-        [[ -z "$cmd" ]] && continue
-        echo "function ${cmd}() { grc -es --colour=auto $cmd \$@ }"
-    done < <(find $(readlink -f ~/.nix-profile/share/grc))
-}
-
 dean::bashcomp() {
     cmd=$1
     cmp="${2:-"$cmd"}"  # Set to $cmd if undefined
