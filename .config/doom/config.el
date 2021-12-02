@@ -68,6 +68,10 @@
 
 ;;; PACKAGES
 ;;; ----------------------------------------------------------------------------
+(use-package! doom-modeline
+  :config
+  (setq doom-modeline-persp-name t))
+
 (use-package! ansible
   :init
   (def-project-mode! +ansible-yaml-mode
