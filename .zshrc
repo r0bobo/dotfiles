@@ -4,6 +4,8 @@ if [[ "$TERM" == "dumb" ]]; then
     PS1='$ '
     return
 else
+    source /home/dean/.config/environment.d/40-user.conf
+
     for file in $XDG_CONFIG_HOME/zsh/*.zsh; do
         source "$file"
     done
