@@ -9,6 +9,7 @@
           bitwarden-cli
           cachix
           cargo
+          dbmate
           clippy
           cue
           dive
