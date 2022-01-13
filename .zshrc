@@ -10,3 +10,5 @@ else
         source "$file"
     done
 fi
+
+if [ -e /home/dean/.nix-profile/etc/profile.d/nix.sh ]; then . /home/dean/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
