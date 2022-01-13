@@ -17,7 +17,6 @@ packages=(
 	exa
 	fd-find
 	fzf
-	grc
 	kubectl
 	pass
 	rclone
@@ -38,7 +37,7 @@ packages=(
 )
 
 # Graphical packages
-if [[ "$YADM_GRAPHICAL" != true ]]; then
+if [[ "$YADM_GRAPHICAL" = true ]]; then
 	packages+=(
 
 		# adapta-gtk-theme
