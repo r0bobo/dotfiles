@@ -6,10 +6,10 @@ set -euo pipefail
 echo >&2 Configuring Gnome settings
 
 keybind() {
-	path="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/$1/"
-	gsettings set "$path" name "$2"
-	gsettings set "$path" command "$3"
-	gsettings set "$path" binding "$4"
+	gpath="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/$1/"
+	gsettings set "$gpath" name "$2"
+	gsettings set "$gpath" command "$3"
+	gsettings set "$gpath" binding "$4"
 }
 
 # Generic
