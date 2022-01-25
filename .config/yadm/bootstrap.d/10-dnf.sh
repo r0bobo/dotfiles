@@ -17,6 +17,7 @@ packages=(
 	exa
 	fd-find
 	fzf
+	hyperfine
 	kubectl
 	pass
 	rclone
