@@ -37,6 +37,3 @@ alias nixup='nix-channel --update && nix-env -iA nixpkgs.myPackages && nix-env -
 
 alias ssh-until='ssh -o ConnectTimeout=10 -o ConnectionAttempts=360'
 
-if [[ "$TERM" = xterm-kitty ]]; then
-    alias icat='kitty +kitten icat --silent'
-fi
