@@ -35,8 +35,6 @@
           nixfmt
           ripgrep-all
           rust-analyzer
-          rustc
-          rustfmt
           skaffold
           solargraph
           starship
