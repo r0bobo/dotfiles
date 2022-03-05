@@ -4,21 +4,15 @@
       myPackages = pkgs.buildEnv {
         name = "my-packages";
         paths = [
-
           awscli2
-          bitwarden-cli
           cachix
-          cargo
           dbmate
           clippy
-          cue
           dive
-          dogdns
           elixir_ls
           exercism
           gitAndTools.git-sync
           gmailctl
-          go-jsonnet
           grex
           hey
           k9s
@@ -28,14 +22,13 @@
           krew
           kubectl
           kubernetes-helm
-          kubeseal
           kustomize
           minikube
           nix-tree
           nixfmt
           ripgrep-all
           rust-analyzer
-          skaffold
+          rustup
           solargraph
           starship
           terraform
