@@ -133,6 +133,8 @@
 
 (use-package! lsp-mode
   :config
+  (setq! lsp-solargraph-use-bundler t)
+
   ;; Ignore setting up watches on gitignored paths
   ;; https://github.com/emacs-lsp/lsp-mode/issues/713#issuecomment-985653873
   (defun ++git-ignore-p (path)
