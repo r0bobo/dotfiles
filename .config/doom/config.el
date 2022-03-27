@@ -178,11 +178,12 @@
 
 (use-package! projectile
   :config
-  (setq projectile-project-search-path
-        (seq-filter #'file-exists-p
-                    '("~/src/"
-                      "~/projects"
-                      "~/projects/services"))))
+  (setq! projectile-enable-caching nil
+         projectile-project-search-path
+         (seq-filter #'file-exists-p
+                     '("~/src/"
+                       "~/projects"
+                       "~/projects/services"))))
 
 
 (use-package! systemd
