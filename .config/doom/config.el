@@ -34,6 +34,7 @@
  :desc "Discover projects in search path" "p D" #'projectile-discover-projects-in-search-path
 
  :prefix "o"
+ :desc "Kubedoc" "k" #'kubedoc
  :desc "Undo tree" "u" #'undo-tree-visualize
  :desc "Font Size" "z" #'+hydra/text-zoom/body)
 
