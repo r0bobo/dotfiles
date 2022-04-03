@@ -22,3 +22,10 @@
    (concat
     (file-name-as-directory "/yadm::")
     (completing-read "yadm managed file: " (+yadm--files) nil t))))
+
+;;;###autoload
+(defun +yadm/add-file ()
+  "Add file to yadm."
+  (interactive)
+  (shell-command
+   (concat "yadm add " (read-file-name ""))))
