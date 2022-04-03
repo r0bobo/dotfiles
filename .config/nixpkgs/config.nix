@@ -7,7 +7,6 @@
           awscli2
           cachix
           dbmate
-          clippy
           dive
           elixir_ls
           exercism
