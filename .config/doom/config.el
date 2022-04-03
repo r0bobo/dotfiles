@@ -31,6 +31,7 @@
  :leader
  :desc "Search in project" "/" #'+default/search-project
  :desc "Doom dashboard" "b h" #'+doom-dashboard/open
+ :desc "Discover projects in search path" "p D" #'projectile-discover-projects-in-search-path
 
  :prefix "o"
  :desc "Undo tree" "u" #'undo-tree-visualize
