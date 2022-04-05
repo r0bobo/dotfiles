@@ -17,7 +17,6 @@
           k9s
           kail
           kind
-          kpt
           krew
           kubectl
           kubernetes-helm
