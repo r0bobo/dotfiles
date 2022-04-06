@@ -98,9 +98,6 @@
 
 (use-package! company
   :config
-  (map! :map company-active-map
-        :g "<return>" #'company-complete-selection
-        :g "RET" #'company-complete-selection)
   (map! :map global-map
         :i [remap indent-for-tab-command] #'company-indent-or-complete-common))
 
