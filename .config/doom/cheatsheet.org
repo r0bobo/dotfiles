@@ -11,12 +11,6 @@
 | ~SPC u SPC '~ | Choose session to resume |
 |---------------+--------------------------|
 
-** Ivy replace text in all matches
-
-|-----------+------------------------------------|
-| ~C-c C-e~ | Replace text in all matching files |
-|-----------+------------------------------------|
-
 ** Ivy sub-search
 
 |---------+---------------------------------------------------|
@@ -51,18 +45,6 @@
 | ~g p~ | Selected pasted text |
 |-------+----------------------|
 
-** Indentation
-
-|-----+----------------------------------|
-| ~=~ | Fix indentation on selected text |
-|-----+----------------------------------|
-
-** Clipboard history
-
-|-----------+------------------------|
-| ~SPC i y~ | Show clipboard history |
-|-----------+------------------------|
-
 ** Filepath / filename
 
 |-----------+-------------------------|
@@ -86,14 +68,11 @@
 | ~)~ | Show git details for files |
 |-----+----------------------------|
 
-** Evil ~element~ object
+** Shortdoc (cheatsheets)
 
-Works in org-src block, org table etc
-
-|-------+-------------------|
-| ~vie~ | Select in element |
-| ~yie~ | Copy in element   |
-|-------+-------------------|
+|--------------------------+------------------------|
+| ~shortdoc-display-group~ | Show list of shortdocs |
+|--------------------------+------------------------|
 
 
 * Tips
