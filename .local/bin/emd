@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+help() {
+    cat <<EOF
+emd COMMAND
+
+Emacs daemon manager
+
+Commands:
+  logs      Show daemon logs
+  restart   Restart daemon
+  status    Show daemon status
+EOF
+}
+
+logs() {
+    journalctl --user-unit=emacs.service --pager-end
+}
+
+status() {
+    systemctl --user --no-pager status emacs.service
+}
+
+restart() {
+    systemctl --user daemon-reload
+    systemctl --user restart emacs.service
+}
+
+case "$1" in
+    logs|status|restart)
+        "$1"
+        ;;
+    "")
+        status
+        ;;
+    *)
+        help
+        ;;
+esac

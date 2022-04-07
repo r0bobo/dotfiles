@@ -50,3 +50,4 @@ autoload -Uz j
 autoload -Uz man
 autoload -Uz zsh-benchmark
 autoload -Uz zsh-profile
+autoload -Uz curljq

@@ -6,11 +6,6 @@ alias tf=terraform
 
 alias bat='bat --plain'
 
-# Emacs commands
-alias emacs-log='journalctl --user-unit=emacs.service --pager-end'
-alias emacs-restart='systemctl --user restart emacs.service'
-alias emacs-status='systemctl --user status emacs.service'
-
 alias ls="exa --git"
 alias la="ls -la"
 alias ll="ls -l"
