@@ -18,7 +18,6 @@
           kail
           kind
           krew
-          kubectl
           kubernetes-helm
           kustomize
           minikube

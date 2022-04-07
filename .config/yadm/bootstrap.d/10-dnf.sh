@@ -44,11 +44,9 @@ if [[ "$YADM_GRAPHICAL" = true ]]; then
 		# adapta-gtk-theme
 		adobe-source-code-pro-fonts
 		alacritty
-		arc-theme
 		flatpak
 		gnome-shell-extension-pop-shell
 		jetbrains-mono-fonts-all
-		papirus-icon-theme
 
 		# Firefox VA-API
 		# https://mastransky.wordpress.com/2020/06/03/firefox-on-fedora-finally-gets-va-api-on-wayland/
