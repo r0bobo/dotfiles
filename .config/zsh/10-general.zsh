@@ -45,6 +45,7 @@ autoload run-help
 setopt interactivecomments
 
 bindkey -e # emacs key bindings
+bindkey '^[f' emacs-forward-word
 
 WORDCHARS="$WORDCHARS:s:/:" # Each element in path is treated as a word
 WORDCHARS="$WORDCHARS:s:=:" # Split word on =
