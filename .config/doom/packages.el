@@ -72,3 +72,5 @@
 (package! kubedoc)
 
 (package! ipcalc)
+
+(package! caddyfile-mode)

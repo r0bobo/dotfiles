@@ -95,6 +95,9 @@
   (add-to-list 'browse-at-remote-remote-type-regexps
                '("^git\\.todevski\\.com$" . "gitlab")))
 
+(use-package! caddyfile-mode
+  :mode (("Corefile\\'" . caddyfile-mode)
+         ("\\.caddyfile\\'" . caddyfile-mode)))
 
 (use-package! company
   :config
