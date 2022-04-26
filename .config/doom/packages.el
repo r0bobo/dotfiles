@@ -74,3 +74,6 @@
 (package! ipcalc)
 
 (package! caddyfile-mode)
+
+(package! nftables-mode
+  :recipe (:local-repo "~/.config/doom/packages/nftables-mode"))
