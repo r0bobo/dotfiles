@@ -7,11 +7,9 @@ autoload -U +X bashcompinit && bashcompinit
 dean::gocomp eksctl
 dean::gocomp helm
 dean::gocomp kubectl
-dean::gocomp tkn
 
 # Bash completion
 dean::bashcomp aws aws_completer
 dean::bashcomp consul
 dean::bashcomp kustomize
-dean::bashcomp mc
 dean::bashcomp terraform

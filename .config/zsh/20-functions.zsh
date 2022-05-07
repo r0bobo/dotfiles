@@ -14,7 +14,7 @@ dean::cached_output () {
         "${@:2}" > "$cachefile"
     fi
 
-    cat "$cachefile"
+    < "$cachefile"
 }
 
 dean::bashcomp() {
@@ -40,10 +40,6 @@ dean::plugin() {
     if [[ -r $1 ]]; then
         source $1
     fi
-}
-
-ssl-check() {
-    docker run --rm -ti drwetter/testssl.sh:3.1dev "$@"
 }
 
 autoload -Uz j
