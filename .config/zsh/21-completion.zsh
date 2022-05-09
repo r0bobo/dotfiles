@@ -6,6 +6,7 @@ autoload -U +X bashcompinit && bashcompinit
 # Zsh completion for typical go binaries
 dean::gocomp helm
 dean::gocomp kubectl
+dean::gocomp linkding-cli
 
 # Bash completion
 dean::bashcomp aws aws_completer
