@@ -4,7 +4,6 @@ autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 
 # Zsh completion for typical go binaries
-dean::gocomp eksctl
 dean::gocomp helm
 dean::gocomp kubectl
 
