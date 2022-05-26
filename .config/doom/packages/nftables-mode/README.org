@@ -1,2 +1,0 @@
-* nftables-mode
-Taken from [[https://lists.gnu.org/archive/html/bug-gnu-emacs/2021-09/msg01997.html][this mail thread]]
