@@ -8,6 +8,7 @@
           cachix
           dbmate
           dive
+          doctl
           elixir_ls
           exercism
           gitAndTools.git-sync
