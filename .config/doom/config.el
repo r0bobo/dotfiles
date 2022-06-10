@@ -28,8 +28,6 @@
              ruby-mode))
 
 (map!
- "C-," #'hippie-expand
-
  :leader
  :desc "Search in project" "/" #'+default/search-project
  :desc "Doom dashboard" "b h" #'+doom-dashboard/open
