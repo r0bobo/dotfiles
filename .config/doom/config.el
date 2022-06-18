@@ -201,12 +201,6 @@
   (transient-bind-q-to-quit))
 
 
-(use-package! tree-sitter
-  :hook (prog-mode . turn-on-tree-sitter-mode)
-  :hook (tree-sitter-after-on . tree-sitter-hl-mode)
-  :config (require 'tree-sitter-langs))
-
-
 (use-package! which-key
   :config
   (setq! which-key-idle-delay 0.5))
