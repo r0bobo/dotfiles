@@ -26,13 +26,13 @@ dean::bashcomp() {
     fi
 }
 
-dean::gocomp() {
+dean::zshcomp() {
     cmd=$1
 
     # Return if command doesn't exist
     command -v "$cmd" >/dev/null || return 0
 
-    dean::cached_output "$(which "$cmd")" "$cmd" completion zsh \
+    dean::cached_output "$(which "$cmd")" "$cmd" "${@:2}" \
         > "$ZSH_COMPDIR/_$cmd"
 }
 

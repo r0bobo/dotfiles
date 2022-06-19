@@ -3,12 +3,14 @@
 autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 
-# Zsh completion for typical go binaries
-dean::gocomp helm
-dean::gocomp kubectl
+# Zsh completion
+dean::zshcomp helm completion zsh
+dean::zshcomp kubectl completion zsh
+dean::zshcomp doom make completions --zsh
 
 # Bash completion
 dean::bashcomp aws aws_completer
 dean::bashcomp consul
 dean::bashcomp kustomize
 dean::bashcomp terraform
+
