@@ -17,6 +17,9 @@
        ;; Keymaps
        doom-localleader-key ","
 
+       ;; Don't overwrite copied text on paste
+       evil-kill-on-visual-paste nil
+
        +format-on-save-enabled-modes
        '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
              sql-mode         ; sqlformat is currently broken
