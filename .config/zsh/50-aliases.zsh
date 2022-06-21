@@ -13,6 +13,7 @@ alias ll="ls -l"
 # Colors
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
+alias ip='ip -c'
 
 alias ssh='TERM=xterm-256color ssh'
 alias ssh-fix='chmod 600 ~/.ssh/{*/*.key,config}'
