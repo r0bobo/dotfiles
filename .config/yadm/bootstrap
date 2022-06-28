@@ -8,7 +8,7 @@ error() {
 
 YADM_CLASS="$(yadm config local.class)"
 
-if [[ "$XDG_CURRENT_DESKTOP" != '' ]]; then
+if [[ "${XDG_CURRENT_DESKTOP:-}" != '' ]]; then
     YADM_GRAPHICAL=true
 else
     YADM_GRAPHICAL=false
