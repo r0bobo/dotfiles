@@ -17,6 +17,7 @@ packages=(
 	exa
 	fd-find
 	fzf
+	gopass
 	hyperfine
 	kubectl
 	pass
