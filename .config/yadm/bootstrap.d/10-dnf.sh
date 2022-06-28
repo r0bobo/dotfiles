@@ -43,7 +43,6 @@ if [[ "$YADM_GRAPHICAL" = true ]]; then
 	packages+=(
 
 		# adapta-gtk-theme
-		adobe-source-code-pro-fonts
 		alacritty
 		flatpak
 		gnome-shell-extension-pop-shell
