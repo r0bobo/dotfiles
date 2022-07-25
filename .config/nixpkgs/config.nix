@@ -11,6 +11,7 @@
           doctl
           elixir_ls
           exercism
+          fd
           gitAndTools.git-sync
           gmailctl
           grex
