@@ -42,7 +42,6 @@ packages=(
 if [[ "$YADM_GRAPHICAL" = true ]]; then
 	packages+=(
 
-		# adapta-gtk-theme
 		alacritty
 		flatpak
 		gnome-shell-extension-pop-shell

@@ -8,7 +8,6 @@ flatpaks=(
     com.github.tchx84.Flatseal
     com.slack.Slack
     com.spotify.Client
-    org.gtk.Gtk3theme.Adapta-Eta
     org.telegram.desktop
 )
 
