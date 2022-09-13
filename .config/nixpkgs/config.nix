@@ -8,7 +8,6 @@
           cachix
           dbmate
           dive
-          doctl
           elixir_ls
           exercism
           fd
@@ -46,7 +45,6 @@
           zsh-autosuggestions
           zsh-completions
           zsh-syntax-highlighting
-
         ];
         pathsToLink = [ "/bin" "/share" ];
         extraOutputsToInstall = [ "man" "doc" ];
