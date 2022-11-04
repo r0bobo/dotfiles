@@ -146,6 +146,12 @@
   :config
   (setq! lsp-solargraph-use-bundler t)
 
+  (lsp-register-custom-settings
+   '(("gopls.completeUnimported" t t)
+     ("gopls.staticcheck" t t)
+     ("gopls.analyses.unusedparams" t t)
+     ("gopls.analyses.unusedvariable" t t)))
+
   ;; Ignore setting up watches on gitignored paths
   ;; https://github.com/emacs-lsp/lsp-mode/issues/713#issuecomment-985653873
   (defun ++git-ignore-p (path)
