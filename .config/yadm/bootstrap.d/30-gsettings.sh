@@ -38,7 +38,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
   '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/'
 ]"
 keybind custom0 'Emacs' 'emacsclient -nc' '<Super>e'
-keybind custom1 'Terminal' 'sh -c "WAYLAND_DISPLAY= alacritty"' '<Super>Return'
+keybind custom1 'Terminal' 'alacritty' '<Super>Return'
 keybind custom2 'Org-capture' "$HOME/.local/bin/org-capture" '<Super>c'
 
 # Gnome Software
