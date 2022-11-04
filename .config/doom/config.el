@@ -30,6 +30,12 @@
              sh-mode
              ruby-mode))
 
+;; Disable titlebar and menus
+(setq default-frame-alist '((undecorated . t)))
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+
 (map!
  :leader
  :desc "Search in project" "/" #'+default/search-project
