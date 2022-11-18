@@ -11,6 +11,4 @@ dean::zshcomp doom make completions --zsh
 # Bash completion
 dean::bashcomp aws aws_completer
 dean::bashcomp consul
-dean::bashcomp kustomize
 dean::bashcomp terraform
-

@@ -15,12 +15,12 @@
           gmailctl
           grex
           hey
+          hyperfine
           k9s
           kail
           kind
           krew
           kubernetes-helm
-          kustomize
           minikube
           nix-tree
           nixfmt
