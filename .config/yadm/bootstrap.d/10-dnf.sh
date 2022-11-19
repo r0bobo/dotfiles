@@ -57,6 +57,10 @@ if [[ "$YADM_GRAPHICAL" = true ]]; then
 		libva-utils
 		libva-vdpau-driver  # Nvidia
 
+		# https://www.reddit.com/r/Fedora/comments/yq9p6d/mesafreeworld_available_on_rpmfusion/
+		mesa-va-drivers-freeworld
+		mesa-vdpau-drivers-freeworld
+
 	)
 fi
 
