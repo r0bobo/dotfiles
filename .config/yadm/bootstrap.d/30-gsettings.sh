@@ -13,7 +13,6 @@ keybind() {
 }
 
 # Generic
-gsettings set org.gnome.desktop.interface gtk-theme "Arc-Darker"
 gsettings set org.gnome.desktop.interface enable-hot-corners "false"
 
 # Workspace
