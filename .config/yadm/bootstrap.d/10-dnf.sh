@@ -29,6 +29,8 @@ packages=(
 	xclip
 	z
 	zsh
+	zsh-syntax-highlighting
+	zsh-autosuggestions
 
 	# Golang dev
 	godoctor

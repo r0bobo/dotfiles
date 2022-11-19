@@ -42,9 +42,7 @@
 
           # Zsh stuf
           nix-zsh-completions
-          zsh-autosuggestions
           zsh-completions
-          zsh-syntax-highlighting
         ];
         pathsToLink = [ "/bin" "/share" ];
         extraOutputsToInstall = [ "man" "doc" ];
