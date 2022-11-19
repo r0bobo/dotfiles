@@ -144,8 +144,6 @@
 
 (use-package! lsp-mode
   :config
-  (setq! lsp-solargraph-use-bundler t)
-
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t)
