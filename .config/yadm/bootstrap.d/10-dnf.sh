@@ -5,7 +5,9 @@ installed="$(rpm -qa)"
 
 packages_installed() {
 	for package in "$@"; do
-		grep -q "$package" <<<"$installed"
+		if ! grep -q "$package" <<<"$installed"; then
+			return 1
+		fi
 	done
 }
 
