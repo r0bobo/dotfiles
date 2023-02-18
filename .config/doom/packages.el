@@ -73,3 +73,5 @@
 (package! caddyfile-mode)
 
 (package! nftables-mode)
+
+(package! protobuf-mode)
