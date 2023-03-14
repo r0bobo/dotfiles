@@ -63,6 +63,7 @@ if [[ "$YADM_GRAPHICAL" = true ]]; then
 		mesa-va-drivers-freeworld
 		mesa-vdpau-drivers-freeworld
 
+		nvidia-vaapi-driver
 	)
 fi
 
