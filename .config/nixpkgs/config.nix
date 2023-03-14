@@ -21,6 +21,7 @@
           kind
           krew
           kubernetes-helm
+          minikube
           nix-tree
           nixfmt
           ripgrep-all
