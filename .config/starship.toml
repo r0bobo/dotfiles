@@ -7,6 +7,8 @@ displayed_items = "all"
 [aws.region_aliases]
 eu-central-1 = "fra"
 
+[gcloud]
+disabled = true
 
 [kubernetes]
 disabled = true
