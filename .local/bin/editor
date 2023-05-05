@@ -15,8 +15,8 @@ if [[ -z "$DISPLAY" ]]; then
 	exec emacsclient -t "$@"
 else
 	if [[ "$(basename "$0")" = e ]]; then
-		exec emacsclient -ncd "$DISPLAY" "$@"
+		exec emacsclient -nc "$@"
 	else
-		exec emacsclient -cd "$DISPLAY" "$@"
+		exec emacsclient -c "$@"
 	fi
 fi
