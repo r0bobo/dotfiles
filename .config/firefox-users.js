@@ -26,3 +26,10 @@ user_pref("privacy.webrtc.legacyGlobalIndicator", false);
 
 // Enable calculator
 user_pref("browser.urlbar.suggest.calculator", true);
+
+// Atuo-hude cookie banners
+// https://github.com/r0bobo/kubedoc.el/actions/actions/workflows/test.yaml/badge.svg
+// 1: rejects all cookies if possible, otherwise does nothing
+// 2: rejects all cookies if possible, otherwise does what you would probably do to quickly get rid of the cookie banner, which is to accept all of them
+user_pref("cookiebanners.service.mode", 1);
+user_pref("cookiebanners.service.mode.privateBrowsing", 1);
