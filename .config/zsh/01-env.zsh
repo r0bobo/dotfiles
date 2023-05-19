@@ -14,6 +14,7 @@ fpath+="$XDG_CONFIG_HOME/zsh/functions"
 # Apps
 export LIBVIRT_DEFAULT_URI=qemu+ssh://hypervisor/system
 export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
+export KUBE_EDITOR=vim
 
 # Less config
 export PAGER=less
