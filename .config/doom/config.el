@@ -144,6 +144,7 @@
 
 (use-package! lsp-mode
   :config
+  (setq! lsp-go-hover-kind "FullDocumentation")
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t)
