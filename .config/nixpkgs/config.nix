@@ -36,10 +36,6 @@
           yaml-language-server
           yq-go
 
-          # Golang
-          golangci-lint
-          gomodifytags
-
           # Zsh stuf
           nix-zsh-completions
           zsh-completions

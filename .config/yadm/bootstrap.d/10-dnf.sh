@@ -12,7 +12,6 @@ packages_installed() {
 }
 
 packages=(
-
 	bat
 	direnv
 	emacs
@@ -33,19 +32,11 @@ packages=(
 	zsh
 	zsh-syntax-highlighting
 	zsh-autosuggestions
-
-	# Golang dev
-	godoctor
-	golang-x-tools-gopls
-	golang-x-tools-gorename
-	golang-x-tools-guru
-
 )
 
 # Graphical packages
 if [[ "$YADM_GRAPHICAL" = true ]]; then
 	packages+=(
-
 		alacritty
 		flatpak
 		gnome-shell-extension-pop-shell
