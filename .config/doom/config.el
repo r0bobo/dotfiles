@@ -27,8 +27,7 @@
              latex-mode
              dockerfile-mode
              terraform-mode
-             sh-mode
-             ruby-mode))
+             sh-mode))
 
 ;; Disable titlebar and menus
 (setq default-frame-alist '((undecorated . t)))
