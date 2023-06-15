@@ -8,3 +8,5 @@ go install golang.org/x/tools/cmd/goimports@v0.9.3
 go install golang.org/x/tools/cmd/gorename@v0.9.3
 go install golang.org/x/tools/cmd/guru@v0.9.3
 go install golang.org/x/tools/gopls@v0.12.2
+
+go install github.com/google/go-containerregistry/cmd/crane@v0.15.2
