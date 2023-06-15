@@ -7,6 +7,7 @@ autoload -U +X bashcompinit && bashcompinit
 dean::zshcomp helm completion zsh
 dean::zshcomp kubectl completion zsh
 dean::zshcomp doom make completions --zsh
+dean::zshcomp crane completion zsh
 
 # Bash completion
 dean::bashcomp aws aws_completer
