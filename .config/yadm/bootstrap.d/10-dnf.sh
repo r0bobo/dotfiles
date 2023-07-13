@@ -10,6 +10,7 @@ packages=(
 	fzf
 	go
 	gopass
+	htop
 	hyperfine
 	kubectl
 	pass
@@ -21,8 +22,8 @@ packages=(
 	xclip
 	z
 	zsh
-	zsh-syntax-highlighting
 	zsh-autosuggestions
+	zsh-syntax-highlighting
 )
 
 # Graphical packages
