@@ -1,16 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-installed="$(rpm -qa)"
-
-packages_installed() {
-	for package in "$@"; do
-		if ! grep -q "$package" <<<"$installed"; then
-			return 1
-		fi
-	done
-}
-
 packages=(
 	bat
 	direnv
@@ -18,6 +8,7 @@ packages=(
 	exa
 	fd-find
 	fzf
+	go
 	gopass
 	hyperfine
 	kubectl
@@ -42,18 +33,8 @@ if [[ "$YADM_GRAPHICAL" = true ]]; then
 		gnome-shell-extension-pop-shell
 		jetbrains-mono-fonts-all
 
-		# Firefox VA-API
-		# https://mastransky.wordpress.com/2020/06/03/firefox-on-fedora-finally-gets-va-api-on-wayland/
-		ffmpeg
-		libva
-		libva-intel-driver
-		libva-utils
-		libva-vdpau-driver  # Nvidia
-
-		# https://www.reddit.com/r/Fedora/comments/yq9p6d/mesafreeworld_available_on_rpmfusion/
-		mesa-va-drivers-freeworld
-		mesa-vdpau-drivers-freeworld
-
+		# https://rpmfusion.org/Howto/Multimedia
+		intel-media-driver
 		nvidia-vaapi-driver
 	)
 fi
@@ -69,18 +50,18 @@ gpgcheck=1
 repo_gpgcheck=1
 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 EOF
-
 if ! diff "$tmpfile" /etc/yum.repos.d/kubernetes.repo &>/dev/null; then
 	sudo mv "$tmpfile" /etc/yum.repos.d/kubernetes.repo
 fi
 
 # RPM Fusion
-if ! packages_installed rpmfusion-free-release rpmfusion-nonfree-release; then
-	sudo dnf install -y \
-		"https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" \
-		"https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
-fi
+sudo dnf install -y \
+	"https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm" \
+	"https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
 
-if ! packages_installed "${packages[@]}"; then
-	sudo dnf install -y "${packages[@]}"
-fi
+sudo dnf install -y "${packages[@]}"
+
+# https://rpmfusion.org/Howto/Multimedia
+sudo dnf swap ffmpeg-free ffmpeg --allowerasing
+sudo dnf groupupdate -y multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin
+sudo dnf groupupdate -y sound-and-video
