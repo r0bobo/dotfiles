@@ -14,6 +14,7 @@ keybind() {
 
 # Generic
 gsettings set org.gnome.desktop.interface enable-hot-corners "false"
+gsettings set org.gnome.desktop.interface show-battery-percentage "true"
 
 # Workspace
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Super>exclam']"
