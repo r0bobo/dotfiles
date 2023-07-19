@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 
-alias d=docker
 alias k=kubectl
 alias tf=terraform
 
@@ -24,13 +23,9 @@ alias zshreload='exec zsh'
 alias cin='xclip -in -selection clipboard'
 alias cout='xclip -out -selection clipboard'
 
-alias dh='dirs -v'
-
-
-alias kzb='kustomize build "$(fd kustomization.yaml | xargs -l dirname | fzf)"   '
 
 alias nixup='nix-channel --update && nix-env -iA nixpkgs.myPackages && nix-env --upgrade'
 
 alias ssh-until='ssh -o ConnectTimeout=10 -o ConnectionAttempts=360'
 
-alias zsh-benchmark-hyperfine="hyperfine -L userconfig true,false 'ZSH_NO_USER_CONFIG={userconfig} zsh -i -c exit'"
+alias zsh-benchmark="hyperfine -L userconfig true,false 'ZSH_NO_USER_CONFIG={userconfig} zsh -i -c exit'"
