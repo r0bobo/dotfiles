@@ -44,5 +44,8 @@ keybind custom2 'Org-capture' "$HOME/.local/bin/org-capture" '<Super>c'
 # Gnome Software
 gsettings set org.gnome.software download-updates false
 
+# Calendar
+gsettings set org.gnome.desktop.calendar show-weekdate "true"
+
 # GDM
 sudo -u gdm dbus-run-session gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
