@@ -25,7 +25,6 @@
           nix-tree
           nixfmt
           ripgrep-all
-          rust-analyzer
           rustup
           solargraph
           starship
