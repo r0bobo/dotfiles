@@ -1,5 +1,9 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
+;; https://emacs-lsp.github.io/lsp-mode/page/performance/#use-plists-for-deserialization
+;; https://discourse.doomemacs.org/t/using-lsp-use-plists-with-rust-analyzer-stops-updating-diagnostics-on-save/2832
+(setenv "LSP_USE_PLISTS" "1")
+
 ;; This file controls what Doom modules are enabled and what order they load
 ;; in. Remember to run 'doom sync' after modifying it!
 

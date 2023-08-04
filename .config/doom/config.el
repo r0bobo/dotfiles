@@ -143,7 +143,8 @@
 
 (use-package! lsp-mode
   :config
-  (setq! lsp-go-hover-kind "FullDocumentation"
+  (setq! lsp-use-plists "true"
+         lsp-go-hover-kind "FullDocumentation"
          lsp-elixir-server-command '("elixir-ls"))
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
