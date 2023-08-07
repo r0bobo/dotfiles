@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-dirs=(projects src)
+dirs=(projects src work)
 flags=("${dirs[@]/#/--search-path=}")
 
 if ! proj_path="$(fd --base-directory="$HOME" "${flags[@]}" --type=directory --hidden --glob '**/.git' 2>/dev/null \

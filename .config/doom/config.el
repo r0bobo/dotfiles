@@ -200,7 +200,8 @@
          (seq-filter #'file-exists-p
                      '("~/src/"
                        "~/projects"
-                       "~/projects/services"))))
+                       "~/projects/services"
+                       "~/work"))))
 
 
 (use-package! systemd
