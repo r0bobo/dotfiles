@@ -1,7 +1,9 @@
-# -*- mode: gitconfig; -*-
-
 [user]
 	email = dean.todevski@relexsolutions.com
 
 [url "ssh://git@github.com/formulatehq/"]
 	insteadOf = https://github.com/formulatehq/
+
+[core]
+	hooksPath = .git/hooks
+	excludesFile = ~/relex/.gitignore

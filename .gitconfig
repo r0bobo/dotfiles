@@ -1,12 +1,9 @@
 [user]
 	name = Dean Lindqvist Todevski
-	signingkey = 6576D83E9B51358F
+	email = dean.todevski@relexsolutions.com
 
 [github]
 	user = r0bobo
-
-[core]
-	hooksPath = .githooks
 
 [alias]
 	glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
@@ -44,8 +41,14 @@
 [init]
 	defaultBranch = main
 
+[credential]
+	helper = cache --timeout=86400
+
 [include]
 	path = .gitconfig.local
 
-[credential]
-	helper = cache --timeout=86400
+[includeIf "gitdir:~/projects/"]
+	path = ~/projects/.gitconfig
+
+[includeIf "gitdir:~/relex/"]
+	path = ~/relex/.gitconfig
