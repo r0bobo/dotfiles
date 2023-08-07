@@ -5,5 +5,4 @@
 	insteadOf = https://github.com/formulatehq/
 
 [core]
-	hooksPath = .git/hooks
 	excludesFile = ~/relex/.gitignore

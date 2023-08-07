@@ -1,6 +1,5 @@
 [user]
-	email = dean.todevski@relexsolutions.com
 	signingkey = 6576D83E9B51358F
 
 [core]
-	hooksPath = .git/hooks
+	hooksPath = .githooks
