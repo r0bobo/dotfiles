@@ -1,4 +1,7 @@
 # -*- mode: gitconfig; -*-
 
 [user]
-	email = dean@zimpler.com
+	email = dean.todevski@relexsolutions.com
+
+[url "ssh://git@github.com/formulatehq/"]
+	insteadOf = https://github.com/formulatehq/
