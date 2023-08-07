@@ -4,9 +4,9 @@ set -euo pipefail
 IFS=: read -r -a dirs <<< "$PROJECTPATH"
 flags=("${dirs[@]/#/--search-path=}")
 
-if ! proj_path="$(fd --base-directory="$HOME" "${flags[@]}" --type=directory --hidden --glob '**/.git' 2>/dev/null \
+if ! proj_path="$(fd "${flags[@]}" --type=directory --hidden --glob '**/.git' 2>/dev/null \
 	| xargs -l dirname \
-	| fzf --header=Projects --preview="ls --color=always $HOME/{}" --preview-window=up --height=30 --prompt='PROJ> ')"; then
+	| fzf --header=Projects --preview="ls --color=always {}" --preview-window=up --height=30 --prompt='PROJ> ')"; then
 	exit 0
 fi
 
@@ -14,5 +14,5 @@ for dir in "${dirs[@]}"; do
 	[[ $proj_path == $dir* ]] && proj_name="${proj_path#"$dir/"}"
 done
 
-cd "$HOME/$proj_path"
+cd "$proj_path"
 tm "${proj_name/./-}"
