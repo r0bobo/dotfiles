@@ -198,10 +198,8 @@
   (setq! projectile-enable-caching nil
          projectile-project-search-path
          (seq-filter #'file-exists-p
-                     '("~/src/"
-                       "~/projects"
-                       "~/projects/services"
-                       "~/work"))))
+                     (split-string
+                      (getenv "PROJECTPATH") ":"))))
 
 
 (use-package! systemd
