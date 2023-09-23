@@ -37,7 +37,6 @@ if [[ "$YADM_GRAPHICAL" = true ]]; then
 
 		# https://rpmfusion.org/Howto/Multimedia
 		intel-media-driver
-		nvidia-vaapi-driver
 	)
 fi
 
