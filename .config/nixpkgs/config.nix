@@ -17,6 +17,7 @@
           kubernetes-helm
           minikube
           nixfmt
+          rbw
           rustup
           solargraph
           starship
