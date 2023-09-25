@@ -4,27 +4,19 @@
       myPackages = pkgs.buildEnv {
         name = "my-packages";
         paths = [
-          awscli2
-          cachix
-          dbmate
           dive
           elixir_ls
           exercism
-          fd
           gitAndTools.git-sync
-          gmailctl
           grex
           hey
-          hyperfine
           k9s
           kail
           kind
           krew
           kubernetes-helm
           minikube
-          nix-tree
           nixfmt
-          ripgrep-all
           rustup
           solargraph
           starship
