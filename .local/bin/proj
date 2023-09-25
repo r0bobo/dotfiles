@@ -4,8 +4,8 @@ set -euo pipefail
 IFS=: read -r -a dirs <<< "$PROJECTPATH"
 flags=("${dirs[@]/#/--search-path=}")
 
-if ! proj_path="$(fd "${flags[@]}" --type=directory --hidden --glob '**/.git' 2>/dev/null \
-	| xargs -l dirname \
+if ! proj_path="$(fd "${flags[@]}" --hidden --glob '**/.git' 2>/dev/null \
+	| xargs -l dirname | sort | uniq \
 	| fzf --header=Projects --preview="ls --color=always {}" --preview-window=up --height=30 --prompt='PROJ> ')"; then
 	exit 0
 fi
