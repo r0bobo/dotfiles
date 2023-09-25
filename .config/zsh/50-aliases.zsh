@@ -3,8 +3,6 @@
 alias k=kubectl
 alias tf=terraform
 
-alias bat='bat --plain'
-
 alias ls="exa --git"
 alias la="ls -la"
 alias ll="ls -l"
