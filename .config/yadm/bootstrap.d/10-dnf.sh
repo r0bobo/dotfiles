@@ -42,14 +42,15 @@ fi
 
 tmpfile="$(mktemp)"
 
+kubernetes_version=1.28
+
 cat <<EOF > "$tmpfile"
 [kubernetes]
 name=Kubernetes
-baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+baseurl=https://pkgs.k8s.io/core:/stable:/v${kubernetes_version}/rpm/
 enabled=1
 gpgcheck=1
-repo_gpgcheck=1
-gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+gpgkey=https://pkgs.k8s.io/core:/stable:/v${kubernetes_version}/rpm/repodata/repomd.xml.key
 EOF
 if ! diff "$tmpfile" /etc/yum.repos.d/kubernetes.repo &>/dev/null; then
 	sudo mv "$tmpfile" /etc/yum.repos.d/kubernetes.repo
