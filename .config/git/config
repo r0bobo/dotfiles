@@ -1,15 +1,10 @@
 [user]
 	name = Dean Lindqvist Todevski
 	email = dean.todevski@relexsolutions.com
+	signingkey = 6576D83E9B51358F
 
 [github]
 	user = r0bobo
-
-[alias]
-	glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
-	# No need for a GUI - a nice, colorful, graphical representation
-	# https://git-scm.com/docs/git-log
-	# via https://medium.com/@payload.dd/thanks-for-the-git-st-i-will-use-this-4da5839a21a4
 
 [merge]
 	conflictstyle = diff3
@@ -21,8 +16,6 @@
 
 [push]
 	followTags = true
-	# Because I get sick of telling git to do it manually
-	# https://git-scm.com/docs/git-config#git-config-pushfollowTags
 
 [rebase]
 	autoStash = true
@@ -35,20 +28,20 @@
 [color]
 	ui = true
 
-[url "ssh://git@github.com/r0bobo"]
-	insteadof = https://github.com/r0bobo
-
 [init]
 	defaultBranch = main
 
 [credential]
 	helper = cache --timeout=86400
 
-[include]
-	path = .gitconfig.local
+[url "ssh://git@git.todevski.com/"]
+	insteadof = https://git.todevski.com/r0bobo
+[url "ssh://git@github.com/formulatehq/"]
+	insteadOf = https://github.com/formulatehq/
+[url "ssh://git@github.com/r0bobo"]
+	insteadof = https://github.com/r0bobo
 
-[includeIf "gitdir:~/projects/"]
-	path = ~/projects/.gitconfig
-
-[includeIf "gitdir:~/relex/"]
-	path = ~/relex/.gitconfig
+[includeIf "hasconfig:remote.*.url:ssh://git@git.todevski.com/**"]
+	path = config.relex
+[includeIf "hasconfig:remote.*.url:ssh://git@github.com/formulatehq/**"]
+	path = config.relex

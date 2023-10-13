@@ -1,5 +1,0 @@
-[user]
-	signingkey = 6576D83E9B51358F
-
-[core]
-	hooksPath = .githooks

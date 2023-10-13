@@ -1,0 +1,7 @@
+# -*- gitconfig -*-
+
+[user]
+	email = dean.todevski@relexsolutions.com
+
+[core]
+	excludesFile = ignore.relex
