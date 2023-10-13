@@ -75,3 +75,5 @@
 (package! nftables-mode)
 
 (package! protobuf-mode)
+
+(package! bazel)
