@@ -75,7 +75,6 @@
   (dolist (var vars) (add-to-list 'safe-local-variable-values var))
   (dolist (form forms) (add-to-list 'safe-local-eval-forms form)))
 
-
 ;;; PACKAGES
 ;;  ----------------------------------------------------------------------------
 (use-package! doom-modeline
@@ -141,6 +140,7 @@
 (use-package! literate-calc-mode
   :hook (org-mode . literate-calc-minor-mode))
 
+
 (use-package! lsp-mode
   :config
   (setq! lsp-use-plists "true"
@@ -151,25 +151,7 @@
      ("gopls.staticcheck" t t)
      ("gopls.analyses.unusedparams" t t)
      ("gopls.analyses.unusedvariable" t t)))
-
-  ;; Ignore setting up watches on gitignored paths
-  ;; https://github.com/emacs-lsp/lsp-mode/issues/713#issuecomment-985653873
-  (defun ++git-ignore-p (path)
-    (let* (; trailing / breaks git check-ignore if path is a symlink:
-           (path (directory-file-name path))
-           (default-directory (file-name-directory path))
-           (relpath (file-name-nondirectory path))
-           (cmd (format "git check-ignore '%s'" relpath))
-           (status (call-process-shell-command cmd)))
-      (eq status 0)))
-
-  (defun ++lsp--path-is-watchable-directory-a
-      (fn path dir ignored-directories)
-    (and (not (++git-ignore-p (f-join dir path)))
-         (funcall fn path dir ignored-directories)))
-
-  (advice-add 'lsp--path-is-watchable-directory
-              :around #'++lsp--path-is-watchable-directory-a))
+  (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'"))
 
 
 (use-package! magit
