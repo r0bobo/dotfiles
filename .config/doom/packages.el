@@ -78,3 +78,6 @@
   :recipe (:pre-build ("git" "submodule" "update")))
 
 (package! bazel)
+
+(package! consult-gh
+  :recipe (:host github :repo "armindarvish/consult-gh"))

@@ -201,6 +201,8 @@
   :config
   (setq! which-key-idle-delay 0.5))
 
+(use-package! consult-gh
+  :after consult)
 
 ;;; CUSTOM
 ;;  ----------------------------------------------------------------------------
