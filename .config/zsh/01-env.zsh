@@ -2,7 +2,7 @@
 
 # ZSH
 ZSH_COMPDIR="$XDG_DATA_HOME/zsh/completions"
-ZSH_CACHEDIR="$XDG_CACHE_HOME/zsh/cache"
+ZSH_CACHEDIR="$XDG_CACHE_HOME/zsh"
 mkdir -p "$ZSH_CACHEDIR" "$ZSH_COMPDIR"
 
 fpath+="$ZSH_COMPDIR"

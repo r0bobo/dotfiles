@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 zstyle ':completion:*' add-space true
-zstyle ':completion:*' completer _list _expand _complete _ignored _match _approximate _prefix
+zstyle ':completion:*' completer _list _expand _expand_alias _complete _ignored _match _approximate _prefix
 zstyle ':completion:*' completions 1
 zstyle ':completion:*' expand prefix
 zstyle ':completion:*' file-sort name
@@ -9,7 +9,6 @@ zstyle ':completion:*' glob 1
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' ignore-parents pwd
 zstyle ':completion:*' insert-unambiguous true
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
 zstyle ':completion:*' list-suffixes true
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=* l:|=*'
@@ -25,9 +24,9 @@ zstyle ':completion:*' list-colors ''
 
 # Use caching so that commands like apt and dpkg complete are useable
 zstyle ':completion:*' use-cache yes
-zstyle ':completion:*' cache-path $ZSH_CACHE_DIR
+zstyle ':completion:*' cache-path "$ZSH_CACHEDIR/zcompcache"
 
-HISTFILE=~/.zsh_history
+HISTFILE="$XDG_DATA_HOME/zsh/history"
 HISTSIZE=10000
 SAVEHIST=10000
 setopt append_history share_history histignorealldups histignorespace
