@@ -74,6 +74,7 @@
 
 (package! nftables-mode)
 
-(package! protobuf-mode)
+(package! protobuf-mode
+  :recipe (:pre-build ("git" "submodule" "update")))
 
 (package! bazel)
