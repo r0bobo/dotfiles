@@ -149,8 +149,11 @@
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t)
+     ("gopls.analyses.nilness" t t)
+     ("gopls.analyses.useany" t t)
      ("gopls.analyses.unusedparams" t t)
-     ("gopls.analyses.unusedvariable" t t)))
+     ("gopls.analyses.unusedvariable" t t)
+     ("gopls.analyses.unusedwrite" t t)))
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'"))
 
 
