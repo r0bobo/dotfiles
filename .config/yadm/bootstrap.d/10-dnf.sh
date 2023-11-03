@@ -29,7 +29,6 @@ packages=(
 # Graphical packages
 if [[ "$YADM_GRAPHICAL" = true ]]; then
 	packages+=(
-		alacritty
 		flatpak
 		foot
 		gnome-shell-extension-pop-shell
