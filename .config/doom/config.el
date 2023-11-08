@@ -145,7 +145,13 @@
   :config
   (setq! lsp-use-plists "true"
          lsp-go-hover-kind "FullDocumentation"
-         lsp-elixir-server-command '("elixir-ls"))
+         lsp-elixir-server-command '("elixir-ls")
+         lsp-disabled-clients '(tfls)
+         lsp-semantic-tokens-enable t
+         lsp-semantic-tokens-honor-refresh-requests t
+         lsp-enable-links t
+         lsp-terraform-ls-prefill-required-fields t)
+
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t)
