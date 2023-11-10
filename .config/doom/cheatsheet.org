@@ -1,6 +1,7 @@
 #+title:   Cheatsheet
 #+startup: content
 #+startup: inlineimages
+#+startup: showall
 
 * Keybinds / features
 
@@ -74,6 +75,13 @@
 | ~shortdoc-display-group~ | Show list of shortdocs |
 |--------------------------+------------------------|
 
+
+* Magit
+** Copy commit hash
+~M-w (magit-copy-buffer-revision)~
+
+** Change upstream branch
+~b u~ in Magit buffer
 
 * Tips
 
