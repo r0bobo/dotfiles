@@ -8,6 +8,7 @@ packages=(
 	exa
 	fd-find
 	fzf
+	gh
 	go
 	gopass
 	htop
