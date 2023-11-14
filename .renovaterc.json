@@ -24,5 +24,14 @@
   "dependencyDashboard": true,
   "configMigration": true,
   "platformAutomerge": true,
-  "ignorePrAuthor": true
+  "ignorePrAuthor": true,
+  "regexManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^.config/bootstrap\\.d/\\..*sh$"],
+      "matchStrings": [
+        "^(?<datasource>.+)install\\s+(?<depName>.+?)@(?<currentValue>.+?)\\s*$"
+      ]
+    }
+  ]
 }
