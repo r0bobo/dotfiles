@@ -7,3 +7,4 @@ npminstall() {
 
 npminstall prettier@3.0.3
 npminstall stylelint@15.11.0
+npminstall vscode-langservers-extracted@4.8.0
