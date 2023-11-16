@@ -29,10 +29,6 @@
     {
       "customType": "regex",
       "fileMatch": [
-        ".config/yadm/bootstrap.d/21-go.sh",
-        ".config/yadm/bootstrap.d/21-npm.sh",
-        "21-go.sh",
-        "21-npm.sh",
         "^.config\\/yadm\\/bootstrap.d\\/.+\\.sh$",
       ],
       "matchStrings": [
