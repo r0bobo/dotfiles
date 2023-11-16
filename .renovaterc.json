@@ -29,7 +29,7 @@
     {
       "customType": "regex",
       "fileMatch": [
-        "^.config\\/yadm\\/bootstrap.d\\/.+\\.sh$",
+        "^.config\\/yadm\\/bootstrap.d\\/.+\\.sh$"
       ],
       "matchStrings": [
         "(?<datasource>.+)install\\s+(?<depName>.+)@(?<currentValue>.+)\\s*"
