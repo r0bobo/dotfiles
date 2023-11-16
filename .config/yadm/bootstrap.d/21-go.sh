@@ -6,7 +6,7 @@ goinstall() {
     go install $*
 }
 
-goinstall github.com/bazelbuild/bazelisk@v1.18.0
+goinstall github.com/bazelbuild/bazelisk@v1.19.0
 goinstall github.com/fatih/gomodifytags@v1.16.0
 goinstall github.com/golangci/golangci-lint/cmd/golangci-lint@v1.53.1
 goinstall github.com/google/go-containerregistry/cmd/crane@v0.15.2
