@@ -32,7 +32,7 @@
         "^.config\\/yadm\\/bootstrap.d\\/.+\\.sh$"
       ],
       "matchStrings": [
-        "(?<datasource>.+)install\\s+(?<depName>.+)@(?<currentValue>.+)\\s*"
+        "(?<datasource>npm|go)install\\s+(?<depName>.+)@(?<currentValue>.+)\\s*"
       ]
     }
   ]
