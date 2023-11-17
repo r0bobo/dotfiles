@@ -20,7 +20,7 @@
   (interactive)
   (find-file
    (concat
-    (file-name-as-directory "/yadm::")
+    "~/"
     (completing-read "yadm managed file: " (+yadm--files) nil t))))
 
 ;;;###autoload
