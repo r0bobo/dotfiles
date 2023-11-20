@@ -20,17 +20,9 @@
        ;; Don't overwrite copied text on paste
        evil-kill-on-visual-paste nil
 
-       +format-on-save-enabled-modes
-       '(not emacs-lisp-mode  ; elisp's mechanisms are good enough
-             sql-mode         ; sqlformat is currently broken
-             tex-mode         ; latexindent is broken
-             latex-mode
-             dockerfile-mode
-             terraform-mode
-             sh-mode))
+       ;; Disable titlebar and menus
+       default-frame-alist '((undecorated . t)))
 
-;; Disable titlebar and menus
-(setq default-frame-alist '((undecorated . t)))
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -46,11 +38,15 @@
  :desc "Undo tree" "u" #'undo-tree-visualize
  :desc "Font Size" "z" #'+hydra/text-zoom/body)
 
+(map! :map global-map
+      :i "C-<tab>" #'dabbrev-completion
+      :i "C-TAB" #'dabbrev-completion)
 
 (add-to-list '+lookup-provider-url-alist
              '("Melpa"       "https://melpa.org/#/?q=%s")
              '("go.dev"      "https://pkg.go.dev/search?q=%s"))
 
+(add-to-list '+company-backend-alist '(prog-mode company-capf))
 
 ;;; File template
 (set-file-template! "/kustomization\\.yaml$"
@@ -99,8 +95,7 @@
 
 (use-package! browse-at-remote
   :config
-  (add-to-list 'browse-at-remote-remote-type-regexps
-               '("^git\\.todevski\\.com$" . "gitlab")))
+  (add-to-list 'browse-at-remote-remote-type-regexps '("^git\\.todevski\\.com$" . "gitlab")))
 
 (use-package! caddyfile-mode
   :mode (("Corefile\\'" . caddyfile-mode)
@@ -108,8 +103,10 @@
 
 (use-package! company
   :config
+  (setq! company-idle-delay nil)
   (map! :map global-map
-        :i [remap indent-for-tab-command] #'company-indent-or-complete-common))
+        :i [remap indent-for-tab-command] #'company-indent-or-complete-common
+        :i "<backtab>" #'company-yasnippet))
 
 
 (use-package! dired
@@ -150,7 +147,8 @@
          lsp-semantic-tokens-enable t
          lsp-semantic-tokens-honor-refresh-requests t
          lsp-enable-links t
-         lsp-terraform-ls-prefill-required-fields t)
+         lsp-terraform-ls-prefill-required-fields t
+         +lsp-company-backends '(company-capf))
 
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
