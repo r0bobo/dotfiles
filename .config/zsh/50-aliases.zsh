@@ -10,7 +10,7 @@ alias ll="ls -l"
 # Colors
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
-alias ip='ip -c'
+alias ip='ip --color=auto'
 
 alias ssh='TERM=xterm-256color ssh'
 alias ssh-fix='chmod 600 ~/.ssh/{*/*.key,config}'
@@ -29,3 +29,6 @@ alias ssh-until='ssh -o ConnectTimeout=10 -o ConnectionAttempts=360'
 alias zsh-benchmark="hyperfine -L userconfig true,false 'ZSH_NO_USER_CONFIG={userconfig} zsh -i -c exit'"
 
 alias wake-desktop="wol -v 30:9c:23:df:43:4f"
+
+alias bazelisk='noglob bazelisk'
+alias bazel='noglob bazelisk'
