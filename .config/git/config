@@ -45,5 +45,6 @@
 	path = config.todevski
 [includeIf "hasconfig:remote.*.url:git@git.todevski.com:*/**"]
 	path = config.todevski
-[includeIf "hasconfig:remote.*.url:ssh://git@github.com/formulatehq/**"]
+
+[includeIf "hasconfig:remote.*.url:git@github.com:formulatehq/*"]
 	path = config.relex
