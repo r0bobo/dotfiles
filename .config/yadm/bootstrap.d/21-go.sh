@@ -14,6 +14,6 @@ goinstall github.com/rogpeppe/godef@v1.1.2
 goinstall golang.org/x/tools/cmd/godoc@v0.16.0
 goinstall golang.org/x/tools/cmd/goimports@v0.9.3
 goinstall golang.org/x/tools/cmd/gorename@v0.16.0
-goinstall golang.org/x/tools/cmd/guru@v0.9.3
+goinstall golang.org/x/tools/cmd/guru@v0.16.0
 goinstall golang.org/x/tools/gopls@v0.14.2
 goinstall rsc.io/2fa@v1.2.0
