@@ -35,6 +35,7 @@
 
  :prefix "o"
  :desc "Kubedoc" "k" #'kubedoc
+ :desc "Kubedoc for context" "K" #'kubedoc-for-context
  :desc "Undo tree" "u" #'undo-tree-visualize
  :desc "Font Size" "z" #'+hydra/text-zoom/body)
 
@@ -45,8 +46,6 @@
 (add-to-list '+lookup-provider-url-alist
              '("Melpa"       "https://melpa.org/#/?q=%s")
              '("go.dev"      "https://pkg.go.dev/search?q=%s"))
-
-(add-to-list '+company-backend-alist '(prog-mode company-capf))
 
 ;;; File template
 (set-file-template! "/kustomization\\.yaml$"
@@ -103,10 +102,8 @@
 
 (use-package! company
   :config
-  (setq! company-idle-delay nil)
   (map! :map global-map
-        :i [remap indent-for-tab-command] #'company-indent-or-complete-common
-        :i "<backtab>" #'company-yasnippet))
+        :i [remap indent-for-tab-command] #'company-indent-or-complete-common))
 
 
 (use-package! dired
@@ -147,8 +144,7 @@
          lsp-semantic-tokens-enable t
          lsp-semantic-tokens-honor-refresh-requests t
          lsp-enable-links t
-         lsp-terraform-ls-prefill-required-fields t
-         +lsp-company-backends '(company-capf))
+         lsp-terraform-ls-prefill-required-fields t)
 
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
