@@ -28,12 +28,16 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "^.config\\/yadm\\/bootstrap.d\\/.+\\.sh$"
-      ],
+      "fileMatch": ["^.config\\/yadm\\/bootstrap.d\\/.+\\.sh$"],
       "matchStrings": [
         "(?<datasource>npm|go)install\\s+(?<depName>.+)@(?<currentValue>.+)\\s*"
       ]
+    }
+  ],
+  "packageRules": [
+    {
+      "matchPackagePrefixes": ["golang.org/x/tools"],
+      "groupName": "go-tools"
     }
   ]
 }
