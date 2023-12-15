@@ -16,6 +16,7 @@ goinstall github.com/psanford/tpm-fido@5f8828b82b58f9badeed65718fca72bc31358c5c
 goinstall github.com/rogpeppe/godef@v1.1.2
 goinstall github.com/warrensbox/terraform-switcher@0.13.1308
 goinstall github.com/warrensbox/tgswitch@0.6.0
+goinstall mvdan.cc/gofumpt@v0.5.0
 goinstall golang.org/x/tools/cmd/godoc@v0.16.1
 goinstall golang.org/x/tools/cmd/goimports@v0.16.1
 goinstall golang.org/x/tools/cmd/gorename@v0.16.1
