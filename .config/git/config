@@ -25,6 +25,12 @@
 	# Sometimes a newly-added folder, since it's only one line in git status, can slip under the radar.
 	# https://git-scm.com/docs/git-config#git-config-statusshowUntrackedFiles
 
+# Color moved lines differently than changed.
+# https://matklad.github.io/2023/12/31/git-things.html#Git-Things
+[diff]
+  colormoved = "default"
+  colormovedws = "allow-indentation-change"
+
 [color]
 	ui = true
 
