@@ -12,7 +12,7 @@ def encrypt_val(value, name, namespace)
 end
 
 def read_pass_key(path)
-  stdout, stderr, status = Open3.capture3("pass #{path}")
+  stdout, stderr, status = Open3.capture3("gopass #{path}")
   return stdout.rstrip if status.success?
 
   abort "Error: #{stderr}"
