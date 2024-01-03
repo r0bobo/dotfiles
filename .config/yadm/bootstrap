@@ -22,13 +22,13 @@ export YADM_CLASS YADM_GRAPHICAL
 
 
 # Directory to look for bootstrap executables in
-BOOTSTRAP_D="${BASH_SOURCE[0]}.d"
+export BOOTSTRAP_DIR="$HOME/.config/yadm/bootstrap.d"
 
-if [[ ! -d "$BOOTSTRAP_D" ]]; then
-    error "bootstrap directory '$BOOTSTRAP_D' not found"
+if [[ ! -d "$BOOTSTRAP_DIR" ]]; then
+    error "bootstrap directory '$BOOTSTRAP_DIR' not found"
 fi
 
-find "$BOOTSTRAP_D" -type f | sort | while IFS= read -r bootstrap; do
+find "$BOOTSTRAP_DIR" -type f | sort | while IFS= read -r bootstrap; do
     if [[ -x "$bootstrap" && ! "$bootstrap" =~ "##" && ! "$bootstrap" =~ "~$" ]]; then
         echo -e "\e[1m[ \e[36mbootstrap\e[39m ] $bootstrap\e[0m" >&2
         if ! "$bootstrap"; then
