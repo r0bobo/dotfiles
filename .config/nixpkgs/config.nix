@@ -10,6 +10,7 @@
           gitAndTools.git-sync
           grex
           hey
+          istioctl
           k9s
           kail
           kind
