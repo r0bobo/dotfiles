@@ -2,7 +2,7 @@
 set -euo pipefail
 
 npminstall() {
-    npm install --global "$@"
+    npm install --no-fund --global "$@"
 }
 
 npminstall prettier@3.1.1
