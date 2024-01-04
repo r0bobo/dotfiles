@@ -7,7 +7,6 @@
           dive
           elixir_ls
           exercism
-          gitAndTools.git-sync
           grex
           hey
           istioctl
@@ -22,7 +21,6 @@
           rustup
           solargraph
           starship
-          tmuxPlugins.extrakto
           yaml-language-server
           yq-go
 
