@@ -12,11 +12,16 @@
   "Return t if current buffer is file tracked by yadm."
   (unless (vc-call-backend 'Git 'root default-directory)
     (let* ((default (file-name-as-directory (expand-file-name default-directory)))
+           (cmd (format "/usr/bin/git --git-dir=%s --work-tree=%s ls-tree --full-tree --name-only -r HEAD"
+                        +yadm-git-dir +yadm-work-tree))
            (dotfile-dirs
-            (-map (apply-partially 'concat +yadm-work-tree)
-                  (-uniq (-keep #'file-name-directory (split-string (shell-command-to-string
-                                                                     (format "/usr/bin/git --git-dir=%s --work-tree=%s ls-tree --full-tree --name-only -r HEAD"
-                                                                             +yadm-git-dir +yadm-work-tree))))))))
+            (thread-last
+              (shell-command-to-string cmd)
+              split-string
+              (mapcar #'file-name-directory)
+              (delq nil)
+              delete-dups
+              (mapcar (apply-partially 'concat +yadm-work-tree)))))
       (push +yadm-work-tree dotfile-dirs)
       (when (member default dotfile-dirs)
         t))))
