@@ -11,6 +11,7 @@ packages=(
 	fd-find
 	fzf
 	gh
+	git-absorb
 	go
 	gopass
 	htop
