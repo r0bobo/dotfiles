@@ -25,6 +25,9 @@
   "configMigration": true,
   "platformAutomerge": true,
   "ignorePrAuthor": true,
+  "git-submodules": {
+    "enabled": true
+  },
   "customManagers": [
     {
       "customType": "regex",
