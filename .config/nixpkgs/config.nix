@@ -23,13 +23,11 @@
           solargraph
           starship
           tmuxPlugins.extrakto
-          yadm
           yaml-language-server
           yq-go
 
           # Zsh stuf
           nix-zsh-completions
-          zsh-completions
         ];
         pathsToLink = [ "/bin" "/share" ];
         extraOutputsToInstall = [ "man" "doc" ];
