@@ -1,3 +1,6 @@
 [submodule "extrakto"]
 	path = .local/share/yadm/git-submodules/extrakto
 	url = https://github.com/laktak/extrakto
+[submodule "eldev"]
+	path = .local/share/yadm/git-submodules/eldev
+	url = https://github.com/emacs-eldev/eldev
