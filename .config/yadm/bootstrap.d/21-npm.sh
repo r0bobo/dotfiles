@@ -5,6 +5,6 @@ npminstall() {
     npm install --no-fund --global "$@"
 }
 
-npminstall prettier@3.1.1
+npminstall prettier@3.2.2
 npminstall stylelint@16.1.0
 npminstall vscode-langservers-extracted@4.8.0
