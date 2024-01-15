@@ -3,7 +3,7 @@
 alias k=kubectl
 alias tf=terraform
 
-alias ls="exa --git"
+alias ls="eza --git"
 alias la="ls -la"
 alias ll="ls -l"
 
