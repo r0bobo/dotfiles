@@ -6,10 +6,10 @@ set -euo pipefail
 echo >&2 Configuring Gnome settings
 
 keybind() {
-	gpath="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/$1/"
-	gsettings set "$gpath" name "$2"
-	gsettings set "$gpath" command "$3"
-	gsettings set "$gpath" binding "$4"
+    gpath="org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/$1/"
+    gsettings set "$gpath" name "$2"
+    gsettings set "$gpath" command "$3"
+    gsettings set "$gpath" binding "$4"
 }
 
 # Generic
@@ -17,25 +17,21 @@ gsettings set org.gnome.desktop.interface enable-hot-corners "false"
 gsettings set org.gnome.desktop.interface show-battery-percentage "true"
 
 # Workspace
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Super>exclam']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Shift><Super>quotedbl']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Shift><Super>numbersign']"
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Shift><Super>currency']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Super>2']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Super>3']"
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4']"
-gsettings set org.gnome.shell.keybindings switch-to-application-1 "[]"
-gsettings set org.gnome.shell.keybindings switch-to-application-2 "[]"
-gsettings set org.gnome.shell.keybindings switch-to-application-3 "[]"
-gsettings set org.gnome.shell.keybindings switch-to-application-4 "[]"
 gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
+gsettings set org.gnome.mutter dynamic-workspaces true
+gsettings set org.gnome.desktop.wm.preferences num-workspaces 9
+for i in {1..9}; do
+    gsettings set "org.gnome.shell.keybindings" "switch-to-application-$i" "[]"
+    gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-$i" "['<Super>${i}']"
+    gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-$i" "['<Super><Shift>${i}']"
+    gsettings set "org.gnome.shell.keybindings" "switch-to-application-$i" "[]"
+done
 
 # Keybinds
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
-  '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/',
-  '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/',
-  '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/'
+    '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/',
+    '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/',
+    '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/'
 ]"
 keybind custom0 'Emacs' 'emacsclient -nc' '<Super>e'
 keybind custom1 'Terminal' 'foot' '<Super>Return'
