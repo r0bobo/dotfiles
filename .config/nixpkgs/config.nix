@@ -6,6 +6,7 @@
         paths = [
           dive
           elixir_ls
+          emacs-lsp-booster
           exercism
           grex
           hey
@@ -16,6 +17,7 @@
           krew
           kubernetes-helm
           minikube
+          nix-zsh-completions
           nixfmt
           rbw
           rustup
@@ -23,9 +25,6 @@
           starship
           yaml-language-server
           yq-go
-
-          # Zsh stuf
-          nix-zsh-completions
         ];
         pathsToLink = [ "/bin" "/share" ];
         extraOutputsToInstall = [ "man" "doc" ];
