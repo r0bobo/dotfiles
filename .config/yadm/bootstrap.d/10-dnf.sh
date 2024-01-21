@@ -7,7 +7,7 @@ packages=(
 	bat
 	direnv
 	emacs
-	exa
+	eza
 	fd-find
 	fzf
 	gh
