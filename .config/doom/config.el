@@ -110,7 +110,8 @@
   :config
   (map! :map dired-mode-map
         :localleader
-        :desc "Edit filenames" "e" #'wdired-change-to-wdired-mode))
+        :desc "Edit filenames" "e" #'wdired-change-to-wdired-mode)
+  (dired-async-mode 1))
 
 
 (use-package! embark
