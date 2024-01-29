@@ -11,7 +11,7 @@
        doom-unicode-font (font-spec :family "Jetbrains Mono" :size 14)
        doom-big-font (font-spec :family "Jetbrains Mono" :size 26)
        doom-theme 'doom-dracula
-       fancy-splash-image (concat doom-private-dir "doom-icon.png")
+       fancy-splash-image (concat doom-user-dir "doom-icon.png")
        display-line-numbers-type t
 
        ;; Keymaps
@@ -214,9 +214,7 @@
   :config
   (setq! projectile-enable-caching nil
          projectile-project-search-path
-         (seq-filter #'file-exists-p
-                     (split-string
-                      (getenv "PROJECTPATH") ":"))))
+         (seq-filter #'file-exists-p (split-string (getenv "PROJECTPATH") ":"))))
 
 
 (use-package! systemd
