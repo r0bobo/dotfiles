@@ -17,9 +17,9 @@ goinstall github.com/rogpeppe/godef@v1.1.2
 goinstall github.com/warrensbox/terraform-switcher@0.13.1308
 goinstall github.com/warrensbox/tgswitch@0.6.0
 goinstall mvdan.cc/gofumpt@v0.6.0
-goinstall golang.org/x/tools/cmd/godoc@v0.16.1
-goinstall golang.org/x/tools/cmd/goimports@v0.16.1
-goinstall golang.org/x/tools/cmd/gorename@v0.16.1
-goinstall golang.org/x/tools/cmd/guru@v0.16.1
+goinstall golang.org/x/tools/cmd/godoc@v0.17.0
+goinstall golang.org/x/tools/cmd/goimports@v0.17.0
+goinstall golang.org/x/tools/cmd/gorename@v0.17.0
+goinstall golang.org/x/tools/cmd/guru@v0.17.0
 goinstall golang.org/x/tools/gopls@v0.14.2
 goinstall rsc.io/2fa@v1.2.0
