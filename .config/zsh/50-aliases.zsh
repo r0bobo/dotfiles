@@ -23,6 +23,7 @@ alias cout='xclip -out -selection clipboard'
 
 
 alias nixup='nix-channel --update && nix-env -iA nixpkgs.myPackages && nix-env --upgrade'
+alias nixup2='nix flake update --flake ~/.config/nix-mypkgs nixpkgs && nix profile upgrade nix-mypkgs'
 
 alias ssh-until='ssh -o ConnectTimeout=10 -o ConnectionAttempts=360'
 
