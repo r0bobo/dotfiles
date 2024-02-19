@@ -61,6 +61,8 @@
 
 [credential]
 	helper = cache --timeout=86400
+	pruned-branches = !git branch --merged | grep -v '\\*\\|+'
+	pruned-branches-delete = !git branch --merged | grep -v '\\*\\|+' | xargs -r git branch -d
 
 [url "ssh://git@git.todevski.com/"]
 	insteadof = https://git.todevski.com/r0bobo
