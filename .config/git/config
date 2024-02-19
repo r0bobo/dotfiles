@@ -10,6 +10,12 @@
 	# https://ductile.systems/zdiff3/
 	conflictstyle = zdiff3
 
+[branch]
+	sort = -committerdate
+
+[tag]
+	sort = -committerdate
+
 [pull]
 	rebase = true
 
@@ -17,7 +23,19 @@
 	followTags = true
 
 [rebase]
+	autoSquash = true
 	autoStash = true
+	# https://andrewlock.net/working-with-stacked-branches-in-git-is-easier-with-update-refs/
+	updateRefs = true
+
+[transfer]
+	fsckObjects = true
+
+[fetch]
+	fsckObjects = true
+
+[receive]
+	fsckObjects = true
 
 [status]
 	showUntrackedFiles = all
@@ -31,6 +49,9 @@
     # https://matklad.github.io/2023/12/31/git-things.html#Git-Things
 	colorMoved = "default"
 	colorMovedWS = "allow-indentation-change"
+
+[rerere]
+	enabled = true
 
 [color]
 	ui = true
