@@ -7,9 +7,8 @@
 	user = r0bobo
 
 [merge]
-	conflictstyle = diff3
-	# Standard diff is two sets of final changes. This introduces the original text before each side's changes.
-	# https://git-scm.com/docs/git-config#git-config-mergeconflictStyle
+	# https://ductile.systems/zdiff3/
+	conflictstyle = zdiff3
 
 [pull]
 	rebase = true
@@ -25,11 +24,13 @@
 	# Sometimes a newly-added folder, since it's only one line in git status, can slip under the radar.
 	# https://git-scm.com/docs/git-config#git-config-statusshowUntrackedFiles
 
-# Color moved lines differently than changed.
-# https://matklad.github.io/2023/12/31/git-things.html#Git-Things
 [diff]
-  colormoved = "default"
-  colormovedws = "allow-indentation-change"
+	# https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
+	algorithm = "histogram"
+    # Color moved lines differently than changed.
+    # https://matklad.github.io/2023/12/31/git-things.html#Git-Things
+	colorMoved = "default"
+	colorMovedWS = "allow-indentation-change"
 
 [color]
 	ui = true
