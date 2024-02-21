@@ -2,17 +2,18 @@
 set -euo pipefail
 
 IFS=: read -r -a dirs <<< "$PROJECTPATH"
-flags=("${dirs[@]/#/--search-path=}")
 
-if ! proj_path="$(fd "${flags[@]}" --hidden --glob '**/.git' 2>/dev/null \
-	| xargs -l dirname | sort | uniq \
-	| fzf --header=Projects --preview="ls --color=always {}" --preview-window=up --height=30 --prompt='PROJ> ')"; then
-	exit 0
-fi
-
-for dir in "${dirs[@]}"; do
-	[[ $proj_path == $dir* ]] && proj_name="${proj_path#"$dir/"}"
-done
-
-cd "$proj_path"
-tm "${proj_name/./-}"
+fd "${dirs[@]/#/--search-path=}" --max-depth=3 --hidden --no-ignore-vcs --glob '**/.git' 2>/dev/null \
+	| xargs -l dirname \
+	| sort \
+	| uniq \
+	| fzf --header=Projects --height=30 --prompt='PROJ> ' \
+	| \
+	{
+		read -r path
+		for dir in "${dirs[@]}"; do
+			[[ $path == $dir* ]] && name="${path#"$dir/"}"
+		done
+		cd "$path"
+		tm "${name/./-}"
+	}
