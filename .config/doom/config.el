@@ -214,7 +214,10 @@
   :config
   (setq! projectile-enable-caching nil
          projectile-project-search-path
-         (seq-filter #'file-exists-p (split-string (getenv "PROJECTPATH") ":"))))
+         (thread-last
+           (split-string (getenv "PROJECTPATH") ":")
+           (seq-filter #'file-exists-p)
+           (seq-map (lambda (elt) `(,elt . 2))))))
 
 
 (use-package! systemd
