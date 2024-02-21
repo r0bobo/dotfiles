@@ -7,7 +7,7 @@ goinstall() {
 }
 
 goinstall github.com/bazelbuild/bazelisk@v1.19.0
-goinstall github.com/busser/tfautomv@v0.5.4
+goinstall github.com/busser/tfautomv@v0.6.0
 goinstall github.com/fatih/gomodifytags@v1.16.0
 goinstall github.com/golangci/golangci-lint/cmd/golangci-lint@v1.56.1
 goinstall github.com/google/go-containerregistry/cmd/crane@v0.19.0
