@@ -14,3 +14,5 @@ dean::zshcomp kubectl completion zsh
 dean::bashcomp aws aws_completer
 dean::bashcomp consul
 dean::bashcomp terraform
+
+compdef _bazel bazelisk
