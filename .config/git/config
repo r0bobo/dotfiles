@@ -61,8 +61,11 @@
 
 [credential]
 	helper = cache --timeout=86400
+[alias]
 	pruned-branches = !git branch --merged | grep -v '\\*\\|+'
 	pruned-branches-delete = !git branch --merged | grep -v '\\*\\|+' | xargs -r git branch -d
+	# rebase-onto main feature-a feature-b-off-a
+	rebase-onto = "!git rebase --onto \"$1\" $(git merge-base \"$3\" \"$2\") \"$3\" #"
 
 [url "ssh://git@git.todevski.com/"]
 	insteadof = https://git.todevski.com/r0bobo
