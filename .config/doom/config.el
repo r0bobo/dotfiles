@@ -151,7 +151,13 @@
          lsp-semantic-tokens-enable nil
          lsp-semantic-tokens-honor-refresh-requests nil
          lsp-enable-links t
-         lsp-terraform-ls-prefill-required-fields t)
+         lsp-terraform-ls-prefill-required-fields t
+         lsp-go-gopls-server-args '("-logfile=/tmp/gopls-client.log"
+                                    "-remote.debug=localhost:0"
+                                    ;; "-remote.logfile=/tmp/gopls-daemon.log"
+                                    ;; "-rpc.trace"
+                                    "-remote=auto"))
+
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t)
