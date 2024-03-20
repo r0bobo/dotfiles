@@ -8,6 +8,8 @@
       in pkgs.buildEnv {
         name = "home-packages";
         paths = with pkgs; [
+          # gopls
+          actionlint
           bazelisk
           crane
           devbox
@@ -15,26 +17,28 @@
           elixir_ls
           emacs-lsp-booster
           exercism
+          go
           go-2fa
           godef
           gofumpt
           golangci-lint
           gomodifytags
-          gopls
           gotools
           grex
+          helmfile
           hey
           istioctl
-          javascript-typescript-langserver
           k9s
           kail
           kind
           krew
           kubernetes-helm
           minikube
+          mkcert
           nix-zsh-completions
           nodePackages.prettier
           nodePackages.stylelint
+          nodePackages.typescript-language-server
           rbw
           rustup
           solargraph
@@ -42,11 +46,11 @@
           tf-summarize
           tfautomv
           tflint
-          tflint-plugins.tflint-ruleset-google
           tfswitch
           tgswitch
           tmuxPlugins.extrakto
           typescript
+          vhs
           vscode-langservers-extracted
           yadm
           yaml-language-server
