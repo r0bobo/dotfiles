@@ -25,8 +25,9 @@
        ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       company           ; the ultimate code completion backend
-       ;;(corfu +orderless)  ; complete with cap(f), cape and a flying feather!
+       company             ; the ultimate code completion backend
+       ;;(corfu +dabbrev   ; complete with cap(f), cape and a flying feather!
+       ;;        +orderless)
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;ivy               ; a search engine for love and life
@@ -144,14 +145,14 @@
        ;;fsharp            ; ML stands for Microsoft's Language
        ;;fstar             ; (dependent) types and (monadic) effects and Z3
        ;;gdscript          ; the language you waited for
-       (go                 ; the hipster dialect
-        +lsp +tree-sitter)
+       (go +lsp            ; the hipster dialect
+           +tree-sitter)
        ;;(graphql +lsp)    ; Give queries a REST
        ;;(haskell +lsp)    ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
-       (json               ; At least it ain't XML
-        +lsp +tree-sitter)
+       (json +lsp          ; At least it ain't XML
+             +tree-sitter)
        ;;(java +lsp)       ; the poster child for carpal tunnel syndrome
        (javascript +lsp)   ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
@@ -169,21 +170,21 @@
        ;;php               ; perl's insecure younger brother
        plantuml            ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       (python             ; beautiful is better than ugly
-        +lsp +tree-sitter)
+       (python +lsp        ; beautiful is better than ugly
+               +tree-sitter)
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
        rest                ; Emacs as a REST client
        ;;rst               ; ReST in peace
-       (ruby               ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-        +lsp +rails)
-       (rust               ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
-        +lsp +tree-sitter)
+       (ruby +lsp          ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
+             +rails)
+       (rust +lsp          ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+             +tree-sitter)
        ;;scala             ; java, but good
        ;;(scheme +guile)   ; a fully conniving family of lisps
-       (sh                 ; she sells {ba,z,fi}sh shells on the C xor
-        :completion company +tree-sitter)
+       (sh +tree-sitter    ; she sells {ba,z,fi}sh shells on the C xor
+           :completion company)
        ;;sml
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
