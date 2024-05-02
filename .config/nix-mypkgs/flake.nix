@@ -8,12 +8,17 @@
       in pkgs.buildEnv {
         name = "home-packages";
         paths = with pkgs; [
-          # gopls
+          # python311Packages.black
+          # python311Packages.python-lsp-black
           actionlint
+          asciinema
+          asciinema-agg
           bazelisk
           crane
           devbox
+          difftastic
           dive
+          dyff
           elixir_ls
           emacs-lsp-booster
           exercism
@@ -23,6 +28,7 @@
           gofumpt
           golangci-lint
           gomodifytags
+          gopls
           gotools
           grex
           helmfile
@@ -39,10 +45,13 @@
           nodePackages.prettier
           nodePackages.stylelint
           nodePackages.typescript-language-server
+          python311Packages.python-lsp-ruff
+          python311Packages.python-lsp-server
           rbw
           rustup
           solargraph
           starship
+          tenv
           tf-summarize
           tfautomv
           tflint
