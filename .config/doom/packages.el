@@ -50,3 +50,7 @@
   :recipe (:host github :repo "armindarvish/consult-gh"))
 
 (package! flycheck-eldev)
+
+(package! casual)
+
+(package! casual-dired)
