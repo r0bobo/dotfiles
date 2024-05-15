@@ -25,7 +25,7 @@ alias cout='xclip -out -selection clipboard'
 
 alias nixup='nix flake update --flake ~/.config/nix-mypkgs nixpkgs && nix profile upgrade nix-mypkgs'
 
-alias ssh-until='ssh -o ConnectTimeout=10 -o ConnectionAttempts=360'
+alias ssh-until='ssh -o ConnectTimeout=10 -o ConnectionAttempts=360 -v'
 
 alias zsh-benchmark="hyperfine -L userconfig true,false 'ZSH_NO_USER_CONFIG={userconfig} zsh -i -c exit'"
 
