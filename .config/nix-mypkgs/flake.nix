@@ -10,6 +10,7 @@
         paths = with pkgs; [
           # python311Packages.black
           # python311Packages.python-lsp-black
+          ansible-language-server
           actionlint
           asciinema
           asciinema-agg
