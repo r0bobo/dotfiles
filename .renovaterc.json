@@ -15,9 +15,9 @@
     "group:kubernetes",
     "group:linters",
     "group:recommended",
-    "regexManagers:dockerfileVersions",
-    "regexManagers:githubActionsVersions",
-    "regexManagers:gitlabPipelineVersions",
+    "customManagers:dockerfileVersions",
+    "customManagers:githubActionsVersions",
+    "customManagers:gitlabPipelineVersions",
     "security:openssf-scorecard",
     "workarounds:doNotUpgradeFromAlpineStableToEdge"
   ],
@@ -31,7 +31,9 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^.config\\/yadm\\/bootstrap.d\\/.+\\.sh$"],
+      "fileMatch": [
+        "^.config\\/yadm\\/bootstrap.d\\/.+\\.sh$"
+      ],
       "matchStrings": [
         "(?<datasource>npm|go)install\\s+(?<depName>.+)@(?<currentValue>.+)\\s*"
       ]
@@ -39,7 +41,9 @@
   ],
   "packageRules": [
     {
-      "matchPackagePrefixes": ["golang.org/x/tools"],
+      "matchPackagePrefixes": [
+        "golang.org/x/tools"
+      ],
       "groupName": "go-tools"
     }
   ]
