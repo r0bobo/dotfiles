@@ -4,7 +4,7 @@ bind zp pin
 bind zd tabduplicate
 
 " Git{Hub,Lab} git clone via SSH yank
-bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
+bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | cin
 
 " Don't run Tridactyl on some web sites because it doesn't work well, or
 " because the web site has its own keybindings.
