@@ -1,3 +1,4 @@
 --smart-case
 
+--type-add=hcl:*.hcl
 --type-add=proto:*.proto
