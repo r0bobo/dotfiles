@@ -53,11 +53,10 @@
           solargraph
           starship
           tenv
+          terraform-ls
           tf-summarize
           tfautomv
           tflint
-          tfswitch
-          tgswitch
           tmuxPlugins.extrakto
           typescript
           vhs
