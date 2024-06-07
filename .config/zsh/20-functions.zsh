@@ -2,7 +2,7 @@
 
 zmodload zsh/stat
 
-dean::cached_output () {
+dean::cached_output() {
     NOW="$(date +%s)"
 
     srcfile="$1"
