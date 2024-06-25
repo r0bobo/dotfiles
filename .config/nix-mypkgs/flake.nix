@@ -10,12 +10,14 @@
         paths = with pkgs; [
           # python311Packages.black
           # python311Packages.python-lsp-black
-          ansible-language-server
           actionlint
+          ansible-language-server
+          argocd
           asciinema
           asciinema-agg
           bazelisk
           crane
+          cue
           devbox
           difftastic
           dive
@@ -59,6 +61,7 @@
           tflint
           tmuxPlugins.extrakto
           typescript
+          vendir
           vhs
           vscode-langservers-extracted
           yadm
