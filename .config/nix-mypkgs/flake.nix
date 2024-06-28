@@ -8,6 +8,7 @@
       in pkgs.buildEnv {
         name = "home-packages";
         paths = with pkgs; [
+          # gopls
           # python311Packages.black
           # python311Packages.python-lsp-black
           actionlint
@@ -16,8 +17,12 @@
           asciinema
           asciinema-agg
           bazelisk
+          bfg-repo-cleaner
+          buf
+          cosign
           crane
           cue
+          dbmate
           devbox
           difftastic
           dive
@@ -31,7 +36,6 @@
           gofumpt
           golangci-lint
           gomodifytags
-          gopls
           gotools
           grex
           helmfile
@@ -42,12 +46,16 @@
           kind
           krew
           kubernetes-helm
+          kustomize
           minikube
           mkcert
           nix-zsh-completions
           nodePackages.prettier
           nodePackages.stylelint
           nodePackages.typescript-language-server
+          protobuf
+          protoc-gen-go
+          protoc-gen-go-grpc
           python311Packages.python-lsp-ruff
           python311Packages.python-lsp-server
           rbw
