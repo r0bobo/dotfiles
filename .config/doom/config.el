@@ -106,11 +106,9 @@
   :mode (("Corefile\\'" . caddyfile-mode)
          ("\\.caddyfile\\'" . caddyfile-mode)))
 
-(use-package! company
+(use-package! corfu
   :config
-  (map! :map global-map
-        :i [remap indent-for-tab-command] #'company-indent-or-complete-common))
-
+  (setq corfu-preview-current t))
 
 (use-package! dired
   :config
@@ -119,6 +117,9 @@
         :desc "Edit filenames" "e" #'wdired-change-to-wdired-mode)
   (dired-async-mode 1))
 
+(use-package! grip-mode
+  :config
+  (setq grip-preview-use-webkit nil))
 
 (use-package! embark
   :config
