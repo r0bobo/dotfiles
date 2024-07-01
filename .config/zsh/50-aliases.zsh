@@ -1,7 +1,6 @@
 #!/usr/bin/env zsh
 
 alias k=kubectl
-alias tf=terraform
 alias tg=terragrunt
 
 alias ls="eza --git"
