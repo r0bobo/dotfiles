@@ -8,9 +8,6 @@
       in pkgs.buildEnv {
         name = "home-packages";
         paths = with pkgs; [
-          # gopls
-          # python311Packages.black
-          # python311Packages.python-lsp-black
           actionlint
           ansible-language-server
           argocd
@@ -36,6 +33,7 @@
           gofumpt
           golangci-lint
           gomodifytags
+          gopls
           gotools
           grex
           helmfile
@@ -56,8 +54,11 @@
           protobuf
           protoc-gen-go
           protoc-gen-go-grpc
-          python311Packages.python-lsp-ruff
-          python311Packages.python-lsp-server
+          python312Packages.black
+          python312Packages.grip
+          python312Packages.python-lsp-black
+          python312Packages.python-lsp-ruff
+          python312Packages.python-lsp-server
           rbw
           rustup
           solargraph
