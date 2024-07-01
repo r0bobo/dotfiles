@@ -267,11 +267,6 @@ the `projectile-default-project-name' function is used."
 (use-package! consult-gh
   :after consult)
 
-(use-package! casual
-  :config
-  (map! :map calc-mode-map
-        "C-o" 'casual-main-menu))
-
 (use-package! casual-dired
   :config
   (map! :map dired-mode-map
