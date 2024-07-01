@@ -21,11 +21,13 @@ gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
 gsettings set org.gnome.mutter dynamic-workspaces true
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 9
 for i in {1..9}; do
-    gsettings set "org.gnome.shell.keybindings" "switch-to-application-$i" "[]"
-    gsettings set "org.gnome.desktop.wm.keybindings" "switch-to-workspace-$i" "['<Super>${i}']"
-    gsettings set "org.gnome.desktop.wm.keybindings" "move-to-workspace-$i" "['<Super><Shift>${i}']"
-    gsettings set "org.gnome.shell.keybindings" "switch-to-application-$i" "[]"
+    gsettings set org.gnome.shell.keybindings "switch-to-application-$i" '[]'
+    gsettings set org.gnome.desktop.wm.keybindings "switch-to-workspace-$i" "['<Super>${i}']"
+    gsettings set org.gnome.desktop.wm.keybindings "move-to-workspace-$i" "['<Super><Shift>${i}']"
+    gsettings set org.gnome.shell.keybindings "switch-to-application-$i" '[]'
 done
+
+gsettings set org.gnome.settings-daemon.plugins.media-keys email '[]'
 
 # Keybinds
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
