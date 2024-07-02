@@ -23,7 +23,7 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*' list-colors ''
 
 # Use caching so that commands like apt and dpkg complete are useable
-zstyle ':completion:*' use-cache yes
+zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$ZSH_CACHEDIR/zcompcache"
 
 HISTFILE="$XDG_DATA_HOME/zsh/history"
