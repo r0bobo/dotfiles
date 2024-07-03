@@ -54,6 +54,5 @@
 (package! casual-dired)
 
 (package! cue-mode)
-;; Fix segfaults in newer versions
-(package! company :pin "b0a522ac5bf8ba3d2f4f22e3aa846a4f82978a16")
-(package! corfu :pin "35cd5a0f3cba89766072e3e933d1fe2ee02f2289")
+
+(package! casual-dired)
