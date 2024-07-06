@@ -54,5 +54,3 @@
 (package! casual-dired)
 
 (package! cue-mode)
-
-(package! casual-dired)
