@@ -51,6 +51,4 @@
 
 (package! flycheck-eldev)
 
-(package! casual-dired)
-
 (package! cue-mode)

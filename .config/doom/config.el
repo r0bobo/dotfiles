@@ -268,12 +268,6 @@ the `projectile-default-project-name' function is used."
   :after consult)
 
 
-(use-package! casual-dired
-  :config
-  (map! :map dired-mode-map
-        :localleader
-        "t" #'casual-dired-tmenu))
-
 ;;; CUSTOM
 ;;  ----------------------------------------------------------------------------
 (map!

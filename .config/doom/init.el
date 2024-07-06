@@ -73,7 +73,8 @@
        word-wrap           ; soft wrapping with language-aware indent
 
        :emacs
-       dired             ; making dired pretty [functional]
+       (dired +dirvish   ; making dired pretty [functional]
+              +icons)
        electric          ; smarter, keyword-based electric-indent
        ;;ibuffer         ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
@@ -131,8 +132,8 @@
        data                ; config/data formats
        ;;(dart +flutter)   ; paint ui and not much else
        ;;dhall
-       (elixir             ; erlang done right
-        +lsp +tree-sitter)
+       (elixir +lsp        ; erlang done right
+               +tree-sitter)
        ;;elm               ; care for a cup of TEA?
        emacs-lisp        ; drown in parentheses
        ;;erlang            ; an elegant language for a more civilized age
