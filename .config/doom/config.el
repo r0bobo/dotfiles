@@ -267,6 +267,11 @@ the `projectile-default-project-name' function is used."
 (use-package! consult-gh
   :after consult)
 
+(use-package! flymake
+  :config
+  (setq flymake-indicator-type 'fringes))
+
+
 
 ;;; CUSTOM
 ;;  ----------------------------------------------------------------------------
