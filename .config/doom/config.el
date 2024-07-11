@@ -76,6 +76,8 @@
     (seq-filter #'file-exists-p))
   "Project search path")
 
+(set-formatter! 'cuefmt '("cue" "fmt" "-") :modes '(cue-mode))
+
 ;;; PACKAGES
 ;;  ----------------------------------------------------------------------------
 (use-package! doom-modeline
