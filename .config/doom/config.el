@@ -21,7 +21,9 @@
        evil-kill-on-visual-paste nil
 
        ;; Disable titlebar and menus
-       default-frame-alist '((undecorated . t)))
+       default-frame-alist '((undecorated . t))
+
+       flymake-indicator-type 'fringes)
 
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -30,9 +32,22 @@
 (map!
  :leader
  :desc "Search in project" "/" #'+default/search-project
- :desc "Doom dashboard" "b h" #'+doom-dashboard/open
- :desc "Discover projects in search path" "p D" #'projectile-discover-projects-in-search-path
+ :desc "Doom dashboard" "b h" #'+doom-dashboard/open)
 
+(map!
+ :leader
+ :prefix "p"
+ :desc "Discover projects in search path" "D" #'projectile-discover-projects-in-search-path)
+
+(map!
+ :leader
+ :prefix "c"
+ :desc "Rotate text" "." #'rotate-text
+ :desc "Run make target" "m" #'+make/run
+ :desc "Run last make target" "M" #'+make/run-last)
+
+(map!
+ :leader
  :prefix "o"
  :desc "Kubedoc" "k" #'kubedoc
  :desc "Kubedoc for context" "K" #'kubedoc-for-context
@@ -266,13 +281,9 @@ the `projectile-default-project-name' function is used."
   :config
   (setq! which-key-idle-delay 0.5))
 
+
 (use-package! consult-gh
   :after consult)
-
-(use-package! flymake
-  :config
-  (setq flymake-indicator-type 'fringes))
-
 
 
 ;;; CUSTOM

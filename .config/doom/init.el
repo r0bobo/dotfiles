@@ -26,14 +26,14 @@
        (format +lsp +onsave)
        multiple-cursors
        parinfer
-       ;;rotate-text       ; cycle region at point between text candidates
+       rotate-text
        snippets
        word-wrap
 
        :emacs
        (dired +dirvish +icons)
        electric
-       ;; (ibuffer +iconfs)
+       (ibuffer +icons)
        undo
        vc
 
@@ -52,7 +52,7 @@
        lookup
        lsp
        magit
-       ;; make
+       make
        (pass +auth)
        pdf
        (terraform +lsp)
