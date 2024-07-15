@@ -1,3 +1,6 @@
+// All options:
+// https://searchfox.org/mozilla-central/source/modules/libpref/init/StaticPrefList.yaml
+
 // Force-enable webrender
 user_pref("gfx.webrender.all", true);
 
@@ -27,9 +30,14 @@ user_pref("privacy.webrtc.legacyGlobalIndicator", false);
 // Enable calculator
 user_pref("browser.urlbar.suggest.calculator", true);
 
-// Atuo-hude cookie banners
+// Auto-hude cookie banners
 // https://github.com/r0bobo/kubedoc.el/actions/actions/workflows/test.yaml/badge.svg
 // 1: rejects all cookies if possible, otherwise does nothing
 // 2: rejects all cookies if possible, otherwise does what you would probably do to quickly get rid of the cookie banner, which is to accept all of them
 user_pref("cookiebanners.service.mode", 1);
 user_pref("cookiebanners.service.mode.privateBrowsing", 1);
+
+// Disable tracking
+// https://michael.kjorling.se/blog/2024/disabling-privacy-preserving-ad-measurement-in-firefox-128/
+// https://blog.privacyguides.org/2024/07/14/mozilla-disappoints-us-yet-again-2/
+user_pref("dom.private-attribution.submission.enabled", false);
