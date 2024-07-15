@@ -23,7 +23,12 @@
        ;; Disable titlebar and menus
        default-frame-alist '((undecorated . t))
 
-       flymake-indicator-type 'fringes)
+       flymake-indicator-type 'fringes
+
+       delete-by-moving-to-trash t
+       magit-delete-by-moving-to-trash t)
+
+
 
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
