@@ -36,6 +36,7 @@
           gopls
           gotools
           grex
+          hclfmt
           helmfile
           hey
           istioctl
