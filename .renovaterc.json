@@ -41,10 +41,10 @@
   ],
   "packageRules": [
     {
-      "matchPackagePrefixes": [
-        "golang.org/x/tools"
-      ],
-      "groupName": "go-tools"
+      "groupName": "go-tools",
+      "matchPackageNames": [
+        "golang.org/x/tools{/,}**"
+      ]
     }
   ]
 }
