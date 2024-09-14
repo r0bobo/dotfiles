@@ -46,9 +46,6 @@
 
 (package! bazel)
 
-(package! consult-gh
-  :recipe (:host github :repo "armindarvish/consult-gh"))
-
 (package! flycheck-eldev)
 
 (package! cue-mode)

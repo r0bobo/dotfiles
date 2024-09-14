@@ -287,10 +287,6 @@ the `projectile-default-project-name' function is used."
   (setq! which-key-idle-delay 0.5))
 
 
-(use-package! consult-gh
-  :after consult)
-
-
 ;;; CUSTOM
 ;;  ----------------------------------------------------------------------------
 (map!
