@@ -11,6 +11,7 @@
        :ui
        doom
        doom-dashboard
+       indent-guides
        hl-todo
        modeline
        ophints
