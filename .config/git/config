@@ -82,3 +82,6 @@
 
 [includeIf "hasconfig:remote.*.url:git@github.com:formulatehq/*"]
 	path = config.relex
+
+[include]
+	path = config.local
