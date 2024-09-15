@@ -2,6 +2,9 @@
 
 zmodload -i zsh/complist # needed to get menuselect keymap
 
+bindkey '^[f' vi-forward-word
+bindkey '^[b' vi-backward-word
+
 bindkey -M menuselect '^j' expand-or-complete
 bindkey -M menuselect '^k' reverse-menu-complete
 
