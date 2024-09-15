@@ -32,3 +32,4 @@ alias wake-desktop="wol -v 30:9c:23:df:43:4f"
 
 alias bazelisk='noglob bazelisk'
 alias bazel='noglob bazelisk'
+alias bzl='noglob bazelisk'
