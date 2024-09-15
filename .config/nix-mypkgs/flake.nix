@@ -40,10 +40,12 @@
           helmfile
           hey
           istioctl
+          jd-diff-patch
           k9s
           kail
           kind
           krew
+          kubecolor
           kubernetes-helm
           kustomize
           minikube
@@ -52,6 +54,7 @@
           nodePackages.prettier
           nodePackages.stylelint
           nodePackages.typescript-language-server
+          plantuml
           protobuf
           protoc-gen-go
           protoc-gen-go-grpc
@@ -70,6 +73,7 @@
           tfautomv
           tflint
           tmuxPlugins.extrakto
+          trivy
           typescript
           vendir
           vhs
