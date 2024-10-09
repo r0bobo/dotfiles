@@ -8,12 +8,23 @@ displayed_items = "all"
 [aws.region_aliases]
 eu-central-1 = "fra"
 
+[buf]
+disabled = true
+
 [gcloud]
+disabled = true
+
+[git_status]
+disabled = true
+
+[golang]
 disabled = true
 
 [kubernetes]
 disabled = true
 
+[python]
+disabled = true
 
 [terraform]
 disabled = true
