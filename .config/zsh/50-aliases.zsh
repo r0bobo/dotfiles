@@ -3,7 +3,7 @@
 alias k=kubectl
 alias tg=terragrunt
 
-alias ls="eza --git"
+alias ls="eza --no-git"
 alias la="ls -la"
 alias ll="ls -l"
 
