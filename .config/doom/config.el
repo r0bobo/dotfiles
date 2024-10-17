@@ -59,6 +59,18 @@
  :desc "Undo tree" "u" #'undo-tree-visualize
  :desc "Font Size" "z" #'+hydra/text-zoom/body)
 
+(map!
+ :leader
+ :prefix "c"
+ (:prefix
+  ("b" . "Bazel")
+  :desc "Build current file" "b" #'bazel-compile-current-file
+  :desc "Build" "B" #'bazel-build
+  :desc "Go to BUILD file for pkg" "p" #'bazel-find-build-file
+  :desc "Go to consuming rule" "r" #'bazel-show-consuming-rule
+  :desc "Test at point" "t" #'bazel-test-at-point
+  :desc "Test" "T" #'bazel-test))
+
 (map! :map global-map
       :i "C-<tab>" #'dabbrev-completion
       :i "C-TAB" #'dabbrev-completion)
@@ -299,6 +311,15 @@ the `projectile-default-project-name' function is used."
 (use-package! which-key
   :config
   (setq! which-key-idle-delay 0.5))
+
+(use-package! bazel
+  :commands
+  (bazel-build
+   bazel-find-build-file
+   bazel-show-consuming-rule
+   bazel-test
+   bazel-test-at-point
+   bazel-compile-current-file))
 
 
 ;;; CUSTOM
