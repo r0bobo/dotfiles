@@ -16,6 +16,8 @@
           bazelisk
           bfg-repo-cleaner
           buf
+          buildifier
+          buildozer
           cosign
           crane
           cue
@@ -66,6 +68,7 @@
           rbw
           rustup
           solargraph
+          starpls-bin
           starship
           tenv
           terraform-ls

@@ -181,6 +181,20 @@
                                     ;; "-rpc.trace"
                                     "-remote=auto"))
 
+  (add-to-list 'lsp-language-id-configuration '(bazel-build-mode . "bazel"))
+  (add-to-list 'lsp-language-id-configuration '(bazel-mode . "bazel"))
+  (add-to-list 'lsp-language-id-configuration '(bazel-module-mode . "bazel"))
+  (add-to-list 'lsp-language-id-configuration '(bazel-starlark-mode . "bazel"))
+  (add-to-list 'lsp-language-id-configuration '(bazel-workspace-mode . "bazel"))
+  (add-to-list 'lsp-language-id-configuration '(bazelignore-mode . "bazel"))
+  (add-to-list 'lsp-language-id-configuration '(bazeliskrc-mode . "bazel"))
+  (add-to-list 'lsp-language-id-configuration '(bazelrc-mode . "bazel"))
+
+  (lsp-register-client (make-lsp-client
+                        :new-connection (lsp-stdio-connection "starpls")
+                        :activation-fn (lsp-activate-on "bazel")
+                        :server-id 'starpls))
+
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t)
