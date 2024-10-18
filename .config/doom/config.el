@@ -159,12 +159,6 @@
   :config
   (setq grip-preview-use-webkit nil))
 
-(use-package! embark
-  :config
-  (map!
-   :map embark-region-map
-   "s" #'sort-lines))
-
 
 (use-package! evil-snipe
   :config
