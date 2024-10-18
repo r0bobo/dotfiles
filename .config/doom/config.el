@@ -29,7 +29,6 @@
        magit-delete-by-moving-to-trash t)
 
 
-
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -58,18 +57,6 @@
  :desc "Kubedoc for context" "K" #'kubedoc-for-context
  :desc "Undo tree" "u" #'undo-tree-visualize
  :desc "Font Size" "z" #'+hydra/text-zoom/body)
-
-(map!
- :leader
- :prefix "c"
- (:prefix
-  ("b" . "Bazel")
-  :desc "Build current file" "b" #'bazel-compile-current-file
-  :desc "Build" "B" #'bazel-build
-  :desc "Go to BUILD file for pkg" "p" #'bazel-find-build-file
-  :desc "Go to consuming rule" "r" #'bazel-show-consuming-rule
-  :desc "Test at point" "t" #'bazel-test-at-point
-  :desc "Test" "T" #'bazel-test))
 
 (map! :map global-map
       :i "C-<tab>" #'dabbrev-completion
@@ -109,10 +96,6 @@
   "Project search path")
 
 (set-formatter! 'cuefmt '("cue" "fmt" "-") :modes '(cue-mode))
-(set-formatter! 'buildifier-build '("buildifier" "-type" "build") '(bazel-build-mode))
-(set-formatter! 'buildifier-bzl '("buildifier" "-type" "bzl") '(bazel-starlark-mode))
-(set-formatter! 'buildifier-module '("buildifier" "-type" "module") '(bazel-module-mode))
-(set-formatter! 'buildifier-workspace '("buildifier" "-type" "workspace") '(bazel-workspace-mode))
 
 ;;; PACKAGES
 ;;  ----------------------------------------------------------------------------
@@ -190,21 +173,6 @@
                                     ;; "-remote.logfile=/tmp/gopls-daemon.log"
                                     ;; "-rpc.trace"
                                     "-remote=auto"))
-
-  (add-to-list 'lsp-language-id-configuration '(bazel-build-mode . "bazel"))
-  (add-to-list 'lsp-language-id-configuration '(bazel-mode . "bazel"))
-  (add-to-list 'lsp-language-id-configuration '(bazel-module-mode . "bazel"))
-  (add-to-list 'lsp-language-id-configuration '(bazel-starlark-mode . "bazel"))
-  (add-to-list 'lsp-language-id-configuration '(bazel-workspace-mode . "bazel"))
-  (add-to-list 'lsp-language-id-configuration '(bazelignore-mode . "bazel"))
-  (add-to-list 'lsp-language-id-configuration '(bazeliskrc-mode . "bazel"))
-  (add-to-list 'lsp-language-id-configuration '(bazelrc-mode . "bazel"))
-
-  (lsp-register-client (make-lsp-client
-                        :new-connection (lsp-stdio-connection "starpls")
-                        :activation-fn (lsp-activate-on "bazel")
-                        :server-id 'starpls))
-
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t)
@@ -310,6 +278,7 @@ the `projectile-default-project-name' function is used."
   :config
   (setq! which-key-idle-delay 0.5))
 
+
 (use-package! bazel
   :commands
   (bazel-build
@@ -317,8 +286,53 @@ the `projectile-default-project-name' function is used."
    bazel-show-consuming-rule
    bazel-test
    bazel-test-at-point
-   bazel-compile-current-file))
+   bazel-compile-current-file)
 
+  :config
+  (map!
+   :leader
+   :prefix "c"
+   (:prefix
+    ("b" . "Bazel")
+    :desc "Build current file" "b" #'bazel-compile-current-file
+    :desc "Build" "B" #'bazel-build
+    :desc "Go to BUILD file for pkg" "p" #'bazel-find-build-file
+    :desc "Go to consuming rule" "r" #'bazel-show-consuming-rule
+    :desc "Test at point" "t" #'bazel-test-at-point
+    :desc "Test" "T" #'bazel-test))
+
+  (set-formatter! 'buildifier-build '("buildifier" "-type" "build") :modes '(bazel-build-mode))
+  (set-formatter! 'buildifier-bzl '("buildifier" "-type" "bzl") :modes '(bazel-starlark-mode))
+  (set-formatter! 'buildifier-module '("buildifier" "-type" "module") :modes '(bazel-module-mode))
+  (set-formatter! 'buildifier-workspace '("buildifier" "-type" "workspace") :modes '(bazel-workspace-mode))
+
+  (add-hook!
+   '(bazel-build-mode-hook
+     bazel-module-mode-hook
+     bazel-starlark-mode-hook
+     bazel-workspace-mode-hook)
+   #'lsp)
+
+  (after! lsp-mode
+    (add-to-list 'lsp-language-id-configuration '(bazel-build-mode . "bazel"))
+    (add-to-list 'lsp-language-id-configuration '(bazel-module-mode . "bazel"))
+    (add-to-list 'lsp-language-id-configuration '(bazel-starlark-mode . "bazel"))
+    (add-to-list 'lsp-language-id-configuration '(bazel-workspace-mode . "bazel"))
+    (lsp-register-client
+     (make-lsp-client
+      :new-connection (lsp-stdio-connection '("starpls" "server" "--experimental_infer_ctx_attributes"))
+      :activation-fn (lsp-activate-on "bazel")
+      :environment-fn (lambda ()
+                        ;; Skip calling the `tools/bazel' as
+                        ;; it might be slow and cause problems.
+                        '(("BAZELISK_SKIP_WRAPPER" . "1")))
+      :server-id 'starpls))
+
+    ;; Don't use the lsp-provided formatter.
+    ;; It doesn't seem to work.
+    ;; Does it advertise formatting capabilities without actually
+    ;; providing it?
+    (+format-with-lsp-mode -1)))
 
 ;;; CUSTOM
 ;;  ----------------------------------------------------------------------------
