@@ -109,6 +109,10 @@
   "Project search path")
 
 (set-formatter! 'cuefmt '("cue" "fmt" "-") :modes '(cue-mode))
+(set-formatter! 'buildifier-build '("buildifier" "-type" "build") '(bazel-build-mode))
+(set-formatter! 'buildifier-bzl '("buildifier" "-type" "bzl") '(bazel-starlark-mode))
+(set-formatter! 'buildifier-module '("buildifier" "-type" "module") '(bazel-module-mode))
+(set-formatter! 'buildifier-workspace '("buildifier" "-type" "workspace") '(bazel-workspace-mode))
 
 ;;; PACKAGES
 ;;  ----------------------------------------------------------------------------
