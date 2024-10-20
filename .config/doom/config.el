@@ -95,8 +95,6 @@
     (seq-filter #'file-exists-p))
   "Project search path")
 
-(set-formatter! 'cuefmt '("cue" "fmt" "-") :modes '(cue-mode))
-
 ;;; PACKAGES
 ;;  ----------------------------------------------------------------------------
 (use-package! doom-modeline
@@ -333,6 +331,18 @@ the `projectile-default-project-name' function is used."
     ;; Does it advertise formatting capabilities without actually
     ;; providing it?
     (+format-with-lsp-mode -1)))
+
+
+(use-package! cue-mode
+  :hook (cue-mode . lsp-mode)
+  :config
+  (after! lsp-mode
+    (add-to-list 'lsp-language-id-configuration '(cue-mode . "cue"))
+    (lsp-register-client
+     (make-lsp-client :new-connection (lsp-stdio-connection "cuepls")
+                      :major-modes '(cue-mode)
+                      :server-id 'cuepls))))
+
 
 ;;; CUSTOM
 ;;  ----------------------------------------------------------------------------
