@@ -286,6 +286,11 @@ the `projectile-default-project-name' function is used."
    bazel-test-at-point
    bazel-compile-current-file)
 
+  :hook ((bazel-build-mode
+          bazel-module-mode
+          bazel-starlark-mode
+          bazel-workspace-mode) . lsp-mode)
+
   :config
   (map!
    :leader
@@ -304,13 +309,6 @@ the `projectile-default-project-name' function is used."
   (set-formatter! 'buildifier-module '("buildifier" "-type" "module") :modes '(bazel-module-mode))
   (set-formatter! 'buildifier-workspace '("buildifier" "-type" "workspace") :modes '(bazel-workspace-mode))
 
-  (add-hook!
-   '(bazel-build-mode-hook
-     bazel-module-mode-hook
-     bazel-starlark-mode-hook
-     bazel-workspace-mode-hook)
-   #'lsp)
-
   (after! lsp-mode
     (add-to-list 'lsp-language-id-configuration '(bazel-build-mode . "bazel"))
     (add-to-list 'lsp-language-id-configuration '(bazel-module-mode . "bazel"))
@@ -325,7 +323,6 @@ the `projectile-default-project-name' function is used."
                         ;; it might be slow and cause problems.
                         '(("BAZELISK_SKIP_WRAPPER" . "1")))
       :server-id 'starpls))
-
     ;; Don't use the lsp-provided formatter.
     ;; It doesn't seem to work.
     ;; Does it advertise formatting capabilities without actually
