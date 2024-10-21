@@ -71,6 +71,7 @@
   :trigger "__kustomization.yaml"
   :mode 'yaml-mode)
 
+(add-hook 'help-mode-hook 'visual-line-mode)
 
 ;;; Local variables
 (setq enable-local-variables t)
