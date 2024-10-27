@@ -15,3 +15,8 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 bindkey "^P" up-line-or-beginning-search # Up
 bindkey "^N" down-line-or-beginning-search # Down
+
+# Mask annoying escape codes
+# https://codeberg.org/dnkl/foot/issues/628#issuecomment-240679
+bindkey "\e[27;2;13~" accept-line  # shift+return
+bindkey "\e[27;5;13~" accept-line  # ctrl+return
