@@ -5,6 +5,7 @@ autoload -U +X bashcompinit && bashcompinit
 
 # Zsh completion
 dean::zshcomp doom make completions --zsh
+dean::zshcomp tailscale completion zsh
 
 # Bash completion
 dean::bashcomp aws aws_completer
