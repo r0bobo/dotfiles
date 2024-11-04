@@ -159,27 +159,30 @@
 
 (use-package! lsp-mode
   :config
-  (setq! lsp-use-plists "true"
-         lsp-go-hover-kind "FullDocumentation"
-         lsp-elixir-server-command '("elixir-ls")
-         lsp-disabled-clients '(tfls)
+  (setq! lsp-disabled-clients '(tfls)
+         lsp-enable-links t
+         lsp-file-watch-threshold 2500
          lsp-semantic-tokens-enable nil
          lsp-semantic-tokens-honor-refresh-requests nil
-         lsp-enable-links t
-         lsp-terraform-ls-prefill-required-fields t
+         lsp-use-plists "true"
+         lsp-elixir-server-command '("elixir-ls")
+         lsp-go-analyses '((fillreturns . t)
+                           (nilness . t)
+                           (unusedparams . t)
+                           (unusedvariable . t)
+                           (unusedwrite . t)
+                           (useany . t))
          lsp-go-gopls-server-args '("-logfile=/tmp/gopls-client.log"
                                     "-remote.debug=localhost:0"
                                     ;; "-remote.logfile=/tmp/gopls-daemon.log"
                                     ;; "-rpc.trace"
-                                    "-remote=auto"))
+                                    "-remote=auto")
+         lsp-go-hover-kind "FullDocumentation"
+         lsp-go-use-placeholders nil
+         lsp-terraform-ls-prefill-required-fields t)
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
-     ("gopls.staticcheck" t t)
-     ("gopls.analyses.nilness" t t)
-     ("gopls.analyses.useany" t t)
-     ("gopls.analyses.unusedparams" t t)
-     ("gopls.analyses.unusedvariable" t t)
-     ("gopls.analyses.unusedwrite" t t)))
+     ("gopls.staticcheck" t t)))
   (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\vendor\\'")
 
   ;; LSP Booster
