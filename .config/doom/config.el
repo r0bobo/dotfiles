@@ -239,25 +239,8 @@
 
 (use-package! projectile
   :config
-  (defun todevski--projectile-project-name-function (project-root)
-    "If project is in a `todevski-project-path' directory
-the project name is the relative path from the matching project directory.
-If project is not in `todevski-project-path'
-the `projectile-default-project-name' function is used."
-    (let ((in-project-path-p (lambda (path) (string-prefix-p path project-root))))
-      (if (seq-some in-project-path-p todevski-project-path)
-          (thread-last
-            todevski-project-path
-            (seq-filter in-project-path-p)
-            seq-first
-            ((lambda (elt) (string-remove-prefix elt project-root)))
-            (string-remove-prefix "/")
-            (string-remove-suffix "/"))
-        (projectile-default-project-name project-root))))
-
   (setq! projectile-enable-caching nil
-         projectile-project-search-path (seq-map (lambda (elt) `(,elt . 2)) todevski-project-path)
-         projectile-project-name-function #'todevski--projectile-project-name-function))
+         projectile-project-search-path (seq-map (lambda (elt) `(,elt . 2)) todevski-project-path)))
 
 
 (use-package! systemd
