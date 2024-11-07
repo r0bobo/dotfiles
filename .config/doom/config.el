@@ -303,7 +303,11 @@
     (add-to-list 'lsp-language-id-configuration '(bazel-workspace-mode . "bazel"))
     (lsp-register-client
      (make-lsp-client
-      :new-connection (lsp-stdio-connection '("starpls" "server" "--experimental_infer_ctx_attributes"))
+      :new-connection (lsp-stdio-connection
+                       (lambda ()
+                         (list "starpls" "server"
+                               "--experimental_infer_ctx_attributes"
+                               (concat "--bazel_path=" (executable-find "bazelisk")))))
       :activation-fn (lsp-activate-on "bazel")
       :environment-fn (lambda ()
                         ;; Skip calling the `tools/bazel' as
