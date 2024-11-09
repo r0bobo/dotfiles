@@ -273,10 +273,11 @@
    bazel-test-at-point
    bazel-compile-current-file)
 
-  :hook ((bazel-build-mode
-          bazel-module-mode
-          bazel-starlark-mode
-          bazel-workspace-mode) . lsp-mode)
+  :hook
+  ((bazel-build-mode
+    bazel-module-mode
+    bazel-starlark-mode
+    bazel-workspace-mode) . lsp-mode)
 
   :config
   (map!
@@ -291,10 +292,7 @@
     :desc "Test at point" "t" #'bazel-test-at-point
     :desc "Test" "T" #'bazel-test))
 
-  (set-formatter! 'buildifier-build '("buildifier" "-type" "build") :modes '(bazel-build-mode))
-  (set-formatter! 'buildifier-bzl '("buildifier" "-type" "bzl") :modes '(bazel-starlark-mode))
-  (set-formatter! 'buildifier-module '("buildifier" "-type" "module") :modes '(bazel-module-mode))
-  (set-formatter! 'buildifier-workspace '("buildifier" "-type" "workspace") :modes '(bazel-workspace-mode))
+  (setq bazel-buildifier-before-save t)
 
   (after! lsp-mode
     (add-to-list 'lsp-language-id-configuration '(bazel-build-mode . "bazel"))
@@ -313,12 +311,7 @@
                         ;; Skip calling the `tools/bazel' as
                         ;; it might be slow and cause problems.
                         '(("BAZELISK_SKIP_WRAPPER" . "1")))
-      :server-id 'starpls))
-    ;; Don't use the lsp-provided formatter.
-    ;; It doesn't seem to work.
-    ;; Does it advertise formatting capabilities without actually
-    ;; providing it?
-    (+format-with-lsp-mode -1)))
+      :server-id 'starpls))))
 
 
 (use-package! cue-mode
