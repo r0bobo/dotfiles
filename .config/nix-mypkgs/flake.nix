@@ -13,6 +13,7 @@
           argocd
           asciinema
           asciinema-agg
+          bazel-watcher
           bazelisk
           bfg-repo-cleaner
           buf
@@ -44,7 +45,6 @@
           istioctl
           jd-diff-patch
           k9s
-          kail
           kind
           krew
           kubecolor
@@ -70,6 +70,7 @@
           solargraph
           starpls-bin
           starship
+          stern
           tenv
           terraform-ls
           tf-summarize
