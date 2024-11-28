@@ -24,7 +24,6 @@ packages=(
 	tmux
 	vim
 	xclip
-	yadm
 	z
 	zsh
 	zsh-autosuggestions
@@ -48,8 +47,6 @@ fi
 sudo dnf install -y \
 	"https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$FEDORA_VERSION.noarch.rpm" \
 	"https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$FEDORA_VERSION.noarch.rpm"
-
-sudo dnf config-manager --add-repo "https://download.opensuse.org/repositories/home:TheLocehiliosan:yadm/Fedora_$FEDORA_VERSION/home:TheLocehiliosan:yadm.repo"
 
 sudo dnf install -y "${packages[@]}"
 
