@@ -1,0 +1,16 @@
+{
+    "$schema": "https://lnav.org/schemas/config-v1.schema.json",
+    "log": {
+        "demux": {
+            "container": {
+                "enabled": true
+            },
+            "container-with-type": {
+                "enabled": true
+            }
+        }
+    },
+    "ui": {
+        "theme": "dracula"
+    }
+}
