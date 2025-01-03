@@ -50,6 +50,7 @@
           kubecolor
           kubernetes-helm
           kustomize
+          lnav
           minikube
           mkcert
           nix-zsh-completions
