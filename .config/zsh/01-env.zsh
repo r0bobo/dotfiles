@@ -20,9 +20,8 @@ export KUBE_EDITOR=vim
 export PAGER=less
 lessflags=(
 	--ignore-case
-	--quit-if-one-screen
 	--chop-long-lines
-	--RAW-CONTROL-CHARS  # show colors
+	--RAW-CONTROL-CHARS # show colors
 	--no-init
 	--tabs=4
 )
