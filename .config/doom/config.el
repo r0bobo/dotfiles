@@ -35,10 +35,15 @@
 
 ;; Add diff option to `save-some-buffers'
 ;; https://protesilaos.com/codelog/2024-12-11-emacs-diff-save-some-buffers/
-(add-to-list 'save-some-buffers-action-alist
-             (list "d"
-                   (lambda (buffer) (diff-buffer-with-file (buffer-file-name buffer)))
-                   "show diff between the buffer and its file"))
+(add-to-list
+ 'save-some-buffers-action-alist
+ (list "d"
+       (lambda (buffer) (diff-buffer-with-file (buffer-file-name buffer)))
+       "show diff between the buffer and its file"))
+
+(add-to-list
+ 'auto-mode-alist
+ '("CODEOWNERS\\'" . gitignore-mode))
 
 (map!
  :leader
