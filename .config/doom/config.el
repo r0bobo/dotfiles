@@ -108,6 +108,15 @@
     (seq-filter #'file-exists-p))
   "Project search path")
 
+;; Don't use lsp-formatting for Bazel files.
+;; It's not working for some reason.
+(defun todevski/+format-with-lsp-toggle-h (orig-fun &rest args)
+  ""
+  (unless (derived-mode-p 'bazel-mode)
+    (apply orig-fun args)))
+
+(advice-add '+format-with-lsp-toggle-h :around #'todevski/+format-with-lsp-toggle-h)
+
 ;;; PACKAGES
 ;;  ----------------------------------------------------------------------------
 (use-package! doom-modeline
@@ -275,15 +284,15 @@
   :config
   (setq! which-key-idle-delay 0.5))
 
-
 (use-package! bazel
   :commands
   (bazel-build
+   bazel-compile-current-file
    bazel-find-build-file
+   bazel-run
    bazel-show-consuming-rule
    bazel-test
-   bazel-test-at-point
-   bazel-compile-current-file)
+   bazel-test-at-point)
 
   :hook
   ((bazel-build-mode
@@ -300,11 +309,15 @@
     :desc "Build current file" "b" #'bazel-compile-current-file
     :desc "Build" "B" #'bazel-build
     :desc "Go to BUILD file for pkg" "p" #'bazel-find-build-file
-    :desc "Go to consuming rule" "r" #'bazel-show-consuming-rule
+    :desc "Run" "r" #'bazel-run
+    :desc "Go to consuming rule" "R" #'bazel-show-consuming-rule
     :desc "Test at point" "t" #'bazel-test-at-point
     :desc "Test" "T" #'bazel-test))
 
-  (setq bazel-buildifier-before-save t)
+  (set-formatter! 'buildifier-build '("buildifier" "-type" "build") :modes '(bazel-build-mode))
+  (set-formatter! 'buildifier-bzl '("buildifier" "-type" "bzl") :modes '(bazel-starlark-mode))
+  (set-formatter! 'buildifier-module '("buildifier" "-type" "module") :modes '(bazel-module-mode))
+  (set-formatter! 'buildifier-workspace '("buildifier" "-type" "workspace") :modes '(bazel-workspace-mode))
 
   (after! lsp-mode
     (add-to-list 'lsp-language-id-configuration '(bazel-build-mode . "bazel"))
