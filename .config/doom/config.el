@@ -264,7 +264,9 @@
 (use-package! projectile
   :config
   (setq! projectile-enable-caching nil
-         projectile-project-search-path (seq-map (lambda (elt) `(,elt . 2)) todevski-project-path)))
+         projectile-project-search-path (seq-map (lambda (elt) `(,elt . 2)) todevski-project-path))
+  (run-with-idle-timer 300 1 #'projectile-discover-projects-in-search-path)
+  (run-with-idle-timer 300 1 #'projectile-cleanup-known-projects))
 
 
 (use-package! systemd
