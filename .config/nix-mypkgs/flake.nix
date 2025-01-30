@@ -78,6 +78,7 @@
           tfautomv
           tflint
           tmuxPlugins.extrakto
+          tmuxPlugins.tmux-thumbs
           trivy
           typescript
           vendir
