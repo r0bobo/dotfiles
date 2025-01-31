@@ -4,6 +4,8 @@
 ;; https://discourse.doomemacs.org/t/using-lsp-use-plists-with-rust-analyzer-stops-updating-diagnostics-on-save/2832
 (setenv "LSP_USE_PLISTS" "1")
 
+(setq evil-respect-visual-line-mode t)
+
 (doom! :completion
        (corfu +dabbrev +icons +orderless)
        (vertico +icons)
