@@ -244,7 +244,8 @@
          '(("~/src" . 2)
            ("~/projects" . 2)))
   (unbind-key "z" magit-mode-map)
-  (transient-append-suffix 'magit-commit '(1 3 -1) '("b" "git-absorb" magit-commit-absorb)))
+  (transient-append-suffix 'magit-commit '(1 3 -1) '("b" "git-absorb" magit-commit-absorb))
+  (magit-wip-mode))
 
 
 (use-package! org
