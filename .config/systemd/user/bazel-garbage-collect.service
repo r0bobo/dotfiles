@@ -1,0 +1,7 @@
+[Unit]
+Description=Remove dangling Bazel workspaces
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/bazel-garbage-collect
+IOSchedulingClass=idle

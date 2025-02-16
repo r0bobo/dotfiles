@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+for dir in "$HOME/.cache/bazel/_bazel_dean/"*; do
+    [[ -r "$dir/README" ]] || continue
+
+    src="$(awk '/WORKSPACE:/ { print $2 }' "$dir/README")"
+
+    if [[ -d "$src" ]]; then
+        echo -e "\033[0;33mSKIP: existing directory $src\033[0m" >&2
+        continue
+    fi
+
+    echo -e "\033[0;31mDELETE for: $src\033[0m" >&2
+    chmod +w -R "$dir"
+    rm -rf "$dir"
+done
