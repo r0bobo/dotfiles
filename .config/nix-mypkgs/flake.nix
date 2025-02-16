@@ -13,6 +13,7 @@
           argocd
           asciinema
           asciinema-agg
+          atuin
           bazel-watcher
           bazelisk
           bfg-repo-cleaner
@@ -61,12 +62,13 @@
           protobuf
           protoc-gen-go
           protoc-gen-go-grpc
-          python312Packages.black
-          python312Packages.grip
-          python312Packages.python-lsp-black
-          python312Packages.python-lsp-ruff
-          python312Packages.python-lsp-server
+          python313Packages.black
+          python313Packages.grip
+          python313Packages.python-lsp-black
+          python313Packages.python-lsp-ruff
+          python313Packages.python-lsp-server
           rbw
+          ruff
           rustup
           solargraph
           starpls-bin

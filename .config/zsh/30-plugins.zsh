@@ -5,6 +5,7 @@ dean::plugin /usr/share/zsh/site-functions/fzf
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh --print-full-init)"
+eval "$(atuin init zsh)"
 
 dean::plugin /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
