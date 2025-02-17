@@ -2,7 +2,12 @@
 
 set -euo pipefail
 
-for dir in "$HOME/.cache/bazel/_bazel_dean/"*; do
+BAZEL_CACHE_DIR="$HOME/.cache/bazel/_bazel_$USER"
+
+[[ -d "$BAZEL_CACHE_DIR" ]] || exit
+
+
+for dir in "$BAZEL_CACHE_DIR/"*; do
     [[ -r "$dir/README" ]] || continue
 
     src="$(awk '/WORKSPACE:/ { print $2 }' "$dir/README")"
