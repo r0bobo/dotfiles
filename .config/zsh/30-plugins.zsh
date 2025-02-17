@@ -5,7 +5,7 @@ dean::plugin /usr/share/zsh/site-functions/fzf
 
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh --print-full-init)"
-eval "$(atuin init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
 
 dean::plugin /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
