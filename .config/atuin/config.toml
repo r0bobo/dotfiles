@@ -1,0 +1,83 @@
+workspaces = true
+style = "compact"
+show_help = false
+show_tabs = false
+enter_accept = false
+
+## prevent commands matching any of these regexes from being written to history.
+## Note that these regular expressions are unanchored, i.e. if they don't start
+## with ^ or end with $, they'll match anywhere in the command.
+## For details on the supported regular expression syntax, see
+## https://docs.rs/regex/latest/regex/#syntax
+# history_filter = [
+#   "^secret-cmd",
+#   "^innocuous-cmd .*--secret=.+",
+# ]
+
+## prevent commands run with cwd matching any of these regexes from being written
+## to history. Note that these regular expressions are unanchored, i.e. if they don't
+## start with ^ or end with $, they'll match anywhere in CWD.
+## For details on the supported regular expression syntax, see
+## https://docs.rs/regex/latest/regex/#syntax
+# cwd_filter = [
+#   "^/very/secret/area",
+# ]
+
+
+## Defaults to true. This matches history against a set of default regex, and will not save it if we get a match. Defaults include
+## 1. AWS key id
+## 2. Github pat (old and new)
+## 3. Slack oauth tokens (bot, user)
+## 4. Slack webhooks
+## 5. Stripe live/test keys
+# secrets_filter = true
+
+[stats]
+## Set commands where we should consider the subcommand for statistics. Eg, kubectl get vs just kubectl
+common_subcommands = [
+  "apt",
+  "bazel",
+  "bazelisk",
+  "bzl",
+  "cargo",
+  "composer",
+  "dnf",
+  "docker",
+  "git",
+  "go",
+  "ip",
+  "k",
+  "kubectl",
+  "nix",
+  "nmcli",
+  "npm",
+  "pecl",
+  "pnpm",
+  "podman",
+  "port",
+  "systemctl",
+  "tmux",
+  "yarn",
+]
+
+## Set commands that should be totally stripped and ignored from stats
+common_prefix = ["sudo"]
+
+## Set commands that will be completely ignored from stats
+# ignored_commands = [
+#   "cd",
+#   "ls",
+#   "vi"
+# ]
+
+[search]
+## The list of enabled filter modes, in order of priority.
+## The "workspace" mode is skipped when not in a workspace or workspaces = false.
+## Default filter mode can be overridden with the filter_mode setting.
+filters = [
+  "global",
+  "workspace",
+  "session",
+  "directory"
+  # "host",
+]
