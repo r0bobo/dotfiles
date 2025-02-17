@@ -49,3 +49,5 @@
 (package! flycheck-eldev)
 
 (package! cue-mode)
+
+(package! fish-mode)
