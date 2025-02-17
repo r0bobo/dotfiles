@@ -83,6 +83,12 @@
 ** Change upstream branch
 ~b u~ in Magit buffer
 
+** Rebase stacked branches
+~r s~ in Magit buffer
+
+** Find historic versions of file
+~magit-find-file~
+
 * Tips
 
 ** How to search Github
