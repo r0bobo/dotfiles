@@ -51,3 +51,5 @@
 (package! cue-mode)
 
 (package! fish-mode)
+
+(package! git-link)
