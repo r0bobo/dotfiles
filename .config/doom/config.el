@@ -70,6 +70,11 @@
  :desc "Undo tree" "u" #'undo-tree-visualize
  :desc "Font Size" "z" #'+hydra/text-zoom/body)
 
+(map!
+ :leader
+ :prefix "g o"
+ :desc "Browse file or region" "o" #'git-link-dispatch)
+
 (map! :map global-map
       :i "C-<tab>" #'dabbrev-completion
       :i "C-TAB" #'dabbrev-completion)
