@@ -53,3 +53,8 @@
 (package! fish-mode)
 
 (package! git-link)
+
+;; Workaround
+;; https://github.com/doomemacs/doomemacs/issues/8287
+(package! eldoc :built-in t)
+(package! track-changes :built-in t)
