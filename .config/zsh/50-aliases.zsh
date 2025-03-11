@@ -1,7 +1,9 @@
 #!/usr/bin/env zsh
 
-alias k=kubectl
-alias tg=terragrunt
+# alias k=kubectl
+alias kubectl=kubecolor
+alias k=kubecolor
+compdef kubecolor=kubectl
 
 alias ls="eza --no-git"
 alias la="ls -la"
@@ -20,7 +22,6 @@ alias zshreload='exec zsh'
 
 alias cin='xclip -in -selection clipboard'
 alias cout='xclip -out -selection clipboard'
-
 
 alias nixup='nix flake update --flake ~/.config/nix-mypkgs nixpkgs && nix profile upgrade nix-mypkgs'
 
