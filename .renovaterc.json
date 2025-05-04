@@ -31,8 +31,8 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "^.config\\/yadm\\/bootstrap.d\\/.+\\.sh$"
+      "managerFilePatterns": [
+        "/^.config\\/yadm\\/bootstrap.d\\/.+\\.sh$/"
       ],
       "matchStrings": [
         "(?<datasource>npm|go)install\\s+(?<depName>.+)@(?<currentValue>.+)\\s*"
