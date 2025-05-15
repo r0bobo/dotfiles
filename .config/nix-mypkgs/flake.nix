@@ -51,7 +51,6 @@
           kubecolor
           kubernetes-helm
           kustomize
-          lnav
           minikube
           mkcert
           nix-zsh-completions
@@ -68,6 +67,7 @@
           python313Packages.python-lsp-ruff
           python313Packages.python-lsp-server
           rbw
+          resticprofile
           ruff
           rustup
           solargraph
@@ -83,7 +83,6 @@
           tmuxPlugins.tmux-thumbs
           trivy
           typescript
-          vendir
           vhs
           vscode-langservers-extracted
           yadm
