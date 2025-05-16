@@ -46,6 +46,11 @@
  '("CODEOWNERS\\'" . gitignore-mode))
 
 (map!
+ :n "C-=" #'doom/reset-font-size
+ :n "C-+" #'text-scale-increase
+ :n "C--" #'text-scale-decrease)
+
+(map!
  :leader
  :desc "Search in project" "/" #'+default/search-project
  :desc "Doom dashboard" "b h" #'+doom-dashboard/open)
