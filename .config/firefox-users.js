@@ -41,3 +41,5 @@ user_pref("cookiebanners.service.mode.privateBrowsing", 1);
 // https://michael.kjorling.se/blog/2024/disabling-privacy-preserving-ad-measurement-in-firefox-128/
 // https://blog.privacyguides.org/2024/07/14/mozilla-disappoints-us-yet-again-2/
 user_pref("dom.private-attribution.submission.enabled", false);
+
+user_pref("dom.ipc.forkserver.enable", true);
