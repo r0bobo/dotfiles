@@ -70,6 +70,7 @@
           resticprofile
           ruff
           rustup
+          shfmt
           solargraph
           starpls-bin
           starship
