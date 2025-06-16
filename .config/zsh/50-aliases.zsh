@@ -27,7 +27,8 @@ alias nixup='nix flake update --flake ~/.config/nix-mypkgs nixpkgs && nix profil
 
 alias ssh-until='ssh -o ConnectTimeout=10 -o ConnectionAttempts=360 -v'
 
-alias zsh-benchmark="hyperfine -L userconfig true,false 'ZSH_NO_USER_CONFIG={userconfig} zsh -i -c exit'"
+# https://news.ycombinator.com/item?id=44203451
+alias zsh-benchmark="hyperfine -L userconfig true,false 'ZSH_NO_USER_CONFIG={userconfig} zsh -i -c logout'"
 
 alias wake-desktop="wol -v 30:9c:23:df:43:4f"
 
