@@ -365,6 +365,10 @@
                       :server-id 'cuepls))))
 
 
+(use-package! sh-script
+  :config
+  (set-formatter! 'shfmt '("shfmt" "-filename" filepath "--apply-ignore" "-")))
+
 ;;; CUSTOM
 ;;  ----------------------------------------------------------------------------
 (map!
