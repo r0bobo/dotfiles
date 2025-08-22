@@ -354,6 +354,16 @@
   :config
   (set-formatter! 'shfmt '("shfmt" "-filename" filepath "--apply-ignore" "-")))
 
+(use-package! ledger-mode
+  :custom
+  ((ledger-binary-path "hledger")
+   (ledger-mode-should-check-version nil)
+   (ledger-report-auto-width nil)
+   (ledger-report-links-in-register nil)
+   (ledger-report-native-highlighting-arguments '("--color=always")))
+  :mode ("\\.hledger\\'" "\\.ledger\\'" "\\.journal\\'"))
+
+
 ;;; CUSTOM
 ;;  ----------------------------------------------------------------------------
 (map!
