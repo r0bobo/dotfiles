@@ -230,7 +230,7 @@
             (message "Using emacs-lsp-booster for %s!" orig-result)
             (append '("emacs-lsp-booster" "--disable-bytecode" "--") orig-result))
         orig-result)))
-  (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
+  (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command))
 
 
 (use-package! magit
