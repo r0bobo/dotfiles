@@ -43,6 +43,7 @@
           hclfmt
           helmfile
           hey
+          hledger
           istioctl
           jd-diff-patch
           k9s
@@ -86,6 +87,7 @@
           typescript
           vhs
           vscode-langservers-extracted
+          watchexec
           yadm
           yaml-language-server
           yq-go
