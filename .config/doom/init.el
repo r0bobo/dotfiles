@@ -71,8 +71,10 @@
        (elixir +lsp +tree-sitter)
        emacs-lisp
        (go +lsp +tree-sitter)
+       (haskell +tree-sitter)
        (json +lsp +tree-sitter)
        (javascript +lsp)
+       ledger
        lua
        (markdown +grip)
        (nix +tree-sitter)
