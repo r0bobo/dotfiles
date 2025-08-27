@@ -376,3 +376,7 @@
   :size 0.4
   :select t
   :quit 'current)
+
+(let ((local-config (file-name-concat doom-user-dir "config.local.el")))
+ (when (file-exists-p local-config)
+  (load-file local-config)))
