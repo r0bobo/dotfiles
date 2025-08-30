@@ -18,8 +18,7 @@
 (package! rego-mode)
 
 ;; Disable evil-escape since I never use it anyway
-(package! evil-escape
-  :disable t)
+(package! evil-escape :disable t)
 
 (package! systemd)
 
@@ -54,7 +53,6 @@
 
 (package! git-link)
 
-;; Workaround
-;; https://github.com/doomemacs/doomemacs/issues/8287
-(package! eldoc :built-in t)
-(package! track-changes :built-in t)
+(package! eat)
+
+(package! font-lock-studio)

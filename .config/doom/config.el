@@ -381,5 +381,5 @@
   :quit 'current)
 
 (let ((local-config (file-name-concat doom-user-dir "config.local.el")))
- (when (file-exists-p local-config)
-  (load-file local-config)))
+  (when (file-exists-p local-config)
+    (load-file local-config)))
