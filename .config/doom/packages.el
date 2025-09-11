@@ -56,3 +56,5 @@
 (package! eat)
 
 (package! font-lock-studio)
+
+(package! just-mode)
