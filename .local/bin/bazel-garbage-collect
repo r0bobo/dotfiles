@@ -6,18 +6,43 @@ BAZEL_CACHE_DIR="$HOME/.cache/bazel/_bazel_$USER"
 
 [[ -d "$BAZEL_CACHE_DIR" ]] || exit
 
+ws_src() {
+	awk '/WORKSPACE:/ { print $2 }' "$1/README"
+}
 
-for dir in "$BAZEL_CACHE_DIR/"*; do
-    [[ -r "$dir/README" ]] || continue
+is_orphaned() {
+	[[ ! -d "$(ws_src "$1")" ]]
+}
 
-    src="$(awk '/WORKSPACE:/ { print $2 }' "$dir/README")"
+is_stale() {
+	ws=$1
+	if [[ -f "$ws/lock" ]]; then
+		age_threshold="$(date +%s -d '60 days ago')"
+		mtime="$(date +%s -r "$ws/lock")"
+		if [[ "$mtime" < "$age_threshold" ]]; then
+			return 0
+		fi
+		return 1
+	fi
+	return 0
+}
 
-    if [[ -d "$src" ]]; then
-        echo -e "\033[0;33mSKIP: existing directory $src\033[0m" >&2
-        continue
-    fi
+delete() {
+	src=$1
+	echo "$src"
+}
 
-    echo -e "\033[0;31mDELETE for: $src\033[0m" >&2
-    chmod +w -R "$dir"
-    rm -rf "$dir"
+for ws in "$BAZEL_CACHE_DIR/"*; do
+	[[ -r "$ws/README" ]] || continue
+
+	src="$(ws_src "$ws")"
+
+	if is_orphaned "$ws" || is_stale "$ws"; then
+		echo -e "\033[0;31mDELETE: $ws => $src\033[0m" >&2
+		chmod +w -R "$ws"
+		rm -rf "$ws"
+		continue
+	fi
+
+	echo -e "\033[0;33mSKIP: $ws => $src\033[0m" >&2
 done
