@@ -18,6 +18,7 @@
        modeline
        ophints
        (popup +defaults)
+       smooth-scroll
        (vc-gutter +pretty)
        vi-tilde-fringe
        workspaces
@@ -49,7 +50,7 @@
        :tools
        ansible
        direnv
-       docker
+       (docker +tree-sitter)
        editorconfig
        (eval +overlay)
        lookup
@@ -71,13 +72,13 @@
        (elixir +lsp +tree-sitter)
        emacs-lisp
        (go +lsp +tree-sitter)
-       (haskell +tree-sitter)
+       (haskell +lsp +tree-sitter)
        (graphql +lsp)
        (json +lsp +tree-sitter)
-       (javascript +lsp)
+       (javascript +lsp +tree-sitter)
        ledger
        lua
-       (markdown +grip)
+       (markdown +grip +tree-sitter)
        (nix +tree-sitter)
        (org +present)
        plantuml
@@ -87,7 +88,7 @@
        (rust +lsp +tree-sitter)
        (sh +tree-sitter)
        (web +tree-sitter)
-       (yaml +lsp)
+       (yaml +lsp +tree-sitter)
 
        :config
        (default +bindings +smartparens))
