@@ -72,6 +72,7 @@
        emacs-lisp
        (go +lsp +tree-sitter)
        (haskell +tree-sitter)
+       (graphql +lsp)
        (json +lsp +tree-sitter)
        (javascript +lsp)
        ledger

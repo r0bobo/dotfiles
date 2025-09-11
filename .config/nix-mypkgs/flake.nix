@@ -17,6 +17,7 @@
           bazel-watcher
           bazelisk
           bfg-repo-cleaner
+          btdu
           buf
           buildifier
           buildozer
@@ -25,6 +26,7 @@
           cue
           dbmate
           devbox
+          diffoci
           difftastic
           dive
           dyff
@@ -39,6 +41,7 @@
           gomodifytags
           gopls
           gotools
+          graphql-language-service-cli
           grex
           hclfmt
           helmfile
@@ -83,7 +86,6 @@
           tflint
           tmuxPlugins.extrakto
           tmuxPlugins.tmux-thumbs
-          trivy
           typescript
           vhs
           vscode-langservers-extracted
