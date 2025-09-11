@@ -14,6 +14,7 @@
           asciinema
           asciinema-agg
           atuin
+          bash-language-server
           bazel-watcher
           bazelisk
           bfg-repo-cleaner
@@ -33,6 +34,7 @@
           elixir_ls
           emacs-lsp-booster
           exercism
+          ghc
           go
           go-2fa
           godef
@@ -43,6 +45,7 @@
           gotools
           graphql-language-service-cli
           grex
+          haskell-language-server
           hclfmt
           helmfile
           hey
