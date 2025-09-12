@@ -41,6 +41,9 @@
        undo
        vc
 
+       :email
+       (mu4e +mbsync +org)
+
        :term
        vterm
 
