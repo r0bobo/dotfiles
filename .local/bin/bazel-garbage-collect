@@ -27,11 +27,6 @@ is_stale() {
 	return 0
 }
 
-delete() {
-	src=$1
-	echo "$src"
-}
-
 for ws in "$BAZEL_CACHE_DIR/"*; do
 	[[ -r "$ws/README" ]] || continue
 
