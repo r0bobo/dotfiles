@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 help() {
-    cat <<EOF
+	cat <<EOF
 emd COMMAND
 
 Emacs daemon manager
@@ -14,26 +14,26 @@ EOF
 }
 
 logs() {
-    journalctl --user-unit=emacs.service --pager-end
+	journalctl --user-unit=emacs.service --pager-end
 }
 
 status() {
-    systemctl --user --no-pager status emacs.service
+	systemctl --user --no-pager status emacs.service
 }
 
 restart() {
-    systemctl --user daemon-reload
-    systemctl --user restart emacs.service
+	systemctl --user daemon-reload
+	systemctl --user restart emacs.service
 }
 
 case "$1" in
-    logs|status|restart)
-        "$1"
-        ;;
-    "")
-        status
-        ;;
-    *)
-        help
-        ;;
+logs | status | restart)
+	"$1"
+	;;
+"")
+	status
+	;;
+*)
+	help
+	;;
 esac

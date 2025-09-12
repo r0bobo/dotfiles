@@ -1,15 +1,15 @@
 #!/bin/bash
 set -euo pipefail
 
-IFS=: read -r -a dirs <<< "$PROJECTPATH"
+IFS=: read -r -a dirs <<<"$PROJECTPATH"
 
 path="$(
-	fd "${dirs[@]/#/--search-path=}" --max-depth=3 --hidden --no-ignore-vcs --glob '**/.git' 2>/dev/null \
-	| xargs -l dirname \
-	| sort \
-	| uniq \
-	| fzf --header=Projects --height=30 --prompt='PROJ> '
-	)"
+	fd "${dirs[@]/#/--search-path=}" --max-depth=3 --hidden --no-ignore-vcs --glob '**/.git' 2>/dev/null |
+		xargs -l dirname |
+		sort -u |
+		uniq |
+		fzf --header=Projects --height=30 --prompt='PROJ> '
+)"
 
 for dir in "${dirs[@]}"; do
 	[[ $path == $dir* ]] && name="${path#"$dir/"}"

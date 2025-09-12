@@ -3,29 +3,30 @@
 set -euo pipefail
 
 colorize() {
-    local h1 h2 bold reset
-    h1="$(tput setaf 5)"
-    h2="$(tput setaf 2)"
-    bold="$(tput bold)"
-    reset="$(tput sgr0)"
+	local h1 h2 bold reset
+	h1="$(tput setaf 5)"
+	h2="$(tput setaf 2)"
+	bold="$(tput bold)"
+	reset="$(tput sgr0)"
 
-    echo -ne "$(cat \
-        | sed -r \
-        -e "s/^([A-Z]+)/$bold$h1&$reset/g" \
-        -e "s/(^\s{3})(\w+)(\s.*)/\1$bold$h2\2$reset\3/g" \
-    )"
+	echo -ne "$(
+		cat |
+			sed -r \
+				-e "s/^([A-Z]+)/$bold$h1&$reset/g" \
+				-e "s/(^\s{3})(\w+)(\s.*)/\1$bold$h2\2$reset\3/g"
+	)"
 }
 
 join_path() {
-    local temp
-    temp=$(printf ".%s" "$@")
-    echo "${temp:1}"
+	local temp
+	temp=$(printf ".%s" "$@")
+	echo "${temp:1}"
 }
 
 if [[ "$#" = 0 ]]; then
-    path="$(kubectl api-resources --no-headers -o name --cached | fzf)"
+	path="$(kubectl api-resources --no-headers -o name --cached | fzf)"
 else
-    path="$(join_path $@)"
+	path="$(join_path $@)"
 fi
 
 kubectl explain "$path" | colorize | less

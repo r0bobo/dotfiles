@@ -35,7 +35,6 @@ setopt extendedglob notify
 setopt autocd
 unsetopt beep
 
-
 DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
 
@@ -47,4 +46,4 @@ bindkey -e # emacs key bindings
 
 WORDCHARS="$WORDCHARS:s:/:" # Each element in path is treated as a word
 WORDCHARS="$WORDCHARS:s:=:" # Split word on =
-WORDCHARS="$WORDCHARS|" # Pipe is treated as word
+WORDCHARS="$WORDCHARS|"     # Pipe is treated as word

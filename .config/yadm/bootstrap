@@ -2,37 +2,36 @@
 set -euo pipefail
 
 error() {
-    echo -e "\e[31mError:\e[0m $*" >&2
-    exit 1
+	echo -e "\e[31mError:\e[0m $*" >&2
+	exit 1
 }
 
 YADM_CLASS="$(yadm config local.class)"
 
 if [[ "${XDG_CURRENT_DESKTOP:-}" != '' ]]; then
-    YADM_GRAPHICAL=true
+	YADM_GRAPHICAL=true
 else
-    YADM_GRAPHICAL=false
+	YADM_GRAPHICAL=false
 fi
 
 if [[ "$YADM_CLASS" = "" ]]; then
-    error yadm class undefined
+	error yadm class undefined
 fi
 
 export YADM_CLASS YADM_GRAPHICAL
-
 
 # Directory to look for bootstrap executables in
 export BOOTSTRAP_DIR="$HOME/.config/yadm/bootstrap.d"
 
 if [[ ! -d "$BOOTSTRAP_DIR" ]]; then
-    error "bootstrap directory '$BOOTSTRAP_DIR' not found"
+	error "bootstrap directory '$BOOTSTRAP_DIR' not found"
 fi
 
 find "$BOOTSTRAP_DIR" -type f | sort | while IFS= read -r bootstrap; do
-    if [[ -x "$bootstrap" && ! "$bootstrap" =~ "##" && ! "$bootstrap" =~ "~$" ]]; then
-        echo -e "\e[1m[ \e[36mbootstrap\e[39m ] $bootstrap\e[0m" >&2
-        if ! "$bootstrap"; then
-            error "bootstrap '$bootstrap' failed"
-        fi
-    fi
+	if [[ -x "$bootstrap" && ! "$bootstrap" =~ "##" && ! "$bootstrap" =~ "~$" ]]; then
+		echo -e "\e[1m[ \e[36mbootstrap\e[39m ] $bootstrap\e[0m" >&2
+		if ! "$bootstrap"; then
+			error "bootstrap '$bootstrap' failed"
+		fi
+	fi
 done

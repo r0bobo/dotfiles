@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Setup gpg
 ln -sf /usr/share/doc/gnupg2/examples/systemd-user/*.{service,socket} \
-   "$HOME/.config/systemd/user/"
+	"$HOME/.config/systemd/user/"
 
 systemctl --user daemon-reload
 
@@ -20,7 +20,6 @@ systemctl --user enable --now gpg-agent.socket
 # I don't use these
 systemctl --user disable --now dirmngr.socket
 systemctl --user disable --now gpg-agent-ssh.socket
-
 
 [[ "$YADM_GRAPHICAL" != true ]] && exit 0
 sudo systemctl stop packagekit.service
