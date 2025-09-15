@@ -198,7 +198,6 @@
          lsp-file-watch-threshold 2500
          lsp-semantic-tokens-enable nil
          lsp-semantic-tokens-honor-refresh-requests nil
-         lsp-use-plists "true"
          lsp-elixir-server-command '("elixir-ls")
          lsp-go-analyses '((fillreturns . t)
                            (nilness . t)
