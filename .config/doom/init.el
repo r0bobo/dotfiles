@@ -38,6 +38,7 @@
        (dired +dirvish +icons)
        electric
        (ibuffer +icons)
+       tramp
        undo
        vc
 
