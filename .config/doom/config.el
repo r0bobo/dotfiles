@@ -80,9 +80,6 @@
  :prefix "g o"
  :desc "Browse file or region" "o" #'git-link-dispatch)
 
-;; https://github.com/doomemacs/doomemacs/issues/8460#issuecomment-3194641112
-(map! :leader :desc "Save buffer" "f s" #'save-buffer)
-
 (map! :map global-map
       :i "C-<tab>" #'dabbrev-completion
       :i "C-TAB" #'dabbrev-completion)
