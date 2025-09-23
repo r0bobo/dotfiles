@@ -36,6 +36,8 @@
 #  completion:init:bazel:* cache-lifetime
 #    Lifetime for the completion cache (if turned on, default: 1 week)
 
+export BAZELISK_SKIP_WRAPPER=1
+
 local curcontext="$curcontext" state line
 
 : ${BAZEL_COMPLETION_PACKAGE_PATH:=%workspace%}
