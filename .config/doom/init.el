@@ -28,6 +28,7 @@
        parinfer
        rotate-text
        snippets
+       (whitespace +guess +trim)
        word-wrap
 
        :emacs
