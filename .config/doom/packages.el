@@ -13,6 +13,9 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;;(unpin! t)
 
+;; Prefer donwloading tars instead of cloning repos with git.
+(setq straight-vc-use-snapshot-installation t)
+
 (package! jsonnet-mode)
 
 (package! rego-mode)
