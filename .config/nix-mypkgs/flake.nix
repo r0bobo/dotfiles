@@ -9,7 +9,6 @@
         name = "home-packages";
         paths = with pkgs; [
           actionlint
-          ansible-language-server
           argocd
           asciinema
           asciinema-agg
@@ -70,6 +69,7 @@
           protoc-gen-go-grpc
           python313Packages.black
           python313Packages.grip
+          python313Packages.mypy
           python313Packages.python-lsp-black
           python313Packages.python-lsp-ruff
           python313Packages.python-lsp-server
