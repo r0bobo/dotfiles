@@ -127,6 +127,10 @@
 
 (advice-add '+format-with-lsp-toggle-h :around #'todevski/+format-with-lsp-toggle-h)
 
+;; Fix yaml
+(setq! yaml-indent-offset 2)
+(add-hook! (yaml-mode yaml-ts-mode) (doom/set-indent-width 2))
+
 ;;; PACKAGES
 ;;  ----------------------------------------------------------------------------
 (use-package! doom-modeline
