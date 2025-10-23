@@ -36,6 +36,7 @@
           ghc
           go
           go-2fa
+          go-jsonnet
           godef
           gofumpt
           golangci-lint
@@ -51,6 +52,8 @@
           hledger
           istioctl
           jd-diff-patch
+          jsonnet-language-server
+          jujutsu
           k9s
           kind
           krew
@@ -91,6 +94,7 @@
           tmuxPlugins.tmux-thumbs
           typescript
           vhs
+          viddy
           vscode-langservers-extracted
           watchexec
           yadm
