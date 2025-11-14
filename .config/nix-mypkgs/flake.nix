@@ -21,16 +21,17 @@
           buf
           buildifier
           buildozer
-          cosign
           crane
           cue
           dbmate
+          delta
           devbox
           diffoci
           difftastic
+          difftastic
           dive
           dyff
-          elixir_ls
+          elixir-ls
           emacs-lsp-booster
           exercism
           ghc
@@ -47,7 +48,6 @@
           grex
           haskell-language-server
           hclfmt
-          helmfile
           hey
           hledger
           istioctl
@@ -60,6 +60,7 @@
           kubecolor
           kubernetes-helm
           kustomize
+          mergiraf
           minikube
           mkcert
           nix-zsh-completions
@@ -82,7 +83,7 @@
           rustup
           shfmt
           solargraph
-          starpls-bin
+          starpls
           starship
           stern
           tenv
@@ -97,6 +98,7 @@
           viddy
           vscode-langservers-extracted
           watchexec
+          watchman
           yadm
           yaml-language-server
           yq-go

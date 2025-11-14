@@ -80,6 +80,13 @@
  :prefix "g o"
  :desc "Browse file or region" "o" #'git-link-dispatch)
 
+(map!
+ :leader
+ :prefix "j"
+ :desc "Jujutsu log" "j"  #'majutsu
+ :desc "List conflicts" "c" #'jj-list-conflicts)
+
+
 (map! :map global-map
       :i "C-<tab>" #'dabbrev-completion
       :i "C-TAB" #'dabbrev-completion)
@@ -365,6 +372,53 @@
    (ledger-report-links-in-register nil)
    (ledger-report-native-highlighting-arguments '("--color=always")))
   :mode ("\\.hledger\\'" "\\.ledger\\'" "\\.journal\\'"))
+
+
+(use-package! mu4e
+  :config
+  (map! :map mu4e-headers-mode-map
+        :localleader
+        :desc "Mark thread as trashed" "d"
+        #'(lambda ()
+            (interactive)
+            (mu4e-headers-mark-thread nil '(trash)))))
+
+(use-package! jj-mode
+  :config
+  (map!
+   :map jj-mode-map
+   :desc "Refresh log" "g z"))
+
+(use-package! majutsu
+  :config
+  (evil-define-key* 'normal majutsu-mode-map
+    "e" #'majutsu-edit-changeset-at-point
+    "n" #'majutsu-new-transient
+    "u" #'majutsu-undo
+    "l" #'majutsu-log-transient
+    "R" #'majutsu-redo
+    "y" #'majutsu-duplicate
+    "Y" #'majutsu-duplicate-transient
+    "N" #'majutsu-new
+    "r" #'majutsu-rebase-transient
+    "s" #'majutsu-squash-transient
+    "a" #'majutsu-abandon
+    "d" #'majutsu-describe
+    "b" #'majutsu-bookmark-transient
+    "g" #'majutsu-git-transient
+    "z" #'majutsu-log-refresh
+    "D" #'majutsu-diff-transient
+    "?" #'majutsu-mode-transient
+    (kbd "RET") #'majutsu-enter-dwim))
+
+
+(defun jj-list-conflicts ()
+  (interactive)
+  (let* ((lines (process-lines "jj" "resolve" "--list"))
+         (collection (seq-map #'(lambda (s) (car (string-split s))) lines)))
+    (find-file
+     (completing-read "files: " collection))))
+
 
 
 ;;; CUSTOM

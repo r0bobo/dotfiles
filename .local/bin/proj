@@ -4,7 +4,7 @@ set -euo pipefail
 IFS=: read -r -a dirs <<<"$PROJECTPATH"
 
 path="$(
-	fd "${dirs[@]/#/--search-path=}" --max-depth=3 --hidden --no-ignore-vcs --glob '**/.git' 2>/dev/null |
+	fd "${dirs[@]/#/--search-path=}" --max-depth=3 --hidden --no-ignore-vcs --glob '**/.{git,jj}' 2>/dev/null |
 		xargs -l dirname |
 		sort -u |
 		uniq |
