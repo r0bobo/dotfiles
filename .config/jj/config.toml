@@ -21,12 +21,13 @@ backend = "watchman"
 watchman.register-snapshot-trigger = true
 
 [templates]
-git_push_bookmark = '"dean/push-" ++ change_id.short()'
+git_push_bookmark = '"dean/" ++ change_id.short()'
 
 [template-aliases]
+'commit_timestamp(commit)' = 'commit.author().timestamp()'
+'format_short_id(id)' = 'id.shortest()'
+'format_short_signature(signature)' = 'signature.email().local()'
 'format_timestamp(timestamp)' = 'timestamp.ago()'
-# 'format_short_signature(signature)' = 'signature.email().local()'
-# 'format_short_id(id)' = 'id.shortest()'
 
 # [fix.tools.golangci-lint-fmt]
 # command = ["$root/tools/golangci-lint", "fmt"]
@@ -43,3 +44,7 @@ program = 'sh'
 merge-args = ['-c',
   'emacsclient -t -c --eval "(ediff-merge-files-with-ancestor \"$0\" \"$1\" \"$2\" nil \"$3\")"',
   '$left', '$right', '$base', '$output']
+
+[aliases]
+logwatch = ['util', 'exec', '--',
+  'viddy', '--no-title', 'jj', 'log', '--no-pager', '--color=always', '--ignore-working-copy']
