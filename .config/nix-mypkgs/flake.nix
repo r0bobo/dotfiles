@@ -78,7 +78,6 @@
           python313Packages.python-lsp-ruff
           python313Packages.python-lsp-server
           rbw
-          resticprofile
           ruff
           rustup
           shfmt
@@ -86,6 +85,8 @@
           starpls
           starship
           stern
+          svtplay-dl
+          taplo
           tenv
           terraform-ls
           tf-summarize
