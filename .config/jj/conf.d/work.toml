@@ -1,0 +1,6 @@
+#:schema https://jj-vcs.github.io/jj/latest/config-schema.json
+
+--when.repositories = ["~/relex"]
+
+[user]
+email = "dean.todevski@relexsolutions.com"

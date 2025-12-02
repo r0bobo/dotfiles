@@ -2,11 +2,11 @@
 
 [user]
 name = "Dean Lindqvist Todevski"
-email = "dean.todevski@relexsolutions.com"
+email = "dean.todevski@gmail.com"
 
 [ui]
 default-command = "log"
-diff-formatter = "difft"
+diff-formatter = "delta"
 conflict-marker-style = "git"
 
 [revset-aliases]
@@ -24,27 +24,34 @@ watchman.register-snapshot-trigger = true
 git_push_bookmark = '"dean/" ++ change_id.short()'
 
 [template-aliases]
-'commit_timestamp(commit)' = 'commit.author().timestamp()'
 'format_short_id(id)' = 'id.shortest()'
 'format_short_signature(signature)' = 'signature.email().local()'
 'format_timestamp(timestamp)' = 'timestamp.ago()'
 
-# [fix.tools.golangci-lint-fmt]
-# command = ["$root/tools/golangci-lint", "fmt"]
-# patterns = ["glob:'**/*.go'"]
-
 [merge-tool.delta]
-diff-args=["--side-by-side", "$left", "$right", "--width=$width"]
-
-[merge-tool.difft]
-diff-args = ["--color=always", "$left", "$right"]
+diff-args = ["--side-by-side", "$left", "$right", "--width=$width"]
+diff-expected-exit-codes = [0, 1]
 
 [merge-tools.ediff]
 program = 'sh'
-merge-args = ['-c',
+merge-args = [
+  '-c',
   'emacsclient -t -c --eval "(ediff-merge-files-with-ancestor \"$0\" \"$1\" \"$2\" nil \"$3\")"',
-  '$left', '$right', '$base', '$output']
+  '$left',
+  '$right',
+  '$base',
+  '$output',
+]
 
 [aliases]
-logwatch = ['util', 'exec', '--',
-  'viddy', '--no-title', 'jj', 'log', '--no-pager', '--color=always', '--ignore-working-copy']
+logwatch = [
+  "util",
+  "exec",
+  "--",
+  "viddy",
+  "--no-title",
+  "jj",
+  "log",
+  "--color=always",
+  "--ignore-working-copy",
+]
