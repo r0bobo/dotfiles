@@ -146,6 +146,9 @@
 (add-hook! (yaml-mode yaml-ts-mode) (doom/set-indent-width 2))
 (add-hook! (go-mode go-ts-mode) (setq go-ts-mode-indent-offset 4))
 
+(dir-locals-set-class-variables
+ 'no-vc-mode-directory
+ '((nil . ((vc-handled-backends . nil)))))
 ;;; PACKAGES
 ;;  ----------------------------------------------------------------------------
 (use-package! doom-modeline
