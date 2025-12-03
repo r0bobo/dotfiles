@@ -49,9 +49,14 @@ logwatch = [
   "exec",
   "--",
   "viddy",
+  "--disable_auto_save",
   "--no-title",
+  "--skip-empty-diffs",
+  "--unfold",
   "jj",
   "log",
   "--color=always",
   "--ignore-working-copy",
+  "--template=builtin_log_oneline"
 ]
+sqk = ['squash', '--keep-emptied']
