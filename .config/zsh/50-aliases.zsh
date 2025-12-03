@@ -23,8 +23,6 @@ alias zshreload='exec zsh'
 alias cin='xclip -in -selection clipboard'
 alias cout='xclip -out -selection clipboard'
 
-alias nixup='nix flake update --flake ~/.config/nix-mypkgs nixpkgs && nix profile upgrade nix-mypkgs'
-
 alias ssh-until='ssh -o ConnectTimeout=10 -o ConnectionAttempts=360 -v'
 
 # https://news.ycombinator.com/item?id=44203451

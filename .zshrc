@@ -1,14 +1,14 @@
 # Disable zsh features when using "dumb" terminal to avoid issues with Emacs Tramp
 if [[ "$TERM" == "dumb" ]]; then
-    unsetopt zle
-    PS1='$ '
-    return
+	unsetopt zle
+	PS1='$ '
+	return
 fi
 
 source <(sed -E 's/^([^#\s].+)$/export \1/g' "$HOME/.config/environment.d/40-user.conf")
 
 for file in $XDG_CONFIG_HOME/zsh/*.zsh; do
-    source "$file"
+	source "$file"
 done
 
 

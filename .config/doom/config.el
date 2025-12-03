@@ -149,6 +149,7 @@
 (dir-locals-set-class-variables
  'no-vc-mode-directory
  '((nil . ((vc-handled-backends . nil)))))
+
 ;;; PACKAGES
 ;;  ----------------------------------------------------------------------------
 (use-package! doom-modeline
