@@ -80,6 +80,13 @@
  :prefix "g o"
  :desc "Browse file or region" "o" #'git-link-dispatch)
 
+(defun jj-list-conflicts ()
+  (interactive)
+  (let* ((lines (process-lines "jj" "resolve" "--list"))
+         (collection (seq-map #'(lambda (s) (car (string-split s))) lines)))
+    (find-file
+     (completing-read "files: " collection))))
+
 (map!
  :leader
  :prefix "j"
@@ -137,6 +144,7 @@
 ;; Fix yaml
 (setq! yaml-indent-offset 2)
 (add-hook! (yaml-mode yaml-ts-mode) (doom/set-indent-width 2))
+(add-hook! (go-mode go-ts-mode) (setq go-ts-mode-indent-offset 4))
 
 ;;; PACKAGES
 ;;  ----------------------------------------------------------------------------
@@ -309,6 +317,10 @@
     bazel-workspace-mode) . lsp-mode)
 
   :config
+  (defun bazel-gazelle ()
+    (interactive)
+    (bazel-run "//:gazelle"))
+
   (map!
    :leader
    :prefix "c"
@@ -320,7 +332,8 @@
     :desc "Run" "r" #'bazel-run
     :desc "Go to consuming rule" "R" #'bazel-show-consuming-rule
     :desc "Test at point" "t" #'bazel-test-at-point
-    :desc "Test" "T" #'bazel-test))
+    :desc "Test" "T" #'bazel-test
+    :desc "Gazelle" "g" #'bazel-gazelle))
 
   (set-formatter! 'buildifier-build '("buildifier" "-type" "build") :modes '(bazel-build-mode))
   (set-formatter! 'buildifier-bzl '("buildifier" "-type" "bzl") :modes '(bazel-starlark-mode))
@@ -376,6 +389,7 @@
 
 (use-package! mu4e
   :config
+  (setq mu4e-headers-include-related nil)
   (map! :map mu4e-headers-mode-map
         :localleader
         :desc "Mark thread as trashed" "d"
@@ -383,11 +397,7 @@
             (interactive)
             (mu4e-headers-mark-thread nil '(trash)))))
 
-(use-package! jj-mode
-  :config
-  (map!
-   :map jj-mode-map
-   :desc "Refresh log" "g z"))
+(use-package! vc-jj)
 
 (use-package! majutsu
   :config
@@ -410,15 +420,6 @@
     "D" #'majutsu-diff-transient
     "?" #'majutsu-mode-transient
     (kbd "RET") #'majutsu-enter-dwim))
-
-
-(defun jj-list-conflicts ()
-  (interactive)
-  (let* ((lines (process-lines "jj" "resolve" "--list"))
-         (collection (seq-map #'(lambda (s) (car (string-split s))) lines)))
-    (find-file
-     (completing-read "files: " collection))))
-
 
 
 ;;; CUSTOM
