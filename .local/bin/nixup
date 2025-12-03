@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+FLAKE="$HOME/.config/nix-mypkgs"
+LOCK="$FLAKE/flake.lock"
+
+before="$(stat -c %Y "$LOCK")"
+nix flake update --flake "$FLAKE" nixpkgs
+nix profile upgrade nix-mypkgs
+
+[[ "$(stat -c %Y "$LOCK")" = "$before" ]] && exit 0
+
+yadm commit \
+	--message='nix: update lock' \
+	--quiet \
+	"$LOCK"
