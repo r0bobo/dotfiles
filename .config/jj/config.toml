@@ -8,6 +8,7 @@ email = "dean.todevski@gmail.com"
 default-command = "log"
 diff-formatter = "delta"
 conflict-marker-style = "git"
+log-word-wrap = true
 
 [revset-aliases]
 work = 'present(@) | ancestors(immutable_heads().., 1) | present(trunk())'
@@ -25,7 +26,8 @@ git_push_bookmark = '"dean/" ++ change_id.short()'
 
 [template-aliases]
 'format_short_id(id)' = 'id.shortest()'
-'format_short_signature(signature)' = 'signature.email().local()'
+'format_short_signature(signature)' = 'if(!mine, signature.email().local())'
+'format_short_signature_oneline(signature)' = 'if(!mine, signature.email().local())'
 'format_timestamp(timestamp)' = 'timestamp.ago()'
 
 [merge-tool.delta]
@@ -52,7 +54,6 @@ logwatch = [
   "--disable_auto_save",
   "--no-title",
   "--skip-empty-diffs",
-  "--unfold",
   "jj",
   "log",
   "--color=always",
