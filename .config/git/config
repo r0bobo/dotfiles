@@ -60,28 +60,18 @@
 [init]
 	defaultBranch = main
 
-[credential]
-	helper = cache --timeout=86400
+
 [alias]
 	pruned-branches = !git branch --merged | grep -v '\\*\\|+'
 	pruned-branches-delete = !git branch --merged | grep -v '\\*\\|+' | xargs -r git branch -d
 	# rebase-onto main feature-a feature-b-off-a
 	rebase-onto = "!git rebase --onto \"$1\" $(git merge-base \"$3\" \"$2\") \"$3\" #"
 
-[url "ssh://git@git.todevski.com/"]
-	insteadof = https://git.todevski.com/r0bobo
-[url "ssh://git@github.com/formulatehq/"]
-	insteadOf = https://github.com/formulatehq/
+[credential]
+	helper = cache --timeout=86400
+
 [url "ssh://git@github.com/r0bobo"]
 	insteadof = https://github.com/r0bobo
-
-[includeIf "hasconfig:remote.*.url:ssh://git@git.todevski.com/*/**"]
-	path = config.todevski
-[includeIf "hasconfig:remote.*.url:git@git.todevski.com:*/**"]
-	path = config.todevski
-
-[includeIf "hasconfig:remote.*.url:git@github.com:formulatehq/*"]
-	path = config.relex
 
 [include]
 	path = config.local

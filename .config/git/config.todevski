@@ -1,4 +1,0 @@
-# -*- gitconfig -*-
-
-[core]
-	hooksPath = .githooks
