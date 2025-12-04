@@ -7,9 +7,8 @@ fi
 
 source <(sed -E 's/^([^#\s].+)$/export \1/g' "$HOME/.config/environment.d/40-user.conf")
 
-for file in $XDG_CONFIG_HOME/zsh/*.zsh; do
+for file in "$XDG_CONFIG_HOME"/zsh/*.zsh; do
 	source "$file"
 done
-
 
 if [ -e /home/dean/.nix-profile/etc/profile.d/nix.sh ]; then . /home/dean/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
