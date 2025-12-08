@@ -5,4 +5,3 @@
 
 [core]
 	excludesFile = ignore.relex
-	sshCommand = "ssh -i ~/.ssh/relex"
