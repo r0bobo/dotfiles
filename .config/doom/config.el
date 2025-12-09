@@ -26,7 +26,10 @@
        flymake-indicator-type 'fringes
 
        delete-by-moving-to-trash t
-       magit-delete-by-moving-to-trash t)
+       magit-delete-by-moving-to-trash t
+
+       ;; Fix clipped bottom row in which-key
+       which-key-allow-imprecise-window-fit nil)
 
 
 (menu-bar-mode -1)
@@ -87,11 +90,18 @@
     (find-file
      (completing-read "files: " collection))))
 
+(defun jj-find-file-in-change ()
+  (interactive)
+  (let* ((lines (process-lines "jj" "diff" "--name-only")))
+    (find-file
+     (completing-read "files: " lines))))
+
 (map!
  :leader
  :prefix "j"
  :desc "Jujutsu log" "j"  #'majutsu
- :desc "List conflicts" "c" #'jj-list-conflicts)
+ :desc "List conflicts" "c" #'jj-list-conflicts
+ :desc "Open file in change" "f" #'jj-find-file-in-change)
 
 
 (map! :map global-map
@@ -113,7 +123,9 @@
 (setq enable-local-variables t)
 (let ((vars
        ;; Safe dir-local variables
-       '((+format-on-save-enabled-modes quote (not ruby-mode))))
+       '((lsp-go-use-gofumpt . t)
+         (vc-handled-backends . nil)
+         (+format-on-save-enabled-modes quote (not ruby-mode typescript-mode))))
 
       (forms
        ;; Safe dir-local forms
@@ -145,10 +157,6 @@
 (setq! yaml-indent-offset 2)
 (add-hook! (yaml-mode yaml-ts-mode) (doom/set-indent-width 2))
 (add-hook! (go-mode go-ts-mode) (setq go-ts-mode-indent-offset 4))
-
-(dir-locals-set-class-variables
- 'no-vc-mode-directory
- '((nil . ((vc-handled-backends . nil)))))
 
 ;;; PACKAGES
 ;;  ----------------------------------------------------------------------------
@@ -309,6 +317,7 @@
   (bazel-build
    bazel-compile-current-file
    bazel-find-build-file
+   bazel-gazelle
    bazel-run
    bazel-show-consuming-rule
    bazel-test
