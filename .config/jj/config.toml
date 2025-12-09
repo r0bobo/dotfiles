@@ -30,8 +30,8 @@ git_push_bookmark = '"dean/" ++ change_id.short()'
 'format_short_signature_oneline(signature)' = 'if(!mine, signature.email().local())'
 'format_timestamp(timestamp)' = 'timestamp.ago()'
 
-[merge-tool.delta]
-diff-args = ["--side-by-side", "$left", "$right", "--width=$width"]
+[merge-tools.delta]
+diff-args = ["--file-transformation", "s#^(left|right)/##g", "$left", "$right", "--width=$width"]
 diff-expected-exit-codes = [0, 1]
 
 [merge-tools.ediff]
