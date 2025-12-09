@@ -60,4 +60,5 @@ logwatch = [
   "--ignore-working-copy",
   "--template=builtin_log_oneline"
 ]
-sqk = ['squash', '--keep-emptied']
+sq = ["squash"]
+sqk = ["squash", "--keep-emptied"]
