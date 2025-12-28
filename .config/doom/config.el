@@ -99,7 +99,6 @@
 (map!
  :leader
  :prefix "j"
- :desc "Jujutsu log" "j"  #'majutsu
  :desc "List conflicts" "c" #'jj-list-conflicts
  :desc "Open file in change" "f" #'jj-find-file-in-change)
 
@@ -363,7 +362,7 @@
       :new-connection (lsp-stdio-connection
                        (lambda ()
                          (list "starpls" "server"
-                               "--experimental_enable_label_completions"
+                               "--experimental_goto_definition_skip_re_exports"
                                "--experimental_infer_ctx_attributes"
                                "--experimental_use_code_flow_analysis"
                                (concat "--bazel_path=" (executable-find "bazelisk")))))
