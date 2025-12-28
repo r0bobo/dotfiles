@@ -8,7 +8,6 @@ email = "dean.todevski@gmail.com"
 default-command = "log"
 diff-formatter = "delta"
 conflict-marker-style = "git"
-log-word-wrap = true
 
 [revset-aliases]
 work = 'present(@) | ancestors(immutable_heads().., 1) | present(trunk())'
@@ -17,17 +16,15 @@ work-only = 'present(@) | ancestors(immutable_heads().., 1)'
 # Useful for rebasing it on everything that is wip.
 in-progress = 'heads(~@:: & ancestors(immutable_heads().., 1))'
 
-[fsmonitor]
-backend = "watchman"
-watchman.register-snapshot-trigger = true
+# [fsmonitor]
+# backend = "watchman"
+# watchman.register-snapshot-trigger = true
 
 [templates]
 git_push_bookmark = '"dean/" ++ change_id.short()'
 
 [template-aliases]
 'format_short_id(id)' = 'id.shortest()'
-'format_short_signature(signature)' = 'if(!mine, signature.email().local())'
-'format_short_signature_oneline(signature)' = 'if(!mine, signature.email().local())'
 'format_timestamp(timestamp)' = 'timestamp.ago()'
 
 [merge-tools.delta]
@@ -56,9 +53,10 @@ logwatch = [
   "--skip-empty-diffs",
   "jj",
   "log",
+  "--config ui.log-word-wrap=true",
   "--color=always",
   "--ignore-working-copy",
-  "--template=builtin_log_oneline"
+  "--template=dean_log_compact",
 ]
 sq = ["squash"]
 sqk = ["squash", "--keep-emptied"]
