@@ -433,6 +433,9 @@
     "D" #'majutsu-diff-transient
     "?" #'majutsu-mode-transient
     (kbd "RET") #'majutsu-enter-dwim))
+(use-package! git-link
+  :config
+  (setq git-link-consider-ssh-config t))
 
 
 ;;; CUSTOM
