@@ -167,7 +167,7 @@
   :init
   (def-project-mode! +ansible-yaml-mode
     :modes '(yaml-mode)
-    :add-hooks '(ansible ansible-auto-decrypt-encrypt ansible-doc-mode)
+    :add-hooks '(ansible-mode ansible-auto-decrypt-encrypt ansible-doc-mode)
     :match "/\\(main\\|site\\|encrypted\\|\\(\\(roles\\|tasks\\|handlers\\|vars\\|defaults\\|meta\\|group_vars\\|host_vars\\)/.+\\)\\)\\.ya?ml$"))
 
 
@@ -411,31 +411,9 @@
 
 (use-package! vc-jj)
 
-(use-package! majutsu
-  :config
-  (evil-define-key* 'normal majutsu-mode-map
-    "e" #'majutsu-edit-changeset-at-point
-    "n" #'majutsu-new-transient
-    "u" #'majutsu-undo
-    "l" #'majutsu-log-transient
-    "R" #'majutsu-redo
-    "y" #'majutsu-duplicate
-    "Y" #'majutsu-duplicate-transient
-    "N" #'majutsu-new
-    "r" #'majutsu-rebase-transient
-    "s" #'majutsu-squash-transient
-    "a" #'majutsu-abandon
-    "d" #'majutsu-describe
-    "b" #'majutsu-bookmark-transient
-    "g" #'majutsu-git-transient
-    "z" #'majutsu-log-refresh
-    "D" #'majutsu-diff-transient
-    "?" #'majutsu-mode-transient
-    (kbd "RET") #'majutsu-enter-dwim))
 (use-package! git-link
   :config
   (setq git-link-consider-ssh-config t))
-
 
 ;;; CUSTOM
 ;;  ----------------------------------------------------------------------------

@@ -60,9 +60,7 @@
 
 (package! font-lock-studio)
 
-(package! just-mode)
-
-(package! majutsu
-  :recipe (:host github :repo "0WD0/majutsu"))
-
 (package! vc-jj)
+
+(package! denote)
+(package! consult-denote)
