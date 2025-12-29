@@ -16,51 +16,27 @@
 ;; Prefer donwloading tars instead of cloning repos with git.
 (setq straight-vc-use-snapshot-installation t)
 
-(package! jsonnet-mode)
-
-(package! rego-mode)
-
-;; Disable evil-escape since I never use it anyway
-(package! evil-escape :disable t)
-
-(package! systemd)
-
 (package! bats-mode)
-
-(package! literate-calc-mode)
-
-(package! suggest)
-
-(package! jq-mode)
-
-(package! ssh-config-mode)
-
-(package! kubedoc)
-
-(package! ipcalc)
-
-(package! caddyfile-mode)
-
-(package! nftables-mode)
-
-(package! protobuf-mode
-  :recipe (:pre-build ("git" "submodule" "update")))
-
 (package! bazel)
-
-(package! flycheck-eldev)
-
-(package! cue-mode)
-
-(package! fish-mode)
-
-(package! git-link)
-
-(package! eat)
-
-(package! font-lock-studio)
-
-(package! vc-jj)
-
-(package! denote)
+(package! caddyfile-mode)
 (package! consult-denote)
+(package! cue-mode)
+(package! denote)
+(package! eat)
+(package! evil-escape :disable t) ;; Disable evil-escape since I never use it anyway
+(package! fish-mode)
+(package! flycheck-eldev)
+(package! font-lock-studio)
+(package! git-link)
+(package! ipcalc)
+(package! jq-mode)
+(package! jsonnet-mode)
+(package! kubedoc)
+(package! literate-calc-mode)
+(package! nftables-mode)
+(package! protobuf-mode :recipe (:pre-build ("git" "submodule" "update")))
+(package! rego-mode)
+(package! ssh-config-mode)
+(package! suggest)
+(package! systemd)
+(package! vc-jj)
