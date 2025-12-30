@@ -28,13 +28,11 @@
           devbox
           diffoci
           difftastic
-          difftastic
           dive
           dyff
           elixir-ls
           emacs-lsp-booster
           exercism
-          ghc
           go
           go-2fa
           go-jsonnet
@@ -46,7 +44,6 @@
           gotools
           graphql-language-service-cli
           grex
-          haskell-language-server
           hclfmt
           hey
           hledger
