@@ -159,11 +159,11 @@
 
 ;;; PACKAGES
 ;;  ----------------------------------------------------------------------------
-(use-package! doom-modeline
+(use-package doom-modeline
   :config
   (setq doom-modeline-persp-name t))
 
-(use-package! ansible
+(use-package ansible
   :init
   (def-project-mode! +ansible-yaml-mode
     :modes '(yaml-mode)
@@ -171,7 +171,7 @@
     :match "/\\(main\\|site\\|encrypted\\|\\(\\(roles\\|tasks\\|handlers\\|vars\\|defaults\\|meta\\|group_vars\\|host_vars\\)/.+\\)\\)\\.ya?ml$"))
 
 
-(use-package! ansible-doc
+(use-package ansible-doc
   :init
   (set-popup-rule! "^\\*ansible-doc"
     :height 0.4 :quit t :select t :ttl t)
@@ -179,46 +179,46 @@
   (set-evil-initial-state! '(ansible-doc-module-mode) 'normal))
 
 
-(use-package! browse-at-remote
+(use-package browse-at-remote
   :config
   (add-to-list 'browse-at-remote-remote-type-regexps '("^git\\.todevski\\.com$" . "gitlab")))
 
-(use-package! caddyfile-mode
+(use-package caddyfile-mode
   :mode (("Corefile\\'" . caddyfile-mode)
          ("\\.caddyfile\\'" . caddyfile-mode)))
 
-(use-package! corfu
+(use-package corfu
   :config
   (setq corfu-preview-current t))
 
-(use-package! dired
+(use-package dired
   :config
   (map! :map dired-mode-map
         :localleader
         :desc "Edit filenames" "e" #'wdired-change-to-wdired-mode)
   (dired-async-mode 1))
 
-(use-package! grip-mode
+(use-package grip-mode
   :config
-  (setq grip-preview-use-webkit nil))
+  (setq grip-preview-use-webkit nil
+        grip-use-mdopen t))
 
-
-(use-package! evil-snipe
+(use-package evil-snipe
   :config
   (setq! evil-snipe-repeat-keys t
          evil-split-window-below t
          evil-vsplit-window-right t))
 
 
-(use-package! jq-mode
+(use-package jq-mode
   :mode ("\\.jq" . jq-mode))
 
 
-(use-package! literate-calc-mode
+(use-package literate-calc-mode
   :hook (org-mode . literate-calc-minor-mode))
 
 
-(use-package! lsp-mode
+(use-package lsp-mode
   :config
   (setq! lsp-disabled-clients '(tfls)
          lsp-enable-links t
@@ -262,7 +262,7 @@
   (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command))
 
 
-(use-package! magit
+(use-package magit
   :config
   (setq! magit-repository-directories
          '(("~/src" . 2)
@@ -272,7 +272,7 @@
   (magit-wip-mode))
 
 
-(use-package! org
+(use-package org
   :config
   (setq! org-directory "~/org/")
   (map! :map org-mode-map
@@ -280,13 +280,13 @@
         "=" #'org-babel-tangle))
 
 
-(use-package! plantuml-mode
+(use-package plantuml-mode
   :mode ("\\.puml\\'" . plantuml-mode)
   :config (setq plantuml-default-exec-mode 'executable))
 
 
 
-(use-package! projectile
+(use-package projectile
   :config
   (setq! projectile-enable-caching nil
          projectile-project-search-path (seq-map (lambda (elt) `(,elt . 2)) todevski-project-path))
@@ -294,7 +294,7 @@
   (run-with-idle-timer 300 1 #'projectile-cleanup-known-projects))
 
 
-(use-package! systemd
+(use-package systemd
   :config
   (map! :map systemd-mode-map
         :localleader
@@ -302,16 +302,16 @@
         "h" #'systemd-doc-open))
 
 
-(use-package! transient
+(use-package transient
   :config
   (transient-bind-q-to-quit))
 
 
-(use-package! which-key
+(use-package which-key
   :config
   (setq! which-key-idle-delay 0.5))
 
-(use-package! bazel
+(use-package bazel
   :commands
   (bazel-build
    bazel-compile-current-file
@@ -352,44 +352,53 @@
   (set-formatter! 'buildifier-module '("buildifier" "-type" "module") :modes '(bazel-module-mode))
   (set-formatter! 'buildifier-workspace '("buildifier" "-type" "workspace") :modes '(bazel-workspace-mode))
 
-  (after! lsp-mode
-    (add-to-list 'lsp-language-id-configuration '(bazel-build-mode . "bazel"))
-    (add-to-list 'lsp-language-id-configuration '(bazel-module-mode . "bazel"))
-    (add-to-list 'lsp-language-id-configuration '(bazel-starlark-mode . "bazel"))
-    (add-to-list 'lsp-language-id-configuration '(bazel-workspace-mode . "bazel"))
-    (lsp-register-client
-     (make-lsp-client
-      :new-connection (lsp-stdio-connection
-                       (lambda ()
-                         (list "starpls" "server"
-                               "--experimental_goto_definition_skip_re_exports"
-                               "--experimental_infer_ctx_attributes"
-                               "--experimental_use_code_flow_analysis"
-                               (concat "--bazel_path=" (executable-find "bazelisk")))))
-      :activation-fn (lsp-activate-on "bazel")
-      :environment-fn (lambda ()
-                        ;; Skip calling the `tools/bazel' as
-                        ;; it might be slow and cause problems.
-                        '(("BAZELISK_SKIP_WRAPPER" . "1")))
-      :server-id 'starpls))))
+  (font-lock-add-keywords 'bazel-build-mode
+                          '(("^# +\\(gazelle.+?\\) \\(.*$\\)"
+                             (1 font-lock-keyword-face)
+                             (2 font-lock-string-face))))
 
 
-(use-package! cue-mode
+  (after lsp-mode
+         (add-to-list 'lsp-language-id-configuration '(bazel-build-mode . "bazel"))
+         (add-to-list 'lsp-language-id-configuration '(bazel-module-mode . "bazel"))
+         (add-to-list 'lsp-language-id-configuration '(bazel-starlark-mode . "bazel"))
+         (add-to-list 'lsp-language-id-configuration '(bazel-workspace-mode . "bazel"))
+         (lsp-register-client
+          (make-lsp-client
+           :new-connection (lsp-stdio-connection
+                            (lambda ()
+                              (list "starpls" "server"
+                                    "--experimental_goto_definition_skip_re_exports"
+                                    "--experimental_infer_ctx_attributes"
+                                    "--experimental_use_code_flow_analysis"
+                                    (concat "--bazel_path=" (executable-find "bazelisk")))))
+           :activation-fn (lsp-activate-on "bazel")
+           :environment-fn (lambda ()
+                             ;; Skip calling the `tools/bazel' as
+                             ;; it might be slow and cause problems.
+                             '(("BAZELISK_SKIP_WRAPPER" . "1")))
+           :server-id 'starpls))))
+
+
+(use-package cue-mode
   :hook (cue-mode . lsp-mode)
   :config
-  (after! lsp-mode
-    (add-to-list 'lsp-language-id-configuration '(cue-mode . "cue"))
-    (lsp-register-client
-     (make-lsp-client :new-connection (lsp-stdio-connection "cuepls")
-                      :major-modes '(cue-mode)
-                      :server-id 'cuepls))))
+  (after lsp-mode
+         (add-to-list 'lsp-language-id-configuration '(cue-mode . "cue"))
+         (lsp-register-client
+          (make-lsp-client :new-connection (lsp-stdio-connection "cuepls")
+                           :major-modes '(cue-mode)
+                           :server-id 'cuepls))))
 
+;; (use-package typescript-mode
+;;   :config
+;;   (setq typescript-indent-level 2))
 
-(use-package! sh-script
+(use-package sh-script
   :config
   (set-formatter! 'shfmt '("shfmt" "-filename" filepath "--apply-ignore" "-")))
 
-(use-package! ledger-mode
+(use-package ledger-mode
   :custom
   ((ledger-binary-path "hledger")
    (ledger-mode-should-check-version nil)
@@ -399,7 +408,7 @@
   :mode ("\\.hledger\\'" "\\.ledger\\'" "\\.journal\\'"))
 
 
-(use-package! mu4e
+(use-package mu4e
   :config
   (setq mu4e-headers-include-related nil)
   (map! :map mu4e-headers-mode-map
@@ -409,9 +418,13 @@
             (interactive)
             (mu4e-headers-mark-thread nil '(trash)))))
 
-(use-package! vc-jj)
+;; (use-package vc-jj)
 
-(use-package! git-link
+(use-package pr-review
+  :config
+  (setq pr-review-ghub-username "dean-todevski_relex"))
+
+(use-package git-link
   :config
   (setq git-link-consider-ssh-config t))
 
