@@ -28,7 +28,13 @@ git_push_bookmark = '"dean/" ++ change_id.short()'
 'format_timestamp(timestamp)' = 'timestamp.ago()'
 
 [merge-tools.delta]
-diff-args = ["--file-transformation", "s#^(left|right)/##g", "$left", "$right", "--width=$width"]
+diff-args = [
+  "--file-transformation",
+  "s#^(left|right)/##g",
+  "$left",
+  "$right",
+  "--width=$width",
+]
 diff-expected-exit-codes = [0, 1]
 
 [merge-tools.ediff]
@@ -56,7 +62,8 @@ logwatch = [
   "--config ui.log-word-wrap=true",
   "--color=always",
   "--ignore-working-copy",
-  "--template=dean_log_compact",
+  # "--template=dean_log_compact",
 ]
 sq = ["squash"]
 sqk = ["squash", "--keep-emptied"]
+mmr = ["util", "exec", "--", "bash", "-c", "jj rebase -d master --skip-emptied && jj rebase -d '@- & trunk()::'"]
