@@ -67,3 +67,4 @@ logwatch = [
 sq = ["squash"]
 sqk = ["squash", "--keep-emptied"]
 mmr = ["util", "exec", "--", "bash", "-c", "jj rebase -d master --skip-emptied && jj rebase -d '@- & trunk()::'"]
+tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@"]
