@@ -2,7 +2,7 @@
 
 ;;; DOOM
 ;;  ----------------------------------------------------------------------------
-(setq! user-full-name "Dean Lindqvist Todevski"
+(setopt user-full-name "Dean Lindqvist Todevski"
        user-mail-address "dean.todevski@gmail.com"
 
        ;; Theme
@@ -153,7 +153,7 @@
 (advice-add '+format-with-lsp-toggle-h :around #'todevski/+format-with-lsp-toggle-h)
 
 ;; Fix yaml
-(setq! yaml-indent-offset 2)
+(setopt yaml-indent-offset 2)
 (add-hook! (yaml-mode yaml-ts-mode) (doom/set-indent-width 2))
 (add-hook! (go-mode go-ts-mode) (setq go-ts-mode-indent-offset 4))
 
@@ -205,7 +205,7 @@
 
 (use-package evil-snipe
   :config
-  (setq! evil-snipe-repeat-keys t
+  (setopt evil-snipe-repeat-keys t
          evil-split-window-below t
          evil-vsplit-window-right t))
 
@@ -220,7 +220,7 @@
 
 (use-package lsp-mode
   :config
-  (setq! lsp-disabled-clients '(tfls)
+  (setopt lsp-disabled-clients '(tfls)
          lsp-enable-links t
          lsp-file-watch-threshold 2500
          lsp-semantic-tokens-enable nil
@@ -264,7 +264,7 @@
 
 (use-package magit
   :config
-  (setq! magit-repository-directories
+  (setopt magit-repository-directories
          '(("~/src" . 2)
            ("~/projects" . 2)))
   (unbind-key "z" magit-mode-map)
@@ -274,7 +274,7 @@
 
 (use-package org
   :config
-  (setq! org-directory "~/org/")
+  (setopt org-directory "~/org/")
   (map! :map org-mode-map
         :localleader
         "=" #'org-babel-tangle))
@@ -288,7 +288,7 @@
 
 (use-package projectile
   :config
-  (setq! projectile-enable-caching nil
+  (setopt projectile-enable-caching nil
          projectile-project-search-path (seq-map (lambda (elt) `(,elt . 2)) todevski-project-path))
   (run-with-idle-timer 300 1 #'projectile-discover-projects-in-search-path)
   (run-with-idle-timer 300 1 #'projectile-cleanup-known-projects))
@@ -309,7 +309,7 @@
 
 (use-package which-key
   :config
-  (setq! which-key-idle-delay 0.5))
+  (setopt which-key-idle-delay 0.5))
 
 (use-package bazel
   :commands
