@@ -83,7 +83,7 @@
        (nix +tree-sitter)
        (org +present)
        plantuml
-       (python +lsp +tree-sitter)
+       (python +lsp +tree-sitter +uv)
        rest
        (ruby +lsp +rails)
        (rust +lsp +tree-sitter)
