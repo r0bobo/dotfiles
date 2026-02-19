@@ -358,37 +358,37 @@
                              (2 font-lock-string-face))))
 
 
-  (after lsp-mode
-         (add-to-list 'lsp-language-id-configuration '(bazel-build-mode . "bazel"))
-         (add-to-list 'lsp-language-id-configuration '(bazel-module-mode . "bazel"))
-         (add-to-list 'lsp-language-id-configuration '(bazel-starlark-mode . "bazel"))
-         (add-to-list 'lsp-language-id-configuration '(bazel-workspace-mode . "bazel"))
-         (lsp-register-client
-          (make-lsp-client
-           :new-connection (lsp-stdio-connection
-                            (lambda ()
-                              (list "starpls" "server"
-                                    "--experimental_goto_definition_skip_re_exports"
-                                    "--experimental_infer_ctx_attributes"
-                                    "--experimental_use_code_flow_analysis"
-                                    (concat "--bazel_path=" (executable-find "bazelisk")))))
-           :activation-fn (lsp-activate-on "bazel")
-           :environment-fn (lambda ()
-                             ;; Skip calling the `tools/bazel' as
-                             ;; it might be slow and cause problems.
-                             '(("BAZELISK_SKIP_WRAPPER" . "1")))
-           :server-id 'starpls))))
+  (with-eval-after-load 'lsp-mode
+    (add-to-list 'lsp-language-id-configuration '(bazel-build-mode . "bazel"))
+    (add-to-list 'lsp-language-id-configuration '(bazel-module-mode . "bazel"))
+    (add-to-list 'lsp-language-id-configuration '(bazel-starlark-mode . "bazel"))
+    (add-to-list 'lsp-language-id-configuration '(bazel-workspace-mode . "bazel"))
+    (lsp-register-client
+     (make-lsp-client
+      :new-connection (lsp-stdio-connection
+                       (lambda ()
+                         (list "starpls" "server"
+                               "--experimental_goto_definition_skip_re_exports"
+                               "--experimental_infer_ctx_attributes"
+                               "--experimental_use_code_flow_analysis"
+                               (concat "--bazel_path=" (executable-find "bazelisk")))))
+      :activation-fn (lsp-activate-on "bazel")
+      :environment-fn (lambda ()
+                        ;; Skip calling the `tools/bazel' as
+                        ;; it might be slow and cause problems.
+                        '(("BAZELISK_SKIP_WRAPPER" . "1")))
+      :server-id 'starpls))))
 
 
 (use-package cue-mode
   :hook (cue-mode . lsp-mode)
   :config
-  (after lsp-mode
-         (add-to-list 'lsp-language-id-configuration '(cue-mode . "cue"))
-         (lsp-register-client
-          (make-lsp-client :new-connection (lsp-stdio-connection "cuepls")
-                           :major-modes '(cue-mode)
-                           :server-id 'cuepls))))
+  (with-eval-after-load 'lsp-mode
+    (add-to-list 'lsp-language-id-configuration '(cue-mode . "cue"))
+    (lsp-register-client
+     (make-lsp-client :new-connection (lsp-stdio-connection "cuepls")
+                      :major-modes '(cue-mode)
+                      :server-id 'cuepls))))
 
 ;; (use-package typescript-mode
 ;;   :config
