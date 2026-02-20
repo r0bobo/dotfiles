@@ -47,6 +47,7 @@
           hclfmt
           hey
           hledger
+          hledger-fmt
           istioctl
           jd-diff-patch
           jsonnet-language-server
