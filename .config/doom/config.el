@@ -3,33 +3,33 @@
 ;;; DOOM
 ;;  ----------------------------------------------------------------------------
 (setopt user-full-name "Dean Lindqvist Todevski"
-       user-mail-address "dean.todevski@gmail.com"
+        user-mail-address "dean.todevski@gmail.com"
 
-       ;; Theme
-       doom-font (font-spec :family "Jetbrains Mono" :size 14)
-       doom-variable-pitch-font (font-spec :family "Jetbrains Mono" :size 14)
-       doom-unicode-font (font-spec :family "Jetbrains Mono" :size 14)
-       doom-big-font (font-spec :family "Jetbrains Mono" :size 26)
-       doom-theme 'doom-dracula
-       fancy-splash-image (concat doom-user-dir "doom-icon.png")
-       display-line-numbers-type t
+        ;; Theme
+        doom-font (font-spec :family "Jetbrains Mono" :size 14)
+        doom-variable-pitch-font (font-spec :family "Jetbrains Mono" :size 14)
+        doom-unicode-font (font-spec :family "Jetbrains Mono" :size 14)
+        doom-big-font (font-spec :family "Jetbrains Mono" :size 26)
+        doom-theme 'doom-dracula
+        fancy-splash-image (concat doom-user-dir "doom-icon.png")
+        display-line-numbers-type t
 
-       ;; Keymaps
-       doom-localleader-key ","
+        ;; Keymaps
+        doom-localleader-key ","
 
-       ;; Don't overwrite copied text on paste
-       evil-kill-on-visual-paste nil
+        ;; Don't overwrite copied text on paste
+        evil-kill-on-visual-paste nil
 
-       ;; Disable titlebar and menus
-       default-frame-alist '((undecorated . t))
+        ;; Disable titlebar and menus
+        default-frame-alist '((undecorated . t))
 
-       flymake-indicator-type 'fringes
+        flymake-indicator-type 'fringes
 
-       delete-by-moving-to-trash t
-       magit-delete-by-moving-to-trash t
+        delete-by-moving-to-trash t
+        magit-delete-by-moving-to-trash t
 
-       ;; Fix clipped bottom row in which-key
-       which-key-allow-imprecise-window-fit nil)
+        ;; Fix clipped bottom row in which-key
+        which-key-allow-imprecise-window-fit nil)
 
 
 (menu-bar-mode -1)
@@ -206,8 +206,8 @@
 (use-package evil-snipe
   :config
   (setopt evil-snipe-repeat-keys t
-         evil-split-window-below t
-         evil-vsplit-window-right t))
+          evil-split-window-below t
+          evil-vsplit-window-right t))
 
 
 (use-package jq-mode
@@ -221,25 +221,25 @@
 (use-package lsp-mode
   :config
   (setopt lsp-disabled-clients '(tfls)
-         lsp-enable-links t
-         lsp-file-watch-threshold 2500
-         lsp-semantic-tokens-enable nil
-         lsp-semantic-tokens-honor-refresh-requests nil
-         lsp-elixir-server-command '("elixir-ls")
-         lsp-go-analyses '((fillreturns . t)
-                           (nilness . t)
-                           (unusedparams . t)
-                           (unusedvariable . t)
-                           (unusedwrite . t)
-                           (useany . t))
-         lsp-go-gopls-server-args '("-logfile=/tmp/gopls-client.log"
-                                    "-remote.debug=localhost:0"
-                                    ;; "-remote.logfile=/tmp/gopls-daemon.log"
-                                    ;; "-rpc.trace"
-                                    "-remote=auto")
-         lsp-go-hover-kind "FullDocumentation"
-         lsp-go-use-placeholders nil
-         lsp-terraform-ls-prefill-required-fields t)
+          lsp-enable-links t
+          lsp-file-watch-threshold 2500
+          lsp-semantic-tokens-enable nil
+          lsp-semantic-tokens-honor-refresh-requests nil
+          lsp-elixir-server-command '("elixir-ls")
+          lsp-go-analyses '((fillreturns . t)
+                            (nilness . t)
+                            (unusedparams . t)
+                            (unusedvariable . t)
+                            (unusedwrite . t)
+                            (useany . t))
+          lsp-go-gopls-server-args '("-logfile=/tmp/gopls-client.log"
+                                     "-remote.debug=localhost:0"
+                                     ;; "-remote.logfile=/tmp/gopls-daemon.log"
+                                     ;; "-rpc.trace"
+                                     "-remote=auto")
+          lsp-go-hover-kind "FullDocumentation"
+          lsp-go-use-placeholders nil
+          lsp-terraform-ls-prefill-required-fields t)
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t)))
@@ -265,8 +265,8 @@
 (use-package magit
   :config
   (setopt magit-repository-directories
-         '(("~/src" . 2)
-           ("~/projects" . 2)))
+          '(("~/src" . 2)
+            ("~/projects" . 2)))
   (unbind-key "z" magit-mode-map)
   (transient-append-suffix 'magit-commit '(1 3 -1) '("b" "git-absorb" magit-commit-absorb))
   (magit-wip-mode))
@@ -289,7 +289,7 @@
 (use-package projectile
   :config
   (setopt projectile-enable-caching nil
-         projectile-project-search-path (seq-map (lambda (elt) `(,elt . 2)) todevski-project-path))
+          projectile-project-search-path (seq-map (lambda (elt) `(,elt . 2)) todevski-project-path))
   (run-with-idle-timer 300 1 #'projectile-discover-projects-in-search-path)
   (run-with-idle-timer 300 1 #'projectile-cleanup-known-projects))
 
