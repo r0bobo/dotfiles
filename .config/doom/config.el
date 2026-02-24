@@ -226,12 +226,6 @@
           lsp-semantic-tokens-enable nil
           lsp-semantic-tokens-honor-refresh-requests nil
           lsp-elixir-server-command '("elixir-ls")
-          lsp-go-analyses '((fillreturns . t)
-                            (nilness . t)
-                            (unusedparams . t)
-                            (unusedvariable . t)
-                            (unusedwrite . t)
-                            (useany . t))
           lsp-go-gopls-server-args '("-logfile=/tmp/gopls-client.log"
                                      "-remote.debug=localhost:0"
                                      ;; "-remote.logfile=/tmp/gopls-daemon.log"
