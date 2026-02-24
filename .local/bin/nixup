@@ -7,7 +7,7 @@ LOCK="$FLAKE/flake.lock"
 
 upgrade() {
 	before="$(stat -c %Y "$LOCK")"
-	nix profile upgrade nix-mypkgs
+	nix flake update --flake "$FLAKE" nixpkgs
 
 	[[ "$(stat -c %Y "$LOCK")" = "$before" ]] && exit 0
 
@@ -19,12 +19,13 @@ upgrade() {
 
 case "${1:-}" in
 sync)
-	nix flake update --flake "$FLAKE" nixpkgs
+	nix profile upgrade nix-mypkgs
 	;;
 upgrade | up)
 	upgrade
 	;;
+*)
+	echo "Usage: nixup sync|upgrade" >&2
+	exit 1
+	;;
 esac
-
-echo "Usage: nixup sync|upgrade" >&2
-exit 1
