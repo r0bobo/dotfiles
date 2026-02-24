@@ -29,42 +29,48 @@ git_push_bookmark = '"dean/" ++ change_id.short()'
 
 [merge-tools.delta]
 diff-args = [
-  "--file-transformation",
-  "s#^(left|right)/##g",
-  "$left",
-  "$right",
-  "--width=$width",
+    "--file-transformation",
+    "s#^(left|right)/##g",
+    "$left",
+    "$right",
+    "--width=$width",
 ]
 diff-expected-exit-codes = [0, 1]
 
 [merge-tools.ediff]
 program = 'sh'
 merge-args = [
-  '-c',
-  'emacsclient -t -c --eval "(ediff-merge-files-with-ancestor \"$0\" \"$1\" \"$2\" nil \"$3\")"',
-  '$left',
-  '$right',
-  '$base',
-  '$output',
+    '-c',
+    'emacsclient -t -c --eval "(ediff-merge-files-with-ancestor \"$0\" \"$1\" \"$2\" nil \"$3\")"',
+    '$left',
+    '$right',
+    '$base',
+    '$output',
 ]
 
 [aliases]
 logwatch = [
-  "util",
-  "exec",
-  "--",
-  "viddy",
-  "--disable_auto_save",
-  "--no-title",
-  "--skip-empty-diffs",
-  "jj",
-  "log",
-  "--config ui.log-word-wrap=true",
-  "--color=always",
-  "--ignore-working-copy",
-  # "--template=dean_log_compact",
+    "util",
+    "exec",
+    "--",
+    "viddy",
+    "--disable_auto_save",
+    "--no-title",
+    "--skip-empty-diffs",
+    "jj",
+    "log",
+    "--config ui.log-word-wrap=true",
+    "--color=always",
+    "--ignore-working-copy",
+    # "--template=dean_log_compact",
 ]
 sq = ["squash"]
 sqk = ["squash", "--keep-emptied"]
-mmr = ["util", "exec", "--", "bash", "-c", "jj rebase -d master --skip-emptied && jj rebase -d '@- & trunk()::'"]
-tug = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@"]
+mmr = [
+    "util",
+    "exec",
+    "--",
+    "bash",
+    "-c",
+    "jj rebase -d master --skip-emptied && jj rebase -d '@- & trunk()::'",
+]
