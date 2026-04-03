@@ -9,7 +9,6 @@
         name = "home-packages";
         paths = with pkgs; [
           actionlint
-          argocd
           asciinema
           asciinema-agg
           atuin
@@ -48,7 +47,6 @@
           hey
           hledger
           hledger-fmt
-          istioctl
           jd-diff-patch
           jsonnet-language-server
           jujutsu
@@ -62,9 +60,6 @@
           minikube
           mkcert
           nix-zsh-completions
-          nodePackages.prettier
-          nodePackages.stylelint
-          nodePackages.typescript-language-server
           plantuml
           protobuf
           protoc-gen-go
