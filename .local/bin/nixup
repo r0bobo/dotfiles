@@ -9,7 +9,7 @@ upgrade() {
 	before="$(stat -c %Y "$LOCK")"
 	nix flake update --flake "$FLAKE" nixpkgs
 
-	[[ "$(stat -c %Y "$LOCK")" = "$before" ]] && exit 0
+	[[ "$(stat -c %Y "$LOCK")" = "$before" ]] && return 0
 
 	yadm commit \
 		--message='nix: update lock' \
@@ -17,12 +17,17 @@ upgrade() {
 		"$LOCK"
 }
 
+sync() {
+	nix profile upgrade nix-mypkgs
+}
+
 case "${1:-}" in
 sync)
-	nix profile upgrade nix-mypkgs
+	sync
 	;;
 upgrade | up)
 	upgrade
+	sync
 	;;
 *)
 	echo "Usage: nixup sync|upgrade" >&2
