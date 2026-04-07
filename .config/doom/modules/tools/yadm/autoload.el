@@ -35,6 +35,22 @@
     (push (concat "GIT_DIR=" +yadm-git-dir) env))
   env)
 
+;;;###autload
+(defun +yadm/git-timemachine-validate (oldfun &rest args)
+  ""
+  (if (+yadm--tracked-file-p)
+      t
+    (apply oldfun args)))
+
+;;;###autload
+(defun +yadm/git-timemachine--process-file (&rest args)
+  ""
+  ;; (when (+yadm--tracked-file-p)
+  ;;   (push (concat "--work-tree=" +yadm-work-tree) args)
+  ;;   (push (concat "--git-dir=" +yadm-git-dir) args))
+  (print args)
+  args)
+
 ;;;###autoload
 (defun +yadm/find-file ()
   "Edit yadm managed file."
