@@ -393,6 +393,9 @@
   (set-formatter! 'shfmt '("shfmt" "-filename" filepath "--apply-ignore" "-")))
 
 (use-package ledger-mode
+  :config
+  (set-formatter! 'hledger-fmt '("hledger-fmt" "--no-diff" "--exit-zero-on-changes" "-") :modes '(ledger-mode))
+
   :custom
   ((ledger-binary-path "hledger")
    (ledger-mode-should-check-version nil)
