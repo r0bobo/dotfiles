@@ -8,7 +8,7 @@
 
        :ui
        doom
-       doom-dashboard
+       dashboard
        indent-guides
        hl-todo
        modeline
