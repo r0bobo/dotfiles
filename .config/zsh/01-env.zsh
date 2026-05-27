@@ -24,8 +24,10 @@ lessflags=(
 	--RAW-CONTROL-CHARS # show colors
 	--no-init
 	--tabs=4
+	--hilite-unread
 )
 export LESS="${lessflags[*]}"
+export HLEDGER_LESS="$LESS --squeeze-blank-lines --use-backslash"
 unset lessflags
 
 [[ -f "$HOME/.nix-profile/etc/profile.d/nix.sh" ]] && source "$HOME/.nix-profile/etc/profile.d/nix.sh"
