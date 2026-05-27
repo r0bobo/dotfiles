@@ -226,6 +226,7 @@
           lsp-semantic-tokens-enable nil
           lsp-semantic-tokens-honor-refresh-requests nil
           lsp-elixir-server-command '("elixir-ls")
+          lsp-yaml-server-command '("yaml-schema-router" "--stdio")
           lsp-go-gopls-server-args '("-logfile=/tmp/gopls-client.log"
                                      "-remote.debug=localhost:0"
                                      ;; "-remote.logfile=/tmp/gopls-daemon.log"

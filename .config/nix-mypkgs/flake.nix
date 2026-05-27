@@ -95,6 +95,7 @@
           watchman
           yadm
           yaml-language-server
+          yaml-schema-router
           yq-go
         ];
         pathsToLink = [ "/bin" "/share" ];
