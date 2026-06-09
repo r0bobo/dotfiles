@@ -48,6 +48,10 @@
  'auto-mode-alist
  '("CODEOWNERS\\'" . gitignore-mode))
 
+(add-to-list
+ 'auto-mode-alist
+ '("PROJECT\\.scl\\'" . bazel-starlark-mode))
+
 (map!
  :n "C-0" #'doom/reset-font-size
  :n "C-+" #'doom/increase-font-size
@@ -220,6 +224,7 @@
 
 (use-package lsp-mode
   :config
+  (setq lsp-json-schemas '[(:fileMatch ["*/.cursor/environment.json"] :url "https://www.cursor.com/schemas/environment.schema.json")])
   (setopt lsp-disabled-clients '(tfls)
           lsp-enable-links t
           lsp-file-watch-threshold 2500
@@ -234,7 +239,9 @@
                                      "-remote=auto")
           lsp-go-hover-kind "FullDocumentation"
           lsp-go-use-placeholders nil
-          lsp-terraform-ls-prefill-required-fields t)
+          lsp-terraform-ls-prefill-required-fields t
+          lsp-yaml-server-command '("yaml-schema-router" "--stdio"))
+
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t)))
@@ -392,6 +399,11 @@
 (use-package sh-script
   :config
   (set-formatter! 'shfmt '("shfmt" "-filename" filepath "--apply-ignore" "-")))
+
+(use-package jsonnet-mode
+  :config
+  (set-formatter! 'jsonnetfmt '("jsonnetfmt" "-")))
+
 
 (use-package ledger-mode
   :config
