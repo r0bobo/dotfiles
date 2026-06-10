@@ -22,7 +22,6 @@
 (package! consult-denote)
 (package! cue-mode)
 (package! denote)
-(package! eat)
 (package! evil-escape :disable t) ;; Disable evil-escape since I never use it anyway
 (package! fish-mode)
 (package! flycheck-eldev)

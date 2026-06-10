@@ -428,12 +428,6 @@
             (interactive)
             (mu4e-headers-mark-thread nil '(trash)))))
 
-;; (use-package vc-jj)
-
-(use-package pr-review
-  :config
-  (setq pr-review-ghub-username "dean-todevski_relex"))
-
 (use-package git-link
   :config
   (setq git-link-consider-ssh-config t))
