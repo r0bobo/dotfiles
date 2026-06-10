@@ -41,3 +41,6 @@
 (package! suggest)
 (package! systemd)
 (package! vc-jj)
+
+(package! ghostel)
+(package! evil-ghostel)

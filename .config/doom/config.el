@@ -438,6 +438,14 @@
   :config
   (setq git-link-consider-ssh-config t))
 
+(use-package ghostel
+  :ensure t)
+
+(use-package evil-ghostel
+  :ensure t
+  :after (ghostel evil)
+  :hook (ghostel-mode . evil-ghostel-mode))
+
 ;;; CUSTOM
 ;;  ----------------------------------------------------------------------------
 (map!
