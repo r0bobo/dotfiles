@@ -70,9 +70,7 @@
 (map!
  :leader
  :prefix "c"
- :desc "Rotate text" "." #'rotate-text
- :desc "Run make target" "m" #'+make/run
- :desc "Run last make target" "M" #'+make/run-last)
+ :desc "Rotate text" "." #'rotate-text)
 
 (map!
  :leader
@@ -456,3 +454,40 @@
 (let ((local-config (file-name-concat doom-user-dir "config.local.el")))
   (when (file-exists-p local-config)
     (load-file local-config)))
+
+;; https://www.reddit.com/r/emacs/comments/1txrf6o/little_llm_helper_function_for_copying_fileline/
+(defun copy-file-line ()
+  "Copy project-relative file path plus current line or selected line range.
+
+The copied format is:
+
+  path/to/file.ext:42
+  path/to/file.ext:42-57"
+  (interactive)
+  (let* ((file (or buffer-file-name
+                   (user-error "Current buffer is not visiting a file")))
+         (project-root (when-let ((project (project-current)))
+                         (project-root project)))
+         (relative-path (if project-root
+                            (file-relative-name file project-root)
+                          (file-name-nondirectory file)))
+         (line-text
+          (if (use-region-p)
+              (let ((start-line (line-number-at-pos (region-beginning)))
+                    (end-line (line-number-at-pos
+                               ;; If the region ends at the beginning of a line,
+                               ;; treat the previous line as the final selected line.
+                               (if (= (region-end) (line-beginning-position))
+                                   (max (point-min) (1- (region-end)))
+                                 (region-end)))))
+                (if (= start-line end-line)
+                    (number-to-string start-line)
+                  (format "%d-%d" start-line end-line)))
+            (number-to-string (line-number-at-pos)))))
+    (kill-new (format "%s:%s" relative-path line-text))
+    (message "Copied: %s:%s" relative-path line-text)))
+
+(map!
+ :leader
+ :prefix "f"
+ :desc "Copy file-line" "x"  #'copy-file-line)
