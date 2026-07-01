@@ -26,7 +26,6 @@
 (package! fish-mode)
 (package! flycheck-eldev)
 (package! font-lock-studio)
-(package! git-link)
 (package! ipcalc)
 (package! jq-mode)
 (package! jsonnet-mode)
@@ -41,5 +40,3 @@
 (package! systemd)
 (package! vc-jj)
 
-(package! ghostel)
-(package! evil-ghostel)

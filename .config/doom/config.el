@@ -181,10 +181,6 @@
   (set-evil-initial-state! '(ansible-doc-module-mode) 'normal))
 
 
-(use-package browse-at-remote
-  :config
-  (add-to-list 'browse-at-remote-remote-type-regexps '("^git\\.todevski\\.com$" . "gitlab")))
-
 (use-package caddyfile-mode
   :mode (("Corefile\\'" . caddyfile-mode)
          ("\\.caddyfile\\'" . caddyfile-mode)))
@@ -431,12 +427,9 @@
   (setq git-link-consider-ssh-config t))
 
 (use-package ghostel
-  :ensure t)
+  :config
+  (setq ghostel-module-auto-install 'download))
 
-(use-package evil-ghostel
-  :ensure t
-  :after (ghostel evil)
-  :hook (ghostel-mode . evil-ghostel-mode))
 
 ;;; CUSTOM
 ;;  ----------------------------------------------------------------------------

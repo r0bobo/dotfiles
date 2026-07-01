@@ -43,7 +43,7 @@
        (mu4e +mbsync +org)
 
        :term
-       vterm
+       (ghostel +everywhere)
 
        :checkers
        (syntax +flymake)
