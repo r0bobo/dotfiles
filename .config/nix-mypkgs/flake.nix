@@ -64,12 +64,13 @@
           protobuf
           protoc-gen-go
           protoc-gen-go-grpc
-          python313Packages.black
-          python313Packages.grip
-          python313Packages.mypy
-          python313Packages.python-lsp-black
-          python313Packages.python-lsp-ruff
-          python313Packages.python-lsp-server
+          python314Packages.grip
+          python314Packages.mypy
+          python314Packages.python-lsp-ruff
+          python314Packages.python-lsp-server
+          radicle-explorer
+          radicle-node
+          radicle-tui
           rbw
           ruff
           rustup
@@ -78,6 +79,7 @@
           starpls
           starship
           stern
+          svtplay-dl
           svtplay-dl
           taplo
           tenv
