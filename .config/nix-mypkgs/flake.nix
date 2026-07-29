@@ -30,7 +30,6 @@
           dive
           dyff
           elixir-ls
-          emacs-lsp-booster
           exercism
           go
           go-2fa
