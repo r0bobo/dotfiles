@@ -31,6 +31,7 @@
 (package! jsonnet-mode)
 (package! kubedoc)
 (package! literate-calc-mode)
+(package! majutsu :recipe (:host github :repo "0WD0/majutsu"))
 (package! mu4e-alert :disable t)
 (package! nftables-mode)
 (package! protobuf-mode :recipe (:pre-build ("git" "submodule" "update")))

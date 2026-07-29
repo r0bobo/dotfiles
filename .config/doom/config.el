@@ -102,7 +102,8 @@
  :leader
  :prefix "j"
  :desc "List conflicts" "c" #'jj-list-conflicts
- :desc "Open file in change" "f" #'jj-find-file-in-change)
+ :desc "Open file in change" "f" #'jj-find-file-in-change
+ :desc "Majutsu" "j" #'majutsu)
 
 
 (map! :map global-map
