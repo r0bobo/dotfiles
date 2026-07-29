@@ -46,7 +46,7 @@
        (ghostel +everywhere)
 
        :checkers
-       (syntax +flymake)
+       (syntax +flycheck)
 
        :tools
        ansible
