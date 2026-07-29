@@ -56,7 +56,6 @@
           kubernetes-helm
           kustomize
           mergiraf
-          minikube
           mkcert
           nix-zsh-completions
           plantuml
