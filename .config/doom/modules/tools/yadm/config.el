@@ -12,6 +12,12 @@
   (advice-add 'magit-process-environment
               :filter-return #'+yadm/magit-process-environment))
 
+(after! git-timemachine
+  (advice-add 'git-timemachine-validate
+              :around #'+yadm/git-timemachine-validate)
+  (advice-add 'git-timemachine--process-file
+              :filter-args #'+yadm/git-timemachine--process-file))
+
 (map!
  :leader
  :prefix ("y" . "yadm")
