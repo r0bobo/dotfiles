@@ -66,9 +66,6 @@
           python314Packages.mypy
           python314Packages.python-lsp-ruff
           python314Packages.python-lsp-server
-          radicle-explorer
-          radicle-node
-          radicle-tui
           rbw
           ruff
           rustup
@@ -77,7 +74,6 @@
           starpls
           starship
           stern
-          svtplay-dl
           svtplay-dl
           taplo
           tenv
